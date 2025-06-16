@@ -22,11 +22,11 @@ const Navbar = () => {
       </div>
 
       <div className="relative h-[68px] w-full px-4 flex justify-between items-center">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <img
-            src="/images/logo-kementerian.webp"
-            alt="logo"
-            className="w-8 h-8"
+            src="/images/LADORM - LOGO WHITE.webp"
+            alt="LADORM - LOGO"
+            className="w-10 h-10"
           />
           <div className="leading-tight text-sm">
             <h5 className="font-bold uppercase">Asrama Mahasiswa Gorontalo</h5>
@@ -89,7 +89,9 @@ const Navbar = () => {
 
             <motion.div variants={itemVariants}>
               <button className="flex items-center justify-center w-36 bg-white text-black px-3 py-2 rounded-lg shadow hover:shadow-md transition cursor-pointer">
-                <span className="text-sm font-semibold">Contact Us</span>
+                <span className="text-sm font-semibold text-[#2C705B]">
+                  Contact Us
+                </span>
               </button>
             </motion.div>
           </motion.div>
