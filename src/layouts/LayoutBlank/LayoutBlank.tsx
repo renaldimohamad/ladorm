@@ -2,27 +2,20 @@ import Navbar from "@/components/common/Navbar";
 import "@/styles/globals.css";
 import { montserrat } from "@/styles/font";
 
-const LayoutBlank = ({ children }: { children: React.ReactNode }) => {
+const LayoutBlank = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
     <div
       className={`
-        ${montserrat.className}
-        min-h-screen
-        bg-[url('/images/asrama_profile_img.webp')]
-        bg-cover
-        bg-center
-      `}
-      // className={`
-      //   ${montserrat.className}
-      //   min-h-screen
-      //   bg-[url('/images/asrama_profile_img.webp')]
-      //   bg-[position:12%_center]    // mobile → geser fokus ke kanan sedikit
-      //   sm:bg-center                // sm dan ke atas → reset ke tengah
-      //   bg-cover
-      // `}
+        ${montserrat.className} bg-[#ffffff]`}
     >
       <Navbar />
-      <main className="flex items-center justify-center h-full mt-10 lg:mt-10">
+      <main className={`flex items-center justify-center h-full ${className} `}>
         {children}
       </main>
     </div>

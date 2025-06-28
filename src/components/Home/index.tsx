@@ -9,8 +9,7 @@ export const WrapContainerHome = () => {
       flex flex-col 
       items-start lg:items-end 
       gap-2 
-      text-left lg:text-right
-            "
+      text-left lg:text-right"
       >
         <span
           className="text-white text-base lg:text-[20px] font-bold leading-tight"
