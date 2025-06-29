@@ -2,43 +2,124 @@
 
 import Footer from "@/components/common/Footer";
 import { WrapContainerHome } from "@/components/Home";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { TestimonialsWrapper } from "@/components/Home/TestimonialsWrapper";
 import { LayoutBlank } from "@/layouts";
+import { motion } from "framer-motion";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { AboutDormitory } from "@/components/Home/AboutAsrama";
+import { testimonialsData } from "@/utils/Testimonials";
 
 export default function Home() {
+  const scrollDir = useScrollDirection();
+  const initialY = scrollDir === "down" ? 80 : -80;
+
   return (
     <LayoutBlank>
       <main className="flex flex-col w-full">
         <section
-          className="w-full min-h-screen flex items-center justify-center px-4 py-16 relative bg-red-500 min-h-screen
+          className="w-full min-h-screen flex items-center justify-center px-4 py-16 relative min-h-screen
         bg-[url('/images/asrama_profile_img.webp')]
         bg-cover
         bg-center"
         >
-          <WrapContainerHome />
+          <motion.section
+            initial={{ opacity: 0, y: initialY }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.2, 1, 0.3, 1],
+              delay: 0.2,
+            }}
+            viewport={{ once: false, amount: 0.4 }}
+            className="w-full px-4 py-20"
+          >
+            <WrapContainerHome />
+          </motion.section>
         </section>
-        {/* HIDE FOR NOW */}
         <section className="w-full px-4 py-20 bg-white text-black">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Tentang Asrama</h2>
-            <p>
-              {/* Ini adalah informasi tentang asrama mahasiswa Gorontalo di
-              Jakarta. */}
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Repellendus repellat totam voluptas asperiores assumenda numquam.
-              Nostrum, quibusdam expedita! Reiciendis, beatae.
-            </p>
-          </div>
+          <motion.section
+            initial={{ opacity: 0, y: initialY }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.2, 1, 0.3, 1],
+              delay: 0.2,
+            }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="w-full"
+          >
+            <AboutDormitory />
+          </motion.section>
         </section>
-        <section className="w-full px-4 py-20 bg-gray-100 text-black">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">Fasilitas</h2>
-            <ul className="list-disc pl-5">
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem ipsum dolor sit.</li>
-            </ul>
-          </div>
+        <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
+          <motion.section
+            initial={{ opacity: 0, y: initialY }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.2, 1, 0.3, 1],
+              delay: 0.2,
+            }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="w-full"
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-center text-[#016072]">
+              Testimonials
+            </h1>
+
+            <div className="w-full max-w-6xl px-2 sm:px-4 mx-auto">
+              <Swiper
+                modules={[Autoplay]}
+                loop={true}
+                grabCursor={true}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: false,
+                }}
+                allowTouchMove={true}
+                touchStartPreventDefault={false}
+                breakpoints={{
+                  320: { slidesPerView: 1 },
+                  640: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                }}
+              >
+                {testimonialsData.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="h-full px-1 sm:px-2">
+                      <TestimonialsWrapper>
+                        <div className="leading-relaxed">
+                          <span className="text-sm sm:text-base leading-relaxed text-gray-800 text-justify">
+                            “{item.message}”
+                          </span>
+                        </div>
+
+                        <div className="mt-auto flex items-center gap-3 pt-6 gap-4">
+                          <img
+                            src={item.avatar}
+                            alt={item.name}
+                            className="w-12 h-12 rounded-full object-cover"
+                          />
+                          <h3 className="font-bold text-sm sm:text-base">
+                            {item.name}
+                          </h3>
+                        </div>
+                      </TestimonialsWrapper>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </motion.section>
         </section>
+
         <Footer />
       </main>
     </LayoutBlank>
