@@ -42,3 +42,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+
+html {
+  scroll-behavior: smooth;
+}

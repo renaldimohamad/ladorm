@@ -1,14 +1,19 @@
+import { scrollToIdWithMotion } from "@/utils/smoothScrollMotion";
 import Link from "next/link";
+import { generateWhatsAppLink } from "@/utils/whatsAppMessage";
 
 export default function Footer() {
+  const phone = "62811438399";
+  const message = "Halo kak, saya mau tanya tentang Asrama Mahasiswa Gorontalo";
+  const waLink = generateWhatsAppLink(phone, message);
   return (
-    <footer className="bg-black text-white px-6 md:px-20 py-10">
+    <footer className="bg-gradient-to-t from-black via-[#1a1a1a] to-[#272727] text-white px-6 md:px-20 py-10">
       <div className="mb-10">
         <div className="md:max-w-screen-xl md:mx-auto grid md:grid-cols-4 gap-10">
           <div>
             <div className="flex gap-4 items-center">
               <img
-                src="/images/LADORM - LOGO WHITE.webp"
+                src="/images/Ladorm Logo - Putih.png"
                 alt="LADORM - LOGO"
                 className="w-14 h-14"
               />
@@ -17,22 +22,22 @@ export default function Footer() {
             <div className="mt-4 space-y-2 text-sm">
               <div className="flex gap-2">
                 <span className="font-medium">Website:</span>
-                <span className="text-gray-300">www.gorontalo.id</span>
+                <span className="text-gray-200">www.gorontalo.id</span>
               </div>
               <div className="flex gap-2">
                 <span className="font-medium">Email:</span>{" "}
-                <span className="text-gray-300">info@asramamahasiswa.id</span>
+                <span className="text-gray-200">info@asramamahasiswa.id</span>
               </div>
 
               <p>
                 <span className="font-medium">Address:</span>
                 <br />
-                <span className="text-gray-300">
+                <span className="text-gray-200">
                   Jl. Kramat Gg. Pribadi No.39, RT.8/RW.2, Lenteng Agung, Kec.
                   Jagakarsa
                 </span>
                 <br />
-                <span className="text-gray-300">
+                <span className="text-gray-200">
                   Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630
                 </span>
               </p>
@@ -43,7 +48,15 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Ladormy</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/">Beranda</Link>
+                <Link
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToIdWithMotion("home");
+                  }}
+                >
+                  Beranda
+                </Link>
               </li>
               <li>
                 <Link href="#" className="cursor-not-allowed">
@@ -62,12 +75,34 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Social Media</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#" target="_blank" className="cursor-not-allowed">
+                <Link
+                  href={
+                    "https://www.linkedin.com/in/ladorm-gorontalo-522188372/"
+                  }
+                  target="_blank"
+                  className="pointer"
+                >
                   Linkedin
                 </Link>
               </li>
               <li>
-                <Link href="#" target="_blank" className="cursor-not-allowed">
+                <Link
+                  href={generateWhatsAppLink(
+                    "62811438399",
+                    "Halo kak saya mau tanya tentang Asrama Mahasiswa Gorontalo"
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  whatssApp
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://x.com/Ladorm_Family"
+                  target="_blank"
+                  className="pointer"
+                >
                   X (Twitter)
                 </Link>
               </li>
@@ -135,7 +170,11 @@ export default function Footer() {
               </svg>
             </Link>
             {/* twiter */}
-            <Link href={""} className="cursor-not-allowed">
+            <Link
+              href={"https://x.com/Ladorm_Family"}
+              target="_blank"
+              className="pointer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -146,7 +185,14 @@ export default function Footer() {
               </svg>
             </Link>
             {/* // whatsapp */}
-            <Link href={""} className="cursor-not-allowed">
+            <Link
+              href={generateWhatsAppLink(
+                "62811438399",
+                "Halo kak saya mau tanya tentang Asrama Mahasiswa Gorontalo"
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -157,7 +203,11 @@ export default function Footer() {
               </svg>
             </Link>
             {/* . LinkedIn */}
-            <Link href={""} className="cursor-not-allowed">
+            <Link
+              href={"https://www.linkedin.com/in/ladorm-gorontalo-522188372/"}
+              target="_blank"
+              className="pointer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"

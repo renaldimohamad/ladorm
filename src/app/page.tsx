@@ -3,7 +3,7 @@
 import Footer from "@/components/common/Footer";
 import { WrapContainerHome } from "@/components/Home";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { AboutDormitory } from "@/components/Home/AboutAsrama";
 import { testimonialsData } from "@/utils/Testimonials";
+import DormitoryManagement from "@/components/Home/DormitoryManagement";
 
 export default function Home() {
   const scrollDir = useScrollDirection();
@@ -22,25 +23,57 @@ export default function Home() {
     <LayoutBlank>
       <main className="flex flex-col w-full">
         <section
-          className="w-full min-h-screen flex items-center justify-center px-4 py-16 relative min-h-screen
-        bg-[url('/images/asrama_profile_img.webp')]
-        bg-cover
-        bg-center"
+          id="home"
+          className="w-full min-h-screen relative flex items-center justify-center px-4 py-16"
         >
-          <motion.section
-            initial={{ opacity: 0, y: initialY }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1.2,
-              ease: [0.2, 1, 0.3, 1],
-              delay: 0.2,
-            }}
-            viewport={{ once: false, amount: 0.4 }}
-            className="w-full px-4 py-20"
-          >
-            <WrapContainerHome />
-          </motion.section>
+          <div className="absolute inset-0 z-0">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              pagination={{ clickable: true }}
+              loop={true}
+              className="w-full h-full relative z-10"
+            >
+              {[
+                "/images/asrama_profile_img.webp",
+                "/images/asrama_profile_img_2.webp",
+                "/images/asrama_profile_img_3.webp",
+                "/images/asrama_profile_img_4.webp",
+                "/images/asrama_profile_img_5.webp",
+              ].map((img, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className="w-full h-full bg-cover bg-center"
+                    style={{ backgroundImage: `url(${img})` }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {/* Optional: tambahkan overlay agar teks lebih jelas */}
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+
+          {/* Konten tetap di atas */}
+          <div className="relative z-10 w-full">
+            <motion.section
+              initial={{ opacity: 0, y: initialY }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 1.2,
+                ease: [0.2, 1, 0.3, 1],
+                delay: 0.2,
+              }}
+              viewport={{ once: false, amount: 0.4 }}
+              className="w-full px-4 py-20"
+            >
+              <WrapContainerHome />
+            </motion.section>
+          </div>
         </section>
+
         <section className="w-full px-4 py-20 bg-white text-black">
           <motion.section
             initial={{ opacity: 0, y: initialY }}
@@ -68,7 +101,7 @@ export default function Home() {
             viewport={{ once: false, amount: 0.3 }}
             className="w-full"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 text-center text-[#016072]">
+            <h1 className="text-2xl sm:text-1xl md:text-2xl font-bold mb-8 sm:mb-10 text-center text-[#016072]">
               Testimonials
             </h1>
 
@@ -119,7 +152,21 @@ export default function Home() {
             </div>
           </motion.section>
         </section>
-
+        <section>
+          <motion.section
+            initial={{ opacity: 0, y: initialY }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.2, 1, 0.3, 1],
+              delay: 0.2,
+            }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="w-full"
+          >
+            <DormitoryManagement />
+          </motion.section>
+        </section>
         <Footer />
       </main>
     </LayoutBlank>

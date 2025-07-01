@@ -43,7 +43,7 @@ export const testimonialsData = [
   },
   {
     name: "Dicky Prasandi Potutu",
-    avatar: "/images/Dky Potutu.png",
+    avatar: "/images/Dicky Potutu.png",
     message:
       "Awalnya, saya kira tinggal di asrama itu bakal kaku dan ribet, tapi ternyata beda banget. LADORM sangat ramah dan kekeluargaannya kerasa. Tiap malam sering ngumpul bareng buat ngobrol atau ngerjain tugas bareng. Kalau capek kuliah, balik ke sini rasanya kayak pulang ke rumah.",
   },

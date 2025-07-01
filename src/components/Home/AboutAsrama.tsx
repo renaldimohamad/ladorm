@@ -6,7 +6,7 @@ export const AboutDormitory = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 relative z-10">
-      <h5 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center md:text-left text-[#016072]">
+      <h5 className="text-2xl sm:text-1xl md:text-3xl font-bold mb-6 text-center md:text-left text-[#016072]">
         Tentang Asrama
       </h5>
 

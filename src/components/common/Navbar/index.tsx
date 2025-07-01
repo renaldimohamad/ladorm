@@ -33,9 +33,9 @@ const Navbar = () => {
       <div className="relative h-[68px] w-full px-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <img
-            src="/images/LADORM - LOGO WHITE.webp"
+            src="/images/Ladorm Logo - Putih.png"
             alt="LADORM - LOGO"
-            className="w-10 h-10"
+            className="w-12 h-12"
           />
           <div className="leading-tight text-sm">
             <h5 className="font-bold uppercase">Asrama Mahasiswa Gorontalo</h5>
@@ -88,7 +88,7 @@ const Navbar = () => {
         <div className="relative hidden sm:block group w-36">
           <button
             onClick={(e) => e.preventDefault()}
-            className="flex items-center justify-center w-full bg-white text-black px-4 py-3 rounded-lg shadow hover:shadow-md transition cursor-not-allowed select-none"
+            className="flex items-center justify-center w-full bg-white text-black px-4 py-2 rounded-lg shadow hover:shadow-md transition cursor-not-allowed select-none"
           >
             <span className="text-sm font-semibold text-[#016072] flex items-center gap-1">
               Contact Us
