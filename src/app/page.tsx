@@ -143,9 +143,14 @@ export default function Home() {
                             className="rounded-full object-cover"
                           />
 
-                          <h3 className="font-bold text-sm sm:text-base">
-                            {item.name}
-                          </h3>
+                          <div className="flex flex-col items-start space-y-0.5 leading-tight">
+                            <span className="font-bold text-sm sm:text-base">
+                              {item.name}
+                            </span>
+                            <span className="text-gray-500 text-xs italic">
+                              {item.role}
+                            </span>
+                          </div>
                         </div>
                       </TestimonialsWrapper>
                     </div>

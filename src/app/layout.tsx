@@ -18,26 +18,26 @@ const geistMono = Geist_Mono({
 // };
 
 export const metadata: Metadata = {
-  title: "Ladorm",
+  title: "LADorm",
   description: "Asrama Mahasiswa Gorontalo - Tempat nyaman dan terjangkau.",
   openGraph: {
-    title: "Ladorm - Asrama Mahasiswa Gorontalo",
+    title: "LADorm - Asrama Mahasiswa Gorontalo",
     description: "Tempat nyaman dan terjangkau untuk mahasiswa Gorontalo.",
     url: "https://student-dormitory.vercel.app",
-    siteName: "Ladorm",
+    siteName: "LADorm",
     images: [
       {
         url: "https://student-dormitory.vercel.app/images/asrama_profile_img.webp",
         width: 1200,
         height: 630,
-        alt: "Ladorm - Asrama Mahasiswa Gorontalo",
+        alt: "LADorm - Asrama Mahasiswa Gorontalo",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ladorm - Asrama Mahasiswa Gorontalo",
+    title: "LADorm - Asrama Mahasiswa Gorontalo",
     description: "Tempat nyaman dan terjangkau untuk mahasiswa Gorontalo.",
     images: [
       "https://student-dormitory.vercel.app/images/asrama_profile_img.webp",

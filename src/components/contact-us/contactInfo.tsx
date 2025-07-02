@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import contactItems from "./contactItems";
+import "./index.css";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -27,7 +28,7 @@ export default function ContactInfo() {
         {contactItems.map((item: any, i: number) => (
           <motion.li
             key={i}
-            className="flex items-start gap-3 py-4 border-b last:border-none border-dashed border-green-200 hover:bg-green-100/100 transition-all duration-300 rounded-md px-2 cursor-pointer"
+            className="flex items-start gap-3 py-4 border-b last:border-none border-dashed border-green-200 hover:bg-green-100/100 transition-all duration-300 rounded-md px-2"
             variants={fadeInUp}
             custom={i + 2}
           >
@@ -43,7 +44,7 @@ export default function ContactInfo() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="break-all text-xs sm:text-sm md:text-base text-green-700 hover:underline"
+                  className="break-all text-xs sm:text-sm md:text-base text-green-700 footer-link-contact-hover"
                 >
                   {item.value}
                 </a>

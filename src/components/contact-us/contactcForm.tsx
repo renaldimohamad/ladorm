@@ -18,7 +18,10 @@ const fadeInUp = {
 };
 
 const schema = yup.object().shape({
-  firstName: yup.string().required("Nama Depan wajib diisi"),
+  firstName: yup
+    .string()
+    .min(3, "Nama Minimal 3 Karakter")
+    .required("Nama Depan wajib diisi"),
   lastName: yup.string().required("Nama Belakang wajib diisi"),
   email: yup.string().email("Email tidak valid").required("Email wajib diisi"),
   subject: yup.string().required("Subjeck wajib diisi"),
