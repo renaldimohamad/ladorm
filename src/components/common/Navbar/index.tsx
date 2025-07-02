@@ -6,11 +6,13 @@ import { HiOutlineMenu, HiX } from "react-icons/hi";
 import CurrentTime from "./CurrentTime";
 import { motion, AnimatePresence } from "framer-motion";
 import { itemVariants, menuVariants } from "@/utils/variants";
+import Image from "next/image";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
 import "./index.css";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const { scroll, isScrolling } = useScrollProgress();
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   const [tooltip, setTooltip] = useState<
@@ -32,10 +34,12 @@ const Navbar = () => {
 
       <div className="relative h-[68px] w-full px-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <img
+          <Image
             src="/images/Ladorm Logo - Putih.png"
             alt="LADORM - LOGO"
-            className="w-12 h-12"
+            width={60}
+            height={20}
+            className="object-contain"
           />
           <div className="leading-tight text-sm">
             <h5 className="font-bold uppercase">Asrama Mahasiswa Gorontalo</h5>
@@ -188,6 +192,19 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-transparent z-[9999]">
+        <motion.div
+          className="h-full bg-[#00FFC2] rounded-r-full shadow-[0_0_4px_#00FFC2]"
+          animate={{
+            width: `${scroll}%`,
+            opacity: isScrolling ? 1 : 0,
+          }}
+          transition={{
+            width: { type: "spring", stiffness: 80, damping: 20 },
+            opacity: { duration: 0.4 },
+          }}
+        />
+      </div>
     </header>
   );
 };

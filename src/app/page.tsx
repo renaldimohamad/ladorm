@@ -14,6 +14,7 @@ import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { AboutDormitory } from "@/components/Home/AboutAsrama";
 import { testimonialsData } from "@/utils/Testimonials";
 import DormitoryManagement from "@/components/Home/DormitoryManagement";
+import Image from "next/image";
 
 export default function Home() {
   const scrollDir = useScrollDirection();
@@ -52,11 +53,9 @@ export default function Home() {
                 </SwiperSlide>
               ))}
             </Swiper>
-            {/* Optional: tambahkan overlay agar teks lebih jelas */}
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
           </div>
 
-          {/* Konten tetap di atas */}
           <div className="relative z-10 w-full">
             <motion.section
               initial={{ opacity: 0, y: initialY }}
@@ -135,11 +134,15 @@ export default function Home() {
                         </div>
 
                         <div className="mt-auto flex items-center gap-3 pt-6 gap-4">
-                          <img
+                          <Image
                             src={item.avatar}
                             alt={item.name}
-                            className="w-12 h-12 rounded-full object-cover"
+                            width={48}
+                            height={48}
+                            unoptimized
+                            className="rounded-full object-cover"
                           />
+
                           <h3 className="font-bold text-sm sm:text-base">
                             {item.name}
                           </h3>

@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Link from "next/link";
+import Image from "next/image";
 
 const dataPengurus = [
   {
@@ -70,9 +70,10 @@ export default function DormitoryManagement() {
               <div className="flex justify-center">
                 <div className="bg-white rounded-2xl px-6 py-8 w-[250px] flex flex-col items-center text-center">
                   <div className="relative w-36 h-48 rounded-xl overflow-hidden mb-4">
-                    <img
+                    <Image
                       src={pengurus.image}
                       alt={pengurus.name}
+                      fill
                       className="object-cover"
                     />
                   </div>
@@ -165,9 +166,10 @@ export default function DormitoryManagement() {
             }`}
           >
             <div className="relative w-36 h-48 rounded-xl overflow-hidden mb-4">
-              <img
+              <Image
                 src={pengurus.image}
                 alt={pengurus.name}
+                fill
                 className="object-cover"
               />
             </div>

@@ -1,21 +1,25 @@
 import { scrollToIdWithMotion } from "@/utils/smoothScrollMotion";
 import Link from "next/link";
 import { generateWhatsAppLink } from "@/utils/whatsAppMessage";
+import Image from "next/image";
+import "./index.css";
 
 export default function Footer() {
-  const phone = "62811438399";
-  const message = "Halo kak, saya mau tanya tentang Asrama Mahasiswa Gorontalo";
-  const waLink = generateWhatsAppLink(phone, message);
+  // const phone = "62811438399";
+  // const message = "Halo kak, saya mau tanya tentang Asrama Mahasiswa Gorontalo";
+  // const waLink = generateWhatsAppLink(phone, message);
   return (
     <footer className="bg-gradient-to-t from-black via-[#1a1a1a] to-[#272727] text-white px-6 md:px-20 py-10">
       <div className="mb-10">
         <div className="md:max-w-screen-xl md:mx-auto grid md:grid-cols-4 gap-10">
           <div>
             <div className="flex gap-4 items-center">
-              <img
+              <Image
                 src="/images/Ladorm Logo - Putih.png"
                 alt="LADORM - LOGO"
-                className="w-14 h-14"
+                width={60}
+                height={20}
+                className="object-contain rotate-on-hover"
               />
               <p className="font-semibold">Asrama Mahasiswa Gorontalo</p>
             </div>
@@ -54,6 +58,7 @@ export default function Footer() {
                     e.preventDefault();
                     scrollToIdWithMotion("home");
                   }}
+                  className="pointer footer-link-hover"
                 >
                   Beranda
                 </Link>
@@ -80,7 +85,7 @@ export default function Footer() {
                     "https://www.linkedin.com/in/ladorm-gorontalo-522188372/"
                   }
                   target="_blank"
-                  className="pointer"
+                  className="pointer footer-link-hover"
                 >
                   Linkedin
                 </Link>
@@ -93,6 +98,7 @@ export default function Footer() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="pointer footer-link-hover"
                 >
                   whatssApp
                 </Link>
@@ -101,7 +107,7 @@ export default function Footer() {
                 <Link
                   href="https://x.com/Ladorm_Family"
                   target="_blank"
-                  className="pointer"
+                  className="pointer footer-link-hover"
                 >
                   X (Twitter)
                 </Link>
@@ -110,6 +116,7 @@ export default function Footer() {
                 <Link
                   href="https://www.instagram.com/ladormy_/"
                   target="_blank"
+                  className="pointer footer-link-hover"
                 >
                   Instagram
                 </Link>
@@ -144,7 +151,7 @@ export default function Footer() {
             <Link href="https://www.instagram.com/ladormy_/" target="_blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
+                className="w-6 h-6 rotate-on-hover"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -177,7 +184,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
+                className="w-6 h-6 rotate-on-hover"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -195,7 +202,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
+                className="w-6 h-6 rotate-on-hover"
                 viewBox="0 0 32 32"
                 fill="currentColor"
               >
@@ -206,7 +213,7 @@ export default function Footer() {
             <Link
               href={"https://www.linkedin.com/in/ladorm-gorontalo-522188372/"}
               target="_blank"
-              className="pointer"
+              className="pointer rotate-on-hover"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
