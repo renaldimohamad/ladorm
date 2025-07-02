@@ -63,7 +63,7 @@ export const testimonialsData = [
     name: "Taufiq Hidayatullah Balu",
     avatar: "/images/Taufiq hidyatullah Balu.png",
     message:
-      "Asrama menjadi pilihan terbaik ketika rancangan ruang tak sekadar memayungi tubuh, tetapi juga merangkul jiwa menghadirkan harmoni antara fungsi, kenyamanan, dan rasa memiliki.",
+      "Asrama itu tempat nongkrong bareng, belajar hidup bareng, dapat banyak sodara, penuh cerita dan kebersamaan.",
     role: "Mahasiswa UNG",
     location: "Gorontalo",
     instagram: "https://instagram.com/rizkih",

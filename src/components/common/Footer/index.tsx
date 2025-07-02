@@ -2,12 +2,37 @@ import { scrollToIdWithMotion } from "@/utils/smoothScrollMotion";
 import Link from "next/link";
 import { generateWhatsAppLink } from "@/utils/whatsAppMessage";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import "./index.css";
 
 export default function Footer() {
   // const phone = "62811438399";
   // const message = "Halo kak, saya mau tanya tentang Asrama Mahasiswa Gorontalo";
   // const waLink = generateWhatsAppLink(phone, message);
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleGoToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    if (pathname === "/") {
+      scrollToIdWithMotion("home");
+    } else {
+      router.push("/#home");
+    }
+  };
+
+  const handleGoToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    if (pathname === "/contact-us") {
+      scrollToIdWithMotion("contact");
+    } else {
+      router.push("/contact-us");
+    }
+  };
+
   return (
     <footer className="bg-gradient-to-t from-black via-[#1a1a1a] to-[#272727] text-white px-6 md:px-20 py-10">
       <div className="mb-10">
@@ -34,16 +59,24 @@ export default function Footer() {
               </div>
 
               <p>
-                <span className="font-medium">Address:</span>
-                <br />
-                <span className="text-gray-200">
-                  Jl. Kramat Gg. Pribadi No.39, RT.8/RW.2, Lenteng Agung, Kec.
-                  Jagakarsa
-                </span>
-                <br />
-                <span className="text-gray-200">
-                  Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630
-                </span>
+                <Link
+                  href="https://maps.app.goo.gl/C7RHGFq932H6UqxY9"
+                  target="_blank"
+                  className="group pointer footer-link-hover"
+                >
+                  <span className="font-medium group-hover:text-[#00FFC2]">
+                    Address:
+                  </span>
+                  <br />
+                  <span className="text-gray-200 group-hover:text-[#00FFC2]">
+                    Jl. Kramat Gg. Pribadi No.39, RT.8/RW.2, Lenteng Agung, Kec.
+                    Jagakarsa
+                  </span>
+                  <br />
+                  <span className="text-gray-200 group-hover:text-[#00FFC2]">
+                    Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630
+                  </span>
+                </Link>
               </p>
             </div>
           </div>
@@ -54,10 +87,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="#home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToIdWithMotion("home");
-                  }}
+                  onClick={handleGoToHome}
                   className="pointer footer-link-hover"
                 >
                   Beranda
@@ -69,7 +99,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="cursor-not-allowed">
+                <Link
+                  href="/contact-us"
+                  onClick={handleGoToContact}
+                  className="cursor-pointer footer-link-hover"
+                >
                   Contact us
                 </Link>
               </li>

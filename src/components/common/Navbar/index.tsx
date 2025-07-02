@@ -89,25 +89,15 @@ const Navbar = () => {
           {mobileMenuOpen ? <HiX /> : <HiOutlineMenu />}
         </button>
 
-        <div className="relative hidden sm:block group w-36">
-          <button
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center justify-center w-full bg-white text-black px-4 py-2 rounded-lg shadow hover:shadow-md transition cursor-not-allowed select-none"
+        <div className="relative hidden sm:block w-36">
+          <Link
+            href="/contact-us"
+            className="flex items-center justify-center w-full bg-white text-black px-4 py-2 rounded-lg shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
           >
             <span className="text-sm font-semibold text-[#016072] flex items-center gap-1">
               Contact Us
             </span>
-          </button>
-
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none z-10">
-            <div className="relative bg-gray-900 text-white text-sm px-5 py-3 rounded-lg shadow-xl whitespace-nowrap">
-              <span className="block font-medium tracking-wide">
-                Akan Datang 🚫
-              </span>
-
-              <div className="absolute left-1/2 -bottom-1.5 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45 z-[-1] shadow-md" />
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
 
