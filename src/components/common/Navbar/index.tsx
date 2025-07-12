@@ -9,11 +9,15 @@ import { itemVariants, menuVariants } from "@/utils/variants";
 import Image from "next/image";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import "./index.css";
+import { useLanguage } from "../../../../stores/useLengauage";
+import { Listbox } from "@headlessui/react";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scroll, isScrolling } = useScrollProgress();
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const { lang, setLang, dictionary } = useLanguage();
 
   const [tooltip, setTooltip] = useState<
     "blog" | "insight" | "contact us" | null
@@ -23,6 +27,20 @@ const Navbar = () => {
     setTooltip(key);
     setTimeout(() => setTooltip(null), 2000);
   };
+
+  const languages = [
+    {
+      label: "Us",
+      value: "en",
+      flag: "/images/ENG - ING Flag 1.webp",
+    },
+    {
+      label: "Id",
+      value: "id",
+      flag: "/images/ENG - ING Flag 3.webp",
+    },
+    { label: "Gtlo", value: "gtlo" },
+  ];
 
   return (
     <header className="sticky top-0 z-[999] bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white backdrop-blur-sm">
@@ -35,25 +53,26 @@ const Navbar = () => {
       <div className="relative h-[68px] w-full px-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Image
-            src="/images/Ladorm Logo - Putih.png"
+            src="/images/Visual Idententy - Remake Logo Ladorm 2.webp"
             alt="LADORM - LOGO"
-            width={60}
+            width={200}
             height={20}
             className="object-contain"
           />
           <div className="leading-tight text-sm">
-            <h5 className="font-bold uppercase">Asrama Mahasiswa Gorontalo</h5>
+            {/* <h5 className="font-bold uppercase">Asrama Mahasiswa Gorontalo</h5> */}
           </div>
           <nav className="hidden sm:flex gap-6 ml-10 items-center">
             <Link href="/" className="link-underline">
-              Beranda
+              {dictionary.navbar.home}
             </Link>
+
             <div className="relative group">
               <button
                 onClick={(e) => e.preventDefault()}
                 className="text-white link-underline cursor-not-allowed select-none"
               >
-                Blog
+                {dictionary.navbar.blog}
               </button>
 
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none z-10">
@@ -69,7 +88,7 @@ const Navbar = () => {
                 onClick={(e) => e.preventDefault()}
                 className="text-white link-underline cursor-not-allowed select-none"
               >
-                Insight
+                {dictionary.navbar.insight}
               </button>
 
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none z-10">
@@ -89,15 +108,78 @@ const Navbar = () => {
           {mobileMenuOpen ? <HiX /> : <HiOutlineMenu />}
         </button>
 
-        <div className="relative hidden sm:block w-36">
-          <Link
-            href="/contact-us"
-            className="flex items-center justify-center w-full bg-white text-black px-4 py-2 rounded-lg shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
-          >
-            <span className="text-sm font-semibold text-[#016072] flex items-center gap-1">
-              Contact Us
-            </span>
-          </Link>
+        <div className="hidden sm:flex items-center gap-2">
+          <Listbox value={lang} onChange={setLang}>
+            {({ open }) => (
+              <div className="relative inline-flex">
+                <Listbox.Button className="w-full bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
+                  {/* Flag */}
+                  <img
+                    src={
+                      languages.find((l) => l.value === lang)?.flag ??
+                      "/images/eng-flag.png"
+                    }
+                    alt="flag"
+                    className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
+                  />
+                  <span>{languages.find((l) => l.value === lang)?.label}</span>
+                  {/* Arrow */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={`w-4 h-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-[#016072] transition-transform duration-200 ${
+                      open ? "rotate-180" : "rotate-0"
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </Listbox.Button>
+
+                <Listbox.Options className="absolute mt-10 w-full bg-white rounded-md shadow z-10">
+                  {languages
+                    .filter((item) => item.value !== lang)
+                    .map((item) => (
+                      <Listbox.Option
+                        key={item.value}
+                        value={item.value}
+                        className={({ active }) =>
+                          `cursor-pointer px-3 py-2 flex items-center gap-2 ${
+                            active
+                              ? "bg-[#e6f3f5] text-[#016072]"
+                              : "text-gray-700"
+                          }`
+                        }
+                      >
+                        <img
+                          src={item.flag}
+                          alt={`${item.label} flag`}
+                          className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
+                        />
+                        <span>{item.label}</span>
+                      </Listbox.Option>
+                    ))}
+                </Listbox.Options>
+              </div>
+            )}
+          </Listbox>
+
+          <div className="hidden sm:block">
+            <Link
+              href="/contact-us"
+              className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-md shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+            >
+              <span className="text-sm text-[#016072] font-semibold flex items-center gap-1">
+                {dictionary.navbar.contact}
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -113,7 +195,7 @@ const Navbar = () => {
             {/* Beranda */}
             <motion.div variants={itemVariants}>
               <Link href="/" className="block hover:link-underline">
-                Beranda
+                {dictionary.navbar.home}
               </Link>
             </motion.div>
 
@@ -142,7 +224,7 @@ const Navbar = () => {
                 onClick={() => showTooltip("insight")}
                 className="block w-full text-left hover:underline text-white"
               >
-                Insight
+                {dictionary.navbar.insight}
               </button>
               {tooltip === "insight" && (
                 <motion.div
@@ -157,27 +239,45 @@ const Navbar = () => {
               )}
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <button
-                onClick={() => showTooltip("contact us")}
-                className="flex items-center justify-center w-36 bg-white text-black px-3 py-2 rounded-lg shadow hover:shadow-md transition cursor-not-allowed"
+            <div className="inline-flex relative">
+              <select
+                className="appearance-none bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-8 rounded-md shadow focus:outline-none"
+                value={lang}
+                onChange={(e) =>
+                  setLang(e.target.value as "en" | "id" | "gtlo")
+                }
               >
-                <span className="text-sm font-semibold text-[#2C705B]">
-                  Contact Us
-                </span>
-              </button>
+                <option value="en">English</option>
+                <option value="id">Bahasa Indonesia</option>
+                {/* <option value="gtlo">Bahasa Gorontalo</option> */}
+              </select>
 
-              {tooltip === "contact us" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-1 bg-black text-white text-xs px-3 py-1 rounded shadow z-10"
+              <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">
+                <svg
+                  className="w-4 h-4 text-black"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
                 >
-                  Akan datang 🚫
-                </motion.div>
-              )}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-md shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+              >
+                <span className="text-sm text-[#016072] font-semibold flex items-center gap-1">
+                  {dictionary.navbar.contact}
+                </span>
+              </Link>
             </motion.div>
           </motion.div>
         )}

@@ -1,7 +1,7 @@
 "use client";
 
 import Footer from "@/components/common/Footer";
-import { WrapContainerHome } from "@/components/Home";
+import { CallToAction } from "@/components/Home";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -15,74 +15,89 @@ import { AboutDormitory } from "@/components/Home/AboutAsrama";
 import { testimonialsData } from "@/utils/Testimonials";
 import DormitoryManagement from "@/components/Home/DormitoryManagement";
 import Image from "next/image";
+import { useLanguage } from "../../stores/useLengauage";
 
 export default function Home() {
   const scrollDir = useScrollDirection();
   const initialY = scrollDir === "down" ? 80 : -80;
+
+  const { dictionary } = useLanguage();
+
+  const slides = [
+    {
+      img: "/images/asrama_profile_img_5.webp",
+    },
+    {
+      img: "/images/asrama_profile_img_2.webp",
+    },
+    {
+      img: "/images/asrama_profile_img_3.webp",
+    },
+  ];
+
+  const heroContents = dictionary?.heroSectionHome ?? [];
 
   return (
     <LayoutBlank>
       <main className="flex flex-col w-full">
         <section
           id="home"
-          className="w-full min-h-screen relative flex items-center justify-center px-4 py-16"
+          // className="w-full min-h-[90vh] md:min-h-[70vh] lg:min-h-[60vh] relative flex items-center justify-center "
+          className="relative w-full h-full flex flex-col justify-center"
         >
-          <div className="absolute inset-0 z-0">
-            <Swiper
-              modules={[Autoplay, Pagination]}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-              }}
-              pagination={{ clickable: true }}
-              loop={true}
-              className="w-full h-full relative z-10"
-            >
-              {[
-                "/images/asrama_profile_img.webp",
-                "/images/asrama_profile_img_2.webp",
-                "/images/asrama_profile_img_3.webp",
-                "/images/asrama_profile_img_4.webp",
-                "/images/asrama_profile_img_5.webp",
-              ].map((img, index) => (
-                <SwiperSlide key={index}>
-                  <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${img})` }}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
-          </div>
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            loop
+            className="w-full h-[80vh]"
+          >
+            {slides.map((slide, index) => {
+              const content = heroContents[index];
 
-          <div className="relative z-10 w-full">
-            <motion.section
-              initial={{ opacity: 0, y: initialY }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 1.2,
-                ease: [0.2, 1, 0.3, 1],
-                delay: 0.2,
-              }}
-              viewport={{ once: false, amount: 0.4 }}
-              className="w-full px-4 py-20"
-            >
-              <WrapContainerHome />
-            </motion.section>
-          </div>
+              return (
+                <SwiperSlide key={index}>
+                  <div className="relative w-full h-[90vh] md:h-screen flex flex-col justify-center">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center z-[-1]"
+                      style={{ backgroundImage: `url(${slide.img})` }}
+                    />
+
+                    <div className="hidden md:block absolute left-0 top-0 h-full w-full bg-gradient-to-r from-white via-white/60 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-0 block md:hidden bg-white/70 z-10 pointer-events-none" />
+
+                    <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-50">
+                      <div className="text-left max-w-2xl space-y-6">
+                        <h2 className="text-2xl sm:text-4xl lg:text-3xl font-extrabold tracking-tight leading-snug bg-gradient-to-r from-[rgba(1,96,114,0.8)] to-[rgba(44,112,91,0.8)] bg-clip-text text-transparent font-montserrat">
+                          {content?.title ?? ""}
+                        </h2>
+                        <p className="text-black/80 italic font-serif text-sm md:text-base drop-shadow-sm max-w-xl">
+                          {content?.desc ?? ""}
+                        </p>
+                        <CallToAction />
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </section>
 
-        <section className="w-full px-4 py-20 bg-white text-black">
+        <section
+          id="about"
+          className="scroll-mt-20 w-full px-4 py-20 bg-white text-black"
+        >
           <motion.section
-            initial={{ opacity: 0, y: initialY }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
             transition={{
               duration: 1.2,
               ease: [0.2, 1, 0.3, 1],
               delay: 0.2,
             }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.2 }}
             className="w-full"
           >
             <AboutDormitory />
@@ -161,19 +176,7 @@ export default function Home() {
           </motion.section>
         </section>
         <section>
-          <motion.section
-            initial={{ opacity: 0, y: initialY }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1.2,
-              ease: [0.2, 1, 0.3, 1],
-              delay: 0.2,
-            }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="w-full"
-          >
-            <DormitoryManagement />
-          </motion.section>
+          <DormitoryManagement />
         </section>
         <Footer />
       </main>

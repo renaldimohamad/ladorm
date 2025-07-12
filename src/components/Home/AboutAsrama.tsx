@@ -1,27 +1,25 @@
 "use client";
 import { useState } from "react";
+import Fade from "../common/Fade";
+import { useLanguage } from "../../../stores/useLengauage";
 
 export const AboutDormitory = () => {
   const [showFull, setShowFull] = useState(false);
 
+  const { dictionary } = useLanguage();
+
   return (
     <div className="max-w-6xl mx-auto px-4 relative z-10">
-      <h5 className="text-2xl sm:text-1xl md:text-3xl font-bold mb-6 text-center md:text-left text-[#016072]">
-        Tentang Asrama
+      <h5 className="text-2xl sm:text-1xl md:text-1xl font-bold mb-6 text-center md:text-left text-[#016072] font-montserrat">
+        {dictionary.aboutDormitory?.title}
       </h5>
 
-      <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 mb-4 text-justify">
-        Asrama Gorontalo dibangun sebagai wujud kepedulian pemerintah daerah
-        terhadap mahasiswa asal Gorontalo yang menempuh pendidikan di luar
-        daerah khususnya di DKI Jakarta. Dengan desain modern dan fasilitas
-        lengkap, asrama ini telah menjadi rumah kedua bagi ratusan mahasiswa.
-        Fungsi utama meliputi pembinaan akademik, wawasan dan multibudaya,
-        pengembangan sumber daya manusia, pembinaan minat dan bakat, pembinaan
-        karakter, mental, dan spiritual, pembinaan kepemimpinan, dan
-        kewirausahaan.
+      <p className="text-sm sm:text-base md:text-sm leading-relaxed text-gray-800 mb-4 text-justify">
+        <b>{dictionary.aboutDormitory?.paragraph1.bold}</b>{" "}
+        {dictionary.aboutDormitory?.paragraph1.normal}
       </p>
 
-      <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 mb-4 text-justify">
+      {/* <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 mb-4 text-justify">
         Beberapa keunggulan dan fasilitas yang tersedia di asrama ini antara
         lain:
       </p>
@@ -34,41 +32,27 @@ export const AboutDormitory = () => {
         <li>
           Pengelolaan asrama yang baik oleh pengurus dan koordinator mahasiswa
         </li>
-      </ul>
+      </ul> */}
 
-      <div className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 text-justify space-y-4">
+      <div className="flex flex-col gap-2 mt-6 text-sm sm:text-base md:text-sm leading-relaxed text-gray-800 text-justify space-y-4">
         <span>
-          <b>Asrama Mahasiswa Provinsi Gorontalo</b> yang terletak di Lenteng
-          Agung, Jakarta Selatan, berdiri sebagai wujud komitmen Pemerintah
-          Provinsi Gorontalo dalam mendukung pendidikan generasi muda di
-          perantauan. Asrama ini mulai dirintis sejak tahun 2012, melalui proses
-          perencanaan dan pembangunan yang bertujuan menyediakan tempat tinggal
-          yang layak, aman, dan kondusif bagi mahasiswa asal Gorontalo yang
-          sedang menempuh pendidikan di Jakarta dan sekitarnya.
+          {dictionary.aboutDormitory?.paragraph2.section1}{" "}
+          <b>{dictionary.aboutDormitory?.paragraph2.date}</b>{" "}
+          {dictionary.aboutDormitory?.paragraph2.section2}{" "}
+          <b>{dictionary.aboutDormitory?.paragraph2.author}</b>.{" "}
+          {dictionary.aboutDormitory?.paragraph2.section3}
         </span>
 
         {showFull && (
           <div className="flex flex-col gap-2 leading-relaxed">
             <span>
-              Asrama ini diresmikan melalui acara Pemanfaatan Asrama Mahasiswa
-              Provinsi Gorontalo, pada tanggal <b>4 November 2015</b>oleh
-              Pemerintah Provinsi Gorontalo, yang pada saat itu dipimpin oleh
-              Gubernur
-              <b>Drs. H. Rusli Habibie, M.A.P.</b>
-              Peresmian tersebut menandai pemanfaatan penuh fasilitas asrama
-              sebagai pusat pembinaan, penguatan solidaritas, dan pengembangan
-              potensi mahasiswa Gorontalo.
+              {dictionary.aboutDormitory?.paragraph3.section1}{" "}
+              <b>{dictionary.aboutDormitory?.paragraph3.bold}</b>{" "}
+              {dictionary.aboutDormitory?.paragraph3.section2}
             </span>
             <span>
-              Dalam perjalanannya, <b>Asrama Mahasiswa Provinsi Gorontalo</b>{" "}
-              telah mengalami berbagai periode kepemimpinan mahasiswa yang turut
-              berkontribusi dalam pengelolaan kegiatan dan menjaga nilai
-              kekeluargaan di lingkungan asrama. Berikut nama-nama mahasiswa
-              yang pernah menjabat sebagai Ketua Asrama:
-            </span>
-            <span>
-              <div className="mt-4 text-sm sm:text-base md:text-lg text-gray-800">
-                <ul className="list-disc pl-4 space-y-3">
+              <div className="mt-4 text-sm sm:text-base md:text-sm text-gray-800">
+                {/* <ul className="list-disc pl-4 space-y-3">
                   {[
                     ["Yusuf T. Polimengo", "Periode 2015-2017"],
                     ["Inton Lasenga", "Periode 2017-2018"],
@@ -84,23 +68,33 @@ export const AboutDormitory = () => {
                       </div>
                     </li>
                   ))}
+                </ul> */}
+                <ul className="list-disc pl-4 space-y-3">
+                  {dictionary.aboutDormitory?.full.leaders?.map((leader, i) => (
+                    <li key={i}>
+                      <div className="flex flex-wrap gap-x-1 sm:gap-x-2">
+                        <span className="font-semibold">{leader.name}</span>
+                        <span>({leader.period})</span>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </span>
-            <span>
-              Hingga saat ini, asrama tersebut terus berfungsi sebagai rumah
-              kedua bagi mahasiswa Gorontalo, menjadi ruang tumbuh, belajar, dan
-              mempererat kebersamaan dalam semangat persatuan dan tanggung jawab
-              bersama.
+            <span className="mt-4">
+              {dictionary.aboutDormitory?.full.paragraph3}
             </span>
           </div>
         )}
-
+      </div>
+      <div className="flex mt-4">
         <button
           onClick={() => setShowFull((prev) => !prev)}
-          className="mt-4 text-[#016072] font-semibold cursor-pointer"
+          className="mt-4 text-[#016072] font-semibold cursor-pointer text-sm sm:text-base md:text-sm"
         >
-          {showFull ? "Tampilkan lebih sedikit" : "Baca selengkapnya"}
+          {showFull
+            ? `${dictionary.aboutDormitory?.readLess}`
+            : `${dictionary.aboutDormitory?.readMore}`}
         </button>
       </div>
     </div>
