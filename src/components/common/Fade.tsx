@@ -40,7 +40,7 @@ export default function Fade({
     } else {
       controls.start(getInitial());
     }
-  }, [inView]);
+  }, [inView, controls, getInitial]);
 
   return (
     <motion.section

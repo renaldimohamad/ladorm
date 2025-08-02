@@ -51,7 +51,7 @@ const contactItems: ContactItem[] = [
   },
   {
     icon: <FaXTwitter />,
-    label: "X (Twitter)",
+    label: "Twitter",
     value: "twitter.com/ladorm_id",
     href: "https://x.com/Ladorm_Family",
   },

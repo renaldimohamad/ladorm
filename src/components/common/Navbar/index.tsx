@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { HiOutlineMenu, HiX } from "react-icons/hi";
+import { HiOutlineMenu, HiOutlineMenuAlt4, HiX } from "react-icons/hi";
 import CurrentTime from "./CurrentTime";
 import { motion, AnimatePresence } from "framer-motion";
 import { itemVariants, menuVariants } from "@/utils/variants";
@@ -30,16 +30,17 @@ const Navbar = () => {
 
   const languages = [
     {
-      label: "Us",
+      label: "us",
       value: "en",
       flag: "/images/ENG - ING Flag 1.webp",
     },
     {
-      label: "Id",
+      label: "id",
       value: "id",
       flag: "/images/ENG - ING Flag 3.webp",
+      // flag: "/images/ENG - ING Flag 1.webp",
     },
-    { label: "Gtlo", value: "gtlo" },
+    // { label: "Gorontalo", value: "gtlo" },
   ];
 
   return (
@@ -103,79 +104,120 @@ const Navbar = () => {
 
         <button
           onClick={toggleMobileMenu}
-          className="sm:hidden text-white text-2xl"
+          className="sm:hidden text-white text-2xl relative w-8 h-8"
         >
-          {mobileMenuOpen ? <HiX /> : <HiOutlineMenu />}
+          <span
+            className={`absolute inset-0 transition-all duration-300 ease-in-out transform ${
+              mobileMenuOpen
+                ? "opacity-0 scale-95 rotate-45"
+                : "opacity-100 scale-100 rotate-0"
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-8 h-8"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
+              />
+            </svg>
+          </span>
+
+          <span
+            className={`absolute inset-0 transition-all duration-300 ease-in-out transform ${
+              mobileMenuOpen
+                ? "opacity-100 scale-100 rotate-0"
+                : "opacity-0 scale-95 -rotate-45"
+            }`}
+          >
+            <HiX className="w-8 h-8" />
+          </span>
         </button>
 
         <div className="hidden sm:flex items-center gap-2">
           <Listbox value={lang} onChange={setLang}>
-            {({ open }) => (
-              <div className="relative inline-flex">
-                <Listbox.Button className="w-full bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
-                  {/* Flag */}
-                  <img
-                    src={
-                      languages.find((l) => l.value === lang)?.flag ??
-                      "/images/eng-flag.png"
-                    }
-                    alt="flag"
-                    className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
-                  />
-                  <span>{languages.find((l) => l.value === lang)?.label}</span>
-                  {/* Arrow */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`w-4 h-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-[#016072] transition-transform duration-200 ${
-                      open ? "rotate-180" : "rotate-0"
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </Listbox.Button>
+            {({ open }) => {
+              const selectedLang = languages.find((l) => l.value === lang);
 
-                <Listbox.Options className="absolute mt-10 w-full bg-white rounded-md shadow z-10">
-                  {languages
-                    .filter((item) => item.value !== lang)
-                    .map((item) => (
-                      <Listbox.Option
-                        key={item.value}
-                        value={item.value}
-                        className={({ active }) =>
-                          `cursor-pointer px-3 py-2 flex items-center gap-2 ${
-                            active
-                              ? "bg-[#e6f3f5] text-[#016072]"
-                              : "text-gray-700"
-                          }`
-                        }
-                      >
-                        <img
-                          src={item.flag}
-                          alt={`${item.label} flag`}
-                          className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
-                        />
-                        <span>{item.label}</span>
-                      </Listbox.Option>
-                    ))}
-                </Listbox.Options>
-              </div>
-            )}
+              return (
+                <div className="relative inline-flex">
+                  <Listbox.Button className="w-full bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
+                    {/* Flag */}
+                    {selectedLang?.flag && (
+                      <Image
+                        src={selectedLang.flag}
+                        alt={`${selectedLang.label} flag`}
+                        width={20}
+                        height={20}
+                        className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
+                      />
+                    )}
+                    {/* <span>{selectedLang?.label}</span> */}
+
+                    {/* Arrow */}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`w-4 h-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-[#016072] transition-transform duration-200 ${
+                        open ? "rotate-180" : "rotate-0"
+                      }`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </Listbox.Button>
+
+                  <Listbox.Options className="absolute mt-10 w-full bg-white rounded-md shadow z-10 w-10">
+                    {languages
+                      .filter((item) => item.value !== lang)
+                      .map((item) => (
+                        <Listbox.Option
+                          key={item.value}
+                          value={item.value}
+                          className={({ active }) =>
+                            `cursor-pointer px-3 py-2 flex items-center gap-2 ${
+                              active
+                                ? "bg-[#e6f3f5] text-[#016072]"
+                                : "text-gray-700"
+                            }`
+                          }
+                        >
+                          {item.flag && (
+                            <Image
+                              src={item.flag}
+                              alt={`${item.label} flag`}
+                              width={20}
+                              height={20}
+                              className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
+                            />
+                          )}
+                          <span>{item.label}</span>
+                        </Listbox.Option>
+                      ))}
+                  </Listbox.Options>
+                </div>
+              );
+            }}
           </Listbox>
 
           <div className="hidden sm:block">
             <Link
               href="/contact-us"
-              className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-md shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+              className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-sm shadow transition-all transform hover:bg-gray-200 hover:shadow-md"
             >
-              <span className="text-sm text-[#016072] font-semibold flex items-center gap-1">
+              <span className="text-sm text-[#016072] flex items-center gap-1">
                 {dictionary.navbar.contact}
               </span>
             </Link>
@@ -272,9 +314,9 @@ const Navbar = () => {
             <motion.div variants={itemVariants}>
               <Link
                 href="/contact-us"
-                className="inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-md shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+                className="inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
               >
-                <span className="text-sm text-[#016072] font-semibold flex items-center gap-1">
+                <span className="text-sm text-[#016072] flex items-center gap-1">
                   {dictionary.navbar.contact}
                 </span>
               </Link>

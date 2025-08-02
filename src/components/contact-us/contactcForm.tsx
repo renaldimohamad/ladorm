@@ -7,6 +7,8 @@ import * as yup from "yup";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
+import DynamicButton from "@/ui/common/DynamicButton";
+import LoaderSpinner from "@/ui/common/LoaderSpinner";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -87,7 +89,7 @@ export default function ContactForm() {
     >
       <Toaster position="top-center" reverseOrder={false} />
 
-      <p className="text-base sm:text-lg md:text-xl font-semibold text-green-800 mb-4">
+      <p className="text-base sm:text-lg md:text-xl font-semibold text-[#018484] mb-4">
         Hubungi Kami
       </p>
       <motion.form
@@ -96,7 +98,7 @@ export default function ContactForm() {
         initial="hidden"
         animate="visible"
       >
-        {/* Nama */}
+        {/* Name */}
         <motion.div
           className="flex flex-col md:flex-row gap-4"
           variants={fadeInUp}
@@ -149,12 +151,12 @@ export default function ContactForm() {
           )}
         </motion.div>
 
-        {/* Subjek */}
+        {/* Subject */}
         <motion.div variants={fadeInUp} custom={5}>
           <input
             {...register("subject")}
             type="text"
-            placeholder="Subjeck"
+            placeholder="Subjek"
             className={`w-full border ${
               errors.subject ? "border-red-500" : "border-gray-300"
             } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
@@ -166,7 +168,7 @@ export default function ContactForm() {
           )}
         </motion.div>
 
-        {/* Pesan */}
+        {/* Message */}
         <motion.div variants={fadeInUp} custom={6}>
           <textarea
             {...register("message")}
@@ -189,26 +191,21 @@ export default function ContactForm() {
           )}
         </motion.div>
 
-        <motion.button
+        <DynamicButton
           type="submit"
-          disabled={isLoading}
-          className={`w-full md:w-auto cursor-pointer
-            bg-gradient-to-r from-[#016072] to-[#2c705b]
-            text-sm sm:text-base md:text-sm
-            text-white font-medium
-            px-6 py-2 rounded shadow rounded-lg 
-            transition-colors duration-300
-            hover:from-[#018484] hover:to-[#3b9e7e]
-    ${
-      isLoading
-        ? "opacity-70 cursor-not-allowed hover:from-[#016072] hover:to-[#2c705b]"
-        : ""
-    }`}
-          variants={fadeInUp}
+          onClick={handleSubmit(onSubmit)}
+          loaderButton={
+            <span className="flex items-center gap-2">
+              <LoaderSpinner /> Mengirim...
+            </span>
+          }
+          isLoading={isLoading}
+          className="w-full md:w-auto"
+          variant={fadeInUp}
           custom={7}
         >
-          {isLoading ? "Mengirim..." : "Kirim Pesan"}
-        </motion.button>
+          Kirim Pesan
+        </DynamicButton>
       </motion.form>
     </motion.div>
   );

@@ -1,6 +1,7 @@
 import Navbar from "@/components/common/Navbar";
 import "@/styles/globals.css";
-import { montserrat } from "@/styles/font";
+import { montserrat, poppins } from "@/styles/font";
+import { html } from "framer-motion/m";
 
 const LayoutBlank = ({
   children,
@@ -10,10 +11,7 @@ const LayoutBlank = ({
   className?: string;
 }) => {
   return (
-    <div
-      className={`
-        ${montserrat.className} bg-[#ffffff]`}
-    >
+    <div className={`${poppins.className} bg-[#ffffff]`}>
       <Navbar />
       <main className={`flex items-center justify-center h-full ${className} `}>
         {children}

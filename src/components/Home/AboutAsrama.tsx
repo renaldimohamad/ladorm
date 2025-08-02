@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Fade from "../common/Fade";
 import { useLanguage } from "../../../stores/useLengauage";
 
 export const AboutDormitory = () => {

@@ -20,14 +20,17 @@ export default function ContactUsSection() {
           className="text-left sm:text-center mb-10"
           variants={{ hidden: {}, visible: {} }}
         >
-          <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600">
+          <h5 className="text-2xl sm:text-2xl md:text-3xl font-bold mb-6 text-[#016072] font-montserrat">
+            Hubungi Kami
+          </h5>
+          <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600 leading-relaxed">
             <span className="text-gray-800 font-bold">
               Hey, Mongowutata, Mongodula&apos;a!
             </span>{" "}
             Makasih wa so mampir di situs resmi LADorm - Asrama Mahasiswa
             Gorontalo di Lenteng Agung, Jakarta! 👋
           </p>
-          <p className="text-xs sm:text-sm md:text-base text-gray-400 mt-2">
+          <p className="text-xs sm:text-sm md:text-base text-gray-400 mt-2 leading-relaxed">
             Kalau ngoni punya pertanyaan, saran, atau kepikiran buat gabung jadi
             bagian dari keluarga asrama ini, langsung aja hubungi kami! Mari
             torang mo ambuwa!

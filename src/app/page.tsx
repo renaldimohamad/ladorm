@@ -1,9 +1,8 @@
 "use client";
 
 import Footer from "@/components/common/Footer";
-import { CallToAction } from "@/components/Home";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -16,6 +15,8 @@ import { testimonialsData } from "@/utils/Testimonials";
 import DormitoryManagement from "@/components/Home/DormitoryManagement";
 import Image from "next/image";
 import { useLanguage } from "../../stores/useLengauage";
+import { CallToAction } from "@/ui/common/CallToAction";
+import { GeneralInfo } from "@/components/Home/GeneralInfo";
 
 export default function Home() {
   const scrollDir = useScrollDirection();
@@ -46,8 +47,12 @@ export default function Home() {
           className="relative w-full h-full flex flex-col justify-center"
         >
           <Swiper
-            modules={[Autoplay, Pagination]}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            modules={[Autoplay, Pagination, EffectFade]}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            speed={600}
             pagination={{ clickable: true }}
             loop
             className="w-full h-[80vh]"
@@ -68,13 +73,27 @@ export default function Home() {
 
                     <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-50">
                       <div className="text-left max-w-2xl space-y-6">
-                        <h2 className="text-2xl sm:text-4xl lg:text-3xl font-extrabold tracking-tight leading-snug bg-gradient-to-r from-[rgba(1,96,114,0.8)] to-[rgba(44,112,91,0.8)] bg-clip-text text-transparent font-montserrat">
+                        <h2
+                          className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-snug bg-gradient-to-r from-[rgba(1,96,114,0.8)] to-[rgba(44,112,91,0.8)] bg-clip-text text-transparent font-montserrat leading-relaxed"
+                          style={{
+                            textShadow: "0.5px 0.5px 1px rgba(0, 0, 0, 0.2)",
+                          }}
+                        >
                           {content?.title ?? ""}
                         </h2>
-                        <p className="text-black/80 italic font-serif text-sm md:text-base drop-shadow-sm max-w-xl">
+                        <p
+                          className="text-black/80 text-sm md:text-xl drop-shadow-sm max-w-xl leading-relaxed"
+                          style={{
+                            textShadow: "0.5px 0.5px 1px rgba(0, 0, 0, 0.2)",
+                          }}
+                        >
                           {content?.desc ?? ""}
                         </p>
-                        <CallToAction />
+                        <CallToAction
+                          text={dictionary.heroButtonLabels.callToAction}
+                          href="#about"
+                          className="bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)]"
+                        />
                       </div>
                     </div>
                   </div>
@@ -103,6 +122,7 @@ export default function Home() {
             <AboutDormitory />
           </motion.section>
         </section>
+        {/* <GeneralInfo /> */}
         <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
           <motion.section
             initial={{ opacity: 0, y: initialY }}
