@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import contactItems from "./contactItems";
 import "./index.css";
 import Link from "next/link";
-import { div } from "framer-motion/client";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },

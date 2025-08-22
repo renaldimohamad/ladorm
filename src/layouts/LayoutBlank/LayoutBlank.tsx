@@ -1,6 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import "@/styles/globals.css";
-import { montserrat, poppins } from "@/styles/font";
+import { poppins } from "@/styles/font";
 
 const LayoutBlank = ({
   children,

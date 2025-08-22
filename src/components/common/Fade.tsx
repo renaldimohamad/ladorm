@@ -2,7 +2,7 @@
 
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 
 type Direction = "up" | "down" | "left" | "right";
 
@@ -20,7 +20,7 @@ export default function Fade({
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.3 });
 
-  const getInitial = () => {
+  const getInitial = useCallback(() => {
     switch (direction) {
       case "left":
         return { opacity: 0, x: -40 };
@@ -32,7 +32,7 @@ export default function Fade({
       default:
         return { opacity: 0, y: 40 };
     }
-  };
+  }, [direction]);
 
   useEffect(() => {
     if (inView) {

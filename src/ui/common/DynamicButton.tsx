@@ -7,6 +7,7 @@ type DynamicButtonProps = {
   onClick?: () => void;
   path?: string;
   custom?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   variant?: any;
   className?: string;
   loaderButton?: React.ReactNode;

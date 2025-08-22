@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { HiOutlineMenu, HiOutlineMenuAlt4, HiX } from "react-icons/hi";
+import { HiX } from "react-icons/hi";
 import CurrentTime from "./CurrentTime";
 import { motion, AnimatePresence } from "framer-motion";
 import { itemVariants, menuVariants } from "@/utils/variants";
