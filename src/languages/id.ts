@@ -76,6 +76,19 @@ const id: LanguageType = {
     readMore: "Baca selengkapnya",
     readLess: "Tampilkan lebih sedikit",
   },
+  contactUs: {
+    title: "Hubungi kami sekarang!",
+    description: "test",
+    contactForm: {
+      firstName: "Nama Depan",
+      lastName: "Nama Belakang",
+      email: "Email",
+      subject: "Subjek",
+      message: "Pesan",
+      submit: "Kirim Pesan",
+      loaderButton: "Mengirim",
+    },
+  },
 };
 
 export default id;

@@ -21,10 +21,6 @@ export default function ContactInfo() {
       variants={fadeInUp}
       custom={1}
     >
-      <p className="text-base sm:text-lg md:text-xl font-semibold text-[#018484] mb-4">
-        Kontak Kami
-      </p>
-
       <ul className="text-[#3b9e7e]">
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         {contactItems.map((item: any, i: number) => (

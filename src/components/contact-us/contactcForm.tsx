@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import DynamicButton from "@/ui/common/DynamicButton";
 import LoaderSpinner from "@/ui/common/LoaderSpinner";
+import { useLanguage } from "../../../stores/useLengauage";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -31,6 +32,9 @@ const schema = yup.object().shape({
 });
 
 export default function ContactForm() {
+  const { dictionary } = useLanguage();
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -39,8 +43,6 @@ export default function ContactForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const [isLoading, setIsLoading] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSubmit = async (data: any) => {
@@ -90,7 +92,7 @@ export default function ContactForm() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <p className="text-base sm:text-lg md:text-xl font-semibold text-[#018484] mb-4">
-        Hubungi Kami
+        {/* Hubungi Kami */}
       </p>
       <motion.form
         onSubmit={handleSubmit(onSubmit)}
@@ -108,7 +110,9 @@ export default function ContactForm() {
             <input
               {...register("firstName")}
               type="text"
-              placeholder="Nama Depan"
+              placeholder={
+                dictionary?.contactUs?.contactForm?.firstName || "Nama Depan"
+              }
               className={`w-full border ${
                 errors.firstName ? "border-red-500" : "border-gray-300"
               } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
@@ -123,7 +127,9 @@ export default function ContactForm() {
             <input
               {...register("lastName")}
               type="text"
-              placeholder="Nama Belakang"
+              placeholder={
+                dictionary?.contactUs?.contactForm?.lastName || "Nama Belakang"
+              }
               className={`w-full border ${
                 errors.lastName ? "border-red-500" : "border-gray-300"
               } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
@@ -141,7 +147,7 @@ export default function ContactForm() {
           <input
             {...register("email")}
             type="email"
-            placeholder="Email"
+            placeholder={dictionary?.contactUs?.contactForm?.email}
             className={`w-full border ${
               errors.email ? "border-red-500" : "border-gray-300"
             } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
@@ -156,7 +162,7 @@ export default function ContactForm() {
           <input
             {...register("subject")}
             type="text"
-            placeholder="Subjek"
+            placeholder={dictionary?.contactUs?.contactForm?.subject}
             className={`w-full border ${
               errors.subject ? "border-red-500" : "border-gray-300"
             } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
@@ -172,7 +178,7 @@ export default function ContactForm() {
         <motion.div variants={fadeInUp} custom={6}>
           <textarea
             {...register("message")}
-            placeholder="Pesan"
+            placeholder={dictionary?.contactUs?.contactForm?.message}
             rows={4}
             className={`w-full border ${
               errors.message ? "border-red-500" : "border-gray-300"
@@ -196,7 +202,8 @@ export default function ContactForm() {
           onClick={handleSubmit(onSubmit)}
           loaderButton={
             <span className="flex items-center gap-2">
-              <LoaderSpinner /> Mengirim...
+              <LoaderSpinner />{" "}
+              {dictionary?.contactUs?.contactForm?.loaderButton}
             </span>
           }
           isLoading={isLoading}
@@ -204,7 +211,7 @@ export default function ContactForm() {
           variant={fadeInUp}
           custom={7}
         >
-          Kirim Pesan
+          {dictionary?.contactUs?.contactForm?.submit}
         </DynamicButton>
       </motion.form>
     </motion.div>

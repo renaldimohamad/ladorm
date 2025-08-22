@@ -13,7 +13,7 @@ export const AboutDormitory = () => {
         {dictionary.aboutDormitory?.title}
       </h5>
 
-      <p className="text-sm sm:text-base md:text-sm leading-relaxed text-gray-800 mb-4 text-justify">
+      <p className="text-sm sm:text-base md:text-md leading-relaxed text-gray-800 mb-4 text-justify">
         <b>{dictionary.aboutDormitory?.paragraph1.bold}</b>{" "}
         {dictionary.aboutDormitory?.paragraph1.normal}
       </p>
@@ -33,7 +33,7 @@ export const AboutDormitory = () => {
         </li>
       </ul> */}
 
-      <div className="flex flex-col gap-2 mt-6 text-sm sm:text-base md:text-sm leading-relaxed text-gray-800 text-justify space-y-4">
+      <div className="flex flex-col gap-2 mt-6 text-sm sm:text-base md:text-md leading-relaxed text-gray-800 text-justify space-y-4">
         <span>
           {dictionary.aboutDormitory?.paragraph2.section1}{" "}
           <b>{dictionary.aboutDormitory?.paragraph2.date}</b>{" "}

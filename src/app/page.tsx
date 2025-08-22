@@ -16,7 +16,6 @@ import DormitoryManagement from "@/components/Home/DormitoryManagement";
 import Image from "next/image";
 import { useLanguage } from "../../stores/useLengauage";
 import { CallToAction } from "@/ui/common/CallToAction";
-import { GeneralInfo } from "@/components/Home/GeneralInfo";
 
 export default function Home() {
   const scrollDir = useScrollDirection();

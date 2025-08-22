@@ -2,8 +2,11 @@
 import { motion } from "framer-motion";
 import ContactInfo from "./contactInfo";
 import ContactForm from "./contactcForm";
+import { useLanguage } from "../../../stores/useLengauage";
 
 export default function ContactUsSection() {
+  const { dictionary } = useLanguage();
+
   return (
     <motion.section
       className="py-16 px-4 bg-white"
@@ -21,9 +24,9 @@ export default function ContactUsSection() {
           variants={{ hidden: {}, visible: {} }}
         >
           <h5 className="text-2xl sm:text-2xl md:text-3xl font-bold mb-6 text-[#016072] font-montserrat">
-            Hubungi Kami
+            {dictionary?.contactUs?.title ?? "test"}
           </h5>
-          <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600 leading-relaxed">
+          {/* <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600 leading-relaxed">
             <span className="text-gray-800 font-bold">
               Hey, Mongowutata, Mongodula&apos;a!
             </span>{" "}
@@ -34,7 +37,7 @@ export default function ContactUsSection() {
             Kalau ngoni punya pertanyaan, saran, atau kepikiran buat gabung jadi
             bagian dari keluarga asrama ini, langsung aja hubungi kami! Mari
             torang mo ambuwa!
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

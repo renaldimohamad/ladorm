@@ -1,7 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import "@/styles/globals.css";
 import { montserrat, poppins } from "@/styles/font";
-import { html } from "framer-motion/m";
 
 const LayoutBlank = ({
   children,

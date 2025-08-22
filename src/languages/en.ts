@@ -28,7 +28,7 @@ const en: LanguageType = {
   aboutDormitory: {
     title: "About Us",
     paragraph1: {
-      bold: "the Gorontalo Student Dormitory",
+      bold: "The Gorontalo Student Dormitory",
       normal:
         "was established as a manifestation of the regional government’s concern for students from Gorontalo pursuing their education outside the region, particularly in DKI Jakarta. With its modern design and complete facilities, the dormitory has become a second home for hundreds of students.",
     },
@@ -76,6 +76,19 @@ const en: LanguageType = {
     },
     readMore: "Read more",
     readLess: "Show less",
+  },
+  contactUs: {
+    title: "Get in touch with us now!",
+    description: "Get in touch with us",
+    contactForm: {
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "Email",
+      subject: "Subject",
+      message: "Message",
+      submit: "Send Message",
+      loaderButton: "Sending...",
+    },
   },
 };
 

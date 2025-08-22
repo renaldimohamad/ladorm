@@ -44,7 +44,7 @@ export default function Footer() {
                 alt="LADORM - LOGO"
                 width={60}
                 height={20}
-                className="object-contain rotate-on-hover"
+                className="object-containr"
               />
               <p className="font-semibold">Asrama Mahasiswa Gorontalo</p>
             </div>
@@ -62,18 +62,16 @@ export default function Footer() {
                 <Link
                   href="https://maps.app.goo.gl/C7RHGFq932H6UqxY9"
                   target="_blank"
-                  className="group pointer footer-link-hover"
+                  className="group pointer"
                 >
-                  <span className="font-medium group-hover:text-[#00FFC2]">
-                    Address:
-                  </span>
+                  <span className="font-medium">Address:</span>
                   <br />
-                  <span className="text-gray-200 group-hover:text-[#00FFC2]">
+                  <span className="text-gray-20">
                     Jl. Kramat Gg. Pribadi No.39, RT.8/RW.2, Lenteng Agung, Kec.
                     Jagakarsa
                   </span>
                   <br />
-                  <span className="text-gray-200 group-hover:text-[#00FFC2]">
+                  <span className="text-gray-200">
                     Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630
                   </span>
                 </Link>

@@ -49,9 +49,24 @@ export type AboutDormitoryLangType = {
   readLess: string;
 };
 
+export type ContactUsLangType = {
+  title: string;
+  description: string;
+  contactForm: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    subject: string;
+    message: string;
+    submit: string;
+    loaderButton: string;
+  };
+};
+
 export type LanguageType = {
   navbar: NavbarLangType;
   heroSectionHome: IHeroSectionHome[];
   heroButtonLabels: IHeroButtonLabels;
   aboutDormitory: AboutDormitoryLangType;
+  contactUs?: ContactUsLangType;
 };

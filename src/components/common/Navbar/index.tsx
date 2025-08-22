@@ -290,7 +290,7 @@ const Navbar = () => {
                 }
               >
                 <option value="en">English</option>
-                <option value="id">Bahasa Indonesia</option>
+                <option value="id">Indonesia</option>
                 {/* <option value="gtlo">Bahasa Gorontalo</option> */}
               </select>
 
