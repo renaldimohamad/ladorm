@@ -98,7 +98,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/*Tambahin JSON-LD*/}
+        {/*JSON-LD*/}
         <Script
           id="ld-json-testimonials"
           type="application/ld+json"
