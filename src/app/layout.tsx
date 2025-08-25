@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,29 +14,6 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // title: "LADorm",
-  // description: "Asrama Mahasiswa Gorontalo - Tempat nyaman dan terjangkau.",
-  // openGraph: {
-  //   title: "LADorm - Asrama Mahasiswa Gorontalo",
-  //   description: "Tempat nyaman dan terjangkau untuk mahasiswa Gorontalo.",
-  //   url: "https://student-dormitory.vercel.app",
-  //   siteName: "LADorm",
-  //   images: [
-  //     {
-  //       url: "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "LADorm - Asrama Mahasiswa Gorontalo",
-  //     },
-  //   ],
-  //   type: "website",
-  // },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "LADorm - Asrama Mahasiswa Gorontalo",
-  //   description: "Tempat nyaman dan terjangkau untuk mahasiswa Gorontalo.",
-  //   images: ["https://student-dormitory.vercel.app/images/LADORM_FORM.webp"],
-  // },
   title: "LADorm",
   description:
     "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
@@ -81,6 +59,14 @@ export const metadata: Metadata = {
     images: ["https://student-dormitory.vercel.app/images/LADORM_FORM.webp"],
   },
 
+  other: {
+    "og:title": "LADorm - Asrama Mahasiswa Gorontalo",
+    "og:description":
+      "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
+    "og:image": "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
+    "og:url": "https://student-dormitory.vercel.app",
+  },
+
   alternates: {
     canonical: "https://student-dormitory.vercel.app",
   },
@@ -110,6 +96,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/*Tambahin JSON-LD*/}
+        <Script
+          id="ld-json-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "LADorm",
+              url: "https://student-dormitory.vercel.app",
+              logo: "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
+              sameAs: [
+                "https://www.facebook.com/LadormFamily",
+                "https://twitter.com/Ladorm_Family",
+                "https://www.instagram.com/Ladorm_Family",
+              ],
+              description:
+                "Asrama Mahasiswa Gorontalo di Lenteng Agung Jakarta. Nyaman, aman, terjangkau, dan penuh kebersamaan.",
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
