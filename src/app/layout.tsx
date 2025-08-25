@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { testimonialsData } from "@/utils/Testimonials";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,7 +100,7 @@ export default function RootLayout({
       <head>
         {/*Tambahin JSON-LD*/}
         <Script
-          id="ld-json-org"
+          id="ld-json-testimonials"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -108,13 +109,27 @@ export default function RootLayout({
               name: "LADorm",
               url: "https://student-dormitory.vercel.app",
               logo: "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
-              sameAs: [
-                "https://www.facebook.com/LadormFamily",
-                "https://twitter.com/Ladorm_Family",
-                "https://www.instagram.com/Ladorm_Family",
-              ],
-              description:
-                "Asrama Mahasiswa Gorontalo di Lenteng Agung Jakarta. Nyaman, aman, terjangkau, dan penuh kebersamaan.",
+              review: testimonialsData.map((t) => ({
+                "@type": "Review",
+                author: {
+                  "@type": "Person",
+                  name: t.name,
+                },
+                reviewBody: t.message,
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: "5",
+                  bestRating: "5",
+                  worstRating: "1",
+                },
+                publisher: {
+                  "@type": "Organization",
+                  name: "LADorm",
+                },
+                image: t.avatar.startsWith("http")
+                  ? t.avatar
+                  : `https://student-dormitory.vercel.app${t.avatar}`,
+              })),
             }),
           }}
         />
