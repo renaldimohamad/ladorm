@@ -1,4 +1,5 @@
 import { testimonialsData } from "@/utils/Testimonials";
+import Image from "next/image";
 
 export default function TestimonialsPage() {
   return (
@@ -7,7 +8,7 @@ export default function TestimonialsPage() {
       <ul>
         {testimonialsData.map((t) => (
           <li key={t.name}>
-            <img src={t.avatar} alt={t.name} width={80} height={80} />
+            <Image src={t.avatar} alt={t.name} width={80} height={80} />
             <p>
               <strong>{t.name}</strong> - {t.role} ({t.location})
             </p>
