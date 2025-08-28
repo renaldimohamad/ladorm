@@ -54,3 +54,27 @@ body {
 .swiper .swiper-pagination-bullet-active {
   background-color: #018484 !important;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 45% !important; /* pastikan override */
+  color: #16a34a !important;
+  z-index: 20 !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.swiper-button-prev {
+  left: -40px !important;
+}
+
+.swiper-button-next {
+  right: -40px !important;
+}
+
+/* kalau mau hilangin bawaan ::after dan kasih style sendiri */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important; /* default-nya 44px */
+  font-weight: bold;
+}

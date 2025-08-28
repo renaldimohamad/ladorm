@@ -12,7 +12,7 @@ interface CallToActionProps {
 
 export const CallToAction = ({
   text,
-  href = "#about",
+  href = "",
   className,
   textColor,
   bgColor,

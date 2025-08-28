@@ -16,6 +16,7 @@ import DormitoryManagement from "@/components/Home/DormitoryManagement";
 import Image from "next/image";
 import { useLanguage } from "../../stores/useLengauage";
 import { CallToAction } from "@/ui/common/CallToAction";
+import WhyLADorm from "@/components/WhyLADorm";
 
 export default function Home() {
   const scrollDir = useScrollDirection();
@@ -122,7 +123,7 @@ export default function Home() {
           </motion.section>
         </section>
         {/* <GeneralInfo /> */}
-        <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
+        {/* <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
           <motion.section
             initial={{ opacity: 0, y: initialY }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -193,10 +194,12 @@ export default function Home() {
               </Swiper>
             </div>
           </motion.section>
-        </section>
-        <section>
+        </section> */}
+        {/* <section>
           <DormitoryManagement />
-        </section>
+        </section> */}
+
+        <WhyLADorm />
         <Footer />
       </main>
     </LayoutBlank>
