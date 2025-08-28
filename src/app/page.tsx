@@ -8,14 +8,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { LayoutBlank } from "@/layouts";
 import { motion } from "framer-motion";
-import { useScrollDirection } from "@/hooks/useScrollDirection";
+// import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { AboutDormitory } from "@/components/Home/AboutAsrama";
 import { useLanguage } from "../../stores/useLengauage";
 import { CallToAction } from "@/ui/common/CallToAction";
 import WhyLADorm from "@/components/WhyLADorm";
 
 export default function Home() {
-  const scrollDir = useScrollDirection();
+  // const scrollDir = useScrollDirection();
   // const initialY = scrollDir === "down" ? 80 : -80;
 
   const { dictionary } = useLanguage();
