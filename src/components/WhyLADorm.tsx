@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import { FaHome, FaMapMarkerAlt, FaUsers } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade, Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { testimonialsData } from "@/utils/Testimonials";
 import { TestimonialsWrapper } from "./Home/TestimonialsWrapper";
 import Image from "next/image";
