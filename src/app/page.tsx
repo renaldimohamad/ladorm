@@ -7,12 +7,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { LayoutBlank } from "@/layouts";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 // import { useScrollDirection } from "@/hooks/useScrollDirection";
-import { AboutDormitory } from "@/components/Home/AboutAsrama";
 import { useLanguage } from "../../stores/useLengauage";
 import { CallToAction } from "@/ui/common/CallToAction";
 import WhyLADorm from "@/components/WhyLADorm";
+import { SectionAbout } from "@/components/Home/SectionAbout";
 
 export default function Home() {
   // const scrollDir = useScrollDirection();
@@ -99,7 +99,7 @@ export default function Home() {
           </Swiper>
         </section>
 
-        <section
+        {/* <section
           id="about"
           className="scroll-mt-20 w-full px-4 py-20 bg-white text-black"
         >
@@ -117,7 +117,8 @@ export default function Home() {
           >
             <AboutDormitory />
           </motion.section>
-        </section>
+        </section> */}
+        <SectionAbout />
         {/* <GeneralInfo /> */}
         {/* <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
           <motion.section

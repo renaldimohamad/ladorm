@@ -15,6 +15,36 @@ export type IHeroButtonLabels = {
   callToAction: string;
 };
 
+export type IHomeSectionAbout = {
+  title: string;
+  desc: string;
+};
+
+export type IHomeWhyLadorm = {
+  titleSection: string;
+  title1: string;
+  desc1: string;
+  desc2: string;
+  features: {
+    facility: {
+      title: string;
+      desc: string;
+    };
+    location: {
+      title: string;
+      desc: string;
+    };
+    community: {
+      title: string;
+      desc: string;
+    };
+  };
+  CTA: {
+    title: string;
+    ctaBtn: string;
+  };
+};
+
 export type AboutDormitoryLangType = {
   title: string;
   paragraph1: {
@@ -69,4 +99,6 @@ export type LanguageType = {
   heroButtonLabels: IHeroButtonLabels;
   aboutDormitory: AboutDormitoryLangType;
   contactUs?: ContactUsLangType;
+  homeSectionAbout?: IHomeSectionAbout;
+  homeWhyLadorm?: IHomeWhyLadorm;
 };

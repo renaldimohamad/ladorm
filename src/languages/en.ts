@@ -77,6 +77,37 @@ const en: LanguageType = {
     readMore: "Read more",
     readLess: "Show less",
   },
+  homeSectionAbout: {
+    title:
+      "Where Every Student Finds a Family, Every Room Feels Like Home, and Every Day Brings New Opportunities to Grow.",
+    desc: "A home away from home, where students in Gorontalo discover friendship, belonging, and a place to grow together.",
+  },
+  homeWhyLadorm: {
+    titleSection: "Why Choose to Stay at LADORM?",
+    title1: "Gorontalo Student Dormitory",
+    desc1: "More than just a dormitory — it’s a home.",
+    desc2:
+      "Here, you’ll find comfort, togetherness, and a strong support system to guide your academic journey in Jakarta.",
+    features: {
+      facility: {
+        title: "Complete Facilities",
+        desc: "Everything you need is here — from cozy rooms, study areas, stable Wi-Fi, and a shared kitchen, to relaxing spaces where you can recharge.",
+      },
+      community: {
+        title: "Strategic Location",
+        desc: "Close to campuses, public transportation, and student activity centers, making it easy to go anywhere without hassle.",
+      },
+      location: {
+        title: "Positive Community",
+        desc: "Live alongside supportive peers who share the same journey, making you feel like you’ve found a new family in Jakarta.",
+      },
+    },
+    CTA: {
+      title: "Join Us Today!",
+      ctaBtn: "Registration Page",
+    },
+  },
+
   contactUs: {
     title: "Get in touch with us now!",
     description: "Get in touch with us",

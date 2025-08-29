@@ -76,6 +76,36 @@ const id: LanguageType = {
     readMore: "Baca selengkapnya",
     readLess: "Tampilkan lebih sedikit",
   },
+  homeSectionAbout: {
+    title:
+      "Tempat setiap mahasiswa menemukan keluarga, setiap ruangan terasa seperti rumah, dan setiap hari membawa peluang baru untuk berkembang.",
+    desc: "Rumah kedua, tempat para mahasiswa di Gorontalo menemukan persahabatan, rasa memiliki, dan ruang untuk tumbuh bersama.",
+  },
+  homeWhyLadorm: {
+    titleSection: "Kenapa Harus Tinggal di LADORM?",
+    title1: "Asrama Mahasiswa Gorontalo",
+    desc1: "Merupakan tempat tinggal yang lebih dari sekadar Asrama.",
+    desc2:
+      "Kamu dapat menemukan kenyamanan, kebersamaan, dan support system buat perjalanan kuliah kamu di Jakarta.",
+    features: {
+      facility: {
+        title: "Fasilitas Lengkap",
+        desc: "Semua kebutuhan lo terpenuhi mulai dari kamar nyaman, ruang belajar, akses Wi-Fi stabil, dapur bersama, sampai area santai buat recharge energi.",
+      },
+      community: {
+        title: "Lokasi Strategis",
+        desc: "Dekat kampus, transportasi umum, dan pusat aktivitas mahasiswa, jadi lo gampang kemana aja tanpa ribet.",
+      },
+      location: {
+        title: "Komunitas Positif",
+        desc: "Tinggal bareng teman-teman seperjuangan yang saling support, bikin lo merasa punya keluarga baru di Jakarta.",
+      },
+    },
+    CTA: {
+      title: "Ayo Gabung Sekarang!",
+      ctaBtn: "Laman Pendaftaran",
+    },
+  },
   contactUs: {
     title: "Hubungi kami sekarang!",
     description: "test",

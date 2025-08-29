@@ -9,12 +9,14 @@ type Direction = "up" | "down" | "left" | "right";
 interface FadeInSectionProps {
   children: React.ReactNode;
   direction?: Direction;
+  duration?: number;
   className?: string;
 }
 
 export default function Fade({
   children,
   direction = "up",
+  duration = 0.3,
   className = "",
 }: FadeInSectionProps) {
   const controls = useAnimation();
@@ -48,10 +50,11 @@ export default function Fade({
       initial={getInitial()}
       animate={controls}
       transition={{
-        duration: 0.3,
+        duration: duration,
         ease: [0.33, 1, 0.68, 1],
       }}
       className={className}
+      viewport={{ once: true, amount: 0.3 }}
     >
       {children}
     </motion.section>
