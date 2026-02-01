@@ -90,8 +90,8 @@ export default function Home() {
             </p>
 
             <p>
-              Selanjutnya, terdapat mekanisme "kritik otokritik" sebagai forum
-              internalisasi nilai-nilai persatuan, ikatan solidaritas, dan
+              Selanjutnya, terdapat mekanisme {'"'}kritik otokritik{'"'} sebagai
+              forum internalisasi nilai-nilai persatuan, ikatan solidaritas, dan
               hubungan kebersamaan, yang memiliki orientasi memperkuat kohesi
               antar individu penghuni Ladorm.
             </p>
