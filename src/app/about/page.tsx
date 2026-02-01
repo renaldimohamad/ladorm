@@ -2,7 +2,6 @@
 
 import { LayoutBlank } from "@/layouts";
 import Footer from "@/components/common/Footer";
-import ContactUsSection from "@/components/contact-us/contactUseSection";
 import HeaderContent from "@/components/header-content";
 import { useRouter } from "next/navigation";
 
