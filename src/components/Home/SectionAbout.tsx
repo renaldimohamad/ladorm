@@ -5,6 +5,9 @@ import { useLanguage } from "../../../stores/useLengauage";
 export const SectionAbout = () => {
   const { dictionary } = useLanguage();
 
+  const actionText =
+    dictionary?.heroButtonLabels?.callToAction || "Selengkapnya";
+
   return (
     <section
       id="about"
@@ -41,8 +44,9 @@ export const SectionAbout = () => {
               {/* </Fade> */}
               <Fade direction="right">
                 <CallToAction
+                  text={actionText}
+                  href="/about"
                   className="bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white"
-                  text="Learn More"
                 />
               </Fade>
             </div>

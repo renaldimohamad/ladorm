@@ -1,6 +1,7 @@
 import Navbar from "@/components/common/Navbar";
 import "@/styles/globals.css";
-import { poppins } from "@/styles/font";
+import { jakarta, poppins } from "@/styles/font";
+import PageTransition from "@/components/PageTransition";
 
 const LayoutBlank = ({
   children,
@@ -10,11 +11,15 @@ const LayoutBlank = ({
   className?: string;
 }) => {
   return (
-    <div className={`${poppins.className} bg-[#ffffff]`}>
+    <div className={`${jakarta.className} bg-[#ffffff]`}>
       <Navbar />
-      <main className={`flex items-center justify-center h-full ${className} `}>
-        {children}
-      </main>
+      <PageTransition>
+        <main
+          className={`flex items-center justify-center h-full ${className} `}
+        >
+          {children}
+        </main>
+      </PageTransition>
     </div>
   );
 };

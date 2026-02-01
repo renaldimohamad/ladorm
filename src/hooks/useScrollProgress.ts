@@ -1,4 +1,3 @@
-// hooks/useScrollProgress.ts
 import { useEffect, useRef, useState, useCallback } from "react";
 
 export function useScrollProgress(delay = 1000) {

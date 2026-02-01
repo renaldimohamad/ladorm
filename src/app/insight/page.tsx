@@ -1,4 +1,4 @@
-import Fade from "@/components/common/Fade";
+import Fade from "@/components/common/Fade.copy";
 import { LayoutBlank } from "@/layouts";
 
 const Insight = () => {

@@ -11,12 +11,13 @@ import { useScrollProgress } from "@/hooks/useScrollProgress";
 import "./index.css";
 import { useLanguage } from "../../../../stores/useLengauage";
 import { Listbox } from "@headlessui/react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scroll, isScrolling } = useScrollProgress();
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-
   const { lang, setLang, dictionary } = useLanguage();
 
   const [tooltip, setTooltip] = useState<
@@ -58,14 +59,24 @@ const Navbar = () => {
             alt="LADORM - LOGO"
             width={200}
             height={20}
-            className="object-contain"
+            className="
+    object-contain
+    w-[120px] sm:w-[160px] md:w-[200px]
+    h-auto
+  "
           />
+
           <div className="leading-tight text-sm">
             {/* <h5 className="font-bold uppercase">Asrama Mahasiswa Gorontalo</h5> */}
           </div>
           <nav className="hidden sm:flex gap-6 ml-10 items-center">
-            <Link href="/" className="link-underline">
-              {dictionary.navbar.home}
+            <Link
+              href="/"
+              className={`link-underline ${
+                pathname === "/" ? "font-bold" : "font-normal"
+              }`}
+            >
+              <span>{dictionary.navbar.home}</span>
             </Link>
 
             <div className="relative group">
@@ -316,7 +327,7 @@ const Navbar = () => {
                 href="/contact-us"
                 className="inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
               >
-                <span className="text-sm text-[#016072] flex items-center gap-1">
+                <span className="text-sm text-[#016072] flex items-center gap-1 font-semibold">
                   {dictionary.navbar.contact}
                 </span>
               </Link>

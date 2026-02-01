@@ -33,6 +33,8 @@ export default function Home() {
   ];
 
   const heroContents = dictionary?.heroSectionHome ?? [];
+  const actionText =
+    dictionary?.heroButtonLabels?.callToAction || "Selengkapnya";
 
   return (
     <LayoutBlank>
@@ -86,7 +88,7 @@ export default function Home() {
                           {content?.desc ?? ""}
                         </p>
                         <CallToAction
-                          text={dictionary.heroButtonLabels.callToAction}
+                          text={actionText}
                           href="#about"
                           className="bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)]"
                         />
