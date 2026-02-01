@@ -1,6 +1,6 @@
 import Navbar from "@/components/common/Navbar";
 import "@/styles/globals.css";
-import { jakarta, poppins } from "@/styles/font";
+import { jakarta } from "@/styles/font";
 import PageTransition from "@/components/PageTransition";
 
 const LayoutBlank = ({
