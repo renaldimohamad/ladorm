@@ -45,3 +45,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+.rounded-custom {
+  border-radius: 5px;
+}

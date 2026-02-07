@@ -21,7 +21,7 @@ export const CallToAction = ({
     <div className="inline-block">
       <Link
         href={href}
-        className={`inline-flex items-center justify-center px-6 py-2 lg:py-[8px] rounded-sm shadow hover:shadow-md transition select-none text-sm sm:text-base whitespace-nowrap ${bgColor} ${textColor} ${className}`}
+        className={`rounded-custom inline-flex items-center justify-center px-6 py-2 lg:py-[8px] shadow hover:shadow-md transition select-none text-sm sm:text-base whitespace-nowrap ${bgColor} ${textColor} ${className}`}
       >
         {text}
       </Link>

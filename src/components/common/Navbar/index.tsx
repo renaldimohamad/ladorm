@@ -158,7 +158,7 @@ const Navbar = () => {
 
               return (
                 <div className="relative inline-flex">
-                  <Listbox.Button className="w-full bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
+                  <Listbox.Button className="rounded-custom w-full bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
                     {/* Flag */}
                     {selectedLang?.flag && (
                       <Image
@@ -190,7 +190,7 @@ const Navbar = () => {
                     </svg>
                   </Listbox.Button>
 
-                  <Listbox.Options className="absolute mt-10 w-full bg-white rounded-md shadow z-10 w-10">
+                  <Listbox.Options className="rounded-custom absolute mt-10 w-full bg-white rounded-md shadow z-10 w-10">
                     {languages
                       .filter((item) => item.value !== lang)
                       .map((item) => (
@@ -226,7 +226,7 @@ const Navbar = () => {
           <div className="hidden sm:block">
             <Link
               href="/contact-us"
-              className="flex items-center justify-center bg-white text-black px-4 py-2 rounded-sm shadow transition-all transform hover:bg-gray-200 hover:shadow-md"
+              className="rounded-custom flex items-center justify-center bg-white text-black px-4 py-2 rounded-sm shadow transition-all transform hover:bg-gray-200 hover:shadow-md"
             >
               <span className="text-sm text-[#016072] flex items-center gap-1">
                 {dictionary.navbar.contact}

@@ -29,7 +29,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
   if (type == "back") {
     return (
       <button
-        className={`flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:opacity-90 focus:outline-none cursor-pointer active:opacity-60 ${className}`}
+        className={`rounded-custom flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:opacity-90 focus:outline-none cursor-pointer active:opacity-60 ${className}`}
         onClick={handleBack}
       >
         <HiArrowNarrowLeft className="w-5 h-5" />
