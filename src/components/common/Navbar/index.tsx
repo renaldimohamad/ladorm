@@ -294,7 +294,7 @@ const Navbar = () => {
 
             <div className="inline-flex relative">
               <select
-                className="appearance-none bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-8 rounded-md shadow focus:outline-none"
+                className="rounded-custom appearance-none bg-white text-[#016072] font-semibold px-3 py-1 pr-8 rounded-md shadow focus:outline-none text-xs"
                 value={lang}
                 onChange={(e) =>
                   setLang(e.target.value as "en" | "id" | "gtlo")
@@ -325,9 +325,9 @@ const Navbar = () => {
             <motion.div variants={itemVariants}>
               <Link
                 href="/contact-us"
-                className="inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+                className="rounded-custom inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
               >
-                <span className="text-sm text-[#016072] flex items-center gap-1 font-semibold">
+                <span className="text-xs text-[#016072] flex items-center gap-1 font-semibold">
                   {dictionary.navbar.contact}
                 </span>
               </Link>

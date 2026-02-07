@@ -4,21 +4,35 @@ import { LayoutBlank } from "@/layouts";
 import Footer from "@/components/common/Footer";
 import HeaderContent from "@/components/header-content";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
 
   return (
     <LayoutBlank>
-      <main className="flex flex-col w-full">
-        <div className="flex px-6 mt-6">
+      <main className="relative overflow-hidden flex flex-col w-full">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/BG LADORM_WHITE.webp"
+            alt=""
+            fill
+            quality={60}
+            sizes="100vw"
+            className="object-cover"
+            loading="lazy"
+            priority={false}
+            blurDataURL="/images/bg-blur.jpg"
+          />
+        </div>
+        <div className="relative z-10 flex px-6 mt-6">
           <HeaderContent
             label="Home"
             onBack={() => router.push("/")}
             className="mb-4"
           />
         </div>
-        <section className="w-full px-6 py-10 bg-white text-black">
+        <section className="relative z-10 w-full px-6 py-10 text-black">
           <div className="max-w-5xl mx-auto flex flex-col gap-6 leading-relaxed">
             <div className="flex justify-center items-center">
               <h5 className="font-bold text-gray-700 text-3xl">About Us</h5>

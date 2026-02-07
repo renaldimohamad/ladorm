@@ -34,7 +34,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-t from-black via-[#1a1a1a] to-[#272727] text-white px-6 md:px-20 py-10">
+    <footer className="relative z-10 bg-gradient-to-t from-black via-[#1a1a1a] to-[#272727] text-white px-6 md:px-20 py-10">
       <div className="mb-10">
         <div className="md:max-w-screen-xl md:mx-auto grid md:grid-cols-4 gap-10">
           <div>
@@ -126,7 +126,7 @@ export default function Footer() {
                 <Link
                   href={generateWhatsAppLink(
                     "62811438399",
-                    "Halo kak saya mau tanya tentang Asrama Mahasiswa Gorontalo"
+                    "Halo kak saya mau tanya tentang Asrama Mahasiswa Gorontalo",
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -227,7 +227,7 @@ export default function Footer() {
             <Link
               href={generateWhatsAppLink(
                 "62811438399",
-                "Halo kak saya mau tanya tentang Asrama Mahasiswa Gorontalo"
+                "Halo kak saya mau tanya tentang Asrama Mahasiswa Gorontalo",
               )}
               target="_blank"
               rel="noopener noreferrer"
