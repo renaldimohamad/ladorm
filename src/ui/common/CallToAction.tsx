@@ -8,6 +8,7 @@ interface CallToActionProps {
   className?: string;
   textColor?: string;
   bgColor?: string;
+  rounded?: string;
 }
 
 export const CallToAction = ({
@@ -16,12 +17,13 @@ export const CallToAction = ({
   className,
   textColor,
   bgColor,
+  rounded = "custom",
 }: CallToActionProps) => {
   return (
     <div className="inline-block">
       <Link
         href={href}
-        className={`rounded-custom inline-flex items-center justify-center px-6 py-2 lg:py-[8px] shadow hover:shadow-md transition select-none text-sm sm:text-base whitespace-nowrap ${bgColor} ${textColor} ${className}`}
+        className={`rounded-${rounded} inline-flex items-center justify-center px-6 py-2 lg:py-[8px] shadow hover:shadow-md transition select-none text-sm sm:text-base whitespace-nowrap ${bgColor} ${textColor} ${className}`}
       >
         {text}
       </Link>

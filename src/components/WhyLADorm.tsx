@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { FaHome, FaMapMarkerAlt, FaUsers } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -9,7 +8,6 @@ import Image from "next/image";
 import { CallToAction } from "@/ui/common/CallToAction";
 import Fade from "./common/Fade";
 import { useLanguage } from "../../stores/useLengauage";
-import { FaD } from "react-icons/fa6";
 
 const WhyLADorm = () => {
   const { dictionary } = useLanguage();

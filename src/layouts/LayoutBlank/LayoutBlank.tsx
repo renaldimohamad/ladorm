@@ -6,12 +6,14 @@ import PageTransition from "@/components/PageTransition";
 const LayoutBlank = ({
   children,
   className = "",
+  bgColor = "white",
 }: {
   children: React.ReactNode;
   className?: string;
+  bgColor?: string;
 }) => {
   return (
-    <div className={`${jakarta.className} bg-[#ffffff]`}>
+    <div className={`${jakarta.className} bg-${bgColor}`}>
       <Navbar />
       <PageTransition>
         <main

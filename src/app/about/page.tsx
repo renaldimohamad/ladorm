@@ -17,12 +17,11 @@ export default function Home() {
             src="/images/BG LADORM_WHITE.webp"
             alt=""
             fill
-            quality={60}
-            sizes="100vw"
             className="object-cover"
-            loading="lazy"
-            priority={false}
-            blurDataURL="/images/bg-blur.jpg"
+            quality={80}
+            sizes="(max-width: 768px) 100vw, 100vw"
+            priority
+            loading="eager"
           />
         </div>
         <div className="relative z-10 flex px-6 mt-6">
