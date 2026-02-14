@@ -7,16 +7,20 @@ type PropsMetaData = {
   params: { slug: string };
 };
 
-interface Props {
+type Props = {
   params: Promise<{
     slug: string;
   }>;
-}
+};
 
 export async function generateMetadata({
   params,
-}: PropsMetaData): Promise<Metadata> {
-  const resident = residents.find((r) => r.slug === params.slug);
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const resident = residents.find((r) => r.slug === slug);
 
   if (!resident) {
     return {
@@ -32,13 +36,11 @@ export async function generateMetadata({
 
   return {
     title: `${resident.name} | LADorm`,
-    description: resident.bio || `Profil ${resident.name} - ${resident.major}`,
+    description: resident.bio || `Profil ${resident.name}`,
     openGraph: {
       title: `${resident.name} | LADorm`,
-      description:
-        resident.bio || `Profil ${resident.name} - ${resident.major}`,
+      description: resident.bio || `Profil ${resident.name}`,
       url: `${baseUrl}/residents/${resident.slug}`,
-      type: "profile",
       images: [
         {
           url: imageUrl,
@@ -58,6 +60,10 @@ export async function generateMetadata({
 }
 
 export function generateStaticParams() {
+  console.log(
+    "BUILD SLUGS:",
+    residents.map((r) => r.slug),
+  );
   return residents.map((r) => ({
     slug: r.slug,
   }));
