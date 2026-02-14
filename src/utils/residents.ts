@@ -302,7 +302,41 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_abay.png",
     joinedYear: 2020,
   },
+  {
+    id: 9,
+    slug: "nurul-alda",
+    name: "Nurul Alda",
+    photo: "/images/alda_usman.png",
+    major: "Ekonomi Pembangunan",
+    university: "Universitas Trilogi",
+    from: "Kabupaten Bone Bolango",
+    status: "active",
+    bio: "Tertarik pada bidang administrasi dan event organizer, dengan fokus pada pengelolaan kegiatan dan koordinasi tim.",
+    about: {
+      summary:
+        "Tertarik di bidang administrasi dan event, komunikatif, dan siap berkembang.",
 
+      experience:
+        "Berpengalaman dalam kegiatan organisasi dan kepanitiaan, serta membantu pengelolaan administrasi dan koordinasi acara.",
+
+      expertise: [
+        "Administrasi",
+        "Manajemen Kegiatan",
+        "Komunikasi",
+        "Microsoft Office",
+      ],
+
+      achievements: [
+        "Terlibat dalam kepanitiaan acara kampus",
+        "Berkontribusi dalam kegiatan sosial/organisasi",
+      ],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/aldaanrl/",
+    },
+    coverPhoto: "/images/cover_alda.jpeg",
+    joinedYear: 2022,
+  },
   // ABAM
   // {
   //   id: 7,
