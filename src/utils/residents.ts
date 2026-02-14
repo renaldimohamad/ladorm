@@ -48,7 +48,7 @@ export const residents: Resident[] = [
     major: "Teknik Arsitek",
     university: "Pascasarjana Universitas Trisakti",
     from: "Kabupaten Boalemo",
-    status: "active",
+    status: "alumni",
     bio: "Berfokus pada perancangan arsitektur modern dengan pendekatan estetika, fungsi, dan keberlanjutan.",
     about: {
       summary:
@@ -63,7 +63,6 @@ export const residents: Resident[] = [
         "Visualisasi 3D (SketchUp, Lumion)",
         "Analisis Tata Ruang & Lingkungan",
       ],
-
       achievements: [
         "Terlibat dalam proyek desain hunian berkelanjutan",
         "Mengikuti kompetisi desain arsitektur tingkat nasional",
@@ -226,4 +225,112 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_dicky.png",
     joinedYear: 2024,
   },
+  {
+    id: 6,
+    slug: "ariksal-bahrudin",
+    name: "Ariksal Bahrudin",
+    photo: "/images/ariksal_bahrudin.png",
+    major: "Mahasiswa Ilmu Komunikasi",
+    university: "Pascasarjana Universitas Jayabaya",
+    from: "Kabupaten Boalemo",
+    status: "active",
+    bio: "Berfokus pada komunikasi strategis, media digital, dan penguatan citra institusi melalui pendekatan komunikasi yang efektif dan berbasis riset.",
+    about: {
+      summary:
+        "Mahasiswa Pascasarjana Ilmu Komunikasi dengan minat pada komunikasi publik, media digital, dan strategi komunikasi organisasi.",
+
+      experience:
+        "Berpengalaman dalam pengelolaan media sosial, penyusunan strategi komunikasi, serta pelaksanaan kampanye komunikasi berbasis data.",
+
+      expertise: [
+        "Komunikasi Strategis",
+        "Public Relations",
+        "Manajemen Media Digital",
+        "Analisis Media dan Opini Publik",
+      ],
+
+      achievements: [
+        "Pengembangan kampanye komunikasi berbasis digital",
+        "Riset komunikasi dan analisis opini publik",
+      ],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/ariksal_1997/",
+    },
+    coverPhoto: "/images/cover_ariksal.webp",
+    joinedYear: 2024,
+  },
+  {
+    id: 6,
+    slug: "fahmi-tebeng",
+    name: "Fahmi Tebeng",
+    photo: "/images/fahmi_tebeng.png",
+    major: "Mahasiswa Pendidikan Agama Islam",
+    university: "Universitas NU Indonesia",
+    from: "Kabupaten Pohuwato",
+    status: "active",
+    bio: "Berfokus pada pengembangan pendidikan Islam yang moderat, pembinaan akhlak, serta penguatan nilai-nilai keislaman dalam dunia pendidikan dan masyarakat.",
+    about: {
+      summary:
+        "Mahasiswa Pendidikan Agama Islam dengan minat pada pengajaran, pengembangan kurikulum PAI, serta pembinaan karakter berbasis nilai-nilai Islam.",
+
+      experience:
+        "Berpengalaman dalam kegiatan dakwah, pembinaan remaja masjid, serta praktik mengajar Pendidikan Agama Islam di lingkungan sekolah dan masyarakat.",
+
+      expertise: [
+        "Metodologi Pembelajaran PAI",
+        "Pengembangan Kurikulum Pendidikan Islam",
+        "Pembinaan Akhlak dan Karakter",
+        "Dakwah dan Edukasi Keagamaan",
+      ],
+
+      achievements: [
+        "Aktif dalam kegiatan dakwah dan kajian keislaman",
+        "Kontribusi dalam program pembinaan karakter berbasis nilai Islam",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/aethera.pissa/",
+    },
+    coverPhoto: "/images/cover_amy.png",
+    joinedYear: 2024,
+  },
+
+  // ABAM
+  // {
+  //   id: 7,
+  //   slug: "abam",
+  //   name: "Abam",
+  //   photo: "/images/ariksal_bahrudin.png",
+  //   major: "Profesi Apoteker",
+  //   university: "Universitas UMP",
+  //   from: "Kota Tengah / Cendana",
+  //   status: "alumni",
+  //   bio: "Berkomitmen terhadap penggunaan obat yang rasional, peningkatan mutu layanan, serta pengembangan profesional berkelanjutan.",
+  //   about: {
+  //     summary:
+  //       "Lulusan apoteker dengan minat di bidang industrial dan pelayanan kefarmasian.",
+
+  //     experience:
+  //       "Berpengalaman dalam pengelolaan media sosial, penyusunan strategi komunikasi, serta pelaksanaan kampanye komunikasi berbasis data.",
+
+  //     expertise: [
+  //       "Good manufacturing product",
+  //       "Farmasi Klinis",
+  //       "Manajemen Obat",
+  //       "Edukasi Kesehatan",
+  //     ],
+
+  //     achievements: [
+  //       "Program edukasi kesehatan",
+  //       "Penelitian serta pengembangan bahan alam terhadap suatu penyakit",
+  //     ],
+  //   },
+  //   socials: {
+  //     instagram: "https://www.instagram.com/akmlamiruddin/",
+  //   },
+  //   coverPhoto: "/images/cover_abam.webp",
+  //   joinedYear: 2025,
+  // },
 ];
