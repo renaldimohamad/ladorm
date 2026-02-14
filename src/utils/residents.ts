@@ -350,6 +350,8 @@ export const residents: Resident[] = [
     about: {
       summary:
         "Lulusan farmasi yang terus mengembangkan kemampuan di bidang pelayanan dan manajemen obat.",
+      experience: "-",
+
       expertise: [
         "Farmasi Klinis",
         "Edukasi kesehatan",
@@ -361,7 +363,7 @@ export const residents: Resident[] = [
     socials: {
       instagram: "https://www.instagram.com/ndiarifah/",
     },
-    coverPhoto: "/images/cover_nadia.jpeg",
+    coverPhoto: "/images/cover_nadia.png",
     joinedYear: 2022,
   },
   // ABAM
