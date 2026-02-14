@@ -25,11 +25,11 @@ export interface Resident {
   status: "active" | "alumni";
   bio?: string;
   joinedYear?: number; // ✅ Tambahan baru
-  about: {
-    summary: string;
-    experience: string;
-    expertise: string[];
-    achievements: string[];
+  about?: {
+    summary?: string;
+    experience?: string;
+    expertise?: string[];
+    achievements?: string[];
   };
   socials?: {
     instagram?: string;
@@ -261,7 +261,7 @@ export const residents: Resident[] = [
     joinedYear: 2024,
   },
   {
-    id: 6,
+    id: 7,
     slug: "fahmi-tebeng",
     name: "Fahmi Tebeng",
     photo: "/images/fahmi_tebeng.png",
@@ -270,25 +270,6 @@ export const residents: Resident[] = [
     from: "Kabupaten / Pohuwato",
     status: "active",
     bio: "Berfokus pada pengembangan pendidikan Islam yang moderat, pembinaan akhlak, serta penguatan nilai-nilai keislaman dalam dunia pendidikan dan masyarakat.",
-    about: {
-      summary:
-        "Mahasiswa Pendidikan Agama Islam dengan minat pada pengajaran, pengembangan kurikulum PAI, serta pembinaan karakter berbasis nilai-nilai Islam.",
-
-      experience:
-        "Berpengalaman dalam kegiatan dakwah, pembinaan remaja masjid, serta praktik mengajar Pendidikan Agama Islam di lingkungan sekolah dan masyarakat.",
-
-      expertise: [
-        "Metodologi Pembelajaran PAI",
-        "Pengembangan Kurikulum Pendidikan Islam",
-        "Pembinaan Akhlak dan Karakter",
-        "Dakwah dan Edukasi Keagamaan",
-      ],
-
-      achievements: [
-        "Aktif dalam kegiatan dakwah dan kajian keislaman",
-        "Kontribusi dalam program pembinaan karakter berbasis nilai Islam",
-      ],
-    },
 
     socials: {
       instagram: "https://www.instagram.com/aethera.pissa/",
@@ -296,6 +277,30 @@ export const residents: Resident[] = [
 
     coverPhoto: "/images/cover_amy.png",
     joinedYear: 2024,
+  },
+  {
+    id: 8,
+    slug: "mohammad-syahrul-abay",
+    name: "Mohammad Syahrul Abay",
+    photo: "/images/abay_aul.png",
+    major: "Teknik Sipil",
+    university: "Universitas Bakrie",
+    from: " Kota Gorontalo",
+    status: "alumni",
+    bio: "Profesional Muda dgn latar belakang teknik sipil dgn minat pengembangan kompetensi teknis (Building Information Modeling, Project Management, Enhancing Construction Execution Quality)",
+    about: {
+      summary:
+        "A passionate and driven individual committed to continuous growth and learning. Experienced in coordinating field supervision and project management, with a proven track record in both government and private sector projects.",
+
+      experience: "-",
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/syhrlby/",
+    },
+
+    coverPhoto: "/images/cover_abay.png",
+    joinedYear: 2020,
   },
 
   // ABAM
