@@ -97,37 +97,39 @@ export default function ResidentsPage() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setVisibleCount(
-        isMobile ? INITIAL_MOBILE_COUNT : filteredResidents.length,
-      );
-    }, 1000);
+      // setVisibleCount(
+      //   isMobile ? INITIAL_MOBILE_COUNT : filteredResidents.length,
+      // );
+    }, 600);
 
     return () => clearTimeout(timer);
   }, [statusFilter, search, isMobile]);
 
   useEffect(() => {
-    if (!loadMoreRef.current || !isMobile) return;
+    if (!isMobile) return;
+    if (!loadMoreRef.current) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const entry = entries[0];
-
         if (
-          entry.isIntersecting &&
-          !isFetchingMore &&
-          visibleCount < filteredResidents.length
+          entries[0].isIntersecting &&
+          visibleCount < filteredResidents.length &&
+          !isFetchingMore
         ) {
           setIsFetchingMore(true);
 
+          // Delay supaya loader terlihat
           setTimeout(() => {
-            setVisibleCount((prev) => prev + LOAD_MORE_STEP);
+            setVisibleCount((prev) =>
+              Math.min(prev + LOAD_MORE_STEP, filteredResidents.length),
+            );
+
             setIsFetchingMore(false);
-          }, 700);
+          }, 800); // bisa 600–1000ms
         }
       },
       {
-        root: null,
-        rootMargin: "150px",
+        rootMargin: "200px",
         threshold: 0,
       },
     );
@@ -152,6 +154,29 @@ export default function ResidentsPage() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMobile, visibleCount]);
+
+  // useEffect(() => {  
+  //   if (!isMobile) return;
+  //   if (!loadMoreRef.current) return;
+
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       if (entries[0].isIntersecting) {
+  //         setVisibleCount((prev) =>
+  //           Math.min(prev + LOAD_MORE_STEP, filteredResidents.length),
+  //         );
+  //       }
+  //     },
+  //     {
+  //       rootMargin: "200px",
+  //       threshold: 0,
+  //     },
+  //   );
+
+  //   observer.observe(loadMoreRef.current);
+
+  //   return () => observer.disconnect();
+  // }, [isMobile, filteredResidents.length]);
 
   function SkeletonCard() {
     return (
@@ -389,23 +414,37 @@ export default function ResidentsPage() {
                   </div>
                 ))}
               </div>
-
-              {isMobile && (
-                <>
-                  <div ref={loadMoreRef} className="h-10 mt-6" />
-
-                  {isFetchingMore && (
-                    <div className="flex justify-center py-6">
-                      <div className="w-6 h-6 border-2 border-gray-300 border-t-gray-900 rounded-full animate-spin" />
-                    </div>
-                  )}
-                </>
-              )}
-
-              {/* Infinite Scroll Trigger (Mobile Only) */}
-              <div ref={loadMoreRef} className="h-10 mt-6 block lg:hidden" />
             </>
           )}
+
+          {/* STATUS ELEMENTS */}
+          <div className="scroller-status mt-10 flex flex-col items-center gap-4">
+            {/* LOADING */}
+            {isMobile && visibleCount < filteredResidents.length && (
+              <div
+                ref={loadMoreRef}
+                className="infinite-scroll-request loader-ellips flex items-center gap-2 transition-opacity duration-300"
+              >
+                <span className="dot" />
+                <span className="dot" />
+                <span className="dot" />
+              </div>
+            )}
+
+            {/* END OF CONTENT */}
+            {isMobile && visibleCount >= filteredResidents.length && (
+              <p className="infinite-scroll-last text-sm text-gray-400">
+                End of content
+              </p>
+            )}
+
+            {/* ERROR (optional kalau nanti pakai API) */}
+            {false && (
+              <p className="infinite-scroll-error text-sm text-red-400">
+                No more pages to load
+              </p>
+            )}
+          </div>
 
           {/* ================= BOTTOM CTA ================= */}
           {filteredResidents.length !== 0 && (
