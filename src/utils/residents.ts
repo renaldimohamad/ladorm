@@ -337,6 +337,33 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_alda.jpeg",
     joinedYear: 2022,
   },
+  {
+    id: 10,
+    slug: "nadia-nur-arifah-hulawa",
+    name: "Nadia Nur Arifah Hulawa",
+    photo: "/images/Nadia Arifah.png",
+    major: "Profesi Apoteker",
+    university: "Universitas Pancasila",
+    from: "Marisa Pohuwato / Dulalowo Gorontalo",
+    status: "alumni",
+    bio: "Kerja di apotek: wajah harus ramah, stok harus lengkap, dan sabar harus unlimited (sayang nggak bisa di-order).",
+    about: {
+      summary:
+        "Lulusan farmasi yang terus mengembangkan kemampuan di bidang pelayanan dan manajemen obat.",
+      expertise: [
+        "Farmasi Klinis",
+        "Edukasi kesehatan",
+        "Manajemen terapi Obat",
+        "Pengadaan Obat",
+      ],
+      achievements: ["Pemantauan Terapi Obat pada RSAL Mintohardjo"],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/ndiarifah/",
+    },
+    coverPhoto: "/images/cover_nadia.jpeg",
+    joinedYear: 2022,
+  },
   // ABAM
   // {
   //   id: 7,
