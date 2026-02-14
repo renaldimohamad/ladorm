@@ -62,13 +62,13 @@ export const metadata: Metadata = {
     images: ["https://ladorm.vercel.app/images/LADORM_FORM.webp"],
   },
 
-  other: {
-    "og:title": "LADorm - Asrama Mahasiswa Gorontalo",
-    "og:description":
-      "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
-    "og:image": "https://ladorm.vercel.app/images/LADORM_FORM.webp",
-    "og:url": "https://ladorm.vercel.app",
-  },
+  // other: {
+  //   "og:title": "LADorm - Asrama Mahasiswa Gorontalo",
+  //   "og:description":
+  //     "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
+  //   "og:image": "https://ladorm.vercel.app/images/LADORM_FORM.webp",
+  //   "og:url": "https://ladorm.vercel.app",
+  // },
 
   alternates: {
     canonical: "https://ladorm.vercel.app",
