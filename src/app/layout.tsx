@@ -6,10 +6,6 @@ import { testimonialsData } from "@/utils/Testimonials";
 import Navbar from "@/components/common/Navbar";
 import { residents } from "@/utils/residents";
 
-type Props = {
-  params: { slug: string };
-};
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,48 +15,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resident = residents.find((r) => r.slug === params.slug);
-
-  if (!resident) {
-    return {
-      title: "Resident Not Found | LADorm",
-    };
-  }
-
-  const baseUrl = "https://ladorm.vercel.app";
-
-  const imageUrl = resident.coverPhoto
-    ? `${baseUrl}${resident.coverPhoto}`
-    : `${baseUrl}${resident.photo}`;
-
-  return {
-    title: `${resident.name} | LADorm`,
-    description: resident.bio || `Profil ${resident.name} - ${resident.major}`,
-    openGraph: {
-      title: `${resident.name} | LADorm`,
-      description:
-        resident.bio || `Profil ${resident.name} - ${resident.major}`,
-      url: `${baseUrl}/residents/${resident.slug}`,
-      type: "profile",
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: resident.name,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${resident.name} | LADorm`,
-      description: resident.bio || `Profil ${resident.name}`,
-      images: [imageUrl],
-    },
-  };
-}
 
 export const metadata: Metadata = {
   title: "LADorm - Asrama Mahasiswa Gorontalo",
