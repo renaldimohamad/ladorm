@@ -222,7 +222,7 @@ export const residents: Resident[] = [
       instagram: "https://www.instagram.com/dickypotutu_/",
     },
 
-    coverPhoto: "/images/cover_dicky.png",
+    coverPhoto: "/images/cover_dicky.webp",
     joinedYear: 2024,
   },
   {
