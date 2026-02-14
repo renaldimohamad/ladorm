@@ -118,9 +118,9 @@ export const residents: Resident[] = [
     slug: "taufiq-hidayatullah-balu",
     name: "Taufiq Hidayatullah Balu",
     photo: "/images/Taufiq hidyatullah Balu.png",
-    major: "Farmasi",
+    major: "Profesi Apoteker",
     university: "Universitas UIN Jakarta",
-    from: "Padebuoolo",
+    from: "Padebuolo / Kota Timur, Gorontalo",
     status: "alumni",
     bio: "Fokus pada farmasi klinis dan pengelolaan obat sesuai standar regulasi dan keamanan.",
     about: {
@@ -152,74 +152,78 @@ export const residents: Resident[] = [
   },
   {
     id: 4,
-    slug: "dicky-prasandi-potutu",
-    name: "Dicky Prasandi Potutu",
-    photo: "/images/Dicky Potutu.png",
-    major: "Profesi Apoteker",
-    university: "Mahasiswa Farmasi ISTN",
-    from: "Boalemo",
-    status: "alumni",
-    bio: "Fokus pada farmasi klinis dan pengelolaan obat sesuai standar regulasi dan keamanan.",
-    about: {
-      summary:
-        "Taufiq merupakan lulusan Farmasi yang memiliki minat pada pengembangan obat, pelayanan kefarmasian, dan edukasi kesehatan masyarakat.",
-
-      experience:
-        "Memiliki pengalaman dalam pelayanan farmasi klinis, pengelolaan obat, serta konsultasi penggunaan obat yang tepat dan aman. Ia juga terlibat dalam kegiatan edukasi kesehatan serta distribusi farmasi sesuai standar regulasi.",
-
-      expertise: [
-        "Farmasi Klinis",
-        "Manajemen Obat",
-        "Edukasi Kesehatan",
-        "Regulasi & Standar Kefarmasian",
-      ],
-      achievements: [
-        "Terlibat dalam program edukasi kesehatan masyarakat",
-        "Berpartisipasi dalam penelitian terkait penggunaan obat rasional",
-      ],
-    },
-    socials: {
-      instagram: "https://www.instagram.com/_tfiqbalu/",
-      // linkedin: "https://linkedin.com/in/username",
-      // tiktok: "https://tiktok.com/@username",
-    },
-    coverPhoto: "/images/cover_dicky.png",
-    joinedYear: 2024,
-  },
-  {
-    id: 5,
     slug: "adhwa-sobah-al-amin-f-pakaya",
     name: "Adhwa Sobah Al Amin F Pakaya",
     photo: "/images/adhwa_pakaya.png",
     major: "Mahasiswa Sistem Informasi",
     university: "University of Ary Ginanjar",
-    from: "Andalas",
-    status: "alumni",
-    bio: "Fokus pada farmasi klinis dan pengelolaan obat sesuai standar regulasi dan keamanan.",
+    from: "Kecamatan Sipatana / Andalas",
+    status: "active",
+    bio: "Mahasiswa Sistem Informasi yang tertarik pada pengembangan aplikasi, manajemen data, dan transformasi digital berbasis teknologi.",
+
     about: {
       summary:
-        "Taufiq merupakan lulusan Farmasi yang memiliki minat pada pengembangan obat, pelayanan kefarmasian, dan edukasi kesehatan masyarakat.",
+        "Adhwa merupakan mahasiswa Sistem Informasi yang memiliki ketertarikan pada pengembangan sistem berbasis web dan analisis data untuk mendukung pengambilan keputusan yang lebih efektif.",
 
       experience:
-        "Memiliki pengalaman dalam pelayanan farmasi klinis, pengelolaan obat, serta konsultasi penggunaan obat yang tepat dan aman. Ia juga terlibat dalam kegiatan edukasi kesehatan serta distribusi farmasi sesuai standar regulasi.",
+        "Selama perkuliahan, Adhwa aktif mengerjakan proyek pengembangan aplikasi berbasis web serta sistem manajemen data sederhana. Ia juga mempelajari perancangan basis data, analisis kebutuhan sistem, dan implementasi solusi digital untuk berbagai kebutuhan organisasi.",
 
       expertise: [
+        "Web Development (Frontend & Backend)",
+        "Database Design & Management",
+        "System Analysis & Design",
+        "Data Processing & Visualization",
+      ],
+
+      achievements: [
+        "Mengembangkan proyek aplikasi berbasis web untuk tugas akademik",
+        "Terlibat dalam tim pengembangan sistem informasi skala kecil",
+        "Aktif mengikuti pelatihan dan workshop teknologi informasi",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/adhwapkaya_/",
+    },
+
+    coverPhoto: "/images/adhwa_pakaya.png",
+    joinedYear: 2024,
+  },
+  {
+    id: 5,
+    slug: "dicky-prasandi-potutu",
+    name: "Dicky Prasandi Potutu",
+    photo: "/images/Dicky Potutu.png",
+    major: "Profesi Apoteker",
+    university: "Universitas ISTN",
+    from: "Kabupaten / Boalemo",
+    status: "alumni",
+    bio: "Fokus pada farmasi klinis, pengelolaan dan pendistribusian obat sesuai standar regulasi dan keamanan.",
+    about: {
+      summary:
+        "Lulusan Farmasi dengan minat pada pendistribusian kefarmasian dan pelayanan kefarmasian.",
+
+      experience:
+        "Berpengalaman dalam pelayanan farmasi klinis dan pendistribusian kefarmasian",
+
+      expertise: [
+        "Pendistribusian kefarmasian ",
         "Farmasi Klinis",
         "Manajemen Obat",
         "Edukasi Kesehatan",
-        "Regulasi & Standar Kefarmasian",
       ],
+
       achievements: [
-        "Terlibat dalam program edukasi kesehatan masyarakat",
-        "Berpartisipasi dalam penelitian terkait penggunaan obat rasional",
+        "Program edukasi kesehatan",
+        "Penelitian penggunaan obat rasional",
       ],
     },
+
     socials: {
-      instagram: "https://www.instagram.com/_tfiqbalu/",
-      // linkedin: "https://linkedin.com/in/username",
-      // tiktok: "https://tiktok.com/@username",
+      instagram: "https://www.instagram.com/adhwapkaya_/",
     },
-    coverPhoto: "/images/adhwa_pakaya.png",
+
+    coverPhoto: "/images/cover_dicky.png",
     joinedYear: 2024,
   },
 ];

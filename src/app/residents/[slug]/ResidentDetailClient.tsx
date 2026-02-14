@@ -14,7 +14,7 @@ import {
   FaGraduationCap,
 } from "react-icons/fa";
 import { FaMapMarkerAlt, FaUserGraduate } from "react-icons/fa";
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   resident: Resident;
@@ -169,8 +169,24 @@ export default function ResidentDetailClient({ resident }: Props) {
     gradient: string;
   }) {
     return (
-      <div
-        className={`relative rounded-2xl p-6 border border-white/40 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md ${gradient}`}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.6,
+          ease: "easeOut",
+        }}
+        className={`
+        relative isolate
+        rounded-2xl p-6
+        border border-white/40
+        backdrop-blur-sm
+        shadow-sm
+        transition-all duration-300
+        hover:-translate-y-1 hover:shadow-md
+        ${gradient}
+      `}
       >
         <div className="absolute -right-1 -bottom-2 text-white/10 text-8xl">
           {icon}
@@ -181,7 +197,7 @@ export default function ResidentDetailClient({ resident }: Props) {
         </p>
 
         <p className="text-lg sm:text-xl font-semibold text-white">{value}</p>
-      </div>
+      </motion.div>
     );
   }
 

@@ -7,7 +7,34 @@ import { LayoutBlank } from "@/layouts";
 import { FaLongArrowAltRight, FaSearch } from "react-icons/fa";
 import { HiXCircle } from "react-icons/hi";
 import { CallToAction } from "@/ui/common/CallToAction";
+import Fade from "@/components/common/Fade";
 // import { Search, XCircle } from "lucide-react";
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.95,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function ResidentsPage() {
   const INITIAL_MOBILE_COUNT = 5;
@@ -33,13 +60,21 @@ export default function ResidentsPage() {
   const totalAlumni = residents.filter((r) => r.status === "alumni").length;
 
   const filteredResidents = useMemo(() => {
-    return residents.filter((r) => {
-      const matchStatus = statusFilter === "all" || r.status === statusFilter;
+    return residents
+      .filter((r) => {
+        const matchStatus = statusFilter === "all" || r.status === statusFilter;
 
-      const matchSearch = r.name.toLowerCase().includes(search.toLowerCase());
+        const matchSearch = r.name.toLowerCase().includes(search.toLowerCase());
 
-      return matchStatus && matchSearch;
-    });
+        return matchStatus && matchSearch;
+      })
+      .sort((a, b) => {
+        if (a.status !== b.status) {
+          return a.status === "active" ? -1 : 1;
+        }
+
+        return a.name.localeCompare(b.name);
+      });
   }, [statusFilter, search]);
 
   const visibleResidents = isMobile
@@ -174,7 +209,6 @@ export default function ResidentsPage() {
 
           {/* ================= FILTER BAR ================= */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 mb-12 sm:mb-16">
-            {/* Tabs */}
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {["all", "active", "alumni"].map((type) => (
                 <button
@@ -377,16 +411,20 @@ export default function ResidentsPage() {
           {filteredResidents.length !== 0 && (
             <div className="mt-20 sm:mt-28 text-center px-4">
               <hr className="text-gray-200 mb-16" />
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900">
-                Ingin Bergabung?
-              </h3>
+              <Fade direction="up">
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900">
+                  Ingin Bergabung?
+                </h3>
+              </Fade>
               <p className="text-gray-500 mt-3 text-sm sm:text-base">
                 Jadilah bagian dari komunitas yang dinamis dan inspiratif.
               </p>
 
-              <button className="mt-6 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full  bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white text-sm font-medium transition hover:bg-black">
-                Daftar Sekarang
-              </button>
+              <Fade direction="up">
+                <button className="mt-6 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full  bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white text-sm font-medium transition hover:bg-black">
+                  Daftar Sekarang
+                </button>
+              </Fade>
 
               {/* <CallToAction
               text={"Daftar Sekarang"}
