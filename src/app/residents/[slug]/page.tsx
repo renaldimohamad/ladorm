@@ -47,10 +47,10 @@ export async function generateMetadata({
 
   return {
     title: `${resident.name} | ${resident.major} | LADorm`,
-    description,
+    description: description,
     openGraph: {
       title: `${resident.name} | ${resident.major} | LADorm`,
-      description,
+      description: description,
       url: `${baseUrl}/residents/${resident.slug}`,
       type: "profile",
       images: [
@@ -65,7 +65,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${resident.name} | LADorm`,
-      description,
+      description: description,
       images: [imageUrl],
     },
   };
