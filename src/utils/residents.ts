@@ -220,7 +220,7 @@ export const residents: Resident[] = [
     },
 
     socials: {
-      instagram: "https://www.instagram.com/adhwapkaya_/",
+      instagram: "https://www.instagram.com/dickypotutu_/",
     },
 
     coverPhoto: "/images/cover_dicky.png",
