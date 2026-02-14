@@ -34,13 +34,25 @@ export async function generateMetadata({
     ? `${baseUrl}${resident.coverPhoto}`
     : `${baseUrl}${resident.photo}`;
 
+  const statusLabel = resident.status === "active" ? "Active Member" : "Alumni";
+
+  const shortSummary =
+    resident.about?.summary?.slice(0, 120) || resident.bio || "";
+
+  const description = `${resident.name} adalah ${statusLabel} LADorm dari ${
+    resident.university
+  }. ${shortSummary}${
+    resident.joinedYear ? ` Bergabung sejak ${resident.joinedYear}.` : ""
+  }`;
+
   return {
-    title: `${resident.name} | LADorm`,
-    description: resident.bio || `Profil ${resident.name}`,
+    title: `${resident.name} | ${resident.major} | LADorm`,
+    description,
     openGraph: {
-      title: `${resident.name} | LADorm`,
-      description: resident.bio || `Profil ${resident.name}`,
+      title: `${resident.name} | ${resident.major} | LADorm`,
+      description,
       url: `${baseUrl}/residents/${resident.slug}`,
+      type: "profile",
       images: [
         {
           url: imageUrl,
@@ -53,7 +65,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${resident.name} | LADorm`,
-      description: resident.bio || `Profil ${resident.name}`,
+      description,
       images: [imageUrl],
     },
   };

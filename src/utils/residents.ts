@@ -46,8 +46,8 @@ export const residents: Resident[] = [
     name: "Fian Naway",
     photo: "/images/Fian Naway.png",
     major: "Teknik Arsitek",
-    university: "Universitas Indonesia",
-    from: "Boalemo",
+    university: "Pascasarjana Universitas Trisakti",
+    from: "Kabupaten Boalemo",
     status: "active",
     bio: "Berfokus pada perancangan arsitektur modern dengan pendekatan estetika, fungsi, dan keberlanjutan.",
     about: {
@@ -82,9 +82,9 @@ export const residents: Resident[] = [
     slug: "yoanli-mananohas",
     name: "Yoanli Mananohas",
     photo: "/images/yoanli-image.png",
-    major: "Sarjana Ekonomi",
-    university: "Universitas Gadjah Mada",
-    from: "Pohuato",
+    major: "Alumni - Sarjana Ekonomi ",
+    university: "Universitas Trilogi",
+    from: "Kabupaten Pohuwato",
     status: "alumni",
     bio: "Alumni ekonomi dengan fokus pada analisis keuangan dan strategi bisnis berbasis data.",
     about: {
