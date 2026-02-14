@@ -350,8 +350,8 @@ export const residents: Resident[] = [
     about: {
       summary:
         "Lulusan farmasi yang terus mengembangkan kemampuan di bidang pelayanan dan manajemen obat.",
-      experience: "-",
-
+      experience:
+        "Memiliki pengalaman dalam praktik pelayanan di apotek dan rumah sakit, termasuk pelayanan resep, konseling pasien, pemantauan terapi obat (PTO), serta pengelolaan stok dan pengadaan obat. Terbiasa bekerja sesuai standar pelayanan kefarmasian serta berkoordinasi dengan tenaga kesehatan lainnya untuk memastikan terapi yang optimal.",
       expertise: [
         "Farmasi Klinis",
         "Edukasi kesehatan",
