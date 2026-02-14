@@ -265,33 +265,39 @@ export const residents: Resident[] = [
     slug: "fahmi-tebeng",
     name: "Fahmi Tebeng",
     photo: "/images/fahmi_tebeng.png",
-    major: "Mahasiswa Pendidikan Agama Islam ",
+    major: "Mahasiswa Pendidikan Agama Islam",
     university: "Universitas NU Indonesia",
     from: "Kabupaten / Pohuwato",
     status: "active",
-    bio: "Fokus pada farmasi klinis, pengelolaan dan pendistribusian obat sesuai standar regulasi dan keamanan.",
+    bio: "Berfokus pada pengembangan pendidikan Islam yang moderat, pembinaan akhlak, serta penguatan nilai-nilai keislaman dalam dunia pendidikan dan masyarakat.",
     about: {
       summary:
-        "Lulusan Farmasi dengan minat pada pendistribusian kefarmasian dan pelayanan kefarmasian.",
+        "Mahasiswa Pendidikan Agama Islam dengan minat pada pengajaran, pengembangan kurikulum PAI, serta pembinaan karakter berbasis nilai-nilai Islam.",
+
       experience:
-        "Berpengalaman dalam pelayanan farmasi klinis dan pendistribusian kefarmasian",
+        "Berpengalaman dalam kegiatan dakwah, pembinaan remaja masjid, serta praktik mengajar Pendidikan Agama Islam di lingkungan sekolah dan masyarakat.",
+
       expertise: [
-        "Pendistribusian kefarmasian ",
-        "Farmasi Klinis",
-        "Manajemen Obat",
-        "Edukasi Kesehatan",
+        "Metodologi Pembelajaran PAI",
+        "Pengembangan Kurikulum Pendidikan Islam",
+        "Pembinaan Akhlak dan Karakter",
+        "Dakwah dan Edukasi Keagamaan",
       ],
+
       achievements: [
-        "Program edukasi kesehatan",
-        "Penelitian penggunaan obat rasional",
+        "Aktif dalam kegiatan dakwah dan kajian keislaman",
+        "Kontribusi dalam program pembinaan karakter berbasis nilai Islam",
       ],
     },
+
     socials: {
       instagram: "https://www.instagram.com/aethera.pissa/",
     },
+
     coverPhoto: "/images/cover_amy.png",
     joinedYear: 2024,
   },
+
   // ABAM
   // {
   //   id: 7,
