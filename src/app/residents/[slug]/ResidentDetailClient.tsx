@@ -186,7 +186,7 @@ export default function ResidentDetailClient({ resident }: Props) {
   }
 
   return (
-    <LayoutBlank bgColor="gray-100">
+    <LayoutBlank bgColor="gray-50">
       <div className="min-h-screen py-12 sm:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <HeaderContent
@@ -195,118 +195,158 @@ export default function ResidentDetailClient({ resident }: Props) {
             className="mb-10"
           />
 
-          <div className="bg-white rounded-2xl shadow-sm w-full p-6">
-            <div className="relative mb-16">
-              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
-
-              {/* ================= HERO PROFILE ================= */}
+          <div className="relative rounded-2xl shadow-sm w-full p-6 overflow-hidden">
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+              style={{
+                backgroundImage: "url('/images/BG LADORM_WHITE.webp')",
+              }}
+            />
+            <div className="relative z-10">
               <div className="relative mb-16">
-                {/* Soft Background Accent */}
-                <div className="absolute inset-0 -z-10">
-                  <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] h-[300px] bg-indigo-50 rounded-full blur-3xl opacity-60" />
-                </div>
+                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
 
-                <div className="bg-white rounded-3xl overflow-hidden border-b border-gray-200">
-                  <div className="grid lg:grid-cols-2">
-                    {/* LEFT SIDE — AVATAR */}
-                    <div className="flex flex-col items-center justify-center px-6 py-10 sm:px-10 sm:py-14 bg-gradient-to-br from-gray-50 to-white border-b lg:border-b-0 lg:border-r border-gray-100">
-                      <div className="relative group">
-                        <div className="absolute inset-0 rounded-full bg-indigo-100 blur-2xl opacity-40 transition group-hover:opacity-60" />
-                        <img
-                          src={resident.photo}
-                          alt={resident.name}
-                          className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full object-cover ring-4 ring-white shadow-xl transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
+                {/* ================= HERO PROFILE ================= */}
+                <div className="relative mb-16">
+                  {/* Soft Background Accent */}
+                  <div className="absolute inset-0 -z-10">
+                    <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] h-[300px] bg-indigo-50 rounded-full blur-3xl opacity-60" />
+                  </div>
 
+                  <div className="bg-white rounded-3xl overflow-hidden border-b border-gray-200">
+                    <div className="grid lg:grid-cols-2">
+                      {/* LEFT SIDE — AVATAR */}
                       <div
-                        className={`mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide
-    ${
-      isActive
-        ? "bg-[#ECFDF5] text-[#047857] ring-1 ring-[#047857]/20"
-        : "bg-[#ECFDF5] text-[#134E4A] ring-1 ring-[#134E4A]/20"
-    }`}
+                        className="relative min-h-[320px] sm:min-h-[380px] 
+                flex flex-col items-center justify-end 
+                px-6 py-10 sm:px-10 sm:py-14 
+                border-b lg:border-b-0 lg:border-r 
+                border-gray-100 overflow-hidden"
                       >
-                        <span
-                          className={`w-2 h-2 rounded-full ${
-                            isActive ? "bg-[#047857]" : "bg-[#134E4A]"
-                          }`}
-                        />
-                        {isActive ? "Active Member" : "Alumni"}
+                        {/* Cover Background */}
+                        {resident.coverPhoto && (
+                          <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{
+                              backgroundImage: `url(${encodeURI(resident.coverPhoto)})`,
+                              opacity: 0.25,
+                            }}
+                          />
+                        )}
+
+                        {/* Optional subtle fade biar elegan */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/30 to-transparent" />
+
+                        {/* Content */}
+                        <div className="relative z-10 flex flex-col items-center">
+                          {/* Avatar */}
+                          <div className="relative group">
+                            <div className="absolute inset-0 rounded-full bg-white/40 blur-2xl opacity-40 transition group-hover:opacity-60" />
+                            <img
+                              src={resident.photo}
+                              alt={resident.name}
+                              className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44
+                   rounded-full object-cover
+                   ring-4 ring-white shadow-2xl
+                   transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
+
+                          {/* Status Badge */}
+                          <div
+                            className={`mt-6 inline-flex items-center gap-2 px-4 py-1.5 
+                  rounded-full text-xs font-medium tracking-wide 
+                  backdrop-blur-md bg-white/70
+        ${isActive ? "text-[#047857]" : "text-[#134E4A]"}`}
+                          >
+                            <span
+                              className={`w-2 h-2 rounded-full ${
+                                isActive ? "bg-[#047857]" : "bg-[#134E4A]"
+                              }`}
+                            />
+                            {isActive ? "Active Member" : "Alumni"}
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    {/* RIGHT SIDE — IDENTITY */}
-                    <div className="px-6 py-10 sm:px-10 sm:py-14 flex flex-col justify-center text-center lg:text-left">
-                      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-tight">
-                        {resident.name}
-                      </h1>
+                      {/* RIGHT SIDE — IDENTITY */}
+                      <div className="px-6 py-10 sm:px-10 sm:py-14 flex flex-col justify-center text-center lg:text-left">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-tight">
+                          {resident.name}
+                        </h1>
 
-                      <p className="mt-3 text-base sm:text-lg text-gray-600">
-                        {resident.major}
-                      </p>
-
-                      <p className="text-sm text-gray-400">
-                        {resident.university}
-                      </p>
-
-                      {/* Divider */}
-                      <div className="mt-6 h-px w-16 bg-gray-200 mx-auto lg:mx-0" />
-
-                      {resident.bio && (
-                        <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                          {resident.bio}
+                        <p className="mt-3 text-base sm:text-lg text-gray-600">
+                          {resident.major}
                         </p>
-                      )}
 
-                      {/* Social Row */}
+                        <p className="text-sm text-gray-400">
+                          {resident.university}
+                        </p>
+
+                        {/* Divider */}
+                        <div className="mt-6 h-px w-16 bg-gray-200 mx-auto lg:mx-0" />
+
+                        {resident.bio && (
+                          <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                            {resident.bio}
+                          </p>
+                        )}
+
+                        <div className="mt-4 flex flex-wrap items-center gap-3 justify-center lg:justify-start italic">
+                          {resident.joinedYear && (
+                            <span className="flex items-center gap-2 text-xs text-gray-500">
+                              <span className="w-1.5 h-1.5 rounded-full bg-gray-300" />
+                              Bergabung sejak {resident.joinedYear}
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* ================= KPI SECTION ================= */}
-            <div className="mt-10 grid sm:grid-cols-3 gap-6">
-              <InfoCard
-                label="Asal"
-                value={resident.from}
-                icon={<FaMapMarkerAlt />}
-                gradient="bg-gradient-to-br from-emerald-400/70 to-teal-500/70"
-              />
+              {/* ================= KPI SECTION ================= */}
+              <div className="mt-10 grid sm:grid-cols-3 gap-6">
+                <InfoCard
+                  label="Asal"
+                  value={resident.from}
+                  icon={<FaMapMarkerAlt />}
+                  gradient="bg-gradient-to-br from-emerald-400/70 to-teal-500/70"
+                />
 
-              <InfoCard
-                label="Bidang Studi"
-                value={resident.major}
-                icon={<FaUserGraduate />}
-                gradient="bg-gradient-to-br from-teal-500/70 to-cyan-600/70"
-              />
+                <InfoCard
+                  label="Bidang Studi"
+                  value={resident.major}
+                  icon={<FaUserGraduate />}
+                  gradient="bg-gradient-to-br from-teal-500/70 to-cyan-600/70"
+                />
 
-              <InfoCard
-                label="Status"
-                value={isActive ? "Active Member" : "Alumni"}
-                icon={isActive ? <FaUserCheck /> : <FaGraduationCap />}
-                gradient={
-                  isActive
-                    ? "bg-gradient-to-br from-[#047857] to-[#065F46]"
-                    : "bg-gradient-to-br from-[#134E4A] to-[#064E3B]"
-                }
-              />
-            </div>
-
-            <div className="mt-16 bg-white rounded-2xl border border-gray-100 p-8 sm:p-12">
-              <div className="mb-10">
-                <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
-                  Tentang
-                </h2>
-                <p className="text-sm text-gray-400 mt-1">
-                  Informasi singkat mengenai {resident.name}
-                </p>
+                <InfoCard
+                  label="Status"
+                  value={isActive ? "Active Member" : "Alumni"}
+                  icon={isActive ? <FaUserCheck /> : <FaGraduationCap />}
+                  gradient={
+                    isActive
+                      ? "bg-gradient-to-br from-[#047857] to-[#065F46]"
+                      : "bg-gradient-to-br from-[#134E4A] to-[#064E3B]"
+                  }
+                />
               </div>
 
-              <div className="max-w-3xl text-gray-600 leading-8 text-sm sm:text-base space-y-6">
-                <p
-                  className="
+              <div className="mt-16 bg-white rounded-2xl border border-gray-100 p-8 sm:p-12">
+                <div className="mb-10">
+                  <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
+                    Tentang
+                  </h2>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Informasi singkat mengenai {resident.name}
+                  </p>
+                </div>
+
+                <div className="max-w-3xl text-gray-600 leading-8 text-sm sm:text-base space-y-6">
+                  <p
+                    className="
     relative
     pl-6
     text-gray-800
@@ -321,67 +361,67 @@ export default function ResidentDetailClient({ resident }: Props) {
     bg-[length:4px_100%]
     bg-no-repeat
   "
-                >
-                  {finalAbout.summary}
-                </p>
+                  >
+                    {finalAbout.summary}
+                  </p>
 
-                <p>{finalAbout.experience}</p>
-              </div>
+                  <p>{finalAbout.experience}</p>
+                </div>
 
-              {finalAbout.expertise.length > 0 && (
-                <div className="mt-12">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-4">
-                    Keahlian
-                  </h3>
+                {finalAbout.expertise.length > 0 && (
+                  <div className="mt-12">
+                    <h3 className="text-sm font-semibold text-gray-900 mb-4">
+                      Keahlian
+                    </h3>
 
-                  <div className="flex flex-wrap gap-2">
-                    {finalAbout.expertise.map((item, index) => (
-                      <span
-                        key={index}
-                        className="px-4 py-1.5 rounded-full text-xs sm:text-sm 
+                    <div className="flex flex-wrap gap-2">
+                      {finalAbout.expertise.map((item, index) => (
+                        <span
+                          key={index}
+                          className="px-4 py-1.5 rounded-full text-xs sm:text-sm 
              bg-gradient-to-r from-[#016072]/10 to-[#2C705B]/10
              text-[#065F46]
              border border-[#016072]/20"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {finalAbout.achievements.length > 0 && (
-                <div className="mt-12">
-                  <h3 className="text-sm font-semibold text-gray-900 mb-4">
-                    Pencapaian
-                  </h3>
+                {finalAbout.achievements.length > 0 && (
+                  <div className="mt-12">
+                    <h3 className="text-sm font-semibold text-gray-900 mb-4">
+                      Pencapaian
+                    </h3>
 
-                  <ul className="space-y-3">
-                    {finalAbout.achievements.map((item, index) => (
-                      <li
-                        key={index}
-                        className="flex gap-3 text-sm sm:text-base"
-                      >
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400" />
-                        <span className="text-gray-600">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+                    <ul className="space-y-3">
+                      {finalAbout.achievements.map((item, index) => (
+                        <li
+                          key={index}
+                          className="flex gap-3 text-sm sm:text-base"
+                        >
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400" />
+                          <span className="text-gray-600">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
 
-            {/* ================= SOCIAL FOOTER ================= */}
-            {resident.socials && (
-              <div className="mt-16 pt-10 border-t border-gray-100">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                  <p className="text-xs sm:text-sm text-gray-400">
-                    Terhubung dengan {resident.name}
-                  </p>
+              {/* ================= SOCIAL FOOTER ================= */}
+              {resident.socials && (
+                <div className="mt-16 pt-10 border-t border-gray-100">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+                    <p className="text-xs sm:text-sm text-gray-400">
+                      Terhubung dengan {resident.name}
+                    </p>
 
-                  <div className="flex justify-center sm:justify-end">
-                    <div
-                      className="
+                    <div className="flex justify-center sm:justify-end">
+                      <div
+                        className="
           flex items-center gap-3 sm:gap-4
           px-4 sm:px-6
           py-2.5 sm:py-3
@@ -391,33 +431,34 @@ export default function ResidentDetailClient({ resident }: Props) {
           shadow-[0_8px_30px_rgba(0,0,0,0.05)]
           transition-all duration-300
         "
-                    >
-                      {Object.entries(resident.socials).map(([key, url]) => {
-                        if (!url) return null;
+                      >
+                        {Object.entries(resident.socials).map(([key, url]) => {
+                          if (!url) return null;
 
-                        const social =
-                          SOCIAL_MAP[key as keyof typeof SOCIAL_MAP];
-                        if (!social) return null;
+                          const social =
+                            SOCIAL_MAP[key as keyof typeof SOCIAL_MAP];
+                          if (!social) return null;
 
-                        return (
-                          <LuxurySocialIcon
-                            key={key}
-                            href={url}
-                            Icon={social.icon}
-                            color={social.color}
-                            label={social.label}
-                          />
-                        );
-                      })}
+                          return (
+                            <LuxurySocialIcon
+                              key={key}
+                              href={url}
+                              Icon={social.icon}
+                              color={social.color}
+                              label={social.label}
+                            />
+                          );
+                        })}
 
-                      <div className="h-5 w-px bg-gray-200 mx-1 sm:mx-2" />
+                        <div className="h-5 w-px bg-gray-200 mx-1 sm:mx-2" />
 
-                      <LuxuryShareButton name={resident.name} />
+                        <LuxuryShareButton name={resident.name} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -23,14 +23,20 @@ export interface Resident {
   university: string;
   from: string;
   status: "active" | "alumni";
-  bio: string;
-  about?: ResidentAbout;
+  bio?: string;
+  joinedYear?: number; // ✅ Tambahan baru
+  about: {
+    summary: string;
+    experience: string;
+    expertise: string[];
+    achievements: string[];
+  };
   socials?: {
     instagram?: string;
     linkedin?: string;
-    facebook?: string;
     tiktok?: string;
   };
+  coverPhoto?: string;
 }
 
 export const residents: Resident[] = [
@@ -68,6 +74,8 @@ export const residents: Resident[] = [
       // linkedin: "https://linkedin.com/in/username",
       // tiktok: "https://tiktok.com/@username",
     },
+    joinedYear: 2021,
+    coverPhoto: "/images/Fian Naway.png",
   },
   {
     id: 2,
@@ -92,12 +100,18 @@ export const residents: Resident[] = [
         "Manajemen Strategis",
         "Pengelolaan Anggaran",
       ],
-
       achievements: [
         "Mengelola proyek pengembangan usaha skala lokal",
         "Menyusun strategi perencanaan keuangan untuk UMKM",
       ],
     },
+    socials: {
+      instagram: "https://www.instagram.com/yowanli/",
+      // linkedin: "https://linkedin.com/in/username",
+      // tiktok: "https://tiktok.com/@username",
+    },
+    coverPhoto: "/images/cover_yoan.png",
+    joinedYear: 2015,
   },
   {
     id: 3,
@@ -122,7 +136,6 @@ export const residents: Resident[] = [
         "Edukasi Kesehatan",
         "Regulasi & Standar Kefarmasian",
       ],
-
       achievements: [
         "Terlibat dalam program edukasi kesehatan masyarakat",
         "Berpartisipasi dalam penelitian terkait penggunaan obat rasional",
@@ -134,5 +147,79 @@ export const residents: Resident[] = [
       // linkedin: "https://linkedin.com/in/username",
       // tiktok: "https://tiktok.com/@username",
     },
+    coverPhoto: "/images/Taufiq hidyatullah Balu.png",
+    joinedYear: 2024,
+  },
+  {
+    id: 4,
+    slug: "dicky-prasandi-potutu",
+    name: "Dicky Prasandi Potutu",
+    photo: "/images/Dicky Potutu.png",
+    major: "Profesi Apoteker",
+    university: "Mahasiswa Farmasi ISTN",
+    from: "Boalemo",
+    status: "alumni",
+    bio: "Fokus pada farmasi klinis dan pengelolaan obat sesuai standar regulasi dan keamanan.",
+    about: {
+      summary:
+        "Taufiq merupakan lulusan Farmasi yang memiliki minat pada pengembangan obat, pelayanan kefarmasian, dan edukasi kesehatan masyarakat.",
+
+      experience:
+        "Memiliki pengalaman dalam pelayanan farmasi klinis, pengelolaan obat, serta konsultasi penggunaan obat yang tepat dan aman. Ia juga terlibat dalam kegiatan edukasi kesehatan serta distribusi farmasi sesuai standar regulasi.",
+
+      expertise: [
+        "Farmasi Klinis",
+        "Manajemen Obat",
+        "Edukasi Kesehatan",
+        "Regulasi & Standar Kefarmasian",
+      ],
+      achievements: [
+        "Terlibat dalam program edukasi kesehatan masyarakat",
+        "Berpartisipasi dalam penelitian terkait penggunaan obat rasional",
+      ],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/_tfiqbalu/",
+      // linkedin: "https://linkedin.com/in/username",
+      // tiktok: "https://tiktok.com/@username",
+    },
+    coverPhoto: "/images/cover_dicky.png",
+    joinedYear: 2024,
+  },
+  {
+    id: 5,
+    slug: "adhwa-sobah-al-amin-f-pakaya",
+    name: "Adhwa Sobah Al Amin F Pakaya",
+    photo: "/images/adhwa_pakaya.png",
+    major: "Mahasiswa Sistem Informasi",
+    university: "University of Ary Ginanjar",
+    from: "Andalas",
+    status: "alumni",
+    bio: "Fokus pada farmasi klinis dan pengelolaan obat sesuai standar regulasi dan keamanan.",
+    about: {
+      summary:
+        "Taufiq merupakan lulusan Farmasi yang memiliki minat pada pengembangan obat, pelayanan kefarmasian, dan edukasi kesehatan masyarakat.",
+
+      experience:
+        "Memiliki pengalaman dalam pelayanan farmasi klinis, pengelolaan obat, serta konsultasi penggunaan obat yang tepat dan aman. Ia juga terlibat dalam kegiatan edukasi kesehatan serta distribusi farmasi sesuai standar regulasi.",
+
+      expertise: [
+        "Farmasi Klinis",
+        "Manajemen Obat",
+        "Edukasi Kesehatan",
+        "Regulasi & Standar Kefarmasian",
+      ],
+      achievements: [
+        "Terlibat dalam program edukasi kesehatan masyarakat",
+        "Berpartisipasi dalam penelitian terkait penggunaan obat rasional",
+      ],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/_tfiqbalu/",
+      // linkedin: "https://linkedin.com/in/username",
+      // tiktok: "https://tiktok.com/@username",
+    },
+    coverPhoto: "/images/adhwa_pakaya.png",
+    joinedYear: 2024,
   },
 ];

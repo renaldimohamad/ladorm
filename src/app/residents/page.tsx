@@ -65,7 +65,7 @@ export default function ResidentsPage() {
       setVisibleCount(
         isMobile ? INITIAL_MOBILE_COUNT : filteredResidents.length,
       );
-    }, 600);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [statusFilter, search, isMobile]);
@@ -124,13 +124,13 @@ export default function ResidentsPage() {
         <div className="bg-white rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center animate-pulse">
           <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gray-200 mb-4 sm:mb-6" />
 
-          <div className="h-4 w-32 bg-gray-200 rounded mb-2" />
-          <div className="h-3 w-24 bg-gray-200 rounded mb-2" />
-          <div className="h-3 w-20 bg-gray-200 rounded mb-3" />
+          <div className="h-4 w-46 bg-gray-200 rounded mb-2" />
+          <div className="h-3 w-36 bg-gray-200 rounded mb-2" />
+          <div className="h-3 w-30 bg-gray-200 rounded mb-3" />
 
-          <div className="h-3 w-40 bg-gray-200 rounded mb-6" />
+          <div className="h-3 w-70 bg-gray-200 rounded mb-6" />
 
-          <div className="h-8 w-28 bg-gray-200 rounded-full" />
+          <div className="h-8 w-38 bg-gray-200 rounded-full" />
         </div>
       </div>
     );
@@ -413,30 +413,60 @@ function StatItem({
   label: string;
   variant?: "total" | "active" | "alumni" | "university";
 }) {
-  const styles = {
-    total: "text-[#016072]",
-    active: "text-[#047857]",
-    alumni: "text-[#134E4A]",
-    university: "text-[#0E7490]",
+  const colorStyles = {
+    total: {
+      text: "text-[#016072]",
+      bg: "bg-[#016072]/10",
+      border: "border-[#016072]/20",
+    },
+    active: {
+      text: "text-[#047857]",
+      bg: "bg-[#047857]/10",
+      border: "border-[#047857]/20",
+    },
+    alumni: {
+      text: "text-[#134E4A]",
+      bg: "bg-[#134E4A]/10",
+      border: "border-[#134E4A]/20",
+    },
+    university: {
+      text: "text-[#0E7490]",
+      bg: "bg-[#0E7490]/10",
+      border: "border-[#0E7490]/20",
+    },
   };
 
   return (
     <div className="flex flex-col items-center">
-      {/* Number */}
-      <span
+      {/* Circle Number */}
+      <div
         className={`
-          text-2xl sm:text-3xl md:text-4xl
-          font-semibold tracking-tight
-          ${styles[variant]}
+          w-14 h-14 
+          sm:w-16 sm:h-16 
+          md:w-20 md:h-20
+          rounded-full 
+          flex items-center justify-center
+          transition-all duration-300
+          ${colorStyles[variant].bg}
+          ${colorStyles[variant].border}
+          border
         `}
       >
-        {number}
-      </span>
+        <span
+          className={`
+            text-xl sm:text-2xl md:text-3xl
+            font-semibold tracking-tight
+            ${colorStyles[variant].text}
+          `}
+        >
+          {number}
+        </span>
+      </div>
 
       {/* Label */}
       <span
         className="
-          mt-1
+          mt-2
           text-xs sm:text-sm
           text-gray-500
           tracking-wide

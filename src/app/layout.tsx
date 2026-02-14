@@ -4,6 +4,11 @@ import Script from "next/script";
 import "./globals.css";
 import { testimonialsData } from "@/utils/Testimonials";
 import Navbar from "@/components/common/Navbar";
+import { residents } from "@/utils/residents";
+
+type Props = {
+  params: { slug: string };
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +19,48 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resident = residents.find((r) => r.slug === params.slug);
+
+  if (!resident) {
+    return {
+      title: "Resident Not Found | LADorm",
+    };
+  }
+
+  const baseUrl = "https://ladorm.vercel.app";
+
+  const imageUrl = resident.coverPhoto
+    ? `${baseUrl}${resident.coverPhoto}`
+    : `${baseUrl}${resident.photo}`;
+
+  return {
+    title: `${resident.name} | LADorm`,
+    description: resident.bio || `Profil ${resident.name} - ${resident.major}`,
+    openGraph: {
+      title: `${resident.name} | LADorm`,
+      description:
+        resident.bio || `Profil ${resident.name} - ${resident.major}`,
+      url: `${baseUrl}/residents/${resident.slug}`,
+      type: "profile",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: resident.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${resident.name} | LADorm`,
+      description: resident.bio || `Profil ${resident.name}`,
+      images: [imageUrl],
+    },
+  };
+}
 
 export const metadata: Metadata = {
   title: "LADorm - Asrama Mahasiswa Gorontalo",
@@ -31,17 +78,17 @@ export const metadata: Metadata = {
   authors: [{ name: "LADorm" }],
   creator: "LADorm",
   publisher: "LADorm",
-  metadataBase: new URL("https://student-dormitory.vercel.app"),
+  metadataBase: new URL("https://ladorm.vercel.app"),
 
   openGraph: {
     title: "LADorm - Asrama Mahasiswa Gorontalo",
     description:
       "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
-    url: "https://student-dormitory.vercel.app",
+    url: "https://ladorm.vercel.app",
     siteName: "LADorm",
     images: [
       {
-        url: "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
+        url: "https://ladorm.vercel.app/images/LADORM_FORM.webp",
         width: 1200,
         height: 630,
         alt: "LADorm - Asrama Mahasiswa Gorontalo",
@@ -58,19 +105,19 @@ export const metadata: Metadata = {
     title: "LADorm - Asrama Mahasiswa Gorontalo",
     description:
       "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
-    images: ["https://student-dormitory.vercel.app/images/LADORM_FORM.webp"],
+    images: ["https://ladorm.vercel.app/images/LADORM_FORM.webp"],
   },
 
   other: {
     "og:title": "LADorm - Asrama Mahasiswa Gorontalo",
     "og:description":
       "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
-    "og:image": "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
-    "og:url": "https://student-dormitory.vercel.app",
+    "og:image": "https://ladorm.vercel.app/images/LADORM_FORM.webp",
+    "og:url": "https://ladorm.vercel.app",
   },
 
   alternates: {
-    canonical: "https://student-dormitory.vercel.app",
+    canonical: "https://ladorm.vercel.app",
   },
 
   icons: {
@@ -108,8 +155,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "LADorm",
-              url: "https://student-dormitory.vercel.app",
-              logo: "https://student-dormitory.vercel.app/images/LADORM_FORM.webp",
+              url: "https://ladorm.vercel.app",
+              logo: "https://ladorm.vercel.app/images/LADORM_FORM.webp",
               review: testimonialsData.map((t) => ({
                 "@type": "Review",
                 author: {
@@ -129,7 +176,7 @@ export default function RootLayout({
                 },
                 image: t.avatar.startsWith("http")
                   ? t.avatar
-                  : `https://student-dormitory.vercel.app${t.avatar}`,
+                  : `https://ladorm.vercel.app${t.avatar}`,
               })),
             }),
           }}
