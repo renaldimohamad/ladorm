@@ -520,6 +520,45 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_rolan.png",
     joinedYear: 2025,
   },
+  {
+    id: 15,
+    slug: "putri-molie-monoarfa",
+    name: "Putri Molie Monoarfa, S.P.W.K",
+    photo: "/images/moli.png",
+    major: "Magister Perencanaan Wilayah dan Kota - Real Estate",
+    university: "Universitas Tarumanagara",
+    from: "Kota Timur / Moodu",
+    status: "active",
+    bio: "Berfokus pada pengembangan kawasan dan investasi real estate yang berkelanjutan serta bernilai strategis.",
+
+    about: {
+      summary:
+        "Mahasiswa Magister Perencanaan Wilayah dan Kota dengan konsentrasi Real Estate yang memiliki minat pada pengembangan properti, analisis investasi, serta perencanaan kawasan berbasis potensi wilayah.",
+
+      experience:
+        "Terlibat dalam studi kelayakan proyek properti, analisis nilai lahan, serta perencanaan pengembangan kawasan hunian dan komersial. Aktif dalam kajian akademik terkait dinamika pasar properti, tata ruang, dan strategi investasi real estate yang berkelanjutan.",
+
+      expertise: [
+        "Studi Kelayakan Proyek Properti",
+        "Analisis Investasi Real Estate",
+        "Perencanaan & Pengembangan Kawasan",
+        "Analisis Nilai Lahan",
+        "Manajemen Proyek Properti",
+      ],
+
+      achievements: [
+        "Analisis Pengembangan Kawasan Berbasis Potensi Wilayah",
+        "Perancangan Konsep Investasi Properti dalam Studi Akademik",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/putrimolie/",
+    },
+
+    coverPhoto: "/images/moli_cover.png",
+    joinedYear: 2012,
+  },
 
   // ABAM
   // {
