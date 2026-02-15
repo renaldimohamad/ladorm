@@ -481,6 +481,45 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_rati.png",
     joinedYear: 2024,
   },
+  {
+    id: 14,
+    slug: "hardiansyah-monoarfa",
+    name: "Hardiansyah Monoarfa",
+    photo: "/images/rolan_photo.png",
+    major: "Ekonomi Syariah",
+    university: "Universitas PTIQ Jakarta",
+    from: "Kabupaten Pohuwato / Marisa",
+    status: "active",
+    bio: "Berkomitmen memahami sistem ekonomi berbasis prinsip syariah yang adil, transparan, dan berkelanjutan.",
+
+    about: {
+      summary:
+        "Mahasiswa Ekonomi Syariah yang memiliki minat pada keuangan syariah, manajemen bisnis halal, serta pengelolaan ekonomi yang sesuai dengan prinsip-prinsip Islam.",
+
+      experience:
+        "Aktif mempelajari praktik ekonomi dan keuangan syariah, termasuk perbankan syariah, akad muamalah, serta analisis usaha berbasis prinsip halal dan keadilan. Terlibat dalam diskusi akademik serta kegiatan yang mendukung pemahaman sistem ekonomi Islam secara aplikatif.",
+
+      expertise: [
+        "Dasar-Dasar Keuangan Syariah",
+        "Akad & Fiqih Muamalah",
+        "Manajemen Bisnis Syariah",
+        "Analisis Kelayakan Usaha",
+        "Ekonomi Mikro & Makro Syariah",
+      ],
+
+      achievements: [
+        "Partisipasi dalam Seminar & Kajian Ekonomi Islam",
+        "Analisis Studi Kasus Perbankan Syariah dalam Kegiatan Akademik",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/hardiansyahmonoarfa_/",
+    },
+
+    coverPhoto: "/images/cover_rolan.png",
+    joinedYear: 2025,
+  },
 
   // ABAM
   // {
