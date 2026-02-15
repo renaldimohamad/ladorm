@@ -441,6 +441,46 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_inka.png",
     joinedYear: 2023,
   },
+  {
+    id: 13,
+    slug: "rahmawati-musa",
+    name: "Rahmawati Musa",
+    photo: "/images/rati-musa.png",
+    major: "Information System Management & Businessi",
+    university: "President University",
+    from: "Boalemo / Paguyaman",
+    status: "alumni",
+    bio: "Memiliki ketertarikan pada manajemen sistem informasi dan manajemen data guna mendukung transformasi digital.",
+
+    about: {
+      summary:
+        "Lulusan IS dengan ketertarikan kuat pada pengelolaan sistem informasi, pengolahan data, dan optimalisasi proses bisnis",
+
+      experience:
+        "Berperan sebagai Data Process di berbagai lingkungan kerja dengan tanggung jawab utama memastikan akurasi, konsistensi, dan integritas data operasional",
+
+      expertise: [
+        "Data Processing & Data Validation",
+        "Information System Management",
+        "Microsoft office",
+        "Reporting & Documentation",
+        "Analytical & Critical Thinking",
+        "Detail-Oriented & Problem Solving",
+      ],
+
+      achievements: [
+        "Berkolaborasi dengan tim operasional dan keuangan dalam meningkatkan efektivitas alur kerja berbasis sistem informasi",
+        "Menjaga konsistensi dan integritas database perusahaan dalam volume data yang besar",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/rattt__/",
+    },
+
+    coverPhoto: "/images/cover_rati.png",
+    joinedYear: 2024,
+  },
 
   // ABAM
   // {
