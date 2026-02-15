@@ -559,7 +559,44 @@ export const residents: Resident[] = [
     coverPhoto: "/images/moli_cover.png",
     joinedYear: 2012,
   },
+  {
+    id: 16,
+    slug: "anisah-salsabilah-bami-camaru",
+    name: "Anisah Salsabilah Bami Camaru",
+    photo: "/images/anisa_camaru.png",
+    major: "Manajemen",
+    university: "Universitas Gunadarma",
+    from: "Kota Gorontalo",
+    status: "alumni",
+    bio: "Berfokus pada pengembangan strategi bisnis dan manajemen yang efektif untuk menciptakan nilai dan pertumbuhan berkelanjutan.",
+    about: {
+      summary:
+        "Mahasiswa Manajemen yang memiliki minat pada pengelolaan bisnis, strategi pemasaran, serta pengembangan organisasi yang adaptif dan inovatif.",
 
+      experience:
+        "Aktif dalam proyek akademik yang berkaitan dengan analisis pasar, perencanaan strategi bisnis, dan manajemen operasional. Terlibat dalam kegiatan organisasi yang melatih kepemimpinan, komunikasi, serta kemampuan pengambilan keputusan berbasis data.",
+
+      expertise: [
+        "Strategi Bisnis",
+        "Manajemen Operasional",
+        "Dasar-Dasar Manajemen Keuangan",
+        "Analisis Pasar & Pemasaran",
+        "Leadership & Team Management",
+      ],
+
+      achievements: [
+        "Penyusunan Business Plan dalam Proyek Akademik",
+        "Partisipasi dalam Seminar & Workshop Manajemen Bisnis",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/chakmr02/",
+    },
+
+    coverPhoto: "/images/cover_anisa.png",
+    joinedYear: 2025,
+  },
   // ABAM
   // {
   //   id: 7,
