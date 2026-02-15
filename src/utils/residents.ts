@@ -597,6 +597,83 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_anisa.png",
     joinedYear: 2025,
   },
+  {
+    id: 17,
+    slug: "guslan-batalipu",
+    name: "Guslan Batalipu",
+    photo: "/images/guslan_photo.png",
+    major: "Ilmu Politik",
+    university: "Universitas Nasional",
+    from: "Kabupaten Boalemo",
+    status: "alumni",
+    bio: "Berfokus pada analisis kebijakan publik dan dinamika politik untuk mendorong tata kelola yang transparan dan partisipatif.",
+
+    about: {
+      summary:
+        "Lulusan Ilmu Politik yang memiliki minat pada kebijakan publik, tata kelola pemerintahan, serta dinamika politik lokal dan nasional.",
+
+      experience:
+        "Memiliki pengalaman dalam kajian kebijakan publik, analisis isu-isu sosial dan politik, serta keterlibatan dalam diskusi dan forum akademik terkait pemerintahan dan demokrasi. Terbiasa melakukan riset literatur, analisis regulasi, serta penyusunan opini atau kajian berbasis data.",
+
+      expertise: [
+        "Analisis Kebijakan Publik",
+        "Riset Sosial & Politik",
+        "Tata Kelola Pemerintahan",
+        "Komunikasi Politik",
+        "Analisis Isu Strategis",
+      ],
+
+      achievements: [
+        "Penyusunan Kajian Akademik tentang Kebijakan Daerah",
+        "Partisipasi dalam Seminar & Diskusi Nasional Isu Politik dan Pemerintahan",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/guslan.batalipu/",
+    },
+
+    coverPhoto: "/images/cover_guslan.png",
+    joinedYear: 2023,
+  },
+  // {
+  //   id: 17,
+  //   slug: "zulkifli",
+  //   name: "Zulkifli",
+  //   photo: "/images/kifli_photo.png",
+  //   major: "Manajemen",
+  //   university: "Universitas Gunadarma",
+  //   from: "Kota Gorontalo",
+  //   status: "alumni",
+  //   bio: "Berfokus pada pengembangan strategi bisnis dan manajemen yang efektif untuk menciptakan nilai dan pertumbuhan berkelanjutan.",
+  //   about: {
+  //     summary:
+  //       "Mahasiswa Manajemen yang memiliki minat pada pengelolaan bisnis, strategi pemasaran, serta pengembangan organisasi yang adaptif dan inovatif.",
+
+  //     experience:
+  //       "Aktif dalam proyek akademik yang berkaitan dengan analisis pasar, perencanaan strategi bisnis, dan manajemen operasional. Terlibat dalam kegiatan organisasi yang melatih kepemimpinan, komunikasi, serta kemampuan pengambilan keputusan berbasis data.",
+
+  //     expertise: [
+  //       "Strategi Bisnis",
+  //       "Manajemen Operasional",
+  //       "Dasar-Dasar Manajemen Keuangan",
+  //       "Analisis Pasar & Pemasaran",
+  //       "Leadership & Team Management",
+  //     ],
+
+  //     achievements: [
+  //       "Penyusunan Business Plan dalam Proyek Akademik",
+  //       "Partisipasi dalam Seminar & Workshop Manajemen Bisnis",
+  //     ],
+  //   },
+
+  //   socials: {
+  //     instagram: "https://www.instagram.com/chakmr02/",
+  //   },
+
+  //   coverPhoto: "/images/cover_anisa.png",
+  //   joinedYear: 2025,
+  // },
   // ABAM
   // {
   //   id: 7,
