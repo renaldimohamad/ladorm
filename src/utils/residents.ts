@@ -370,7 +370,7 @@ export const residents: Resident[] = [
     id: 11,
     slug: "clift-g-f-c-y-lumingas",
     name: "Clift G F C Y Lumingas",
-    photo: "/images/Clift.png",
+    photo: "/images/clift.png",
     major: "Akuntansi",
     university: "Universitas Nasional",
     from: "Kabupaten Boalemo",
