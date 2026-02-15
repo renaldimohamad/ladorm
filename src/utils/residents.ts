@@ -402,6 +402,46 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_clift.png",
     joinedYear: 2019,
   },
+  {
+    id: 12,
+    slug: "frastika-damopolii",
+    name: "Frastika Damopolii",
+    photo: "/images/inka.png",
+    major: "Psikologi",
+    university: "Universitas Al Azhar Indonesia",
+    from: "Kabupaten Pohuwato",
+    status: "active",
+    bio: "Memahami manusia bukan hanya soal teori, tapi tentang empati, observasi, dan komunikasi yang tulus.",
+
+    about: {
+      summary:
+        "Mahasiswa Psikologi yang memiliki minat pada pengembangan diri, kesehatan mental, serta dinamika perilaku individu dan kelompok.",
+
+      experience:
+        "Aktif dalam kegiatan observasi dan asesmen psikologi dasar, diskusi kasus, serta praktik wawancara dan konseling awal. Terlibat dalam kegiatan kampus yang berfokus pada pengembangan karakter, komunikasi interpersonal, dan kerja tim.",
+
+      expertise: [
+        "Psikologi Perkembangan",
+        "Psikologi Sosial",
+        "Observasi & Wawancara Dasar",
+        "Komunikasi Interpersonal",
+        "Manajemen Emosi",
+      ],
+
+      achievements: [
+        "Partisipasi dalam Seminar & Workshop Kesehatan Mental",
+        "Asisten Observasi Studi Perilaku dalam Kegiatan Akademik",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/frstka_/",
+    },
+
+    coverPhoto: "/images/cover_inka.png",
+    joinedYear: 2023,
+  },
+
   // ABAM
   // {
   //   id: 7,
