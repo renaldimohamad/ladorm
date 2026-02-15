@@ -155,7 +155,7 @@ export default function ResidentsPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMobile, visibleCount]);
 
-  // useEffect(() => {  
+  // useEffect(() => {
   //   if (!isMobile) return;
   //   if (!loadMoreRef.current) return;
 

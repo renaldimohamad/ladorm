@@ -366,6 +366,42 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_nadia.png",
     joinedYear: 2022,
   },
+  {
+    id: 11,
+    slug: "clift-g-f-c-y-lumingas",
+    name: "Clift G F C Y Lumingas",
+    photo: "/images/Clift.png",
+    major: "Akuntansi",
+    university: "Universitas Nasional",
+    from: "Kabupaten Boalemo",
+    status: "alumni",
+    bio: "Detail adalah kunci, transparansi adalah prinsip, dan laporan keuangan harus selalu balance.",
+
+    about: {
+      summary:
+        "Lulusan Akuntansi yang memiliki ketertarikan pada pengelolaan keuangan, audit, dan penyusunan laporan keuangan sesuai standar akuntansi yang berlaku.",
+
+      experience:
+        "Memiliki pengalaman dalam penyusunan laporan keuangan, pencatatan transaksi, rekonsiliasi bank, serta analisis arus kas. Terbiasa bekerja dengan ketelitian tinggi dalam memastikan akurasi data dan kepatuhan terhadap standar akuntansi dan perpajakan.",
+
+      expertise: [
+        "Penyusunan Laporan Keuangan",
+        "Analisis Keuangan",
+        "Rekonsiliasi & Pembukuan",
+        "Perpajakan Dasar",
+        "Audit Internal",
+      ],
+      achievements: [
+        "Penyusunan Laporan Keuangan Tahunan Berbasis PSAK",
+        "Analisis Kinerja Keuangan untuk Evaluasi Usaha",
+      ],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/cliftlumingas_/",
+    },
+    coverPhoto: "/images/cover_clift.png",
+    joinedYear: 2019,
+  },
   // ABAM
   // {
   //   id: 7,
