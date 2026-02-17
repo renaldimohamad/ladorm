@@ -636,6 +636,36 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_guslan.png",
     joinedYear: 2023,
   },
+  {
+    id: 18,
+    slug: "imtaq-irsanto-moha",
+    name: "Imtaq Irsanto Moha",
+    photo: "/images/imtaq-photo.png",
+    major: "Ilmu Hukum",
+    university: "Universitas UNG",
+    from: "Kab. Gorontalo / Tibawa",
+    status: "alumni",
+    bio: "Lulusan Hukum yang jatuh cinta pada dunia visual. Sekarang aktif sebagai Visual Branding Designer, membantu brand tampil lebih kuat, lebih berani, dan lebih punya identitas.",
+    about: {
+      summary: "Sarjana Hukum | Visual Branding Designer.",
+      experience:
+        "Berpengalaman membangun identitas brand dari nol hingga siap tampil di publik — mencakup logo, visual system, social media branding, dan materi kampanye.",
+      expertise: [
+        "Concepting",
+        "Editing",
+        "Copy Writing",
+        "Team Work",
+        "Public Speaking",
+        "Pitching",
+      ],
+      achievements: ["Owner Stucky Studio", "Co-Founder Ruang Anak Muda"],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/sn.ojsn/",
+    },
+    coverPhoto: "/images/cover_imtaq.webp",
+    joinedYear: 2025,
+  },
   // {
   //   id: 17,
   //   slug: "zulkifli",
