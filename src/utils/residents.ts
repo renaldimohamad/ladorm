@@ -715,41 +715,54 @@ export const residents: Resident[] = [
     coverPhoto: "/images/cover_jeri.png",
     joinedYear: 2022,
   },
+  {
+    id: 19,
+    slug: "rahmat-indag-usman",
+    name: "Rahmat Indag Usman",
+    photo: "/images/amad_photo.png",
+    major: "Ekonomi",
+    university: "UPN Veteran Jakarta",
+    from: "Kab. Gorontalo / Tibawa",
+    status: "alumni",
+    bio: "Country Director dengan latar belakang Ekonomi yang berfokus pada pengembangan strategi bisnis, ekspansi pasar, dan kepemimpinan organisasi untuk mendorong pertumbuhan berkelanjutan.",
+
+    about: {
+      summary:
+        "Lulusan Ekonomi dengan spesialisasi pada manajemen strategis, analisis bisnis, dan pengambilan keputusan berbasis data. Memiliki pengalaman dalam memimpin tim lintas fungsi dan mengembangkan arah strategis perusahaan di tingkat nasional.",
+
+      experience:
+        "Saat ini menjabat sebagai Country Director, bertanggung jawab atas pengembangan strategi bisnis, ekspansi pasar, manajemen operasional, serta pencapaian target pertumbuhan perusahaan. Berpengalaman dalam menyusun perencanaan bisnis, analisis kelayakan investasi, optimalisasi performa tim, dan membangun kemitraan strategis dengan berbagai stakeholder.",
+
+      expertise: [
+        "Strategic Management",
+        "Business Development",
+        "Financial & Market Analysis",
+        "Leadership & Organizational Development",
+        "Investment Planning",
+        "Public Speaking & Negotiation",
+      ],
+
+      achievements: [
+        "Memimpin operasional dan strategi perusahaan di tingkat nasional",
+        "Meningkatkan pertumbuhan bisnis melalui ekspansi pasar strategis",
+        "Membangun kemitraan dengan stakeholder dan mitra strategis",
+        "Mengembangkan sistem manajemen berbasis kinerja",
+        "Berpengalaman dalam perencanaan dan evaluasi investasi",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/ladormy_/",
+    },
+
+    coverPhoto: "/images/cover_amad.jpg",
+    joinedYear: 2015,
+  },
   // {
   //   id: 18,
   //   slug: "imtaq-irsanto-moha",
   //   name: "Imtaq Irsanto Moha", IMTAQ HIDE FOR NOW
   //   photo: "/images/imtaq-photo.png",
-  //   major: "Ilmu Hukum",
-  //   university: "Universitas UNG",
-  //   from: "Kab. Gorontalo / Tibawa",
-  //   status: "alumni",
-  //   bio: "Lulusan Hukum yang jatuh cinta pada dunia visual. Sekarang aktif sebagai Visual Branding Designer, membantu brand tampil lebih kuat, lebih berani, dan lebih punya identitas.",
-  //   about: {
-  //     summary: "Sarjana Hukum | Visual Branding Designer.",
-  //     experience:
-  //       "Berpengalaman membangun identitas brand dari nol hingga siap tampil di publik — mencakup logo, visual system, social media branding, dan materi kampanye.",
-  //     expertise: [
-  //       "Concepting",
-  //       "Editing",
-  //       "Copy Writing",
-  //       "Team Work",
-  //       "Public Speaking",
-  //       "Pitching",
-  //     ],
-  //     achievements: ["Owner Stucky Studio", "Co-Founder Ruang Anak Muda"],
-  //   },
-  //   socials: {
-  //     instagram: "https://www.instagram.com/sn.ojsn/",
-  //   },
-  //   coverPhoto: "/images/cover_imtaq.webp",
-  //   joinedYear: 2025,
-  // },
-  // {
-  //   id: 18,
-  //   slug: "rahmat-indag-usman", KA AMAT HIDE FOR NOW
-  //   name: "Rahmat Indag Usman",
-  //   photo: "/images/amad_photo.png",
   //   major: "Ilmu Hukum",
   //   university: "Universitas UNG",
   //   from: "Kab. Gorontalo / Tibawa",
