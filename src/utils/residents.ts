@@ -679,7 +679,7 @@ export const residents: Resident[] = [
   },
   {
     id: 19,
-    slug: "mohamad-zachary-rusman",
+    slug: "zachary-rusman",
     name: "Mohamad Zachary Rusman",
     photo: "/images/jeri_photo.png",
     major: "Magister Hukum Bisnis",
@@ -687,14 +687,11 @@ export const residents: Resident[] = [
     from: "Kabupaten Boalemo",
     status: "alumni",
     bio: "Praktisi hukum yang berfokus pada pengembangan dan penerapan hukum bisnis dalam mendukung tata kelola perusahaan yang profesional, transparan, dan berkelanjutan.",
-
     about: {
       summary:
         "Lulusan Magister Hukum Bisnis dengan minat pada hukum perusahaan, kontrak bisnis, serta kepatuhan hukum (compliance) dalam kegiatan usaha. Memiliki komitmen untuk menghadirkan solusi hukum yang strategis dan adaptif terhadap dinamika dunia bisnis.",
-
       experience:
         "Berpengalaman dalam melakukan analisis perjanjian bisnis, penyusunan kontrak, serta kajian aspek hukum dalam kegiatan investasi dan kerja sama usaha. Terlibat dalam pendampingan hukum perusahaan serta penelaahan regulasi untuk memastikan kepatuhan terhadap peraturan perundang-undangan yang berlaku.",
-
       expertise: [
         "Hukum Perusahaan",
         "Hukum Kontrak & Perjanjian Bisnis",
@@ -702,7 +699,6 @@ export const residents: Resident[] = [
         "Compliance & Regulatory Analysis",
         "Hukum Investasi",
       ],
-
       achievements: [
         "Menyusun dan mereview kontrak kerja sama bisnis",
         "Melakukan analisis risiko hukum dalam kegiatan usaha",
@@ -713,11 +709,9 @@ export const residents: Resident[] = [
         "Menjunjung tinggi etika dan integritas profesi hukum",
       ],
     },
-
     socials: {
-      instagram: "https://www.instagram.com/via_nt.y/",
+      instagram: "https://www.instagram.com/zacharyrusman/",
     },
-
     coverPhoto: "/images/cover_jeri.png",
     joinedYear: 2022,
   },
