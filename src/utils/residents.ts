@@ -639,7 +639,7 @@ export const residents: Resident[] = [
   {
     id: 18,
     slug: "viranty-tebeng",
-    name: "viranty Tebeng",
+    name: "Viranty Tebeng",
     photo: "/images/vira_photo.png",
     major: "Profesi Ners",
     university: "Binawan university internasional",
@@ -675,6 +675,50 @@ export const residents: Resident[] = [
       instagram: "https://www.instagram.com/via_nt.y/",
     },
     coverPhoto: "/images/cover_vhira.jpg",
+    joinedYear: 2022,
+  },
+  {
+    id: 19,
+    slug: "mohamad-zachary-rusman",
+    name: "Mohamad Zachary Rusman",
+    photo: "/images/jeri_photo.png",
+    major: "Magister Hukum Bisnis",
+    university: "Universitas Trisakti",
+    from: "Kabupaten Boalemo",
+    status: "alumni",
+    bio: "Praktisi hukum yang berfokus pada pengembangan dan penerapan hukum bisnis dalam mendukung tata kelola perusahaan yang profesional, transparan, dan berkelanjutan.",
+
+    about: {
+      summary:
+        "Lulusan Magister Hukum Bisnis dengan minat pada hukum perusahaan, kontrak bisnis, serta kepatuhan hukum (compliance) dalam kegiatan usaha. Memiliki komitmen untuk menghadirkan solusi hukum yang strategis dan adaptif terhadap dinamika dunia bisnis.",
+
+      experience:
+        "Berpengalaman dalam melakukan analisis perjanjian bisnis, penyusunan kontrak, serta kajian aspek hukum dalam kegiatan investasi dan kerja sama usaha. Terlibat dalam pendampingan hukum perusahaan serta penelaahan regulasi untuk memastikan kepatuhan terhadap peraturan perundang-undangan yang berlaku.",
+
+      expertise: [
+        "Hukum Perusahaan",
+        "Hukum Kontrak & Perjanjian Bisnis",
+        "Legal Drafting",
+        "Compliance & Regulatory Analysis",
+        "Hukum Investasi",
+      ],
+
+      achievements: [
+        "Menyusun dan mereview kontrak kerja sama bisnis",
+        "Melakukan analisis risiko hukum dalam kegiatan usaha",
+        "Mendukung penerapan tata kelola perusahaan (Good Corporate Governance)",
+        "Memberikan pendapat hukum (legal opinion)",
+        "Menguasai teknik legal drafting profesional",
+        "Kemampuan negosiasi dan komunikasi hukum",
+        "Menjunjung tinggi etika dan integritas profesi hukum",
+      ],
+    },
+
+    socials: {
+      instagram: "https://www.instagram.com/via_nt.y/",
+    },
+
+    coverPhoto: "/images/cover_jeri.png",
     joinedYear: 2022,
   },
   // {
