@@ -96,8 +96,7 @@ export default function ResidentDetailClient({ resident }: Props) {
         transition-all duration-300
         hover:-translate-y-1 hover:scale-105
       "
-        style={{ backgroundColor: `${color}15` }}
-      >
+        style={{ backgroundColor: `${color}15` }}>
         <Icon
           className="transition-transform duration-300 group-hover:scale-110"
           size={16}
@@ -112,8 +111,7 @@ export default function ResidentDetailClient({ resident }: Props) {
         transition-all duration-300
         text-[10px] bg-gray-900 text-white
         px-2 py-1 rounded-md shadow-md whitespace-nowrap
-      "
-        >
+      ">
           {label}
         </div>
       </a>
@@ -147,8 +145,7 @@ export default function ResidentDetailClient({ resident }: Props) {
         shadow-sm
         transition-all duration-300
         hover:-translate-y-1 hover:scale-105
-      "
-      >
+      ">
         <FaShareAlt
           size={14}
           className="transition-transform duration-300 group-hover:rotate-12"
@@ -186,8 +183,7 @@ export default function ResidentDetailClient({ resident }: Props) {
         transition-all duration-300
         hover:-translate-y-1 hover:shadow-md
         ${gradient}
-      `}
-      >
+      `}>
         <div className="absolute -right-1 -bottom-2 text-white/10 text-8xl">
           {icon}
         </div>
@@ -237,8 +233,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                 flex flex-col items-center justify-end 
                 px-6 py-10 sm:px-10 sm:py-14 
                 border-b lg:border-b-0 lg:border-r 
-                border-gray-100 overflow-hidden"
-                      >
+                border-gray-100 overflow-hidden">
                         {/* Cover Background */}
                         {resident.coverPhoto && (
                           <div
@@ -273,8 +268,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                             className={`mt-6 inline-flex items-center gap-2 px-4 py-1.5 
                   rounded-full text-xs font-medium tracking-wide 
                   backdrop-blur-md bg-white/70
-        ${isActive ? "text-[#047857]" : "text-[#134E4A]"}`}
-                          >
+        ${isActive ? "text-[#047857]" : "text-[#134E4A]"}`}>
                             <span
                               className={`w-2 h-2 rounded-full ${
                                 isActive ? "bg-[#047857]" : "bg-[#134E4A]"
@@ -376,8 +370,7 @@ export default function ResidentDetailClient({ resident }: Props) {
     to-[#2C705B]
     bg-[length:4px_100%]
     bg-no-repeat
-  "
-                  >
+  ">
                     {finalAbout.summary}
                   </p>
 
@@ -397,8 +390,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                           className="px-4 py-1.5 rounded-full text-xs sm:text-sm 
              bg-gradient-to-r from-[#016072]/10 to-[#2C705B]/10
              text-[#065F46]
-             border border-[#016072]/20"
-                        >
+             border border-[#016072]/20">
                           {item}
                         </span>
                       ))}
@@ -416,8 +408,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                       {finalAbout.achievements.map((item, index) => (
                         <li
                           key={index}
-                          className="flex gap-3 text-sm sm:text-base"
-                        >
+                          className="flex gap-3 text-sm sm:text-base">
                           <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400" />
                           <span className="text-gray-600">{item}</span>
                         </li>
@@ -446,8 +437,7 @@ export default function ResidentDetailClient({ resident }: Props) {
           border border-gray-100
           shadow-[0_8px_30px_rgba(0,0,0,0.05)]
           transition-all duration-300
-        "
-                      >
+        ">
                         {Object.entries(resident.socials).map(([key, url]) => {
                           if (!url) return null;
 

@@ -13,6 +13,7 @@ import { useLanguage } from "../../stores/useLengauage";
 import { CallToAction } from "@/ui/common/CallToAction";
 import WhyLADorm from "@/components/WhyLADorm";
 import { SectionAbout } from "@/components/Home/SectionAbout";
+import LadormChat from "@/components/chatComponents";
 
 export default function Home() {
   // const scrollDir = useScrollDirection();
@@ -100,7 +101,6 @@ export default function Home() {
             })}
           </Swiper>
         </section>
-
         {/* <section
           id="about"
           className="scroll-mt-20 w-full px-4 py-20 bg-white text-black"
@@ -197,7 +197,6 @@ export default function Home() {
         {/* <section>
           <DormitoryManagement />
         </section> */}
-
         <WhyLADorm />
         <Footer />
       </main>

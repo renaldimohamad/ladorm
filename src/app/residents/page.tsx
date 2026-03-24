@@ -6,8 +6,8 @@ import { residents } from "@/utils/residents";
 import { LayoutBlank } from "@/layouts";
 import { FaLongArrowAltRight, FaSearch } from "react-icons/fa";
 import { HiXCircle } from "react-icons/hi";
-import { CallToAction } from "@/ui/common/CallToAction";
 import Fade from "@/components/common/Fade";
+import LadormChat from "@/components/chatComponents";
 // import { Search, XCircle } from "lucide-react";
 
 const containerVariants = {
@@ -232,6 +232,8 @@ export default function ResidentsPage() {
             </div>
           </div>
 
+          {/* <LadormChat /> */}
+
           {/* ================= FILTER BAR ================= */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -264,8 +266,7 @@ export default function ResidentsPage() {
           hover:shadow-sm
         `
     }
-  `}
-                >
+  `}>
                   {type === "all"
                     ? "Semua"
                     : type === "active"
@@ -315,8 +316,7 @@ export default function ResidentsPage() {
         text-gray-400
         hover:text-[rgba(1,96,114,0.9)]
         transition-colors duration-300
-      "
-                >
+      ">
                   <HiXCircle size={18} />
                 </button>
               )}
@@ -342,8 +342,7 @@ export default function ResidentsPage() {
                 {visibleResidents.map((r) => (
                   <div
                     key={r.slug}
-                    className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-gray-200 to-gray-100 transition-all duration-500 hover:from-gray-300 hover:to-gray-200"
-                  >
+                    className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-gray-200 to-gray-100 transition-all duration-500 hover:from-gray-300 hover:to-gray-200">
                     <div className="bg-white rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-2xl">
                       {/* Avatar */}
                       <div className="relative mb-4 sm:mb-6">
@@ -403,8 +402,7 @@ export default function ResidentsPage() {
     hover:from-[rgba(1,96,114,0.9)] 
     hover:to-[rgba(44,112,91,0.9)]
     active:scale-95
-  "
-                      >
+  ">
                         Lihat Profil
                         <span className="transition-transform duration-300 group-hover:translate-x-1">
                           <FaLongArrowAltRight />
@@ -423,8 +421,7 @@ export default function ResidentsPage() {
             {isMobile && visibleCount < filteredResidents.length && (
               <div
                 ref={loadMoreRef}
-                className="infinite-scroll-request loader-ellips flex items-center gap-2 transition-opacity duration-300"
-              >
+                className="infinite-scroll-request loader-ellips flex items-center gap-2 transition-opacity duration-300">
                 <span className="dot" />
                 <span className="dot" />
                 <span className="dot" />
@@ -527,15 +524,13 @@ function StatItem({
           ${colorStyles[variant].bg}
           ${colorStyles[variant].border}
           border
-        `}
-      >
+        `}>
         <span
           className={`
             text-xl sm:text-2xl md:text-3xl
             font-semibold tracking-tight
             ${colorStyles[variant].text}
-          `}
-        >
+          `}>
           {number}
         </span>
       </div>
@@ -547,8 +542,7 @@ function StatItem({
           text-xs sm:text-sm
           text-gray-500
           tracking-wide
-        "
-      >
+        ">
         {label}
       </span>
     </div>

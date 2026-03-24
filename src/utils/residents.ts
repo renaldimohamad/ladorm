@@ -722,7 +722,7 @@ export const residents: Resident[] = [
     photo: "/images/amad_photo.png",
     major: "Ekonomi",
     university: "UPN Veteran Jakarta",
-    from: "Kab. Gorontalo / Tibawa",
+    from: "Kota Gorontalo",
     status: "alumni",
     bio: "Country Director dengan latar belakang Ekonomi yang berfokus pada pengembangan strategi bisnis, ekspansi pasar, dan kepemimpinan organisasi untuk mendorong pertumbuhan berkelanjutan.",
 
@@ -757,6 +757,43 @@ export const residents: Resident[] = [
 
     coverPhoto: "/images/cover_amad.jpg",
     joinedYear: 2015,
+  },
+  {
+    id: 20,
+    slug: "dolfi-mokolengsang",
+    name: "Dolfi Mokolengsang",
+    photo: "/images/dolfi.webp",
+    major: "Ekonomi",
+    university: "Alumni - Universitas Trilogi",
+    from: "Kabupaten Pohuwato",
+    status: "alumni",
+    bio: "Business Development Manager dengan latar belakang Ekonomi yang berpengalaman dalam pengembangan bisnis, telemarketing, manajemen akun, serta operasional pelanggan untuk mendorong pertumbuhan perusahaan.",
+    about: {
+      summary:
+        "Lulusan Ekonomi dengan fokus pada pengembangan bisnis, manajemen pelanggan, dan operasional. Memiliki pengalaman dalam mengelola hubungan klien, strategi penjualan, serta peningkatan performa bisnis melalui pendekatan berbasis data.",
+      experience:
+        "Berpengalaman sebagai Business Development Manager, Telemarketing Specialist, Account Manager, Customer Operations Specialist, dan Administrative Officer. Terlibat dalam pengembangan strategi pemasaran, pengelolaan akun klien, peningkatan kepuasan pelanggan, serta optimalisasi proses operasional baik secara on-site maupun hybrid.",
+      expertise: [
+        "Business Development",
+        "Telemarketing & Sales Strategy",
+        "Account Management",
+        "Customer Operations",
+        "Administrative Management",
+        "Client Relationship Management",
+      ],
+      achievements: [
+        "Berhasil mengembangkan dan menjaga hubungan dengan klien",
+        "Meningkatkan performa penjualan melalui strategi telemarketing",
+        "Mengoptimalkan proses operasional pelanggan",
+        "Berpengalaman dalam berbagai peran lintas fungsi bisnis",
+        "Adaptif bekerja dalam sistem hybrid dan on-site",
+      ],
+    },
+    socials: {
+      instagram: "https://www.instagram.com/si_doell/",
+    },
+    coverPhoto: "/images/dolfi.webp",
+    joinedYear: 2012,
   },
   // {
   //   id: 18,
