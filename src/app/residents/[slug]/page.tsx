@@ -68,6 +68,9 @@ export async function generateMetadata({
       description: description,
       images: [imageUrl],
     },
+    alternates: {
+      canonical: `${baseUrl}/residents/${resident.slug}`,
+    },
   };
 }
 
@@ -90,5 +93,31 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  return <ResidentDetailClient resident={resident} />;
+  const baseUrl = "https://ladorm.vercel.app";
+  const imageUrl = resident.coverPhoto
+    ? `${baseUrl}${resident.coverPhoto}`
+    : `${baseUrl}${resident.photo}`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: resident.name,
+    image: imageUrl,
+    url: `${baseUrl}/residents/${resident.slug}`,
+    description: resident.about?.summary || resident.bio || "",
+    affiliation: resident.university,
+    jobTitle: resident.major,
+    alumniOf: resident.university,
+    sameAs: Object.values(resident.socials || {}).filter(Boolean),
+  } as any;
+
+  return (
+    <>
+      <ResidentDetailClient resident={resident} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+    </>
+  );
 }
