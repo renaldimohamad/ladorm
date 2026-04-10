@@ -71,9 +71,9 @@ export default function LadormChat() {
         </div>
 
         {/* Messages */}
-        <div className="h-80 overflow-y-auto px-5 py-4 space-y-4 bg-white text-sm">
+        <div className="h-80 overflow-y-auto px-5 py-4 space-y-4 bg-background text-sm">
           {messages.length === 0 && (
-            <div className="text-gray-500 text-xs">
+            <div className="text-muted-foreground text-xs">
               👋 Halo! Kamu bisa tanya tentang jurusan, alumni, atau asal
               daerah.
             </div>
@@ -85,7 +85,7 @@ export default function LadormChat() {
               className={`max-w-[85%] px-4 py-2 rounded-2xl leading-relaxed ${
                 m.role === "user"
                   ? "ml-auto text-white bg-gradient-to-r from-[rgba(1,96,114,0.9)] to-[rgba(44,112,91,0.9)] shadow-md"
-                  : "bg-gray-100 text-gray-800 shadow-sm"
+                  : "bg-muted text-foreground shadow-sm"
               }`}
             >
               {m.text}
@@ -98,9 +98,9 @@ export default function LadormChat() {
         </div>
 
         {/* Input Area */}
-        <div className="px-4 py-3 bg-white border-t flex items-center gap-3">
+        <div className="px-4 py-3 bg-background border-t flex items-center gap-3">
           <input
-            className="flex-1 text-gray-800 bg-gray-100 rounded-full px-4 py-2 text-sm
+            className="flex-1 text-foreground bg-muted rounded-full px-4 py-2 text-sm
             focus:outline-none focus:ring-2 focus:ring-[rgba(1,96,114,0.5)]
             placeholder:text-gray-400"
             value={input}
@@ -126,7 +126,7 @@ export default function LadormChat() {
 /* Typing Indicator */
 function TypingDots() {
   return (
-    <div className="bg-gray-100 px-4 py-2 rounded-2xl w-fit shadow-sm">
+    <div className="bg-muted px-4 py-2 rounded-2xl w-fit shadow-sm">
       <div className="flex gap-1">
         <span className="w-2 h-2 bg-[rgba(1,96,114,0.8)] rounded-full animate-bounce" />
         <span className="w-2 h-2 bg-[rgba(1,96,114,0.8)] rounded-full animate-bounce delay-150" />

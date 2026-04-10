@@ -225,7 +225,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                     <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] h-[300px] bg-indigo-50 rounded-full blur-3xl opacity-60" />
                   </div>
 
-                  <div className="bg-white rounded-3xl overflow-hidden border-b border-gray-200">
+                  <div className="bg-background rounded-3xl overflow-hidden border-b border-border">
                     <div className="grid lg:grid-cols-2">
                       {/* LEFT SIDE — AVATAR */}
                       <div
@@ -233,7 +233,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                 flex flex-col items-center justify-end 
                 px-6 py-10 sm:px-10 sm:py-14 
                 border-b lg:border-b-0 lg:border-r 
-                border-gray-100 overflow-hidden">
+                border-border overflow-hidden">
                         {/* Cover Background */}
                         {resident.coverPhoto && (
                           <div
@@ -252,7 +252,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                         <div className="relative z-10 flex flex-col items-center">
                           {/* Avatar */}
                           <div className="relative group">
-                            <div className="absolute inset-0 rounded-full bg-white/40 blur-2xl opacity-40 transition group-hover:opacity-60" />
+                            <div className="absolute inset-0 rounded-full bg-background/40 blur-2xl opacity-40 transition group-hover:opacity-60" />
                             <img
                               src={resident.photo}
                               alt={resident.name}
@@ -267,7 +267,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                           <div
                             className={`mt-6 inline-flex items-center gap-2 px-4 py-1.5 
                   rounded-full text-xs font-medium tracking-wide 
-                  backdrop-blur-md bg-white/70
+                  backdrop-blur-md bg-background/70
         ${isActive ? "text-[#047857]" : "text-[#134E4A]"}`}>
                             <span
                               className={`w-2 h-2 rounded-full ${
@@ -281,11 +281,11 @@ export default function ResidentDetailClient({ resident }: Props) {
 
                       {/* RIGHT SIDE — IDENTITY */}
                       <div className="px-6 py-10 sm:px-10 sm:py-14 flex flex-col justify-center text-center lg:text-left">
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 leading-tight">
+                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-foreground leading-tight">
                           {resident.name}
                         </h1>
 
-                        <p className="mt-3 text-base sm:text-lg text-gray-600">
+                        <p className="mt-3 text-base sm:text-lg text-muted-foreground">
                           {resident.major}
                         </p>
 
@@ -294,17 +294,17 @@ export default function ResidentDetailClient({ resident }: Props) {
                         </p>
 
                         {/* Divider */}
-                        <div className="mt-6 h-px w-16 bg-gray-200 mx-auto lg:mx-0" />
+                        <div className="mt-6 h-px w-16 bg-muted mx-auto lg:mx-0" />
 
                         {resident.bio && (
-                          <p className="mt-6 text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                          <p className="mt-6 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                             {resident.bio}
                           </p>
                         )}
 
                         <div className="mt-4 flex flex-wrap items-center gap-3 justify-center lg:justify-start italic">
                           {resident.joinedYear && (
-                            <span className="flex items-center gap-2 text-xs text-gray-500">
+                            <span className="flex items-center gap-2 text-xs text-muted-foreground">
                               <span className="w-1.5 h-1.5 rounded-full bg-gray-300" />
                               Bergabung sejak {resident.joinedYear}
                             </span>
@@ -344,9 +344,9 @@ export default function ResidentDetailClient({ resident }: Props) {
                 />
               </div>
 
-              <div className="mt-16 bg-white rounded-2xl border border-gray-100 p-8 sm:p-12">
+              <div className="mt-16 bg-background rounded-2xl border border-border p-8 sm:p-12">
                 <div className="mb-10">
-                  <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
+                  <h2 className="text-2xl sm:text-3xl font-semibold text-foreground">
                     Tentang
                   </h2>
                   <p className="text-sm text-gray-400 mt-1">
@@ -354,12 +354,12 @@ export default function ResidentDetailClient({ resident }: Props) {
                   </p>
                 </div>
 
-                <div className="max-w-3xl text-gray-600 leading-8 text-sm sm:text-base space-y-6">
+                <div className="max-w-3xl text-muted-foreground leading-8 text-sm sm:text-base space-y-6">
                   <p
                     className="
     relative
     pl-6
-    text-gray-800
+    text-foreground
     font-medium
     text-base sm:text-lg
     leading-relaxed
@@ -379,7 +379,7 @@ export default function ResidentDetailClient({ resident }: Props) {
 
                 {finalAbout.expertise.length > 0 && (
                   <div className="mt-12">
-                    <h3 className="text-sm font-semibold text-gray-900 mb-4">
+                    <h3 className="text-sm font-semibold text-foreground mb-4">
                       Keahlian
                     </h3>
 
@@ -400,7 +400,7 @@ export default function ResidentDetailClient({ resident }: Props) {
 
                 {finalAbout.achievements.length > 0 && (
                   <div className="mt-12">
-                    <h3 className="text-sm font-semibold text-gray-900 mb-4">
+                    <h3 className="text-sm font-semibold text-foreground mb-4">
                       Pencapaian
                     </h3>
 
@@ -410,7 +410,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                           key={index}
                           className="flex gap-3 text-sm sm:text-base">
                           <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400" />
-                          <span className="text-gray-600">{item}</span>
+                          <span className="text-muted-foreground">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -420,7 +420,7 @@ export default function ResidentDetailClient({ resident }: Props) {
 
               {/* ================= SOCIAL FOOTER ================= */}
               {resident.socials && (
-                <div className="mt-16 pt-10 border-t border-gray-100">
+                <div className="mt-16 pt-10 border-t border-border">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
                     <p className="text-xs sm:text-sm text-gray-400">
                       Terhubung dengan {resident.name}
@@ -433,8 +433,8 @@ export default function ResidentDetailClient({ resident }: Props) {
           px-4 sm:px-6
           py-2.5 sm:py-3
           rounded-full
-          bg-white/80 backdrop-blur-xl
-          border border-gray-100
+          bg-background/80 backdrop-blur-xl
+          border border-border
           shadow-[0_8px_30px_rgba(0,0,0,0.05)]
           transition-all duration-300
         ">
@@ -456,7 +456,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                           );
                         })}
 
-                        <div className="h-5 w-px bg-gray-200 mx-1 sm:mx-2" />
+                        <div className="h-5 w-px bg-muted mx-1 sm:mx-2" />
 
                         <LuxuryShareButton name={resident.name} />
                       </div>

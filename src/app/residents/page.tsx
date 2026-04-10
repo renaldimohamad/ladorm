@@ -181,16 +181,16 @@ export default function ResidentsPage() {
   function SkeletonCard() {
     return (
       <div className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-gray-200 to-gray-100">
-        <div className="bg-white rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center animate-pulse">
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gray-200 mb-4 sm:mb-6" />
+        <div className="bg-background rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center animate-pulse">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-muted mb-4 sm:mb-6" />
 
-          <div className="h-4 w-46 bg-gray-200 rounded mb-2" />
-          <div className="h-3 w-36 bg-gray-200 rounded mb-2" />
-          <div className="h-3 w-30 bg-gray-200 rounded mb-3" />
+          <div className="h-4 w-46 bg-muted rounded mb-2" />
+          <div className="h-3 w-36 bg-muted rounded mb-2" />
+          <div className="h-3 w-30 bg-muted rounded mb-3" />
 
-          <div className="h-3 w-70 bg-gray-200 rounded mb-6" />
+          <div className="h-3 w-70 bg-muted rounded mb-6" />
 
-          <div className="h-8 w-38 bg-gray-200 rounded-full" />
+          <div className="h-8 w-38 bg-muted rounded-full" />
         </div>
       </div>
     );
@@ -198,19 +198,19 @@ export default function ResidentsPage() {
 
   return (
     <LayoutBlank>
-      <section className="relative min-h-screen bg-gray-50 py-16 sm:py-20 md:py-24 overflow-hidden">
+      <section className="relative min-h-screen bg-muted py-16 sm:py-20 md:py-24 overflow-hidden">
         {/* Background Blur Accent */}
-        <div className="hidden sm:block absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gray-200 rounded-full blur-3xl opacity-20 -z-10" />
+        <div className="hidden sm:block absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-muted rounded-full blur-3xl opacity-20 -z-10" />
         <div className="hidden sm:block absolute bottom-0 right-0 w-[400px] h-[400px] bg-gray-300 rounded-full blur-3xl opacity-20 -z-10" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* ================= HERO ================= */}
           <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-gray-900">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight text-foreground">
               Daftar Penghuni LADORM
             </h1>
 
-            <p className="text-gray-500 mt-4 sm:mt-6 max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
+            <p className="text-muted-foreground mt-4 sm:mt-6 max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
               Individu dengan latar belakang akademik dan keahlian beragam,
               membentuk lingkungan kolaboratif yang inovatif dan inspiratif.
             </p>
@@ -258,9 +258,9 @@ export default function ResidentsPage() {
           shadow-[0_6px_20px_rgba(1,96,114,0.25)]
         `
         : `
-          text-gray-600
-          bg-white
-          border border-gray-200
+          text-muted-foreground
+          bg-background
+          border border-border
           hover:border-[rgba(1,96,114,0.5)]
           hover:text-[rgba(1,96,114,0.9)]
           hover:shadow-sm
@@ -295,9 +295,9 @@ export default function ResidentsPage() {
       w-full pl-12 pr-10 py-3
       rounded-full
       text-sm sm:text-base
-      bg-white
-      border border-gray-200
-      text-gray-700
+      bg-background
+      border border-border
+      text-muted-foreground
       placeholder:text-gray-400
       transition-all duration-300
       focus:outline-none
@@ -333,7 +333,7 @@ export default function ResidentsPage() {
               ))}
             </div>
           ) : filteredResidents.length === 0 ? (
-            <div className="text-center py-16 sm:py-20 text-gray-500 text-sm sm:text-base">
+            <div className="text-center py-16 sm:py-20 text-muted-foreground text-sm sm:text-base">
               Tidak ditemukan penghuni.
             </div>
           ) : (
@@ -343,7 +343,7 @@ export default function ResidentsPage() {
                   <div
                     key={r.slug}
                     className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-gray-200 to-gray-100 transition-all duration-500 hover:from-gray-300 hover:to-gray-200">
-                    <div className="bg-white rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-2xl">
+                    <div className="bg-background rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-2xl">
                       {/* Avatar */}
                       <div className="relative mb-4 sm:mb-6">
                         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-gray-200 to-gray-100 blur-xl opacity-40"></div>
@@ -356,12 +356,12 @@ export default function ResidentsPage() {
                       </div>
 
                       {/* Name */}
-                      <h2 className="text-base sm:text-lg font-semibold text-gray-900">
+                      <h2 className="text-base sm:text-lg font-semibold text-foreground">
                         {r.name}
                       </h2>
 
                       {/* Major */}
-                      <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                         {r.major}
                       </p>
 
@@ -377,7 +377,7 @@ export default function ResidentsPage() {
 
                       {/* Bio */}
                       {r.bio && (
-                        <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 line-clamp-3">
+                        <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 line-clamp-3">
                           {r.bio}
                         </p>
                       )}
@@ -448,16 +448,16 @@ export default function ResidentsPage() {
             <div className="mt-20 sm:mt-28 text-center px-4">
               <hr className="text-gray-200 mb-16" />
               <Fade direction="up">
-                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900">
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground">
                   Ingin Bergabung?
                 </h3>
               </Fade>
-              <p className="text-gray-500 mt-3 text-sm sm:text-base">
+              <p className="text-muted-foreground mt-3 text-sm sm:text-base">
                 Jadilah bagian dari komunitas yang dinamis dan inspiratif.
               </p>
 
               <Fade direction="up">
-                <button className="mt-6 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full  bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white text-sm font-medium transition hover:bg-black">
+                <button className="mt-6 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full  bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white text-sm font-medium transition hover:bg-black">
                   Daftar Sekarang
                 </button>
               </Fade>
@@ -465,7 +465,7 @@ export default function ResidentsPage() {
               {/* <CallToAction
               text={"Daftar Sekarang"}
               href="/contact-us"
-              className="mt-6  bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)]"
+              className="mt-6  bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)]"
               rounded="full"
             /> */}
             </div>
@@ -540,7 +540,7 @@ function StatItem({
         className="
           mt-2
           text-xs sm:text-sm
-          text-gray-500
+          text-muted-foreground
           tracking-wide
         ">
         {label}

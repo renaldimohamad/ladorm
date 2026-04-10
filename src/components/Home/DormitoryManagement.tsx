@@ -47,7 +47,7 @@ const dataPengurus = [
 
 export default function DormitoryManagement() {
   return (
-    <section className="bg-gray-200 py-16 px-4">
+    <section className="bg-muted py-16 px-4">
       <h2 className="text-center text-2xl sm:text-3xl font-semibold mb-10 text-[#124734]">
         <div className="flex justify-center mb-2">
           <Fade direction="up">
@@ -72,7 +72,7 @@ export default function DormitoryManagement() {
             <SwiperSlide key={index}>
               <Fade direction="up">
                 <div className="flex justify-center">
-                  <div className="bg-white rounded-2xl px-6 py-8 w-[250px] flex flex-col items-center text-center">
+                  <div className="bg-background rounded-2xl px-6 py-8 w-[250px] flex flex-col items-center text-center">
                     <div className="relative w-36 h-48 rounded-xl overflow-hidden mb-4">
                       <Image
                         src={pengurus.image}
@@ -81,8 +81,8 @@ export default function DormitoryManagement() {
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="text-black font-bold">{pengurus.name}</h3>
-                    <p className="text-sm text-gray-600 italic">
+                    <h3 className="text-foreground font-bold">{pengurus.name}</h3>
+                    <p className="text-sm text-muted-foreground italic">
                       {pengurus.role}
                     </p>
 
@@ -91,7 +91,7 @@ export default function DormitoryManagement() {
                         <Link href={pengurus.socials.instagram} target="_blank">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-3 h-3 text-black font-bold"
+                            className="w-3 h-3 text-foreground font-bold"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -121,7 +121,7 @@ export default function DormitoryManagement() {
                         <Link href={pengurus.socials.twitter} target="_blank">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-3 h-3 text-black"
+                            className="w-3 h-3 text-foreground"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -134,7 +134,7 @@ export default function DormitoryManagement() {
                         <Link href={pengurus.socials.linkedin} target="_blank">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-3 h-3 text-black"
+                            className="w-3 h-3 text-foreground"
                             viewBox="0 0 24 24"
                             fill="currentColor"
                           >
@@ -158,7 +158,7 @@ export default function DormitoryManagement() {
           return (
             <Fade key={index} direction={direction}>
               <div
-                className={`bg-white rounded-2xl px-6 py-8 w-[250px] flex flex-col items-center text-center relative transition-all duration-300 ${
+                className={`bg-background rounded-2xl px-6 py-8 w-[250px] flex flex-col items-center text-center relative transition-all duration-300 ${
                   index === 1
                     ? "scale-110 z-10 shadow-2xl"
                     : "scale-100 z-0 hover:shadow-xl"
@@ -173,8 +173,8 @@ export default function DormitoryManagement() {
                   />
                 </div>
 
-                <h3 className="text-black font-bold">{pengurus.name}</h3>
-                <p className="text-sm text-gray-600 italic">{pengurus.role}</p>
+                <h3 className="text-foreground font-bold">{pengurus.name}</h3>
+                <p className="text-sm text-muted-foreground italic">{pengurus.role}</p>
 
                 <div className="flex items-center justify-center gap-3 mt-auto pt-6">
                   {pengurus.socials.instagram && (
@@ -182,7 +182,7 @@ export default function DormitoryManagement() {
                       {/* IG Icon */}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4 text-black"
+                        className="w-4 h-4 text-foreground"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -213,7 +213,7 @@ export default function DormitoryManagement() {
                     <Link href={pengurus.socials.twitter} target="_blank">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-3 h-3 text-black"
+                        className="w-3 h-3 text-foreground"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                       >
@@ -226,7 +226,7 @@ export default function DormitoryManagement() {
                     <Link href={pengurus.socials.linkedin} target="_blank">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4 text-black"
+                        className="w-4 h-4 text-foreground"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                       >

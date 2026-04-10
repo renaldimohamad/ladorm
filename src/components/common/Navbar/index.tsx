@@ -12,6 +12,7 @@ import "./index.css";
 import { useLanguage } from "../../../../stores/useLengauage";
 import { Listbox } from "@headlessui/react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ const Navbar = () => {
   const { scroll, isScrolling } = useScrollProgress();
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const { lang, setLang, dictionary } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const [tooltip, setTooltip] = useState<
     "blog" | "insight" | "contact us" | null
@@ -45,7 +47,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-[999] bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white backdrop-blur-sm">
+    <header className="sticky top-0 z-[999] bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white backdrop-blur-sm">
       <div className="h-8 w-full flex items-center px-4">
         <span className="text-lg text-white">
           <CurrentTime />
@@ -158,7 +160,7 @@ const Navbar = () => {
 
               return (
                 <div className="relative inline-flex">
-                  <Listbox.Button className="rounded-custom w-full bg-white text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
+                  <Listbox.Button className="rounded-custom w-full bg-background text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
                     {/* Flag */}
                     {selectedLang?.flag && (
                       <Image
@@ -166,7 +168,7 @@ const Navbar = () => {
                         alt={`${selectedLang.label} flag`}
                         width={20}
                         height={20}
-                        className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
+                        className="w-5 h-5 object-cover rounded-full border border-border shadow-sm"
                       />
                     )}
                     {/* <span>{selectedLang?.label}</span> */}
@@ -190,7 +192,7 @@ const Navbar = () => {
                     </svg>
                   </Listbox.Button>
 
-                  <Listbox.Options className="rounded-custom absolute mt-10 w-full bg-white rounded-md shadow z-10 w-10">
+                  <Listbox.Options className="rounded-custom absolute mt-10 w-full bg-background rounded-md shadow z-10 w-10">
                     {languages
                       .filter((item) => item.value !== lang)
                       .map((item) => (
@@ -201,7 +203,7 @@ const Navbar = () => {
                             `cursor-pointer px-3 py-2 flex items-center gap-2 ${
                               active
                                 ? "bg-[#e6f3f5] text-[#016072]"
-                                : "text-gray-700"
+                                : "text-muted-foreground"
                             }`
                           }
                         >
@@ -211,7 +213,7 @@ const Navbar = () => {
                               alt={`${item.label} flag`}
                               width={20}
                               height={20}
-                              className="w-5 h-5 object-cover rounded-full border border-gray-300 shadow-sm"
+                              className="w-5 h-5 object-cover rounded-full border border-border shadow-sm"
                             />
                           )}
                           <span>{item.label}</span>
@@ -226,13 +228,28 @@ const Navbar = () => {
           <div className="hidden sm:block">
             <Link
               href="/contact-us"
-              className="rounded-custom flex items-center justify-center bg-white text-black px-4 py-2 rounded-sm shadow transition-all transform hover:bg-gray-200 hover:shadow-md"
+              className="rounded-custom flex items-center justify-center bg-background text-foreground px-4 py-2 rounded-sm shadow transition-all transform hover:bg-muted hover:shadow-md"
             >
               <span className="text-sm text-[#016072] flex items-center gap-1">
                 {dictionary.navbar.contact}
               </span>
             </Link>
           </div>
+
+          <button
+            onClick={toggleTheme}
+            className="hidden sm:flex rounded-custom items-center justify-center bg-background/20 text-white px-3 py-2 rounded-sm shadow hover:bg-background/30 transition-all border border-white/30"
+          >
+            {theme === "dark" ? (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
 
@@ -294,7 +311,7 @@ const Navbar = () => {
 
             <div className="inline-flex relative">
               <select
-                className="rounded-custom appearance-none bg-white text-[#016072] font-semibold px-3 py-1 pr-8 rounded-md shadow focus:outline-none text-xs"
+                className="rounded-custom appearance-none bg-background text-[#016072] font-semibold px-3 py-1 pr-8 rounded-md shadow focus:outline-none text-xs"
                 value={lang}
                 onChange={(e) =>
                   setLang(e.target.value as "en" | "id" | "gtlo")
@@ -307,7 +324,7 @@ const Navbar = () => {
 
               <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">
                 <svg
-                  className="w-4 h-4 text-black"
+                  className="w-4 h-4 text-foreground"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -325,7 +342,7 @@ const Navbar = () => {
             <motion.div variants={itemVariants}>
               <Link
                 href="/contact-us"
-                className="rounded-custom inline-flex items-center justify-center bg-white text-black px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+                className="rounded-custom inline-flex items-center justify-center bg-background text-foreground px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
               >
                 <span className="text-xs text-[#016072] flex items-center gap-1 font-semibold">
                   {dictionary.navbar.contact}

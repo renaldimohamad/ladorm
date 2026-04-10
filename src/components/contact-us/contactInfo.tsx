@@ -16,7 +16,7 @@ const fadeInUp = {
 export default function ContactInfo() {
   return (
     <motion.div
-      className="border border-gray-200 rounded-xl p-6 bg-white shadow-lg"
+      className="border border-border rounded-xl p-6 bg-background shadow-lg"
       variants={fadeInUp}
       custom={1}
     >
@@ -56,7 +56,7 @@ export default function ContactInfo() {
                 {item.href ? (
                   <div>{item.value}</div>
                 ) : (
-                  <p className="break-all text-xs sm:text-sm md:text-base text-gray-600">
+                  <p className="break-all text-xs sm:text-sm md:text-base text-muted-foreground">
                     {item.value}
                   </p>
                 )}

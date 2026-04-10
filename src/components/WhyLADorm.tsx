@@ -33,7 +33,7 @@ const WhyLADorm = () => {
         {/* Heading */}
 
         <Fade direction="up">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-black">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-foreground">
             {/* Kenapa Harus Tinggal di <span>LADORM?</span> */}
             {dictionary.homeWhyLadorm?.titleSection}
           </h2>
@@ -45,14 +45,14 @@ const WhyLADorm = () => {
 
           <Fade direction="left">
             <div>
-              <p className="mb-4 text-black font-semibold">
+              <p className="mb-4 text-foreground font-semibold">
                 Asrama Mahasiswa Gorontalo
               </p>
               <h3 className="text-[#016072] text-4xl font-bold mb-4">LADORM</h3>
-              <p className="text-lg font-semibold mb-3 text-gray-700">
+              <p className="text-lg font-semibold mb-3 text-muted-foreground">
                 {dictionary.homeWhyLadorm?.desc1}
               </p>
-              <p className="text-gray-700">{dictionary.homeWhyLadorm?.desc2}</p>
+              <p className="text-muted-foreground">{dictionary.homeWhyLadorm?.desc2}</p>
             </div>
           </Fade>
           {/* </Fade> */}
@@ -112,42 +112,38 @@ const WhyLADorm = () => {
 
         {/* Features */}
         <div className="grid md:grid-cols-3 gap-8 text-center mt-36 mb-16">
-          {/* <Fade direction="left"> */}
-          <Fade direction="left">
-            <div className="p-6 bg-white/40 rounded-2xl shadow-md">
-              <FaHome className="text-[#016072] text-3xl mx-auto mb-3" />
-              <h4 className="font-semibold text-lg mb-2 text-black">
+          <Fade direction="up" delay={100}>
+            <div className="p-6 bg-background/40 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-border/50">
+              <FaHome className="text-primary text-4xl mx-auto mb-4" />
+              <h4 className="font-semibold text-lg mb-2 text-foreground">
                 {dictionary.homeWhyLadorm?.features?.facility?.title}
               </h4>
-              <p className="text-gray-800 text-sm text-left">
+              <p className="text-muted-foreground text-sm text-left leading-relaxed">
                 {dictionary.homeWhyLadorm?.features?.facility?.desc}
               </p>
             </div>
           </Fade>
           {/* </Fade> */}
-          <Fade direction="up">
-            <div className="p-6 bg-white/40 rounded-2xl shadow-md">
-              <FaMapMarkerAlt className="text-[#016072] text-3xl mx-auto mb-3" />
-
-              <h4 className="font-semibold text-lg mb-2 text-black">
+          <Fade direction="up" delay={250}>
+            <div className="p-6 bg-background/40 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-border/50">
+              <FaMapMarkerAlt className="text-primary text-4xl mx-auto mb-4" />
+              <h4 className="font-semibold text-lg mb-2 text-foreground">
                 {dictionary.homeWhyLadorm?.features?.location?.title}
               </h4>
-              <p className="text-gray-800 text-sm text-left">
+              <p className="text-muted-foreground text-sm text-left leading-relaxed">
                 {dictionary.homeWhyLadorm?.features?.location?.desc}
               </p>
             </div>
           </Fade>
-          <Fade direction="right">
-            <div className="p-6 bg-white/40 rounded-2xl shadow-md">
-              {/* <Fade direction="right"> */}
-              <FaUsers className="text-[#016072] text-3xl mx-auto mb-3" />
-              <h4 className="font-semibold text-lg mb-2 text-black">
+          <Fade direction="up" delay={400}>
+            <div className="p-6 bg-background/40 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-border/50">
+              <FaUsers className="text-primary text-4xl mx-auto mb-4" />
+              <h4 className="font-semibold text-lg mb-2 text-foreground">
                 {dictionary.homeWhyLadorm?.features?.community?.title}
               </h4>
-              <p className="text-gray-800 text-sm text-left">
+              <p className="text-muted-foreground text-sm text-left leading-relaxed">
                 {dictionary.homeWhyLadorm?.features?.community?.desc}
               </p>
-              {/* </Fade> */}
             </div>
           </Fade>
         </div>
@@ -155,19 +151,17 @@ const WhyLADorm = () => {
         {/* CTA */}
 
         <div className="text-center mb-16">
-          {/* <Fade direction="down"> */}
-          <Fade direction="up">
-            <h3 className="text-2xl font-bold mb-6">
+          <Fade direction="up" delay={100}>
+            <h3 className="text-2xl font-bold mb-8 text-foreground tracking-tight">
               {dictionary.homeWhyLadorm?.CTA?.title}
             </h3>
           </Fade>
-          {/* </Fade> */}
 
           {/* <Fade direction="up"> */}
           <CallToAction
             href="/pendaftaran"
             text={dictionary.homeWhyLadorm?.CTA?.ctaBtn || "Laman Pendaftaran"}
-            className="bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)]"
+            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)]"
           />
           {/* </Fade> */}
         </div>
@@ -206,7 +200,7 @@ const WhyLADorm = () => {
                   <div className="h-full px-1 sm:px-2">
                     <TestimonialsWrapper>
                       <div className="leading-relaxed">
-                        <span className="text-sm sm:text-sm leading-relaxed text-gray-800 text-justify">
+                        <span className="text-sm sm:text-sm leading-relaxed text-foreground text-justify">
                           “{item.message}”
                         </span>
                       </div>
@@ -225,7 +219,7 @@ const WhyLADorm = () => {
                           <span className="font-bold text-sm sm:text-base">
                             {item.name}
                           </span>
-                          <span className="text-gray-800 text-xs italic">
+                          <span className="text-foreground text-xs italic">
                             {item.role}
                           </span>
                         </div>

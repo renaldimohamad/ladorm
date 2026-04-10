@@ -31,10 +31,10 @@ export default function Home() {
             className="mb-4"
           />
         </div>
-        <section className="relative z-10 w-full px-6 py-10 text-black">
+        <section className="relative z-10 w-full px-6 py-10 text-foreground">
           <div className="max-w-5xl mx-auto flex flex-col gap-6 leading-relaxed">
             <div className="flex justify-center items-center">
-              <h5 className="font-bold text-gray-700 text-3xl">About Us</h5>
+              <h5 className="font-bold text-muted-foreground text-3xl">About Us</h5>
             </div>
             <p>
               Asrama Mahasiswa Gorontalo Lenteng Agung atau Ladorm berdiri atas

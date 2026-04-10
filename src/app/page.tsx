@@ -68,31 +68,27 @@ export default function Home() {
                     />
 
                     <div className="hidden md:block absolute left-0 top-0 h-full w-full bg-gradient-to-r from-white via-white/60 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-0 block md:hidden bg-white/70 z-10 pointer-events-none" />
+                    <div className="absolute inset-0 block md:hidden bg-background/70 z-10 pointer-events-none" />
 
                     <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-50">
                       <div className="text-left max-w-2xl space-y-6">
                         <h2
-                          className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-snug bg-gradient-to-r from-[rgba(1,96,114,0.8)] to-[rgba(44,112,91,0.8)] bg-clip-text text-transparent font-montserrat leading-relaxed"
-                          style={{
-                            textShadow: "0.5px 0.5px 1px rgba(0, 0, 0, 0.2)",
-                          }}
+                          className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-[var(--gradient-from)] dark:to-[var(--gradient-to)] bg-clip-text text-transparent font-montserrat drop-shadow-sm"
                         >
                           {content?.title ?? ""}
                         </h2>
                         <p
-                          className="text-black/80 text-sm md:text-xl drop-shadow-sm max-w-xl leading-relaxed"
-                          style={{
-                            textShadow: "0.5px 0.5px 1px rgba(0, 0, 0, 0.2)",
-                          }}
+                          className="text-foreground/90 font-medium text-base md:text-xl drop-shadow-sm max-w-xl leading-relaxed opacity-90"
                         >
                           {content?.desc ?? ""}
                         </p>
-                        <CallToAction
-                          text={actionText}
-                          href="#about"
-                          className="bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)]"
-                        />
+                        <div className="pt-4 drop-shadow hover:drop-shadow-lg transition-transform duration-300 hover:-translate-y-1 inline-block">
+                          <CallToAction
+                            text={actionText}
+                            href="#about"
+                            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)]"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -103,7 +99,7 @@ export default function Home() {
         </section>
         {/* <section
           id="about"
-          className="scroll-mt-20 w-full px-4 py-20 bg-white text-black"
+          className="scroll-mt-20 w-full px-4 py-20 bg-background text-foreground"
         >
           <motion.section
             initial={{ opacity: 0, y: 50 }}
@@ -122,7 +118,7 @@ export default function Home() {
         </section> */}
         <SectionAbout />
         {/* <GeneralInfo /> */}
-        {/* <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
+        {/* <section className="w-full px-4 py-16 sm:py-20 bg-muted text-foreground flex flex-col items-center">
           <motion.section
             initial={{ opacity: 0, y: initialY }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -162,7 +158,7 @@ export default function Home() {
                     <div className="h-full px-1 sm:px-2">
                       <TestimonialsWrapper>
                         <div className="leading-relaxed">
-                          <span className="text-sm sm:text-base leading-relaxed text-gray-800 text-justify">
+                          <span className="text-sm sm:text-base leading-relaxed text-foreground text-justify">
                             “{item.message}”
                           </span>
                         </div>
@@ -181,7 +177,7 @@ export default function Home() {
                             <span className="font-bold text-sm sm:text-base">
                               {item.name}
                             </span>
-                            <span className="text-gray-500 text-xs italic">
+                            <span className="text-muted-foreground text-xs italic">
                               {item.role}
                             </span>
                           </div>

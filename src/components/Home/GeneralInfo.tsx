@@ -9,7 +9,7 @@ export const GeneralInfo = () => {
   const initialY = scrollDir === "down" ? 80 : -80;
 
   return (
-    <section className="w-full px-4 py-16 sm:py-20 bg-gray-100 text-black flex flex-col items-center">
+    <section className="w-full px-4 py-16 sm:py-20 bg-muted text-foreground flex flex-col items-center">
       <motion.section
         initial={{ opacity: 0, y: initialY }}
         whileInView={{ opacity: 1, y: 0 }}

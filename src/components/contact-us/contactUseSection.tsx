@@ -9,7 +9,7 @@ export default function ContactUsSection() {
 
   return (
     <motion.section
-      className="py-16 px-4 bg-white"
+      className="py-16 px-4 bg-background"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -26,8 +26,8 @@ export default function ContactUsSection() {
           <h5 className="text-2xl sm:text-2xl md:text-3xl font-bold mb-6 text-[#016072] font-montserrat">
             {dictionary?.contactUs?.title ?? "test"}
           </h5>
-          {/* <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600 leading-relaxed">
-            <span className="text-gray-800 font-bold">
+          {/* <p className="text-sm sm:text-base md:text-lg font-medium text-muted-foreground leading-relaxed">
+            <span className="text-foreground font-bold">
               Hey, Mongowutata, Mongodula&apos;a!
             </span>{" "}
             Makasih wa so mampir di situs resmi LADorm - Asrama Mahasiswa

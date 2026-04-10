@@ -8,7 +8,7 @@
 //       <a
 //         href="#about"
 //         className="inline-flex items-center justify-center
-//           bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)]
+//           bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)]
 //           text-white backdrop-blur-sm
 //           px-4 py-2 lg:py-[6px]
 //           rounded-sm shadow hover:shadow-md

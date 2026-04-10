@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { testimonialsData } from "@/utils/Testimonials";
 import Navbar from "@/components/common/Navbar";
 import { residents } from "@/utils/residents";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
 });
 
@@ -62,14 +63,6 @@ export const metadata: Metadata = {
     images: ["https://ladorm.vercel.app/images/LADORM_FORM.webp"],
   },
 
-  // other: {
-  //   "og:title": "LADorm - Asrama Mahasiswa Gorontalo",
-  //   "og:description":
-  //     "Tempat tinggal nyaman, aman, dan penuh kebersamaan untuk mahasiswa Gorontalo yang merantau. Di sini, kamu nggak cuma sekadar tinggal - kamu bakal nemuin keluarga baru yang siap support perjalanan kuliah kamu.",
-  //   "og:image": "https://ladorm.vercel.app/images/LADORM_FORM.webp",
-  //   "og:url": "https://ladorm.vercel.app",
-  // },
-
   alternates: {
     canonical: "https://ladorm.vercel.app",
   },
@@ -98,8 +91,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark')
+                } else {
+                  document.documentElement.classList.remove('dark')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
         {/*JSON-LD*/}
         <Script
           id="ld-json-testimonials"
@@ -137,9 +143,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${plusJakartaSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-300 font-sans text-base leading-relaxed md:text-[1.05rem]`}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

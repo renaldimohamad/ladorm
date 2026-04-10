@@ -1,22 +1,60 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1a1a1a;
+  --card: #f9f9f9;
+  
+  --primary: #016072;
+  --secondary: #2c705b;
+
+  --gradient-from: rgba(1,96,114,0.7);
+  --gradient-to: rgba(44,112,91,0.7);
+
+  --border: #e5e7eb;
+  --muted: #f9fafb;
+  --muted-foreground: #6b7280;
+}
+
+.dark {
+  /* Rich deep teal background instead of near-black for a premium feel */
+  --background: #081115;
+  --foreground: #f3f7f9;
+  
+  /* Elevated card color to distinctly pop from background */
+  --card: #13222a;
+
+  /* Primary brights that glow on dark setups */
+  --primary: #22d3ee; 
+  --secondary: #4ade80; 
+
+  /* Increased opacity and vibrancy for gradients - no flat/dull 25% opacity! */
+  --gradient-from: rgba(14, 165, 183, 0.85);
+  --gradient-to: rgba(58, 161, 126, 0.85);
+
+  /* Borders that separate elements elegantly */
+  --border: #1d333e;
+  
+  /* Muted backgrounds for distinct segments */
+  --muted: #172a34;
+  --muted-foreground: #a1b6c0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-gradient-from: var(--gradient-from);
+  --color-gradient-to: var(--gradient-to);
+  --font-sans: var(--font-plus-jakarta), sans-serif;
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 html {
@@ -27,6 +65,13 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+.dark img:not(.no-filter) {
+  filter: brightness(0.85) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+
 
 .swiper-pagination-bullet {
   width: 8px !important;

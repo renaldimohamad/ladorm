@@ -13,17 +13,17 @@ export const AboutDormitory = () => {
         {dictionary.aboutDormitory?.title}
       </h5>
 
-      <p className="text-sm sm:text-base md:text-md leading-relaxed text-gray-800 mb-4 text-justify">
+      <p className="text-sm sm:text-base md:text-md leading-relaxed text-foreground mb-4 text-justify">
         <b>{dictionary.aboutDormitory?.paragraph1.bold}</b>{" "}
         {dictionary.aboutDormitory?.paragraph1.normal}
       </p>
 
-      {/* <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-800 mb-4 text-justify">
+      {/* <p className="text-sm sm:text-base md:text-lg leading-relaxed text-foreground mb-4 text-justify">
         Beberapa keunggulan dan fasilitas yang tersedia di asrama ini antara
         lain:
       </p>
 
-      <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-gray-800 space-y-2 pl-4 md:pl-6 mb-4">
+      <ul className="list-disc list-inside text-sm sm:text-base md:text-lg text-foreground space-y-2 pl-4 md:pl-6 mb-4">
         <li>Kamar tidur bersama yang nyaman dan bersih</li>
         <li>Fasilitas dapur bersama dan ruang makan</li>
         <li>Ruang belajar yang tenang dan kondusif</li>
@@ -33,7 +33,7 @@ export const AboutDormitory = () => {
         </li>
       </ul> */}
 
-      <div className="flex flex-col gap-2 mt-6 text-sm sm:text-base md:text-md leading-relaxed text-gray-800 text-justify space-y-4">
+      <div className="flex flex-col gap-2 mt-6 text-sm sm:text-base md:text-md leading-relaxed text-foreground text-justify space-y-4">
         <span>
           {dictionary.aboutDormitory?.paragraph2.section1}{" "}
           <b>{dictionary.aboutDormitory?.paragraph2.date}</b>{" "}
@@ -50,7 +50,7 @@ export const AboutDormitory = () => {
               {dictionary.aboutDormitory?.paragraph3.section2}
             </span>
             <span>
-              <div className="mt-4 text-sm sm:text-base md:text-sm text-gray-800">
+              <div className="mt-4 text-sm sm:text-base md:text-sm text-foreground">
                 {/* <ul className="list-disc pl-4 space-y-3">
                   {[
                     ["Yusuf T. Polimengo", "Periode 2015-2017"],

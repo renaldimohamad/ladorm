@@ -28,7 +28,7 @@ export const SectionAbout = () => {
   return (
     <section
       id="about"
-      className="scroll-smooth mt-8 w-full px-4 py-20 bg-white text-black"
+      className="scroll-smooth mt-8 w-full px-4 py-20 bg-background text-foreground"
     >
       <div className="w-full flex flex-col items-center">
         <Fade direction="down">
@@ -38,7 +38,7 @@ export const SectionAbout = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto">
           <div className="mb-0 sm:mb-0 relative">
             <Fade direction="left">
-              <div className="rounded-custom relative w-full h-[280px] rounded-xl overflow-hidden bg-white">
+              <div className="rounded-custom relative w-full h-[280px] rounded-xl overflow-hidden bg-background">
                 {images.map((src, i) => (
                   <Image
                     key={src}
@@ -71,7 +71,7 @@ export const SectionAbout = () => {
                 </h1>
               </Fade>
               {/* <Fade direction="down"> */}
-              <span className="text-gray-500 mb-1 text-left leading-relaxed">
+              <span className="text-muted-foreground mb-1 text-left leading-relaxed">
                 {dictionary.homeSectionAbout?.desc}
               </span>
               {/* </Fade> */}
@@ -79,7 +79,7 @@ export const SectionAbout = () => {
                 <CallToAction
                   text={actionText}
                   href="/about"
-                  className="bg-gradient-to-r from-[rgba(1,96,114,0.7)] to-[rgba(44,112,91,0.7)] text-white"
+                  className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white"
                 />
               </Fade>
             </div>

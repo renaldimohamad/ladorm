@@ -85,7 +85,7 @@ export default function ContactForm() {
 
   return (
     <motion.div
-      className="border border-gray-200 rounded-xl p-6 bg-white shadow-lg"
+      className="border border-border rounded-xl p-6 bg-background shadow-lg"
       variants={fadeInUp}
       custom={2}
     >
@@ -114,8 +114,8 @@ export default function ContactForm() {
                 dictionary?.contactUs?.contactForm?.firstName || "Nama Depan"
               }
               className={`w-full border ${
-                errors.firstName ? "border-red-500" : "border-gray-300"
-              } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
+                errors.firstName ? "border-red-500" : "border-border"
+              } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
             />
             {errors.firstName && (
               <p className="text-red-500 text-sm mt-1">
@@ -131,8 +131,8 @@ export default function ContactForm() {
                 dictionary?.contactUs?.contactForm?.lastName || "Nama Belakang"
               }
               className={`w-full border ${
-                errors.lastName ? "border-red-500" : "border-gray-300"
-              } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
+                errors.lastName ? "border-red-500" : "border-border"
+              } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
             />
             {errors.lastName && (
               <p className="text-red-500 text-sm mt-1">
@@ -149,8 +149,8 @@ export default function ContactForm() {
             type="email"
             placeholder={dictionary?.contactUs?.contactForm?.email}
             className={`w-full border ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
+              errors.email ? "border-red-500" : "border-border"
+            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
           />
           {errors.email && (
             <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -164,8 +164,8 @@ export default function ContactForm() {
             type="text"
             placeholder={dictionary?.contactUs?.contactForm?.subject}
             className={`w-full border ${
-              errors.subject ? "border-red-500" : "border-gray-300"
-            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
+              errors.subject ? "border-red-500" : "border-border"
+            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
           />
           {errors.subject && (
             <p className="text-red-500 text-sm mt-1">
@@ -181,8 +181,8 @@ export default function ContactForm() {
             placeholder={dictionary?.contactUs?.contactForm?.message}
             rows={4}
             className={`w-full border ${
-              errors.message ? "border-red-500" : "border-gray-300"
-            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-black text-sm sm:text-base md:text-lg`}
+              errors.message ? "border-red-500" : "border-border"
+            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();

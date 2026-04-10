@@ -35,8 +35,8 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
   py-1.5 sm:py-2 
   text-xs sm:text-sm md:text-base 
   font-medium 
-  text-gray-700 
-  bg-white border border-gray-300 
+  text-muted-foreground 
+  bg-background border border-border 
   hover:opacity-90 focus:outline-none 
   cursor-pointer active:opacity-60 
   ${className}`}
@@ -55,7 +55,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
           {title}
         </h1>
         {subtitle && (
-          <p className="leading-relaxed text-sm md:text-md text-gray-500">
+          <p className="leading-relaxed text-sm md:text-md text-muted-foreground">
             {subtitle}
           </p>
         )}
