@@ -1,35 +1,44 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import emailjs from "@emailjs/browser";
-import toast, { Toaster } from "react-hot-toast";
-import { useState } from "react";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 import DynamicButton from "@/ui/common/DynamicButton";
 import LoaderSpinner from "@/ui/common/LoaderSpinner";
 import { useLanguage } from "../../../stores/useLengauage";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
+import { motion, AnimatePresence, Variants } from "framer-motion";
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6 },
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
   }),
 };
 
 const schema = yup.object().shape({
   firstName: yup
     .string()
-    .min(3, "Nama Minimal 3 Karakter")
-    .required("Nama Depan wajib diisi"),
-  lastName: yup.string().required("Nama Belakang wajib diisi"),
-  email: yup.string().email("Email tidak valid").required("Email wajib diisi"),
-  subject: yup.string().required("Subjeck wajib diisi"),
-  message: yup.string().required("Pesan wajib diisi"),
+    .min(3, "Min 3 characters")
+    .required("First name is required"),
+  lastName: yup.string().required("Last name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  subject: yup.string().required("Subject is required"),
+  message: yup.string().required("Message is required"),
 });
+
+interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 export default function ContactForm() {
   const { dictionary } = useLanguage();
@@ -40,15 +49,23 @@ export default function ContactForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<ContactFormData>({
     resolver: yupResolver(schema),
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = async (data: any) => {
+  useEffect(() => {
+    emailjs.init("hjqGLDSGo6q3WnoJh");
+  }, []);
+
+  const onSubmit = async (data: ContactFormData) => {
+    if (isLoading) return; // Prevent double submit
     setIsLoading(true);
+
+    const toastId = toast.loading(dictionary?.contactUs?.contactForm?.toast?.loading || "Sending message...");
+
     try {
-      await emailjs.send(
+      // Execute both sends in parallel for better performance
+      const adminPromise = emailjs.send(
         "service_siwo3lf",
         "template_9ydesje",
         {
@@ -56,164 +73,205 @@ export default function ContactForm() {
           lastName: data.lastName,
           fullName: `${data.firstName} ${data.lastName}`,
           email: data.email,
+          reply_to: data.email,
           subject: data.subject,
           message: data.message,
-        },
-        "hjqGLDSGo6q3WnoJh"
+        }
       );
-      await emailjs.send(
+
+      const userPromise = emailjs.send(
         "service_siwo3lf",
         "template_ojy8ov9",
         {
           firstName: data.firstName,
           lastName: data.lastName,
+          fullName: `${data.firstName} ${data.lastName}`,
           email: data.email,
           subject: data.subject,
           message: data.message,
-        },
-        "hjqGLDSGo6q3WnoJh"
+        }
       );
 
-      toast.success("Pesan berhasil dikirim!");
+      await Promise.all([adminPromise, userPromise]);
+
+      toast.success(dictionary?.contactUs?.contactForm?.toast?.success || "✅ Message sent!", { id: toastId });
       reset();
-    } catch {
-      toast.error("Gagal mengirim pesan.");
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error(dictionary?.contactUs?.contactForm?.toast?.error || "❌ Failed to send message.", { id: toastId });
     } finally {
       setIsLoading(false);
     }
   };
 
+  const inputClasses = (isError: boolean | undefined) => `
+    w-full bg-[var(--background)] border-2 ${isError ? "border-red-500/50" : "border-border/50"} 
+    rounded-2xl px-6 py-4 text-foreground placeholder:text-muted-foreground/30
+    focus:outline-none focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary)]/10 
+    disabled:opacity-40 disabled:cursor-not-allowed
+    transition-all duration-300 text-sm md:text-base font-medium shadow-sm
+  `;
+
   return (
     <motion.div
-      className="border border-border rounded-xl p-6 bg-background shadow-lg"
+      className="relative bg-[var(--card)]/80 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl overflow-hidden h-full"
       variants={fadeInUp}
       custom={2}
+      initial={false}
+      animate="visible"
     >
-      <Toaster position="top-center" reverseOrder={false} />
+      <div className="mb-10">
+        <h3 className="text-2xl font-black tracking-tight mb-2">
+          {dictionary?.contactUs?.contactForm?.title || "Send us a Message"}
+        </h3>
+        <p className="text-sm text-muted-foreground">
+          {dictionary?.contactUs?.contactForm?.subtitle || "Our team will get back to you within 24 hours."}
+        </p>
+      </div>
 
-      <p className="text-base sm:text-lg md:text-xl font-semibold text-[#018484] mb-4">
-        {/* Hubungi Kami */}
-      </p>
-      <motion.form
-        onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4"
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Name */}
-        <motion.div
-          className="flex flex-col md:flex-row gap-4"
-          variants={fadeInUp}
-          custom={3}
-        >
-          <div className="w-full">
-            <input
-              {...register("firstName")}
-              type="text"
-              placeholder={
-                dictionary?.contactUs?.contactForm?.firstName || "Nama Depan"
-              }
-              className={`w-full border ${
-                errors.firstName ? "border-red-500" : "border-border"
-              } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
-            />
-            {errors.firstName && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.firstName.message}
-              </p>
-            )}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <fieldset disabled={isLoading} className="space-y-6 border-none p-0 m-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <input
+                {...register("firstName")}
+                type="text"
+                placeholder={dictionary?.contactUs?.contactForm?.firstName || "First Name"}
+                className={inputClasses(!!errors.firstName)}
+              />
+              <AnimatePresence>
+                {errors.firstName && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="text-red-500 text-xs font-bold pl-2"
+                  >
+                    {errors.firstName.message}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div className="space-y-2">
+              <input
+                {...register("lastName")}
+                type="text"
+                placeholder={dictionary?.contactUs?.contactForm?.lastName || "Last Name"}
+                className={inputClasses(!!errors.lastName)}
+              />
+              <AnimatePresence>
+                {errors.lastName && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="text-red-500 text-xs font-bold pl-2"
+                  >
+                    {errors.lastName.message}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-          <div className="w-full">
+
+          <div className="space-y-2">
             <input
-              {...register("lastName")}
-              type="text"
-              placeholder={
-                dictionary?.contactUs?.contactForm?.lastName || "Nama Belakang"
-              }
-              className={`w-full border ${
-                errors.lastName ? "border-red-500" : "border-border"
-              } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
+              {...register("email")}
+              type="email"
+              placeholder={dictionary?.contactUs?.contactForm?.email || "Email Address"}
+              className={inputClasses(!!errors.email)}
             />
-            {errors.lastName && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.lastName.message}
-              </p>
-            )}
+            <AnimatePresence>
+              {errors.email && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="text-red-500 text-xs font-bold pl-2"
+                >
+                  {errors.email.message}
+                </motion.p>
+              )}
+            </AnimatePresence>
           </div>
-        </motion.div>
 
-        {/* Email */}
-        <motion.div variants={fadeInUp} custom={4}>
-          <input
-            {...register("email")}
-            type="email"
-            placeholder={dictionary?.contactUs?.contactForm?.email}
-            className={`w-full border ${
-              errors.email ? "border-red-500" : "border-border"
-            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
-        </motion.div>
+          <div className="space-y-2">
+            <input
+              {...register("subject")}
+              type="text"
+              placeholder={dictionary?.contactUs?.contactForm?.subject || "Subject"}
+              className={inputClasses(!!errors.subject)}
+            />
+            <AnimatePresence>
+              {errors.subject && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="text-red-500 text-xs font-bold pl-2"
+                >
+                  {errors.subject.message}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
 
-        {/* Subject */}
-        <motion.div variants={fadeInUp} custom={5}>
-          <input
-            {...register("subject")}
-            type="text"
-            placeholder={dictionary?.contactUs?.contactForm?.subject}
-            className={`w-full border ${
-              errors.subject ? "border-red-500" : "border-border"
-            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
-          />
-          {errors.subject && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.subject.message}
-            </p>
-          )}
-        </motion.div>
+          <div className="space-y-2">
+            <textarea
+              {...register("message")}
+              placeholder={dictionary?.contactUs?.contactForm?.message || "Write your message here..."}
+              rows={4}
+              className={inputClasses(!!errors.message)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSubmit(onSubmit)();
+                }
+              }}
+            />
+            <AnimatePresence>
+              {errors.message && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="text-red-500 text-xs font-bold pl-2"
+                >
+                  {errors.message.message}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
+        </fieldset>
 
-        {/* Message */}
-        <motion.div variants={fadeInUp} custom={6}>
-          <textarea
-            {...register("message")}
-            placeholder={dictionary?.contactUs?.contactForm?.message}
-            rows={4}
-            className={`w-full border ${
-              errors.message ? "border-red-500" : "border-border"
-            } rounded px-4 py-2 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-100 text-foreground text-sm sm:text-base md:text-lg`}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmit(onSubmit)();
-              }
-            }}
-          />
-          {errors.message && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.message.message}
-            </p>
-          )}
-        </motion.div>
-
-        <DynamicButton
-          type="submit"
-          onClick={handleSubmit(onSubmit)}
-          loaderButton={
-            <span className="flex items-center gap-2">
-              <LoaderSpinner />{" "}
-              {dictionary?.contactUs?.contactForm?.loaderButton}
-            </span>
-          }
-          isLoading={isLoading}
-          className="w-full md:w-auto"
-          variant={fadeInUp}
-          custom={7}
-        >
-          {dictionary?.contactUs?.contactForm?.submit}
-        </DynamicButton>
-      </motion.form>
+        <div className="pt-4">
+          <DynamicButton
+            type="submit"
+            isLoading={isLoading}
+            className={`w-full py-3 rounded-[2.5rem] bg-[var(--primary)] text-white font-black uppercase tracking-widest text-sm shadow-xl transition-all duration-300 ${isLoading ? 'opacity-60 grayscale' : 'hover:scale-[1.02] active:scale-[0.98]'}`}
+            loaderButton={
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center justify-center gap-3"
+              >
+                <LoaderSpinner />
+                <span className="text-xs">{dictionary?.contactUs?.contactForm?.loaderButton || "Sending..."}</span>
+              </motion.div>
+            }
+          >
+            <motion.span
+              initial={{ opacity: 1 }}
+              animate={{ opacity: isLoading ? 0 : 1 }}
+            >
+              {dictionary?.contactUs?.contactForm?.submit || "Send Message"}
+            </motion.span>
+          </DynamicButton>
+        </div>
+      </form>
     </motion.div>
   );
 }
+
+

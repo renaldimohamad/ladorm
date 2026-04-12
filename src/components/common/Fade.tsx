@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
-type Direction = "up" | "down" | "left" | "right";
+type Direction = "up" | "down" | "left" | "right" | "none";
 
 interface FadeProps {
   children: React.ReactNode;
@@ -11,21 +11,22 @@ interface FadeProps {
   delay?: number;
   duration?: number;
   className?: string;
+  distance?: number;
+  scale?: number;
+  blur?: number;
+  rotate?: number;
 }
-
-const directionMap: Record<Direction, string> = {
-  up: "translate-y-4",
-  down: "-translate-y-4",
-  left: "-translate-x-4",
-  right: "translate-x-4",
-};
 
 export default function Fade({
   children,
   direction = "up",
   delay = 0,
-  duration = 700,
+  duration = 800,
   className,
+  distance = 20,
+  scale = 1,
+  blur = 0,
+  rotate = 0,
 }: FadeProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [show, setShow] = useState(false);
@@ -42,12 +43,26 @@ export default function Fade({
           setShow(false);
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.1 },
     );
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  const getTransform = () => {
+    if (show) return "translate(0, 0) scale(1) rotate(0deg)";
+    
+    let x = 0;
+    let y = 0;
+    
+    if (direction === "up") y = distance;
+    if (direction === "down") y = -distance;
+    if (direction === "left") x = distance;
+    if (direction === "right") x = -distance;
+    
+    return `translate(${x}px, ${y}px) scale(${scale}) rotate(${rotate}deg)`;
+  };
 
   return (
     <div
@@ -55,13 +70,13 @@ export default function Fade({
       style={{ 
         transitionDelay: `${delay}ms`,
         transitionDuration: `${duration}ms`,
-        transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.2, 1)"
+        transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)", // Modern bouncy easing
+        opacity: show ? 1 : 0,
+        transform: getTransform(),
+        filter: blur > 0 ? (show ? "blur(0px)" : `blur(${blur}px)`) : undefined,
       }}
       className={clsx(
-        "transition-all will-change-transform",
-        show
-          ? "opacity-100 translate-x-0 translate-y-0"
-          : `opacity-0 ${directionMap[direction]}`,
+        "transition-all will-change-[transform,opacity,filter]",
         className,
       )}
     >

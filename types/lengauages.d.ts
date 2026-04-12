@@ -4,6 +4,93 @@ export type NavbarLangType = {
   insight: string;
   blog: string;
   contact: string;
+  comingSoon: string;
+};
+
+export type FooterLangType = {
+  addressLabel: string;
+  websiteLabel: string;
+  emailLabel: string;
+  addressText: string;
+  brandText: string;
+  cityText: string;
+  socialMediaLabel: string;
+  legalLabel: string;
+  termsOfService: string;
+  privacyPolicy: string;
+  copyright: string;
+  ladormyLabel: string;
+};
+
+export type CtaSectionLangType = {
+  title: string;
+  desc: string;
+  button: string;
+};
+
+export type InsightLangType = {
+  heroTitle: string;
+  heroHighlight: string;
+  heroDesc: string;
+  emptyStateTitle: string;
+  emptyStateDesc: string;
+  featuredBadge: string;
+  latestArticles: string;
+  readMore: string;
+  readFull: string;
+  questionTitle: string;
+  questionDesc: string;
+  contactButton: string;
+};
+
+export type BlogLangType = {
+  heroTitle: string;
+  heroDesc: string;
+  mainHighlightBadge: string;
+  viewGalleryButton: string;
+  latestNewsTitle: string;
+  readStoryButton: string;
+  loadMoreButton: string;
+};
+
+export interface IInsightPost {
+  id: number | string;
+  title: string;
+  desc: string;
+  category: string;
+  readTime: string;
+  date: string;
+  img?: string;
+  content?: string;
+}
+
+export interface IBlogPost {
+  id: number | string;
+  title: string;
+  desc: string;
+  category: string;
+  date: string;
+  img?: string;
+  content?: string;
+  videoUrl?: string;
+  hasGallery?: boolean;
+}
+
+export interface ITestimonial {
+  name: string;
+  avatar: string;
+  message: string;
+  role: string;
+  location: string;
+  instagram: string;
+  twitter: string;
+}
+
+export type AboutPageLangType = {
+  title: string;
+  content: string[];
+  list: string[];
+  philosophy: string[];
 };
 
 export type IHeroSectionHome = {
@@ -83,6 +170,8 @@ export type ContactUsLangType = {
   title: string;
   description: string;
   contactForm: {
+    title: string;
+    subtitle: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -90,10 +179,42 @@ export type ContactUsLangType = {
     message: string;
     submit: string;
     loaderButton: string;
+    toast: {
+      loading: string;
+      success: string;
+      error: string;
+    };
+  };
+  whatsappMessage?: string;
+};
+
+export type IHomeHowWeWork = {
+  sectionLabel: string;
+  title: string;
+  desc: string;
+  steps: {
+    contact: { title: string; desc: string };
+    survey: { title: string; desc: string };
+    move: { title: string; desc: string };
   };
 };
 
 export type LanguageType = {
+  common?: {
+    backButton: string;
+  };
+  homeBlogPreview?: {
+    title: string;
+    subtitle: string;
+    cta: string;
+    readMore: string;
+  };
+  homeInsightPreview?: {
+    title: string;
+    subtitle: string;
+    cta: string;
+    badge: string;
+  };
   navbar: NavbarLangType;
   heroSectionHome: IHeroSectionHome[];
   heroButtonLabels: IHeroButtonLabels;
@@ -101,4 +222,19 @@ export type LanguageType = {
   contactUs?: ContactUsLangType;
   homeSectionAbout?: IHomeSectionAbout;
   homeWhyLadorm?: IHomeWhyLadorm;
+  homeHowWeWork?: IHomeHowWeWork;
+  footer?: FooterLangType;
+  ctaSection?: CtaSectionLangType;
+  insightPage?: InsightLangType;
+  blogPage?: BlogLangType;
+  aboutPage?: AboutPageLangType;
+  mockInsightsData?: {
+    featured: IInsightPost;
+    list: IInsightPost[];
+  };
+  mockBlogData?: {
+    latestEvent: IBlogPost;
+    posts: IBlogPost[];
+  };
+  testimonialsData?: ITestimonial[];
 };

@@ -197,8 +197,8 @@ export default function ResidentsPage() {
   }
 
   return (
-    <LayoutBlank>
-      <section className="relative min-h-screen bg-muted py-16 sm:py-20 md:py-24 overflow-hidden">
+    <LayoutBlank bgColor="bg-background">
+      <section className="relative min-h-screen bg-card py-16 sm:py-20 md:py-24 overflow-hidden">
         {/* Background Blur Accent */}
         <div className="hidden sm:block absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-muted rounded-full blur-3xl opacity-20 -z-10" />
         <div className="hidden sm:block absolute bottom-0 right-0 w-[400px] h-[400px] bg-gray-300 rounded-full blur-3xl opacity-20 -z-10" />
@@ -233,8 +233,6 @@ export default function ResidentsPage() {
           </div>
 
           {/* <LadormChat /> */}
-
-          {/* ================= FILTER BAR ================= */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {["all", "active", "alumni"].map((type) => (
@@ -248,16 +246,15 @@ export default function ResidentsPage() {
     rounded-full 
     text-xs sm:text-sm font-medium 
     transition-all duration-300
-    ${
-      statusFilter === type
-        ? `
+    ${statusFilter === type
+                      ? `
           text-white
           bg-gradient-to-r 
           from-[rgba(1,96,114,0.85)] 
           to-[rgba(44,112,91,0.85)]
           shadow-[0_6px_20px_rgba(1,96,114,0.25)]
         `
-        : `
+                      : `
           text-muted-foreground
           bg-background
           border border-border
@@ -265,7 +262,7 @@ export default function ResidentsPage() {
           hover:text-[rgba(1,96,114,0.9)]
           hover:shadow-sm
         `
-    }
+                    }
   `}>
                   {type === "all"
                     ? "Semua"

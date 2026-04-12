@@ -28,7 +28,7 @@ export const SectionAbout = () => {
   return (
     <section
       id="about"
-      className="scroll-smooth mt-8 w-full px-4 py-20 bg-background text-foreground"
+      className="scroll-smooth mt-0 w-full px-4 py-20 bg-background text-foreground"
     >
       <div className="w-full flex flex-col items-center">
         <Fade direction="down">

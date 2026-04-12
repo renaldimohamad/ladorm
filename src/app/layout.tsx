@@ -6,6 +6,8 @@ import { testimonialsData } from "@/utils/Testimonials";
 import Navbar from "@/components/common/Navbar";
 import { residents } from "@/utils/residents";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import ScrollToTop from "@/components/common/ScrollToTop";
+import { Toaster } from "react-hot-toast";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -146,7 +148,32 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} ${geistMono.variable} antialiased bg-background text-foreground transition-colors duration-300 font-sans text-base leading-relaxed md:text-[1.05rem]`}
       >
         <ThemeProvider>
+          <Toaster
+            position="bottom-center"
+            toastOptions={{
+              duration: 5000,
+              style: {
+                borderRadius: '1.25rem',
+                background: 'var(--card)',
+                color: 'var(--foreground)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                backdropFilter: 'blur(12px)',
+                padding: '16px 24px',
+                fontSize: '14px',
+                fontWeight: '600',
+                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)',
+                maxWidth: '90vw',
+              },
+              success: {
+                iconTheme: {
+                  primary: 'var(--primary)',
+                  secondary: '#fff',
+                },
+              },
+            }}
+          />
           {children}
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>

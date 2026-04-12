@@ -1,16 +1,21 @@
+"use client";
 import { testimonialsData } from "@/utils/Testimonials";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { useLanguage } from "../../../stores/useLengauage";
 
 export default function TestimonialDetail() {
   const router = useRouter();
+  const { dictionary, lang } = useLanguage();
   const { name } = router.query;
 
-  const testimonial = testimonialsData.find(
+  const activeTestimonials = dictionary.testimonialsData || testimonialsData;
+
+  const testimonial = activeTestimonials.find(
     (t) => t.name.toLowerCase().replace(/\s+/g, "-") === name
   );
 
-  if (!testimonial) return <p>Data tidak ditemukan</p>;
+  if (!testimonial) return <p>{lang === 'en' ? 'Data not found' : 'Data tidak ditemukan'}</p>;
 
   return (
     <>
@@ -28,7 +33,7 @@ export default function TestimonialDetail() {
               reviewBody: testimonial.message,
               itemReviewed: {
                 "@type": "Organization",
-                name: "Asrama Mahasiswa",
+                name: dictionary.footer?.brandText || "Asrama Mahasiswa",
               },
             }),
           }}

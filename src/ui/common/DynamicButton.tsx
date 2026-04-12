@@ -40,7 +40,7 @@ const DynamicButton: React.FC<DynamicButtonProps> = ({
         bg-gradient-to-r from-[#018484] to-[#3b9e7e]
         text-sm sm:text-base md:text-sm
         text-white font-medium
-        px-6 py-2 rounded shadow rounded-sm
+        px-6 py-2 rounded-custom shadow rounded-sm
         transition-colors duration-300
         hover:from-[#016072] hover:to-[#2c705b]
         ${isLoading ? "opacity-70 cursor-not-allowed" : "cursor-pointer"}

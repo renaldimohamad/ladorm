@@ -27,6 +27,8 @@ const WhyLADorm = () => {
           placeholder="blur"
           blurDataURL="/images/bg-blur.jpg"
         />
+        {/* Gradasi overlay agar background tidak terlalu terang di dark mode */}
+        <div className="absolute inset-0 bg-white/50 dark:bg-gradient-to-b dark:from-background/95 dark:via-background/85 dark:to-background/95 z-10 pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -55,7 +57,6 @@ const WhyLADorm = () => {
               <p className="text-muted-foreground">{dictionary.homeWhyLadorm?.desc2}</p>
             </div>
           </Fade>
-          {/* </Fade> */}
 
           {/* <Fade direction="right"> */}
           <Fade direction="right">
@@ -166,71 +167,7 @@ const WhyLADorm = () => {
           {/* </Fade> */}
         </div>
 
-        {/* Testimonials */}
-        <div>
-          <Fade direction="up">
-            <h3 className="text-xl font-bold text-center mb-8">Testimoni</h3>
-          </Fade>
-          <div className="w-full max-w-6xl px-2 sm:px-4 mx-auto">
-            <Swiper
-              modules={[Autoplay, Navigation]}
-              loop={true}
-              grabCursor={true}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: false,
-              }}
-              allowTouchMove={true}
-              touchStartPreventDefault={false}
-              breakpoints={{
-                // 320: { slidesPerView: 1 },
-                // 640: { slidesPerView: 1 },
-                // 768: { slidesPerView: 2 },
-                // 1024: { slidesPerView: 3 },
-                320: { slidesPerView: 1, spaceBetween: 16 },
-                640: { slidesPerView: 1, spaceBetween: 20 },
-                768: { slidesPerView: 2, spaceBetween: 24 },
-                1024: { slidesPerView: 3, spaceBetween: 20 },
-              }}
-              navigation
-            >
-              {testimonialsData.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="h-full px-1 sm:px-2">
-                    <TestimonialsWrapper>
-                      <div className="leading-relaxed">
-                        <span className="text-sm sm:text-sm leading-relaxed text-foreground text-justify">
-                          “{item.message}”
-                        </span>
-                      </div>
 
-                      <div className="mt-auto flex items-center gap-3 pt-6">
-                        <Image
-                          src={item.avatar}
-                          alt={item.name}
-                          width={48}
-                          height={48}
-                          unoptimized
-                          className="rounded-full object-cover"
-                        />
-
-                        <div className="flex flex-col items-start space-y-0.5 leading-tight">
-                          <span className="font-bold text-sm sm:text-base">
-                            {item.name}
-                          </span>
-                          <span className="text-foreground text-xs italic">
-                            {item.role}
-                          </span>
-                        </div>
-                      </div>
-                    </TestimonialsWrapper>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
       </div>
     </section>
   );

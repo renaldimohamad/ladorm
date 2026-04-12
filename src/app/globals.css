@@ -73,6 +73,15 @@ body {
 
 
 
+.rounded-custom {
+  border-radius: 1.5rem;
+}
+
+/* Premium glassmorphism utility */
+.glass-effect {
+  @apply bg-white/70 dark:bg-[#13222a]/70 backdrop-blur-xl border border-white/20 dark:border-white/5;
+}
+
 .swiper-pagination-bullet {
   width: 8px !important;
   height: 8px !important;

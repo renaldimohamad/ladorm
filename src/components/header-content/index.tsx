@@ -26,42 +26,44 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
     }
   };
 
-  if (type == "back") {
+  if (type === "back") {
     return (
       <button
-        className={`rounded-custom
-  flex items-center gap-2 
-  px-3 sm:px-4 
-  py-1.5 sm:py-2 
-  text-xs sm:text-sm md:text-base 
-  font-medium 
-  text-muted-foreground 
-  bg-background border border-border 
-  hover:opacity-90 focus:outline-none 
-  cursor-pointer active:opacity-60 
-  ${className}`}
+        className={`group inline-flex items-center justify-center gap-2 
+        px-5 sm:px-6 py-2.5 sm:py-3
+        text-sm sm:text-base font-bold tracking-wide
+        text-foreground bg-white/70 dark:bg-black/40 backdrop-blur-md 
+        border border-gray-200 dark:border-white/10 rounded-full
+        hover:bg-[var(--primary)] hover:border-[var(--primary)] hover:text-white
+        transition-all duration-300 shadow-sm hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50
+        active:scale-95 cursor-pointer 
+        ${className}`}
         onClick={handleBack}
       >
-        <HiArrowNarrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+        <HiArrowNarrowLeft className="w-5 h-5 group-hover:-translate-x-1.5 transition-transform duration-300" />
         {label}
       </button>
     );
   }
 
-  if (type == "title") {
+  if (type === "title") {
     return (
-      <div className="md:w-[50%] mb-4">
-        <h1 className="text-left text-xl md:text-2xl font-bold mb-2">
+      <div className={`w-full max-w-3xl mb-8 relative ${className}`}>
+        {/* Accent Bar */}
+        <div className="w-12 h-1.5 bg-[var(--primary)] rounded-full mb-4"></div>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-foreground drop-shadow-sm leading-tight">
           {title}
         </h1>
         {subtitle && (
-          <p className="leading-relaxed text-sm md:text-md text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             {subtitle}
           </p>
         )}
       </div>
     );
   }
+
+  return null;
 };
 
 export default HeaderContent;

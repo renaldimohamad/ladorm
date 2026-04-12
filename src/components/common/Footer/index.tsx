@@ -1,8 +1,11 @@
+"use client";
+
 import { scrollToIdWithMotion } from "@/utils/smoothScrollMotion";
 import Link from "next/link";
 import { generateWhatsAppLink } from "@/utils/whatsAppMessage";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import { useLanguage } from "../../../../stores/useLengauage";
 import "./index.css";
 
 export default function Footer() {
@@ -12,6 +15,7 @@ export default function Footer() {
 
   const pathname = usePathname();
   const router = useRouter();
+  const { dictionary } = useLanguage();
 
   const handleGoToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -34,7 +38,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 bg-gradient-to-t from-black via-[#1a1a1a] to-[#272727] text-white px-6 md:px-20 py-10">
+    <footer className="relative z-10 bg-gradient-to-b from-[#0a1f26] to-[#050e12] dark:from-[#081115] dark:to-[#030608] text-white px-6 md:px-20 py-10 border-t-[0.5px] border-[#0a1f26] dark:border-white/20 sm:border-white/1">
       <div className="mb-10">
         <div className="md:max-w-screen-xl md:mx-auto grid md:grid-cols-4 gap-10">
           <div>
@@ -46,15 +50,15 @@ export default function Footer() {
                 height={20}
                 className="object-containr"
               />
-              <p className="font-semibold">Asrama Mahasiswa Gorontalo</p>
+              <p className="font-semibold">{dictionary.footer?.brandText || "Asrama Mahasiswa Gorontalo"}</p>
             </div>
             <div className="mt-4 space-y-2 text-sm">
               <div className="flex gap-2">
-                <span className="font-medium">Website:</span>
+                <span className="font-medium">{dictionary.footer?.websiteLabel || "Website:"}</span>
                 <span className="text-gray-200">www.gorontalo.id</span>
               </div>
               <div className="flex gap-2">
-                <span className="font-medium">Email:</span>{" "}
+                <span className="font-medium">{dictionary.footer?.emailLabel || "Email:"}</span>{" "}
                 <span className="text-gray-200">info@asramamahasiswa.id</span>
               </div>
 
@@ -64,15 +68,14 @@ export default function Footer() {
                   target="_blank"
                   className="group pointer"
                 >
-                  <span className="font-medium">Address:</span>
+                  <span className="font-medium">{dictionary.footer?.addressLabel || "Address:"}</span>
                   <br />
                   <span className="text-gray-20">
-                    Jl. Kramat Gg. Pribadi No.39, RT.8/RW.2, Lenteng Agung, Kec.
-                    Jagakarsa
+                    {dictionary.footer?.addressText || "Jl. Kramat Gg. Pribadi No.39, RT.8/RW.2, Lenteng Agung, Kec. Jagakarsa"}
                   </span>
                   <br />
                   <span className="text-gray-200">
-                    Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630
+                    {dictionary.footer?.cityText || "Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630"}
                   </span>
                 </Link>
               </p>
@@ -80,7 +83,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Ladormy</h3>
+            <h3 className="text-lg font-semibold mb-4">{dictionary.footer?.ladormyLabel || "Ladormy"}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -88,12 +91,12 @@ export default function Footer() {
                   onClick={handleGoToHome}
                   className="pointer footer-link-hover"
                 >
-                  Beranda
+                  {dictionary.navbar?.home || "Beranda"}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="cursor-not-allowed">
-                  Blog
+                  {dictionary.navbar?.blog || "Blog"}
                 </Link>
               </li>
               <li>
@@ -102,14 +105,14 @@ export default function Footer() {
                   onClick={handleGoToContact}
                   className="cursor-pointer footer-link-hover"
                 >
-                  Contact us
+                  {dictionary.navbar?.contact || "Contact us"}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Social Media</h3>
+            <h3 className="text-lg font-semibold mb-4">{dictionary.footer?.socialMediaLabel || "Social Media"}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -157,16 +160,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold mb-4">{dictionary.footer?.legalLabel || "Legal"}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="#" className="cursor-not-allowed">
-                  Terms of Service
+                  {dictionary.footer?.termsOfService || "Terms of Service"}
                 </Link>
               </li>
               <li>
                 <Link href="#" className="cursor-not-allowed">
-                  Privacy Policy
+                  {dictionary.footer?.privacyPolicy || "Privacy Policy"}
                 </Link>
               </li>
             </ul>
@@ -175,10 +178,10 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="flex flex-col gap-10 border-t border-gray/40 pt-6 text-center text-sm">
+      <div className="flex flex-col gap-10 border-t border-white/10 sm:border-white/20 pt-6 text-center text-sm">
         <div className="flex justify-start md:justify-end px-4 md:px-10 gap-2">
           <div className="flex items-center gap-5">
-            <span className="font-semibold">Ladormy :</span>
+            <span className="font-semibold">{dictionary.footer?.ladormyLabel || "Ladormy"} :</span>
             {/* instagram */}
             <Link href="https://www.instagram.com/ladormy_/" target="_blank">
               <svg
@@ -258,7 +261,7 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <span>© 2025 Asrama Mahasiswa Gorontalo. All Rights Reserved.</span>
+        <span>{dictionary.footer?.copyright || "© 2025 Asrama Mahasiswa Gorontalo. All Rights Reserved."}</span>
       </div>
     </footer>
   );

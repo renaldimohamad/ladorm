@@ -1,5 +1,4 @@
 "use client";
-
 import Footer from "@/components/common/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
@@ -7,17 +6,20 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { LayoutBlank } from "@/layouts";
-// import { motion } from "framer-motion";
-// import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { useLanguage } from "../../stores/useLengauage";
 import { CallToAction } from "@/ui/common/CallToAction";
 import WhyLADorm from "@/components/WhyLADorm";
 import { SectionAbout } from "@/components/Home/SectionAbout";
-import LadormChat from "@/components/chatComponents";
+import Fade from "@/components/common/Fade";
+import { testimonialsData } from "@/utils/Testimonials";
+import { TestimonialsWrapper } from "@/components/Home/TestimonialsWrapper";
+import HowWeWork from "@/components/Home/HowWeWork";
+import CTASection from "@/components/Home/CTASection";
+import HomeBlogSection from "@/components/HomeBlogSection";
+import HomeInsightSection from "@/components/HomeInsightSection";
+import Image from "next/image";
 
 export default function Home() {
-  // const scrollDir = useScrollDirection();
-  // const initialY = scrollDir === "down" ? 80 : -80;
 
   const { dictionary } = useLanguage();
 
@@ -42,7 +44,6 @@ export default function Home() {
       <main className="flex flex-col w-full">
         <section
           id="home"
-          // className="w-full min-h-[90vh] md:min-h-[70vh] lg:min-h-[60vh] relative flex items-center justify-center "
           className="relative w-full h-full flex flex-col justify-center"
         >
           <Swiper
@@ -67,8 +68,8 @@ export default function Home() {
                       style={{ backgroundImage: `url(${slide.img})` }}
                     />
 
-                    <div className="hidden md:block absolute left-0 top-0 h-full w-full bg-gradient-to-r from-white via-white/60 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-0 block md:hidden bg-background/70 z-10 pointer-events-none" />
+                    <div className="hidden md:block absolute left-0 top-0 h-full w-full bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-0 block md:hidden bg-background/80 z-10 pointer-events-none" />
 
                     <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-50">
                       <div className="text-left max-w-2xl space-y-6">
@@ -97,43 +98,14 @@ export default function Home() {
             })}
           </Swiper>
         </section>
-        {/* <section
-          id="about"
-          className="scroll-mt-20 w-full px-4 py-20 bg-background text-foreground"
-        >
-          <motion.section
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{
-              duration: 1.2,
-              ease: [0.2, 1, 0.3, 1],
-              delay: 0.2,
-            }}
-            viewport={{ once: false, amount: 0.2 }}
-            className="w-full"
-          >
-            <AboutDormitory />
-          </motion.section>
-        </section> */}
         <SectionAbout />
-        {/* <GeneralInfo /> */}
-        {/* <section className="w-full px-4 py-16 sm:py-20 bg-muted text-foreground flex flex-col items-center">
-          <motion.section
-            initial={{ opacity: 0, y: initialY }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1.2,
-              ease: [0.2, 1, 0.3, 1],
-              delay: 0.2,
-            }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="w-full"
-          >
-            <h1 className="text-2xl sm:text-1xl md:text-2xl font-bold mb-8 sm:mb-10 text-center text-[#016072]">
-              Testimonials
-            </h1>
-
+        <WhyLADorm />
+        <HowWeWork />
+        <section className="w-full px-4 py-16 sm:py-20 bg-muted/30 dark:bg-[var(--card)]/100 text-foreground flex flex-col items-center">
+          <Fade direction="up" className="w-full">
+            <h3 className="text-3xl font-extrabold mb-10 text-center text-foreground tracking-tight">
+              {dictionary.homeWhyLadorm?.CTA?.title ? "Testimonials" : "Testimonials"}
+            </h3>
             <div className="w-full max-w-6xl px-2 sm:px-4 mx-auto">
               <Swiper
                 modules={[Autoplay]}
@@ -153,7 +125,7 @@ export default function Home() {
                   1024: { slidesPerView: 3 },
                 }}
               >
-                {testimonialsData.map((item, index) => (
+                {(dictionary.testimonialsData || testimonialsData).map((item, index) => (
                   <SwiperSlide key={index}>
                     <div className="h-full px-1 sm:px-2">
                       <TestimonialsWrapper>
@@ -188,12 +160,13 @@ export default function Home() {
                 ))}
               </Swiper>
             </div>
-          </motion.section>
-        </section> */}
-        {/* <section>
-          <DormitoryManagement />
-        </section> */}
-        <WhyLADorm />
+          </Fade>
+        </section>
+
+        <HomeBlogSection />
+        <HomeInsightSection />
+
+        <CTASection />
         <Footer />
       </main>
     </LayoutBlank>

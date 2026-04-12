@@ -9,12 +9,11 @@ import {
   FaLinkedin,
   FaFacebook,
   FaTiktok,
-  FaShareAlt,
-  FaUserCheck,
-  FaGraduationCap,
 } from "react-icons/fa";
 import { FaMapMarkerAlt, FaUserGraduate } from "react-icons/fa";
 import { motion } from "framer-motion";
+import CTASection from "@/components/Home/CTASection";
+import Footer from "@/components/common/Footer";
 
 interface Props {
   resident: Resident;
@@ -25,449 +24,224 @@ export default function ResidentDetailClient({ resident }: Props) {
   const isActive = resident.status === "active";
   const about = resident.about;
 
-  const generatedFallback = {
-    summary: `${resident.name} merupakan ${
-      isActive ? "anggota aktif" : "alumni"
-    } komunitas dengan latar belakang pendidikan di bidang ${
-      resident.major
-    } dari ${resident.university}.`,
-
-    experience: `Berasal dari ${resident.from}, ia memiliki minat serta pengalaman dalam pengembangan sistem modern serta pengelolaan solusi berbasis teknologi yang scalable.`,
-
-    expertise: [],
-    achievements: [],
-  };
-
   const finalAbout = {
-    summary: about?.summary ?? generatedFallback.summary,
-    experience: about?.experience ?? generatedFallback.experience,
-    expertise: about?.expertise ?? [],
-    achievements: about?.achievements ?? [],
+    summary: about?.summary || `${resident.name} merupakan bagian dari komunitas LADorm yang berfokus pada ${resident.major}.`,
+    experience: about?.experience || "",
+    expertise: about?.expertise || [],
+    achievements: about?.achievements || [],
   };
 
   const SOCIAL_MAP = {
-    instagram: {
-      icon: FaInstagram,
-      color: "#E1306C",
-      glow: "shadow-[0_0_25px_rgba(225,48,108,0.25)]",
-      label: "Instagram",
-    },
-    linkedin: {
-      icon: FaLinkedin,
-      color: "#0A66C2",
-      glow: "shadow-[0_0_25px_rgba(10,102,194,0.25)]",
-      label: "LinkedIn",
-    },
-    facebook: {
-      icon: FaFacebook,
-      color: "#1877F2",
-      glow: "shadow-[0_0_25px_rgba(24,119,242,0.25)]",
-      label: "Facebook",
-    },
-    tiktok: {
-      icon: FaTiktok,
-      color: "#000000",
-      glow: "shadow-[0_0_25px_rgba(0,0,0,0.2)]",
-      label: "TikTok",
-    },
+    instagram: { icon: FaInstagram, label: "Instagram" },
+    linkedin: { icon: FaLinkedin, label: "LinkedIn" },
+    facebook: { icon: FaFacebook, label: "Facebook" },
+    tiktok: { icon: FaTiktok, label: "TikTok" },
   };
 
-  function LuxurySocialIcon({
-    href,
-    Icon,
-    color,
-    label,
-  }: {
-    href: string;
-    Icon: any;
-    color: string;
-    label: string;
-  }) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="
-        group relative
-        w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11
-        flex items-center justify-center
-        rounded-full
-        transition-all duration-300
-        hover:-translate-y-1 hover:scale-105
-      "
-        style={{ backgroundColor: `${color}15` }}>
-        <Icon
-          className="transition-transform duration-300 group-hover:scale-110"
-          size={16}
-          style={{ color }}
-        />
-
-        {/* Tooltip Desktop Only */}
-        <div
-          className="
-        hidden sm:block
-        absolute -bottom-8 opacity-0 group-hover:opacity-100
-        transition-all duration-300
-        text-[10px] bg-gray-900 text-white
-        px-2 py-1 rounded-md shadow-md whitespace-nowrap
-      ">
-          {label}
-        </div>
-      </a>
-    );
-  }
-
-  function LuxuryShareButton({ name }: { name: string }) {
-    const handleShare = async () => {
-      if (navigator.share) {
-        await navigator.share({
-          title: name,
-          url: window.location.href,
-        });
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-      }
-    };
-
-    return (
-      <button
-        onClick={handleShare}
-        className="
-        group
-        w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11
-        flex items-center justify-center
-        rounded-full
-        bg-gradient-to-br
-        from-[rgba(1,96,114,0.9)]
-        to-[rgba(44,112,91,0.9)]
-        text-white
-        shadow-sm
-        transition-all duration-300
-        hover:-translate-y-1 hover:scale-105
-      ">
-        <FaShareAlt
-          size={14}
-          className="transition-transform duration-300 group-hover:rotate-12"
-        />
-      </button>
-    );
-  }
-
-  function InfoCard({
-    label,
-    value,
-    icon,
-    gradient,
-  }: {
-    label: string;
-    value: string;
-    icon: React.ReactNode;
-    gradient: string;
-  }) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-          ease: "easeOut",
-        }}
-        className={`
-        relative isolate
-        rounded-2xl p-6
-        border border-white/40
-        backdrop-blur-sm
-        shadow-sm
-        transition-all duration-300
-        hover:-translate-y-1 hover:shadow-md
-        ${gradient}
-      `}>
-        <div className="absolute -right-1 -bottom-2 text-white/10 text-8xl">
-          {icon}
-        </div>
-
-        <p className="text-xs uppercase tracking-wide text-white/70 mb-2">
-          {label}
-        </p>
-
-        <p className="text-lg sm:text-xl font-semibold text-white">{value}</p>
-      </motion.div>
-    );
-  }
-
   return (
-    <LayoutBlank bgColor="gray-50">
-      <div className="min-h-screen py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <HeaderContent
-            label="Daftar Penghuni"
-            onBack={() => router.push("/residents")}
-            className="mb-10"
-          />
+    <LayoutBlank bgColor="bg-background">
+      <main className="min-h-screen bg-background flex flex-col w-full relative">
 
-          <div className="relative rounded-2xl shadow-sm w-full p-6 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-              style={{
-                backgroundImage: "url('/images/BG LADORM_WHITE.webp')",
-              }}
+        {/* ================= HERO SECTION (SMART COVER) ================= */}
+        <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden bg-background">
+          {/* Backdrop Layer (Blurred) */}
+          <div className="absolute inset-0 z-0">
+            {resident.coverPhoto ? (
+              <>
+                <div className="absolute inset-0">
+                  <img
+                    src={resident.coverPhoto}
+                    alt=""
+                    className="w-full h-full object-cover blur-3xl opacity-30 scale-110"
+                  />
+                  <div className="absolute inset-0 bg-background/20" />
+                </div>
+                {/* Main Content (Uncropped) */}
+                <div className="absolute inset-0 flex items-center justify-center pt-8 pb-16 px-4">
+                  <img
+                    src={resident.coverPhoto}
+                    alt="Cover"
+                    className="max-w-full max-h-full object-contain shadow-2xl rounded-2xl border border-white/10"
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
+            )}
+            {/* Soft Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+          </div>
+
+          <div className="max-w-6xl mx-auto px-6 h-full relative z-10 py-10">
+            <HeaderContent
+              label="Kembali ke Katalog"
+              onBack={() => router.push("/residents")}
+              className="mt-2"
             />
-            <div className="relative z-10">
-              <div className="relative mb-16">
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+          </div>
+        </section>
 
-                {/* ================= HERO PROFILE ================= */}
-                <div className="relative mb-16">
-                  {/* Soft Background Accent */}
-                  <div className="absolute inset-0 -z-10">
-                    <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-[90%] max-w-[700px] h-[300px] bg-indigo-50 rounded-full blur-3xl opacity-60" />
-                  </div>
+        {/* ================= MAIN CONTENT AREA ================= */}
+        <section className="relative z-20 -mt-24 md:-mt-32 pb-24">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="grid lg:grid-cols-12 gap-10 items-start">
 
-                  <div className="bg-background rounded-3xl overflow-hidden border-b border-border">
-                    <div className="grid lg:grid-cols-2">
-                      {/* LEFT SIDE — AVATAR */}
-                      <div
-                        className="relative min-h-[320px] sm:min-h-[380px] 
-                flex flex-col items-center justify-end 
-                px-6 py-10 sm:px-10 sm:py-14 
-                border-b lg:border-b-0 lg:border-r 
-                border-border overflow-hidden">
-                        {/* Cover Background */}
-                        {resident.coverPhoto && (
-                          <div
-                            className="absolute inset-0 bg-cover bg-center"
-                            style={{
-                              backgroundImage: `url(${encodeURI(resident.coverPhoto)})`,
-                              opacity: 0.25,
-                            }}
-                          />
-                        )}
+              {/* LEFT COLUMN: Profile & Bio */}
+              <div className="lg:col-span-8 space-y-8">
 
-                        {/* Optional subtle fade biar elegan */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-white/30 to-transparent" />
+                {/* 1. Identity Card (Floating Overlap) */}
+                <div className="bg-card border border-border/80 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-primary/5">
+                  <div className="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
+                    <div className="relative shrink-0">
+                      <div className="absolute -inset-2 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-full blur-xl opacity-40" />
+                      <img
+                        src={resident.photo}
+                        alt={resident.name}
+                        className="relative w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-background shadow-2xl"
+                      />
+                      <div className={`absolute bottom-3 right-3 w-6 h-6 rounded-full border-4 border-background shadow-lg ${isActive ? 'bg-secondary' : 'bg-muted-foreground'}`} />
+                    </div>
 
-                        {/* Content */}
-                        <div className="relative z-10 flex flex-col items-center">
-                          {/* Avatar */}
-                          <div className="relative group">
-                            <div className="absolute inset-0 rounded-full bg-background/40 blur-2xl opacity-40 transition group-hover:opacity-60" />
-                            <img
-                              src={resident.photo}
-                              alt={resident.name}
-                              className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44
-                   rounded-full object-cover
-                   ring-4 ring-white shadow-2xl
-                   transition-transform duration-500 group-hover:scale-105"
-                            />
-                          </div>
-
-                          {/* Status Badge */}
-                          <div
-                            className={`mt-6 inline-flex items-center gap-2 px-4 py-1.5 
-                  rounded-full text-xs font-medium tracking-wide 
-                  backdrop-blur-md bg-background/70
-        ${isActive ? "text-[#047857]" : "text-[#134E4A]"}`}>
-                            <span
-                              className={`w-2 h-2 rounded-full ${
-                                isActive ? "bg-[#047857]" : "bg-[#134E4A]"
-                              }`}
-                            />
-                            {isActive ? "Active Member" : "Alumni"}
-                          </div>
-                        </div>
+                    <div className="flex-1 pt-2">
+                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-5">
+                        <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/20">
+                          {isActive ? "Member Aktif" : "Alumni"}
+                        </span>
+                        <span className="text-muted-foreground/60 text-[10px] font-black uppercase tracking-widest border border-border/50 px-3 py-1.5 rounded-full">
+                          Joined {resident.joinedYear || "-"}
+                        </span>
                       </div>
-
-                      {/* RIGHT SIDE — IDENTITY */}
-                      <div className="px-6 py-10 sm:px-10 sm:py-14 flex flex-col justify-center text-center lg:text-left">
-                        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-foreground leading-tight">
-                          {resident.name}
-                        </h1>
-
-                        <p className="mt-3 text-base sm:text-lg text-muted-foreground">
-                          {resident.major}
-                        </p>
-
-                        <p className="text-sm text-gray-400">
-                          {resident.university}
-                        </p>
-
-                        {/* Divider */}
-                        <div className="mt-6 h-px w-16 bg-muted mx-auto lg:mx-0" />
-
-                        {resident.bio && (
-                          <p className="mt-6 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                            {resident.bio}
-                          </p>
-                        )}
-
-                        <div className="mt-4 flex flex-wrap items-center gap-3 justify-center lg:justify-start italic">
-                          {resident.joinedYear && (
-                            <span className="flex items-center gap-2 text-xs text-muted-foreground">
-                              <span className="w-1.5 h-1.5 rounded-full bg-gray-300" />
-                              Bergabung sejak {resident.joinedYear}
-                            </span>
-                          )}
-                        </div>
-                      </div>
+                      <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-foreground mb-4 leading-tight">
+                        {resident.name}
+                      </h1>
+                      <p className="text-xl font-bold text-muted-foreground/80 leading-relaxed uppercase tracking-tight">
+                        {resident.major}
+                      </p>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* ================= KPI SECTION ================= */}
-              <div className="mt-10 grid sm:grid-cols-3 gap-6">
-                <InfoCard
-                  label="Asal"
-                  value={resident.from}
-                  icon={<FaMapMarkerAlt />}
-                  gradient="bg-gradient-to-br from-emerald-400/70 to-teal-500/70"
-                />
+                {/* 2. Biography Section */}
+                <div className="bg-card border border-border/60 rounded-[2.5rem] p-8 md:p-12 shadow-sm space-y-10">
+                  <div className="inline-flex items-center gap-4 bg-muted/30 px-5 py-2 rounded-full">
+                    <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                    <h2 className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/50">Professional Background</h2>
+                  </div>
 
-                <InfoCard
-                  label="Bidang Studi"
-                  value={resident.major}
-                  icon={<FaUserGraduate />}
-                  gradient="bg-gradient-to-br from-teal-500/70 to-cyan-600/70"
-                />
-
-                <InfoCard
-                  label="Status"
-                  value={isActive ? "Active Member" : "Alumni"}
-                  icon={isActive ? <FaUserCheck /> : <FaGraduationCap />}
-                  gradient={
-                    isActive
-                      ? "bg-gradient-to-br from-[#047857] to-[#065F46]"
-                      : "bg-gradient-to-br from-[#134E4A] to-[#064E3B]"
-                  }
-                />
-              </div>
-
-              <div className="mt-16 bg-background rounded-2xl border border-border p-8 sm:p-12">
-                <div className="mb-10">
-                  <h2 className="text-2xl sm:text-3xl font-semibold text-foreground">
-                    Tentang
-                  </h2>
-                  <p className="text-sm text-gray-400 mt-1">
-                    Informasi singkat mengenai {resident.name}
-                  </p>
-                </div>
-
-                <div className="max-w-3xl text-muted-foreground leading-8 text-sm sm:text-base space-y-6">
-                  <p
-                    className="
-    relative
-    pl-6
-    text-foreground
-    font-medium
-    text-base sm:text-lg
-    leading-relaxed
-    border-l-4
-    border-transparent
-    bg-gradient-to-b
-    from-[#016072]
-    to-[#2C705B]
-    bg-[length:4px_100%]
-    bg-no-repeat
-  ">
+                  <blockquote className="text-2xl md:text-3xl font-bold leading-relaxed text-foreground/90 border-l-8 border-primary/20 pl-8 italic">
                     {finalAbout.summary}
-                  </p>
+                  </blockquote>
 
-                  <p>{finalAbout.experience}</p>
+                  <div className="text-muted-foreground leading-relaxed text-lg space-y-6">
+                    <p className="whitespace-pre-line">{finalAbout.experience}</p>
+                  </div>
+
+                  {finalAbout.achievements.length > 0 && (
+                    <div className="pt-10 border-t border-border/50">
+                      <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/70 mb-8">Notable Milestones</h3>
+                      <div className="grid sm:grid-cols-2 gap-5">
+                        {finalAbout.achievements.map((item, index) => (
+                          <div key={index} className="flex items-start gap-4 p-6 rounded-3xl bg-muted/20 border border-border/10">
+                            <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                              <FaUserGraduate size={16} />
+                            </div>
+                            <span className="text-sm font-bold text-muted-foreground leading-relaxed">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* RIGHT COLUMN: Sidebar Info (Sticky) */}
+              <aside className="lg:col-span-4 space-y-8 lg:sticky lg:top-24">
+
+                {/* 1. Essential Info Card */}
+                <div className="bg-card border border-border/80 rounded-[2.5rem] p-8 md:p-10 shadow-xl shadow-primary/5">
+                  <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-10">Essential Info</h3>
+
+                  <div className="space-y-8">
+                    <div className="flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-2xl bg-muted/50 flex items-center justify-center text-primary/70 border border-border/50">
+                        <FaMapMarkerAlt size={20} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase font-black text-muted-foreground/30 tracking-widest mb-1">Origins</p>
+                        <p className="text-base font-bold text-foreground/90">{resident.from}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-2xl bg-muted/50 flex items-center justify-center text-primary/70 border border-border/50">
+                        <FaUserGraduate size={20} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase font-black text-muted-foreground/30 tracking-widest mb-1">Academic</p>
+                        <p className="text-base font-bold text-foreground/90 leading-tight">{resident.university}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {resident.socials && (
+                    <div className="mt-12 pt-10 border-t border-border/50 flex flex-wrap gap-4">
+                      {Object.entries(resident.socials).map(([key, url]) => {
+                        if (!url) return null;
+                        const social = SOCIAL_MAP[key as keyof typeof SOCIAL_MAP];
+                        if (!social) return null;
+                        return (
+                          <a
+                            key={key}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 flex items-center justify-center rounded-2xl bg-muted hover:bg-primary hover:text-white transition-all duration-500 shadow-sm border border-border/50"
+                            title={social.label}
+                          >
+                            <social.icon size={20} />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  <button
+                    onClick={() => {
+                      if (resident.socials?.instagram) {
+                        window.open(resident.socials.instagram, '_blank');
+                      }
+                    }}
+                    className="w-full mt-10 py-5 rounded-2xl bg-primary text-white font-black uppercase tracking-[0.2em] text-[10px] hover:shadow-2xl hover:shadow-primary/40 hover:-translate-y-1 active:scale-95 transition-all"
+                  >
+                    Request Intro
+                  </button>
                 </div>
 
+                {/* 2. Expertise Sidebar */}
                 {finalAbout.expertise.length > 0 && (
-                  <div className="mt-12">
-                    <h3 className="text-sm font-semibold text-foreground mb-4">
-                      Keahlian
-                    </h3>
-
-                    <div className="flex flex-wrap gap-2">
+                  <div className="bg-card border border-border/80 rounded-[2.5rem] p-8 shadow-sm">
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/40 mb-8">Social Expertise</h3>
+                    <div className="flex flex-wrap gap-3">
                       {finalAbout.expertise.map((item, index) => (
                         <span
                           key={index}
-                          className="px-4 py-1.5 rounded-full text-xs sm:text-sm 
-             bg-gradient-to-r from-[#016072]/10 to-[#2C705B]/10
-             text-[#065F46]
-             border border-[#016072]/20">
+                          className="px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-tight bg-muted border border-border/60 text-muted-foreground shadow-sm hover:border-primary/40 transition-colors"
+                        >
                           {item}
                         </span>
                       ))}
                     </div>
                   </div>
                 )}
+              </aside>
 
-                {finalAbout.achievements.length > 0 && (
-                  <div className="mt-12">
-                    <h3 className="text-sm font-semibold text-foreground mb-4">
-                      Pencapaian
-                    </h3>
-
-                    <ul className="space-y-3">
-                      {finalAbout.achievements.map((item, index) => (
-                        <li
-                          key={index}
-                          className="flex gap-3 text-sm sm:text-base">
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400" />
-                          <span className="text-muted-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              {/* ================= SOCIAL FOOTER ================= */}
-              {resident.socials && (
-                <div className="mt-16 pt-10 border-t border-border">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                    <p className="text-xs sm:text-sm text-gray-400">
-                      Terhubung dengan {resident.name}
-                    </p>
-
-                    <div className="flex justify-center sm:justify-end">
-                      <div
-                        className="
-          flex items-center gap-3 sm:gap-4
-          px-4 sm:px-6
-          py-2.5 sm:py-3
-          rounded-full
-          bg-background/80 backdrop-blur-xl
-          border border-border
-          shadow-[0_8px_30px_rgba(0,0,0,0.05)]
-          transition-all duration-300
-        ">
-                        {Object.entries(resident.socials).map(([key, url]) => {
-                          if (!url) return null;
-
-                          const social =
-                            SOCIAL_MAP[key as keyof typeof SOCIAL_MAP];
-                          if (!social) return null;
-
-                          return (
-                            <LuxurySocialIcon
-                              key={key}
-                              href={url}
-                              Icon={social.icon}
-                              color={social.color}
-                              label={social.label}
-                            />
-                          );
-                        })}
-
-                        <div className="h-5 w-px bg-muted mx-1 sm:mx-2" />
-
-                        <LuxuryShareButton name={resident.name} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+
+        <CTASection />
+        <Footer />
+      </main>
     </LayoutBlank>
   );
 }

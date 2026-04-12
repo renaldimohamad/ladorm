@@ -22,14 +22,6 @@ const Navbar = () => {
   const { lang, setLang, dictionary } = useLanguage();
   const { theme, toggleTheme } = useTheme();
 
-  const [tooltip, setTooltip] = useState<
-    "blog" | "insight" | "contact us" | null
-  >(null);
-
-  const showTooltip = (key: "blog" | "insight" | "contact us") => {
-    setTooltip(key);
-    setTimeout(() => setTooltip(null), 2000);
-  };
 
   const languages = [
     {
@@ -74,44 +66,27 @@ const Navbar = () => {
           <nav className="hidden sm:flex gap-6 ml-10 items-center">
             <Link
               href="/"
-              className={`link-underline ${
-                pathname === "/" ? "font-bold" : "font-normal"
-              }`}
+              className={`link-underline ${pathname === "/" ? "font-bold" : "font-normal"
+                }`}
             >
               <span>{dictionary.navbar.home}</span>
             </Link>
 
-            <div className="relative group">
-              <button
-                onClick={(e) => e.preventDefault()}
-                className="text-white link-underline cursor-not-allowed select-none"
-              >
-                {dictionary.navbar.blog}
-              </button>
+            <Link
+              href="/blog"
+              className={`link-underline ${pathname === "/blog" ? "font-bold" : "font-normal"
+                }`}
+            >
+              <span>{dictionary.navbar.blog}</span>
+            </Link>
 
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none z-10">
-                <div className="relative bg-gray-900 text-white text-xs px-4 py-2 rounded-lg shadow-lg whitespace-nowrap">
-                  Akan Datang 🚫
-                  <div className="absolute left-1/2 -bottom-1.5 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45 z-[-1] shadow" />
-                </div>
-              </div>
-            </div>
-
-            <div className="relative group">
-              <button
-                onClick={(e) => e.preventDefault()}
-                className="text-white link-underline cursor-not-allowed select-none"
-              >
-                {dictionary.navbar.insight}
-              </button>
-
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none z-10">
-                <div className="relative bg-gray-900 text-white text-xs px-4 py-2 rounded-lg shadow-lg whitespace-nowrap">
-                  Akan Datang 🚫
-                  <div className="absolute left-1/2 -bottom-1.5 -translate-x-1/2 w-3 h-3 bg-gray-900 rotate-45 z-[-1] shadow" />
-                </div>
-              </div>
-            </div>
+            <Link
+              href="/insight"
+              className={`link-underline ${pathname === "/insight" ? "font-bold" : "font-normal"
+                }`}
+            >
+              <span>{dictionary.navbar.insight}</span>
+            </Link>
           </nav>
         </div>
 
@@ -120,11 +95,10 @@ const Navbar = () => {
           className="sm:hidden text-white text-2xl relative w-8 h-8"
         >
           <span
-            className={`absolute inset-0 transition-all duration-300 ease-in-out transform ${
-              mobileMenuOpen
-                ? "opacity-0 scale-95 rotate-45"
-                : "opacity-100 scale-100 rotate-0"
-            }`}
+            className={`absolute inset-0 transition-all duration-300 ease-in-out transform ${mobileMenuOpen
+              ? "opacity-0 scale-95 rotate-45"
+              : "opacity-100 scale-100 rotate-0"
+              }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -143,11 +117,10 @@ const Navbar = () => {
           </span>
 
           <span
-            className={`absolute inset-0 transition-all duration-300 ease-in-out transform ${
-              mobileMenuOpen
-                ? "opacity-100 scale-100 rotate-0"
-                : "opacity-0 scale-95 -rotate-45"
-            }`}
+            className={`absolute inset-0 transition-all duration-300 ease-in-out transform ${mobileMenuOpen
+              ? "opacity-100 scale-100 rotate-0"
+              : "opacity-0 scale-95 -rotate-45"
+              }`}
           >
             <HiX className="w-8 h-8" />
           </span>
@@ -160,65 +133,57 @@ const Navbar = () => {
 
               return (
                 <div className="relative inline-flex">
-                  <Listbox.Button className="rounded-custom w-full bg-background text-[#016072] font-semibold text-sm px-3 py-2 pr-10 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-[#016072] focus:ring-offset-1 transition-all flex items-center gap-2">
-                    {/* Flag */}
-                    {selectedLang?.flag && (
-                      <Image
-                        src={selectedLang.flag}
-                        alt={`${selectedLang.label} flag`}
-                        width={20}
-                        height={20}
-                        className="w-5 h-5 object-cover rounded-full border border-border shadow-sm"
-                      />
-                    )}
-                    {/* <span>{selectedLang?.label}</span> */}
+                  <Listbox.Button className="rounded-custom h-[40px] min-w-[90px] bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 font-semibold text-sm px-3 rounded-md shadow-sm focus:outline-none transition-all flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      {selectedLang?.flag && (
+                        <Image
+                          src={selectedLang.flag}
+                          alt={`${selectedLang.label} flag`}
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 object-cover rounded-full border border-white/30 shadow-sm"
+                        />
+                      )}
+                      <span className="uppercase text-xs tracking-wider">{selectedLang?.value}</span>
+                    </div>
 
-                    {/* Arrow */}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className={`w-4 h-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-[#016072] transition-transform duration-200 ${
-                        open ? "rotate-180" : "rotate-0"
-                      }`}
+                      className={`w-4 h-4 text-white transition-transform duration-200 ${open ? "rotate-180" : "rotate-0"
+                        }`}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                       strokeWidth="2"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </Listbox.Button>
 
-                  <Listbox.Options className="rounded-custom absolute mt-10 w-full bg-background rounded-md shadow z-10 w-10">
-                    {languages
-                      .filter((item) => item.value !== lang)
-                      .map((item) => (
-                        <Listbox.Option
-                          key={item.value}
-                          value={item.value}
-                          className={({ active }) =>
-                            `cursor-pointer px-3 py-2 flex items-center gap-2 ${
-                              active
-                                ? "bg-[#e6f3f5] text-[#016072]"
-                                : "text-muted-foreground"
-                            }`
-                          }
-                        >
-                          {item.flag && (
-                            <Image
-                              src={item.flag}
-                              alt={`${item.label} flag`}
-                              width={20}
-                              height={20}
-                              className="w-5 h-5 object-cover rounded-full border border-border shadow-sm"
-                            />
-                          )}
-                          <span>{item.label}</span>
-                        </Listbox.Option>
-                      ))}
+                  <Listbox.Options className="rounded-custom absolute mt-2 origin-top-right right-0 w-[140px] bg-background border border-border rounded-md shadow-lg z-50 text-foreground overflow-hidden">
+                    {languages.map((item) => (
+                      <Listbox.Option
+                        key={item.value}
+                        value={item.value}
+                        className={({ active, selected }) =>
+                          `cursor-pointer px-4 py-2.5 flex items-center gap-3 transition-colors ${active || selected
+                            ? "bg-primary/10 text-primary font-medium"
+                            : "text-foreground hover:bg-muted"
+                          }`
+                        }
+                      >
+                        {item.flag && (
+                          <Image
+                            src={item.flag}
+                            alt={`${item.label} flag`}
+                            width={20}
+                            height={20}
+                            className="w-5 h-5 object-cover rounded-full border border-border/50 shadow-sm"
+                          />
+                        )}
+                        <span className="text-sm">{item.value === "en" ? "English" : "Indonesia"}</span>
+                      </Listbox.Option>
+                    ))}
                   </Listbox.Options>
                 </div>
               );
@@ -228,9 +193,9 @@ const Navbar = () => {
           <div className="hidden sm:block">
             <Link
               href="/contact-us"
-              className="rounded-custom flex items-center justify-center bg-background text-foreground px-4 py-2 rounded-sm shadow transition-all transform hover:bg-muted hover:shadow-md"
+              className="rounded-custom flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-md px-4 h-[40px] rounded-sm shadow-sm transition-all transform hover:scale-105 active:scale-95"
             >
-              <span className="text-sm text-[#016072] flex items-center gap-1">
+              <span className="text-sm font-semibold flex items-center gap-1">
                 {dictionary.navbar.contact}
               </span>
             </Link>
@@ -238,7 +203,7 @@ const Navbar = () => {
 
           <button
             onClick={toggleTheme}
-            className="hidden sm:flex rounded-custom items-center justify-center bg-background/20 text-white px-3 py-2 rounded-sm shadow hover:bg-background/30 transition-all border border-white/30"
+            className="hidden sm:flex rounded-custom items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white backdrop-blur-md w-[40px] h-[40px] rounded-sm shadow-sm transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
           >
             {theme === "dark" ? (
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -269,82 +234,114 @@ const Navbar = () => {
               </Link>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="relative">
-              <button
-                onClick={() => showTooltip("blog")}
-                className="block w-full text-left hover:underline text-white"
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-2 text-white hover:underline ${pathname === "/blog" ? "font-bold" : ""
+                  }`}
               >
-                Blog
-              </button>
-              {tooltip === "blog" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-1 bg-black text-white text-xs px-3 py-1 rounded shadow z-10"
-                >
-                  Akan datang 🚫
-                </motion.div>
-              )}
+                {dictionary.navbar.blog}
+              </Link>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="relative">
-              <button
-                onClick={() => showTooltip("insight")}
-                className="block w-full text-left hover:underline text-white"
+            <motion.div variants={itemVariants}>
+              <Link
+                href="/insight"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-2 text-white hover:underline ${pathname === "/insight" ? "font-bold" : ""
+                  }`}
               >
                 {dictionary.navbar.insight}
-              </button>
-              {tooltip === "insight" && (
-                <motion.div
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -4 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-1 bg-black text-white text-xs px-3 py-1 rounded shadow z-10"
-                >
-                  Akan datang 🚫
-                </motion.div>
-              )}
+              </Link>
             </motion.div>
 
-            <div className="inline-flex relative">
-              <select
-                className="rounded-custom appearance-none bg-background text-[#016072] font-semibold px-3 py-1 pr-8 rounded-md shadow focus:outline-none text-xs"
-                value={lang}
-                onChange={(e) =>
-                  setLang(e.target.value as "en" | "id" | "gtlo")
-                }
-              >
-                <option value="en">English</option>
-                <option value="id">Indonesia</option>
-                {/* <option value="gtlo">Bahasa Gorontalo</option> */}
-              </select>
+            <motion.div variants={itemVariants} className="flex gap-2 w-full mt-2">
+              <div className="relative flex-1">
+                <Listbox value={lang} onChange={setLang}>
+                  {({ open }) => {
+                    const selectedLang = languages.find((l) => l.value === lang);
+                    return (
+                      <>
+                        <Listbox.Button className="rounded-custom w-full h-[40px] bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 font-semibold text-sm px-3 rounded-md shadow-sm focus:outline-none transition-all flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            {selectedLang?.flag && (
+                              <Image
+                                src={selectedLang.flag}
+                                alt={`${selectedLang.label} flag`}
+                                width={20}
+                                height={20}
+                                className="w-5 h-5 object-cover rounded-full border border-white/30 shadow-sm"
+                              />
+                            )}
+                            <span className="uppercase text-xs tracking-wider">{selectedLang?.value === "en" ? "English" : "Indonesia"}</span>
+                          </div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={`w-4 h-4 text-white transition-transform duration-200 ${open ? "rotate-180" : "rotate-0"
+                              }`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </Listbox.Button>
 
-              <div className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2">
-                <svg
-                  className="w-4 h-4 text-foreground"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                        <Listbox.Options className="rounded-custom absolute bottom-full mb-2 origin-bottom w-full bg-background border border-border rounded-md shadow-lg z-50 text-foreground overflow-hidden">
+                          {languages.map((item) => (
+                            <Listbox.Option
+                              key={item.value}
+                              value={item.value}
+                              className={({ active, selected }) =>
+                                `cursor-pointer px-4 py-2.5 flex items-center gap-3 transition-colors ${active || selected
+                                  ? "bg-primary/10 text-primary font-medium"
+                                  : "text-foreground hover:bg-muted"
+                                }`
+                              }
+                            >
+                              {item.flag && (
+                                <Image
+                                  src={item.flag}
+                                  alt={`${item.label} flag`}
+                                  width={20}
+                                  height={20}
+                                  className="w-5 h-5 object-cover rounded-full border border-border/50 shadow-sm"
+                                />
+                              )}
+                              <span className="text-sm">{item.value === "en" ? "English" : "Indonesia"}</span>
+                            </Listbox.Option>
+                          ))}
+                        </Listbox.Options>
+                      </>
+                    );
+                  }}
+                </Listbox>
               </div>
-            </div>
+
+              <button
+                onClick={toggleTheme}
+                className="rounded-custom flex items-center justify-center bg-white/10 border border-white/20 text-white hover:bg-white/20 w-[40px] h-[40px] rounded-sm shadow-sm transition-all backdrop-blur-md cursor-pointer"
+              >
+                {theme === "dark" ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                  </svg>
+                )}
+              </button>
+            </motion.div>
 
             <motion.div variants={itemVariants}>
               <Link
                 href="/contact-us"
-                className="rounded-custom inline-flex items-center justify-center bg-background text-foreground px-4 py-1 rounded-sm shadow transition-all transform hover:shadow-lg hover:-translate-y-1"
+                className="rounded-custom flex w-full items-center justify-center bg-white/10 border border-white/20 text-white hover:bg-white/20 px-4 py-2 rounded-sm shadow-sm transition-all transform hover:scale-[1.02] active:scale-95 backdrop-blur-md mt-2"
               >
-                <span className="text-xs text-[#016072] flex items-center gap-1 font-semibold">
+                <span className="text-sm font-semibold flex items-center gap-1 text-white">
                   {dictionary.navbar.contact}
                 </span>
               </Link>

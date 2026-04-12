@@ -39,11 +39,9 @@ export async function generateMetadata({
   const shortSummary =
     resident.about?.summary?.slice(0, 120) || resident.bio || "";
 
-  const description = `${resident.name} adalah ${statusLabel} LADorm dari ${
-    resident.university
-  }. ${shortSummary}${
-    resident.joinedYear ? ` Bergabung sejak ${resident.joinedYear}.` : ""
-  }`;
+  const description = `${resident.name} adalah ${statusLabel} LADorm dari ${resident.university
+    }. ${shortSummary}${resident.joinedYear ? ` Bergabung sejak ${resident.joinedYear}.` : ""
+    }`;
 
   return {
     title: `${resident.name} | ${resident.major} | LADorm`,

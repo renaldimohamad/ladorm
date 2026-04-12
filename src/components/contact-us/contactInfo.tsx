@@ -1,70 +1,84 @@
 "use client";
-import { motion } from "framer-motion";
-import contactItems from "./contactItems";
+import { motion, Variants } from "framer-motion";
+import { getContactItems } from "./contactItems";
 import "./index.css";
 import Link from "next/link";
+import { useLanguage } from "../../../stores/useLengauage";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6 },
+    transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
   }),
 };
 
 export default function ContactInfo() {
+  const { dictionary } = useLanguage();
+  const contactItems = getContactItems(dictionary);
+
+  // Separate core contacts from social media
+  const coreItems = contactItems.slice(0, 3);
+  const socialItems = contactItems.slice(3);
+
   return (
-    <motion.div
-      className="border border-border rounded-xl p-6 bg-background shadow-lg"
-      variants={fadeInUp}
-      custom={1}
-    >
-      <ul className="text-[#3b9e7e]">
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        {contactItems.map((item: any, i: number) => (
-          <Link
+    <div className="flex flex-col gap-4">
+      {/* 1. Core Contact Cards */}
+      <div className="grid grid-cols-1 gap-3">
+        {coreItems.map((item: any, i: number) => (
+          <motion.div
             key={i}
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            variants={fadeInUp}
+            custom={i}
+            initial="hidden"
+            animate="visible"
           >
-            <motion.li
-              key={i}
-              // className="flex items-start gap-3 py-4 border-b last:border-none border-dashed border-green-200 transition-all duration-300 rounded-md px-2"
-              className="flex items-start gap-3 py-4 border-b border-dashed border-green-200 transition-all duration-300 rounded-md px-2"
-              variants={fadeInUp}
-              custom={i + 2}
-              whileHover={{
-                scale: 1.08,
-                backgroundColor: "rgba(235, 255, 245, 0.9)",
-                boxShadow: "0px 2px 10px rgba(59, 158, 126, 0.2)",
-                transition: {
-                  duration: 0.01,
-                  ease: "easeOut",
-                },
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="text-[#016072] mt-1 text-lg sm:text-xl">
-                {item.icon}
-              </div>
-              <div>
-                <p className="font-medium text-[#018484] text-sm sm:text-base md:text-lg">
-                  {item.label}
-                </p>
-                {item.href ? (
-                  <div>{item.value}</div>
-                ) : (
-                  <p className="break-all text-xs sm:text-sm md:text-base text-muted-foreground">
+            <Link href={item.href} target="_blank" rel="noopener noreferrer" className="group block">
+              <div className="flex items-center gap-4 p-4 bg-[var(--card)] border border-border/60 rounded-[1.2rem] shadow-sm hover:shadow-lg hover:border-[var(--primary)]/50 transition-all duration-300">
+                <div className="w-10 h-10 rounded-lg bg-[var(--primary)]/10 text-[var(--primary)] flex items-center justify-center group-hover:bg-[var(--primary)] group-hover:text-white transition-colors duration-300 shrink-0">
+                  <span className="text-lg">{item.icon}</span>
+                </div>
+                <div className="overflow-hidden">
+                  <p className="text-[8px] font-black uppercase tracking-[0.2em] text-[var(--primary)] mb-0.5 opacity-60">
+                    {item.label}
+                  </p>
+                  <p className="font-bold text-foreground text-xs sm:text-sm tracking-tight truncate">
                     {item.value}
                   </p>
-                )}
+                </div>
               </div>
-            </motion.li>
-          </Link>
+            </Link>
+          </motion.div>
         ))}
-      </ul>
-    </motion.div>
+      </div>
+
+      {/* 2. Compact Social Grid */}
+      <div className="grid grid-cols-3 gap-3">
+        {socialItems.map((item: any, i: number) => (
+          <motion.div
+            key={i + 3}
+            variants={fadeInUp}
+            custom={i + 3}
+            initial="hidden"
+            animate="visible"
+          >
+            <Link href={item.href} target="_blank" rel="noopener noreferrer" className="group block h-full">
+              <div className="flex flex-col items-center justify-center p-3 bg-[var(--card)] border border-border/60 rounded-[1.2rem] shadow-sm hover:shadow-lg hover:border-[var(--primary)]/50 transition-all duration-300 h-full">
+                <div className="text-[var(--primary)] text-lg mb-1 group-hover:scale-110 transition-transform rounded-custom">
+                  {item.icon}
+                </div>
+                <p className="text-[7px] font-black tracking-widest uppercase opacity-40 group-hover:opacity-100 transition-opacity">
+                  {item.label}
+                </p>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 }
+
+
+

@@ -15,7 +15,7 @@ type ContactItem = {
   href?: string;
 };
 
-const contactItems: ContactItem[] = [
+export const getContactItems = (dictionary: any): ContactItem[] => [
   {
     icon: <FaMapMarkerAlt />,
     label: "Address",
@@ -25,17 +25,18 @@ const contactItems: ContactItem[] = [
   {
     icon: <FaPhone />,
     label: "Call Me",
-    value: "+62-811-4383-99",
+    value: "+62 895-6301-73507",
     href: generateWhatsAppLink(
-      "62811438399",
-      "Halo kak, saya mau tanya tentang Asrama Mahasiswa Gorontalo."
+      "62895630173507",
+      dictionary?.contactUs?.whatsappMessage ||
+      "Halo Pengurus LADORM! 👋\n\nSaya tertarik dan ingin bertanya lebih lanjut mengenai fasilitas dan ketersediaan kamar di Asrama Mahasiswa Gorontalo - Lenteng Agung.\n\nMohon infonya ya Kak, terima kasih! ✨"
     ),
   },
   {
     icon: <FaEnvelope />,
     label: "Email",
     value: "ladormgorontalo@gmail.com",
-    href: "mailto:ladormgorontalo@gmailcom",
+    href: "mailto:ladormgorontalo@gmail.com",
   },
   {
     icon: <FaInstagram />,
@@ -56,5 +57,3 @@ const contactItems: ContactItem[] = [
     href: "https://x.com/Ladorm_Family",
   },
 ];
-
-export default contactItems;
