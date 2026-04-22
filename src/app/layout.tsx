@@ -8,6 +8,7 @@ import { residents } from "@/utils/residents";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import ScrollToTop from "@/components/common/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import { GlobalPreloader } from "@/components/common/GlobalPreloader";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -172,6 +173,7 @@ export default function RootLayout({
               },
             }}
           />
+          <GlobalPreloader />
           {children}
           <ScrollToTop />
         </ThemeProvider>
