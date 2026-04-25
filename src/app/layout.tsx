@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "google-site-verification-code",
+    google: "b9beb292c0d5edc6",
     yandex: "yandex-verification-code",
     other: {
       "msvalidate.01": "Bing-verification-code",

@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://ladorm.vercel.app/sitemap.xml
