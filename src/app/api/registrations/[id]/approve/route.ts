@@ -55,8 +55,8 @@ export async function PATCH(
         data: {
           fullName: registration.fullName,
           phoneNumber: registration.phoneNumber,
-          university: registration.university,
-          origin: registration.origin,
+          university: registration.university || "",
+          origin: registration.origin || "",
           status: tenantStatus,
         },
       });
