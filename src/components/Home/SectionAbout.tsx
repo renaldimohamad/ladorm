@@ -112,12 +112,12 @@ export const SectionAbout = () => {
                 <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-8 z-50 glass-effect p-4 sm:p-6 rounded-2xl shadow-2xl max-w-[180px] sm:max-w-[220px] border border-white/20 transform hover:-translate-y-2 transition-transform duration-500">
                   <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary animate-pulse" />
-                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
-                      Our Philosophy
+                    <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-primary">
+                      {dictionary.homeSectionAbout?.philosophyTitle}
                     </span>
                   </div>
                   <p className="text-[11px] sm:text-sm font-medium leading-relaxed">
-                    Lebih dari sekadar asrama, ini adalah rumah bagi mimpi dan keluarga.
+                    {dictionary.homeSectionAbout?.philosophyDesc}
                   </p>
                 </div>
 
@@ -134,7 +134,7 @@ export const SectionAbout = () => {
                 <div className="flex items-center justify-center lg:justify-start gap-4 mb-4 sm:mb-6">
                   <div className="h-[1px] w-8 sm:w-12 bg-primary/50" />
                   <span className="text-primary font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase text-[10px] sm:text-xs">
-                    About Ladorm
+                    {dictionary.homeSectionAbout?.badge}
                   </span>
                 </div>
               </Fade>
@@ -176,30 +176,36 @@ export const SectionAbout = () => {
                       </div>
                     </div>
                     <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-widest leading-none">
-                      Trusted by <br className="sm:hidden" /> students
+                      {dictionary.homeSectionAbout?.trustedBy}
                     </span>
                   </div>
                 </div>
               </Fade>
             </div>
 
-            {/* Stats or Mini Feature */}
             <div className="grid grid-cols-2 gap-4 sm:gap-8 pt-6 sm:pt-8 border-t border-border/50 max-w-md mx-auto lg:mx-0 w-full">
-              <Fade direction="right" delay={600} distance={10}>
+              <Fade direction="right" distance={10}>
                 <div>
-                  <h4 className="text-xl sm:text-2xl font-bold text-primary mb-0.5">10+ Years</h4>
-                  <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-extrabold">Experience</p>
+                  <h4 className="text-xl sm:text-2xl font-bold text-primary mb-0.5">
+                    {dictionary.homeSectionAbout?.statsExperience}
+                  </h4>
+                  <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-extrabold">
+                    {dictionary.homeSectionAbout?.statsExperienceLabel}
+                  </p>
                 </div>
               </Fade>
-              <Fade direction="right" delay={700} distance={10}>
+              <Fade direction="right" distance={10}>
                 <div>
-                  <h4 className="text-xl sm:text-2xl font-bold text-primary mb-0.5">100%</h4>
-                  <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-extrabold">Community Focus</p>
+                  <h4 className="text-xl sm:text-2xl font-bold text-primary mb-0.5">
+                    {dictionary.homeSectionAbout?.statsCommunity}
+                  </h4>
+                  <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-extrabold">
+                    {dictionary.homeSectionAbout?.statsCommunityLabel}
+                  </p>
                 </div>
               </Fade>
             </div>
           </div>
-
         </div>
       </div>
     </section>

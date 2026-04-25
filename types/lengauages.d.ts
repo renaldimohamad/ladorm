@@ -26,7 +26,9 @@ export type CtaSectionLangType = {
   title: string;
   desc: string;
   button: string;
+  registerButton?: string;
 };
+
 
 export type InsightLangType = {
   heroTitle: string;
@@ -105,7 +107,16 @@ export type IHeroButtonLabels = {
 export type IHomeSectionAbout = {
   title: string;
   desc: string;
+  badge: string;
+  philosophyTitle: string;
+  philosophyDesc: string;
+  statsExperience: string;
+  statsExperienceLabel: string;
+  statsCommunity: string;
+  statsCommunityLabel: string;
+  trustedBy: string;
 };
+
 
 export type IHomeWhyLadorm = {
   titleSection: string;

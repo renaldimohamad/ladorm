@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client_new"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Room {
+  id        String   @id @default(cuid())
+  name      String
+  capacity  Int      @default(2)
+  status    String   @default("available") // available, full
+  tenants   Tenant[]
+  createdAt DateTime @default(now())
+}
+
+model Tenant {
+  id          String    @id @default(cuid())
+  fullName    String
+  phoneNumber String
+  university  String
+  origin      String
+  status      String // mahasiswa, alumni, tamu
+  roomId      String?
+  room        Room?     @relation(fields: [roomId], references: [id])
+  payments    Payment[]
+  createdAt   DateTime  @default(now())
+}
+
+model Registration {
+  id           String   @id @default(cuid())
+  fullName     String
+  phoneNumber  String
+  university   String
+  origin       String
+  gender       String
+  tenantStatus String   @default("mahasiswa") // mahasiswa, alumni, tamu
+  status       String   @default("pending") // pending, approved, rejected
+  createdAt    DateTime @default(now())
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  tenantId  String
+  tenant    Tenant   @relation(fields: [tenantId], references: [id])
+  amount    Int
+  status    String   @default("unpaid") // unpaid, paid
+  dueDate   DateTime
+  createdAt DateTime @default(now())
+}
+
+model Pricing {
+  id        String   @id @default(cuid())
+  type      String   @unique // mahasiswa, alumni, tamu
+  price     Int
+  updatedAt DateTime @updatedAt
+}

@@ -83,11 +83,16 @@ export default function Home() {
                         >
                           {content?.desc ?? ""}
                         </p>
-                        <div className="pt-4 drop-shadow hover:drop-shadow-lg transition-transform duration-300 hover:-translate-y-1 inline-block">
+                        <div className="pt-4 flex flex-wrap gap-4 drop-shadow hover:drop-shadow-lg transition-transform duration-300 hover:-translate-y-1">
                           <CallToAction
                             text={actionText}
                             href="#about"
-                            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)]"
+                            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-foreground hover:bg-muted/80"
+                          />
+                          <CallToAction
+                            text="Daftar Asrama"
+                            href="/register"
+                            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white"
                           />
                         </div>
                       </div>

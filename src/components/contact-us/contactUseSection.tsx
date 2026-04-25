@@ -4,12 +4,23 @@ import { motion } from "framer-motion";
 import ContactInfo from "./contactInfo";
 import ContactForm from "./contactcForm";
 import { useLanguage } from "../../../stores/useLengauage";
+import { useState } from "react";
 import Fade from "../common/Fade";
 import Link from "next/link";
 import CTASection from "../Home/CTASection";
 
 export default function ContactUsSection() {
   const { dictionary } = useLanguage();
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMapLoading, setIsMapLoading] = useState(true);
+
+  const handleOpenFullscreen = () => {
+    setIsMapLoading(true);
+    setIsFullscreen(true);
+  };
+
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3965.5424895288625!2d106.8372275!3d-6.3236609!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69edc0b62723b3%3A0x121d12bbf962ad81!2sAsrama%20Mahasiswa%20Provinsi%20Gorontalo%20Lenteng%20Agung-Jakarta%20Selatan!5e0!3m2!1sid!2sid!4v1745564414902!5m2!1sid!2sid";
+
 
   return (
     <>
@@ -64,7 +75,7 @@ export default function ContactUsSection() {
                   {/* Map Area - Adjusted height */}
                   <div className="relative w-full h-[280px]">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.733671233066!2d106.8285573!3d-6.2986444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f21379f8e56b%3A0x6b1473686858e994!2sAsrama%20Gorontalo%20Lenteng%20Agung!5e0!3m2!1sen!2sid!4v1712910000000!5m2!1sen!2sid"
+                      src={mapUrl}
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -73,9 +84,79 @@ export default function ContactUsSection() {
                       referrerPolicy="no-referrer-when-downgrade"
                       className="grayscale dark:invert-[0.05] hover:grayscale-0 transition-all duration-700"
                     ></iframe>
+
+                    {/* Fullscreen Overlay Button */}
+                    <button
+                      onClick={handleOpenFullscreen}
+                      className="absolute bottom-4 right-4 z-30 p-2.5 bg-white dark:bg-black/80 text-foreground rounded-xl shadow-lg border border-border backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 active:scale-95"
+                      title="Lihat Fullscreen"
+                    >
+
+                      <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+                    </button>
                   </div>
                 </div>
               </Fade>
+
+              {/* Fullscreen Map Modal */}
+              {isFullscreen && (
+                <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-10 pt-24 md:pt-40">
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+                    onClick={() => setIsFullscreen(false)}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="relative w-full h-full bg-background rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl flex flex-col"
+                  >
+                    <div className="p-4 md:p-6 border-b border-border flex items-center justify-between bg-card/50">
+                      <div>
+                        <h3 className="font-black text-lg md:text-xl uppercase tracking-tighter">LADorm Location</h3>
+                        <p className="text-xs text-muted-foreground font-medium">Asrama Mahasiswa Provinsi Gorontalo Lenteng Agung</p>
+                      </div>
+                      <button
+                        onClick={() => setIsFullscreen(false)}
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-muted/50 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all active:scale-90"
+                      >
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      </button>
+                    </div>
+                    <div className="flex-grow relative bg-muted">
+                      {isMapLoading && (
+                        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-muted/50 backdrop-blur-sm">
+                          <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4" />
+                          <p className="text-xs font-black uppercase tracking-widest text-muted-foreground animate-pulse">Menyiapkan Peta...</p>
+                        </div>
+                      )}
+                      <iframe
+                        src={mapUrl}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        onLoad={() => setIsMapLoading(false)}
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="dark:invert-[0.05]"
+                      ></iframe>
+                    </div>
+                    <div className="p-4 bg-card/30 flex justify-center">
+                      <Link
+                        href="https://maps.app.goo.gl/C7RHGFq932H6UqxY9"
+                        target="_blank"
+                        className="px-8 py-3 rounded-2xl bg-[var(--primary)] text-white dark:text-black font-black uppercase text-xs tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[var(--primary)]/20"
+                      >
+                        Buka di Google Maps App
+                      </Link>
+                    </div>
+                  </motion.div>
+                </div>
+              )}
+
 
               <Fade direction="right" delay={200}>
                 <ContactInfo />
@@ -95,7 +176,7 @@ export default function ContactUsSection() {
           </div>
         </div>
       </section>
-      <CTASection />
+      <CTASection overrideText="Registrasions" overrideHref="/registrasions" />
     </>
   );
 }

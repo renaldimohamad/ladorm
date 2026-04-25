@@ -97,7 +97,16 @@ const en: LanguageType = {
     title:
       "Where Every Student Finds a Family, Every Room Feels Like Home, and Every Day Brings New Opportunities to Grow.",
     desc: "A home away from home, where students in Gorontalo discover friendship, belonging, and a place to grow together.",
+    badge: "About Ladorm",
+    philosophyTitle: "Our Philosophy",
+    philosophyDesc: "More than just a dormitory, this is a home for dreams and family.",
+    statsExperience: "10+ Years",
+    statsExperienceLabel: "Experience",
+    statsCommunity: "100%",
+    statsCommunityLabel: "Community Focus",
+    trustedBy: "Trusted by students"
   },
+
   homeWhyLadorm: {
     titleSection: "Why Choose to Stay at LADORM?",
     title1: "Gorontalo Student Dormitory",
@@ -181,7 +190,8 @@ const en: LanguageType = {
   ctaSection: {
     title: "Ready to Join Us?",
     desc: "Be a part of an excellent community and enjoy the best living experience during your academic journey.",
-    button: "Contact Us Now"
+    button: "Contact Us Now",
+    registerButton: "Register Now"
   },
   insightPage: {
     heroTitle: "Insights &",

@@ -96,7 +96,16 @@ const id: LanguageType = {
     title:
       "Tempat setiap mahasiswa menemukan keluarga, setiap ruangan terasa seperti rumah, dan setiap hari membawa peluang baru untuk berkembang.",
     desc: "Rumah kedua, tempat para mahasiswa di Gorontalo menemukan persahabatan, rasa memiliki, dan ruang untuk tumbuh bersama.",
+    badge: "Tentang Ladorm",
+    philosophyTitle: "Filosofi Kami",
+    philosophyDesc: "Lebih dari sekadar asrama, ini adalah rumah bagi mimpi dan keluarga.",
+    statsExperience: "10+ Tahun",
+    statsExperienceLabel: "Pengalaman",
+    statsCommunity: "100%",
+    statsCommunityLabel: "Fokus Komunitas",
+    trustedBy: "Dipercaya oleh mahasiswa"
   },
+
   homeWhyLadorm: {
     titleSection: "Kenapa Harus Tinggal di LADORM?",
     title1: "Asrama Mahasiswa Gorontalo",
@@ -179,7 +188,8 @@ const id: LanguageType = {
   ctaSection: {
     title: "Siap Bergabung Bersama Kami?",
     desc: "Jadilah bagian dari komunitas unggulan dan nikmati pengalaman tinggal terbaik selama menempuh perjalanan studi Anda.",
-    button: "Hubungi Kami Sekarang"
+    button: "Hubungi Kami Sekarang",
+    registerButton: "Daftar Sekarang"
   },
   insightPage: {
     heroTitle: "Wawasan &",

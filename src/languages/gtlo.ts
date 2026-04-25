@@ -92,6 +92,20 @@ const gtlo: LanguageType = {
     readMore: "Baca selengkapnya",
     readLess: "Tampilkan lebih sedikit",
   },
+  homeSectionAbout: {
+    title:
+      "Tempat setiap mahasiswa menemukan keluarga, setiap ruangan terasa seperti rumah, dan setiap hari membawa peluang baru untuk berkembang.",
+    desc: "Rumah kedua, tempat para mahasiswa di Gorontalo menemukan persahabatan, rasa memiliki, dan ruang untuk tumbuh bersama.",
+    badge: "Tentang Ladorm",
+    philosophyTitle: "Filosofi Kami",
+    philosophyDesc: "Lebih dari sekadar asrama, ini adalah rumah bagi mimpi dan keluarga.",
+    statsExperience: "10+ Tahun",
+    statsExperienceLabel: "Pengalaman",
+    statsCommunity: "100%",
+    statsCommunityLabel: "Fokus Komunitas",
+    trustedBy: "Dipercaya oleh mahasiswa"
+  },
+
   homeHowWeWork: {
     sectionLabel: "Proses Kami",
     title: "3 Langkah Mudah Bergabung",

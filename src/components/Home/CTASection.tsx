@@ -4,7 +4,12 @@ import Fade from "@/components/common/Fade";
 import { CallToAction } from "@/ui/common/CallToAction";
 import { useLanguage } from "../../../stores/useLengauage";
 
-export default function CTASection() {
+interface CTASectionProps {
+  overrideHref?: string;
+  overrideText?: string;
+}
+
+export default function CTASection({ overrideHref, overrideText }: CTASectionProps) {
   const { dictionary } = useLanguage();
 
   return (
@@ -45,10 +50,11 @@ export default function CTASection() {
           <Fade direction="up" delay={200}>
             <div className="mt-6">
               <CallToAction
-                href="/contact-us"
-                text={dictionary.ctaSection?.button || "Get Started Now"}
+                href={overrideHref || "/contact-us"}
+                text={overrideText || dictionary.ctaSection?.button || "Get Started Now"}
                 className="bg-white text-[#016072] dark:bg-[var(--primary)] dark:text-black font-black px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 hover:-translate-y-1 active:scale-95 transition-all duration-300"
               />
+
             </div>
           </Fade>
         </div>
