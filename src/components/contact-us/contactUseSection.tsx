@@ -156,13 +156,10 @@ export default function ContactUsSection() {
                   </motion.div>
                 </div>
               )}
-
-
               <Fade direction="right" delay={200}>
                 <ContactInfo />
               </Fade>
             </div>
-
             {/* Form Side */}
             <div className="lg:col-span-7 h-full">
               <Fade direction="left" delay={300}>

@@ -38,8 +38,6 @@ export async function POST(request: Request) {
       );
     }
 
-
-
     await login({
       id: admin.id,
       username: admin.username,

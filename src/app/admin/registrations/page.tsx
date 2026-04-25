@@ -227,7 +227,7 @@ Terima kasih atas minat Anda 🙏`;
       {/* Header */}
       <div className="flex justify-between items-end">
         <div className="space-y-1">
-          <h1 className="text-2xl font-black text-foreground tracking-tight uppercase italic">WhatsApp <span className="text-teal-500">Boarding</span></h1>
+          <h1 className="text-2xl font-black text-foreground tracking-tight uppercase italic">Papan <span className="text-teal-500">Pendaftaran</span></h1>
           <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground/60">Sistem Verifikasi Chat & Onboarding</p>
         </div>
         <div className="flex p-1.5 bg-card/30 backdrop-blur-md rounded-2xl border border-white/5 w-fit">
@@ -249,7 +249,7 @@ Terima kasih atas minat Anda 🙏`;
               }`}
           >
             <History size={14} />
-            History
+            Riwayat
           </button>
         </div>
       </div>
@@ -260,11 +260,11 @@ Terima kasih atas minat Anda 🙏`;
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-white/5">
-                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">User & Contacts</th>
-                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Background Info</th>
-                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Tenant Type</th>
-                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Actions</th>
-                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] text-right">Verification</th>
+                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">User & Kontak</th>
+                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Informasi Latar Belakang</th>
+                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Tipe Penghuni</th>
+                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Aksi</th>
+                <th className="px-8 py-6 text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] text-right">Verifikasi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
@@ -276,7 +276,7 @@ Terima kasih atas minat Anda 🙏`;
                         <Clock className="w-8 h-8 text-muted-foreground" />
                       </div>
                       <p className="text-sm font-bold uppercase tracking-widest">
-                        {activeTab === 'pending' ? 'No pending requests' : 'Empty history'}
+                        {activeTab === 'pending' ? 'Tidak ada pendaftaran pending' : 'Riwayat kosong'}
                       </p>
                     </div>
                   </td>
@@ -303,11 +303,11 @@ Terima kasih atas minat Anda 🙏`;
                       <div className="space-y-1">
                         <div className="flex items-center gap-2 text-sm font-bold text-foreground">
                           <School size={14} className="text-muted-foreground" />
-                          {reg.university || "Public Client"}
+                          {reg.university || "Klien Umum"}
                         </div>
                         <div className="flex items-center gap-2 text-[10px] font-black text-muted-foreground transition-all">
                           <MapPin size={10} />
-                          {reg.origin || "Unknown Origin"}
+                          {reg.origin || "Asal tidak diketahui"}
                         </div>
                       </div>
                     </td>
@@ -338,7 +338,7 @@ Terima kasih atas minat Anda 🙏`;
                               className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-emerald-500/10 text-emerald-500 rounded-xl hover:bg-emerald-500 hover:text-white transition-all duration-300 border border-emerald-500/20 active:scale-95 flex items-center gap-2"
                             >
                               <Check size={14} />
-                              Approve
+                              Setujui
                             </button>
                             <button
                               disabled={processingId === reg.id}
@@ -346,7 +346,7 @@ Terima kasih atas minat Anda 🙏`;
                               className="text-[10px] font-black uppercase tracking-widest px-4 py-2 bg-red-500/10 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all duration-300 border border-red-500/20 active:scale-95 flex items-center gap-2"
                             >
                               <X size={14} />
-                              Reject
+                              Tolak
                             </button>
                           </>
                         ) : (
@@ -362,7 +362,7 @@ Terima kasih atas minat Anda 🙏`;
                                 className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black bg-teal-600 text-white hover:bg-teal-700 transition-all shadow-lg shadow-teal-600/20"
                               >
                                 <Bed size={12} />
-                                Assign Room
+                                Tetapkan Kamar
                               </button>
                             )}
                           </div>
@@ -379,14 +379,14 @@ Terima kasih atas minat Anda 🙏`;
                           >
                             <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                             <div className="flex flex-col items-end text-right">
-                              <span className="text-[10px] font-black uppercase tracking-widest leading-none">Chat Verification</span>
+                              <span className="text-[10px] font-black uppercase tracking-widest leading-none">Verifikasi Chat</span>
                               <span className="text-[9px] opacity-70 font-medium">WhatsApp Onboarding</span>
                             </div>
                             <MessageSquare className="w-5 h-5 group-hover:scale-125 transition-transform duration-500" />
                           </button>
                         ) : (
                           <div className="flex h-12 items-center text-[10px] uppercase font-black tracking-widest text-muted-foreground/20 italic">
-                            Log Verified
+                            Terverifikasi
                           </div>
                         )}
                       </div>
@@ -448,7 +448,7 @@ Terima kasih atas minat Anda 🙏`;
                 onClick={() => setShowRoomModal(false)}
                 className="flex-1 py-4 text-[10px] font-black uppercase tracking-widest text-muted-foreground hover:text-white transition-colors"
               >
-                Cancel
+                Batal
               </button>
             </div>
           </div>

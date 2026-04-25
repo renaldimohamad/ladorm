@@ -169,12 +169,22 @@ export default function AdminLayout({
 
       <div className="flex-grow flex flex-col min-w-0">
         {/* Mobile Header */}
-        <header className="md:hidden bg-card/80 backdrop-blur-md border-b border-border p-4 flex items-center justify-between sticky top-0 z-[60]">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-teal-600 to-emerald-600 rounded-lg shadow-lg" />
-            <span className="text-lg font-black tracking-tighter">Ladorm <span className="text-teal-600">Admin</span></span>
+        <header className="md:hidden bg-card/80 backdrop-blur-xl border-b border-border p-4 flex items-center justify-between sticky top-0 z-[60] shadow-sm">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/Visual Idententy - Remake Logo Ladorm 2.webp"
+              alt="LADorm Logo"
+              width={100}
+              height={30}
+              className="object-contain w-24 h-auto"
+            />
+            <div className="h-4 w-[1px] bg-border mx-1" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-teal-600">Admin</span>
           </div>
-          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 text-muted-foreground bg-muted rounded-xl">
+          <button
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="w-10 h-10 flex items-center justify-center text-muted-foreground bg-muted/50 rounded-xl active:scale-95 transition-all shadow-inner"
+          >
             {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </header>
@@ -188,7 +198,8 @@ export default function AdminLayout({
         )}
 
         {/* Mobile Navigation drawer */}
-        <nav className={`md:hidden bg-card border-b border-border p-6 space-y-2 fixed top-[73px] left-0 right-0 z-[56] shadow-2xl transition-all duration-300 transform ${isSidebarOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+        <nav className={`md:hidden bg-card/95 backdrop-blur-2xl border-b border-border px-6 py-8 space-y-3 fixed top-[73px] left-0 right-0 z-[56] shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] transform ${isSidebarOpen ? 'translate-y-0 opacity-100 visibility-visible' : '-translate-y-10 opacity-0 visibility-hidden pointer-events-none'}`}>
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/40 mb-4 px-2">Menu Navigasi</p>
           {sidebarItems.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -197,16 +208,34 @@ export default function AdminLayout({
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsSidebarOpen(false)}
-                className={`flex items-center gap-4 px-6 py-4 rounded-2xl transition-all ${isActive
-                  ? "bg-teal-600 text-white shadow-lg shadow-teal-600/20"
-                  : "text-muted-foreground border border-transparent"
+                className={`flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 ${isActive
+                  ? "bg-teal-600 text-white shadow-xl shadow-teal-600/30 font-black italic"
+                  : "text-muted-foreground hover:bg-muted/50 hover:text-teal-600 font-bold"
                   }`}
               >
-                <Icon size={20} />
-                <span className="font-bold text-sm">{item.name}</span>
+                <Icon size={20} className={isActive ? 'scale-110' : ''} />
+                <span className="text-sm tracking-tight">{item.name}</span>
               </Link>
             );
           })}
+
+          <div className="pt-6 mt-4 border-t border-border flex flex-col gap-4">
+            <div className="flex items-center gap-4 bg-muted/30 p-4 rounded-2xl border border-border/50">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-500 flex items-center justify-center font-black text-white text-xs shadow-lg">
+                {user?.name?.substring(0, 2).toUpperCase() || 'AD'}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-black uppercase text-foreground truncate">{user?.name || 'Administrator'}</p>
+                <p className="text-[10px] text-muted-foreground font-medium truncate">@{user?.username || 'admin'}</p>
+              </div>
+              <button
+                onClick={() => { setIsSidebarOpen(false); setShowLogoutModal(true); }}
+                className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all shadow-sm"
+              >
+                <LogOut size={16} />
+              </button>
+            </div>
+          </div>
         </nav>
 
         {/* Main Content Area */}

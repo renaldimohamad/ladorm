@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Lock, User, Eye, EyeOff, Loader2, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
@@ -71,10 +72,16 @@ export default function AdminLoginPage() {
               >
                 <Lock className="text-white w-10 h-10" />
               </motion.div>
-              <h1 className="text-3xl font-black tracking-tight mb-2">
-                Ladorm <span className="text-teal-600">Admin</span>
-              </h1>
-              <p className="text-muted-foreground text-sm font-medium">Masuk ke pusat kendali sistem asrama</p>
+              <div className="flex justify-center mb-4">
+                <Image
+                  src="/images/Visual Idententy - Remake Logo Ladorm 2.webp"
+                  alt="Ladorm Logo"
+                  width={180}
+                  height={50}
+                  className="object-contain"
+                />
+              </div>
+              <p className="text-muted-foreground text-sm font-medium mt-4">Masuk ke pusat kendali sistem asrama</p>
             </div>
 
             <form onSubmit={handleLogin} className="space-y-6">

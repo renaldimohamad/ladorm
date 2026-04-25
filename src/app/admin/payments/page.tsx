@@ -243,8 +243,8 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
             <CreditCard size={28} />
           </div>
           <div>
-            <h2 className="text-2xl font-black tracking-tight italic uppercase text-foreground">Billing <span className="text-teal-500">Center</span></h2>
-            <p className="text-xs text-muted-foreground font-bold tracking-widest uppercase opacity-60">Ladorm Premium Financial Ledger</p>
+            <h2 className="text-2xl font-black tracking-tight italic uppercase text-foreground">Pusat <span className="text-teal-500">Pembayaran</span></h2>
+            <p className="text-xs text-muted-foreground font-bold tracking-widest uppercase opacity-60">Buku Kas Keuangan Premium Ladorm</p>
           </div>
         </div>
         <button
@@ -254,7 +254,7 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
             : "bg-gradient-to-r from-teal-600 to-emerald-600 text-white hover:scale-[1.03] shadow-[0_15px_40px_-5px_rgba(13,148,136,0.3)] active:scale-95"
             }`}
         >
-          {isAdding ? <><X size={16} /> Batal</> : <><Plus size={16} /> Issue New Bill</>}
+          {isAdding ? <><X size={16} /> Batal</> : <><Plus size={16} /> Terbitkan Tagihan</>}
         </button>
       </div>
 
@@ -263,8 +263,8 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
         <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300">
           <form onSubmit={handleSubmit} className="bg-[#0f1d23] w-full max-w-xl p-10 rounded-[2.5rem] border border-white/10 shadow-2xl space-y-6 animate-in zoom-in-95 duration-300">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-black tracking-tight italic text-white">Issue <span className="text-teal-500">New Bill</span></h3>
-              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mt-1 opacity-60">Ladorm Premium Billing Entry</p>
+              <h3 className="text-2xl font-black tracking-tight italic text-white">Buat <span className="text-teal-500">Tagihan Baru</span></h3>
+              <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mt-1 opacity-60">Pencatatan Penagihan Premium Ladorm</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -328,7 +328,7 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
 
             <div className="flex gap-3 pt-6 border-t border-white/5">
               <button type="button" onClick={() => setIsAdding(false)} className="flex-1 py-4 bg-white/5 text-muted-foreground hover:text-white rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all">Batal</button>
-              <button type="submit" className="flex-[2] py-4 bg-teal-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-teal-600/20 active:scale-95 transition-all">Issue Global Bill</button>
+              <button type="submit" className="flex-[2] py-4 bg-teal-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-teal-600/20 active:scale-95 transition-all">Terbitkan Tagihan</button>
             </div>
           </form>
         </div>
@@ -340,11 +340,11 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-white/5 bg-white/[0.01]">
-                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Beneficiary</th>
-                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Billing Period</th>
-                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Amount</th>
-                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Settlement</th>
-                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em] text-right">Dispatch</th>
+                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Penghuni</th>
+                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Periode Tagihan</th>
+                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Nominal</th>
+                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em]">Status</th>
+                <th className="px-8 py-8 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em] text-right">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
@@ -353,7 +353,7 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
                   <td colSpan={5} className="px-8 py-32 text-center">
                     <div className="flex flex-col items-center gap-4 opacity-10">
                       <Wallet size={64} strokeWidth={1} />
-                      <p className="text-xl font-black uppercase tracking-widest italic text-foreground">Ledger Empty</p>
+                      <p className="text-xl font-black uppercase tracking-widest italic text-foreground">Buku Kas Kosong</p>
                     </div>
                   </td>
                 </tr>
@@ -390,13 +390,13 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
                           )}
                         </div>
                         <span className="text-[9px] font-black uppercase text-muted-foreground/30 ml-5 tracking-widest">
-                          {payment.periodStart ? 'Rent Duration Period' : 'Legacy Record / Creation Month'}
+                          {payment.periodStart ? 'Periode Sewa Aktif' : 'Catatan Lama / Bulan Pembuatan'}
                         </span>
                       </div>
                     </td>
                     <td className="px-8 py-8">
                       <div className="flex flex-col items-start gap-1">
-                        <span className="text-[10px] font-black uppercase text-muted-foreground/30">Contractual Due</span>
+                        <span className="text-[10px] font-black uppercase text-muted-foreground/30">Total Kewajiban</span>
                         <div className="flex items-center gap-2 text-xl font-black text-foreground italic tracking-tighter">
                           Rp {payment.amount.toLocaleString('id-ID')}
                         </div>
@@ -408,9 +408,9 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
                         : 'bg-red-500/10 text-red-500 border-red-500/20 shadow-[0_0_20px_-5px_rgba(239,68,68,0.4)] hover:shadow-red-500/30'
                         }`}>
                         <div className={`w-2 h-2 rounded-full ${payment.status === 'paid' ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)]' : 'bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]'}`} />
-                        {payment.status === 'paid' ? 'Settled' : 'Unpaid'}
+                        {payment.status === 'paid' ? 'Lunas' : 'Belum Bayar'}
                       </div>
-                      <div className="text-[9px] font-black text-muted-foreground/30 uppercase mt-2">Due {new Date(payment.dueDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}</div>
+                      <div className="text-[9px] font-black text-muted-foreground/30 uppercase mt-2">Jatuh Tempo {new Date(payment.dueDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}</div>
                     </td>
                     <td className="px-8 py-8 text-right">
                       <div className="flex items-center justify-end gap-3">
@@ -427,7 +427,7 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
                           <button
                             onClick={() => markAsPaid(payment.id)}
                             className="w-12 h-12 flex items-center justify-center rounded-2xl bg-teal-600/10 text-teal-500 border border-teal-500/20 hover:bg-teal-600 hover:text-white hover:scale-110 active:scale-95 transition-all shadow-lg shadow-teal-600/20"
-                            title="Mark as Paid"
+                            title="Tandai Sudah Bayar"
                           >
                             <Check size={22} strokeWidth={3} />
                           </button>
