@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Plus, UserPlus, Loader2, X, MapPin, School, Phone, Calendar, Home, Search, BadgeCheck } from "lucide-react";
+import { Plus, UserPlus, X, MapPin, School, Phone, Calendar, Home, Search, BadgeCheck } from "lucide-react";
 
 export default function TenantsPage() {
   const [tenants, setTenants] = useState<any[]>([]);
@@ -26,7 +26,7 @@ export default function TenantsPage() {
       ]);
       const tenantsData = await tenantsRes.json();
       const roomsData = await roomsRes.json();
-      
+
       if (tenantsData.success) setTenants(tenantsData.data);
       if (roomsData.success) setRooms(roomsData.data);
     } catch (error) {
@@ -77,9 +77,61 @@ export default function TenantsPage() {
   };
 
   if (loading) return (
-    <div className="flex flex-col items-center justify-center py-20 gap-4">
-      <Loader2 className="w-10 h-10 text-teal-600 animate-spin" />
-      <p className="text-muted-foreground animate-pulse font-medium">Memuat data penghuni...</p>
+    <div className="space-y-8 animate-in fade-in duration-500">
+      {/* Header Skeleton */}
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md p-6 rounded-[2rem] border border-white/5">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 bg-muted/20 rounded-2xl animate-pulse" />
+          <div className="space-y-2">
+            <div className="w-32 h-6 bg-muted/20 rounded-lg animate-pulse" />
+            <div className="w-48 h-3 bg-muted/20 rounded-lg animate-pulse" />
+          </div>
+        </div>
+        <div className="w-40 h-12 bg-muted/20 rounded-2xl animate-pulse" />
+      </div>
+
+      {/* Table Skeleton */}
+      <div className="bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b border-white/5">
+                <th className="px-8 py-6"><div className="w-20 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6"><div className="w-32 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6"><div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6 text-right"><div className="w-24 h-3 bg-muted/20 rounded-lg ml-auto animate-pulse" /></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {[...Array(5)].map((_, i) => (
+                <tr key={i}>
+                  <td className="px-8 py-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-full bg-muted/20 animate-pulse" />
+                      <div className="space-y-2">
+                        <div className="w-32 h-4 bg-muted/20 rounded-lg animate-pulse" />
+                        <div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="space-y-2">
+                      <div className="w-20 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                      <div className="w-32 h-4 bg-muted/20 rounded-lg animate-pulse" />
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="w-24 h-6 bg-muted/20 rounded-full animate-pulse" />
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="w-24 h-4 bg-muted/20 rounded-lg ml-auto animate-pulse" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 
@@ -87,21 +139,20 @@ export default function TenantsPage() {
     <div className="space-y-8 animate-in fade-in duration-700">
       <div className="flex justify-between items-center bg-card/30 backdrop-blur-md p-6 rounded-[2rem] border border-white/5">
         <div className="flex items-center gap-4">
-           <div className="w-12 h-12 bg-teal-500/10 rounded-2xl flex items-center justify-center text-teal-600">
-             <UserPlus size={24} />
-           </div>
-           <div>
-              <h2 className="text-xl font-black tracking-tight">Data Penghuni</h2>
-              <p className="text-xs text-muted-foreground">Kelola informasi mahasiswa yang tinggal di asrama.</p>
-           </div>
+          <div className="w-12 h-12 bg-teal-500/10 rounded-2xl flex items-center justify-center text-teal-600">
+            <UserPlus size={24} />
+          </div>
+          <div>
+            <h2 className="text-xl font-black tracking-tight">Data Penghuni</h2>
+            <p className="text-xs text-muted-foreground">Kelola informasi mahasiswa yang tinggal di asrama.</p>
+          </div>
         </div>
-        <button 
+        <button
           onClick={() => setIsAdding(!isAdding)}
-          className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 ${
-            isAdding 
-            ? "bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white" 
+          className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 ${isAdding
+            ? "bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white"
             : "bg-teal-600 text-white hover:scale-105 shadow-xl shadow-teal-600/20"
-          }`}
+            }`}
         >
           {isAdding ? <><X size={16} /> Batal</> : <><Plus size={16} /> Registrasi Baru</>}
         </button>
@@ -111,37 +162,37 @@ export default function TenantsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
           <form onSubmit={handleSubmit} className="bg-card w-full max-w-2xl p-10 rounded-[2.5rem] border border-white/10 shadow-2xl space-y-6 animate-in zoom-in-95 duration-200 overflow-y-auto max-h-[90vh]">
             <div className="text-center mb-8">
-               <h3 className="text-2xl font-black tracking-tight">Registrasi Penghuni Baru</h3>
-               <p className="text-sm text-muted-foreground mt-1">Lengkapi data mahasiswa untuk dialokasikan ke kamar.</p>
+              <h3 className="text-2xl font-black tracking-tight">Registrasi Penghuni Baru</h3>
+              <p className="text-sm text-muted-foreground mt-1">Lengkapi data mahasiswa untuk dialokasikan ke kamar.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Nama Lengkap</label>
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   value={formData.fullName}
-                  onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   className="w-full px-5 py-4 bg-background border border-white/5 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all font-medium"
                 />
               </div>
               <div className="space-y-1.5">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Nomor WhatsApp</label>
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   value={formData.phoneNumber}
-                  onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                   className="w-full px-5 py-4 bg-background border border-white/5 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all font-medium"
                 />
               </div>
               <div className="space-y-1.5">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Kategori Penghuni</label>
-                <select 
+                <select
                   required
                   value={formData.status}
-                  onChange={(e) => setFormData({...formData, status: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                   className="w-full px-5 py-4 bg-background border border-white/5 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all font-medium appearance-none"
                 >
                   <option value="mahasiswa">Mahasiswa</option>
@@ -151,29 +202,29 @@ export default function TenantsPage() {
               </div>
               <div className="space-y-1.5">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Asal Daerah</label>
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   value={formData.origin}
-                  onChange={(e) => setFormData({...formData, origin: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, origin: e.target.value })}
                   className="w-full px-5 py-4 bg-background border border-white/5 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all font-medium"
                 />
               </div>
               <div className="md:col-span-2 space-y-1.5">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Universitas / Instansi</label>
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   value={formData.university}
-                  onChange={(e) => setFormData({...formData, university: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, university: e.target.value })}
                   className="w-full px-5 py-4 bg-background border border-white/5 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all font-medium"
                 />
               </div>
               <div className="md:col-span-2 space-y-1.5">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Alokasi Kamar (Opsional)</label>
-                <select 
+                <select
                   value={formData.roomId}
-                  onChange={(e) => setFormData({...formData, roomId: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, roomId: e.target.value })}
                   className="w-full px-5 py-4 bg-background border border-white/5 rounded-2xl outline-none focus:ring-2 focus:ring-teal-500 transition-all font-medium appearance-none"
                 >
                   <option value="">Belum Ada Kamar</option>
@@ -185,8 +236,8 @@ export default function TenantsPage() {
             </div>
 
             <div className="flex gap-3 pt-4">
-               <button type="button" onClick={() => setIsAdding(false)} className="flex-1 py-4 bg-muted text-foreground rounded-2xl font-black text-xs uppercase tracking-widest">Batal</button>
-               <button type="submit" className="flex-[2] py-4 bg-teal-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-teal-600/20">Daftarkan Penghuni</button>
+              <button type="button" onClick={() => setIsAdding(false)} className="flex-1 py-4 bg-muted text-foreground rounded-2xl font-black text-xs uppercase tracking-widest">Batal</button>
+              <button type="submit" className="flex-[2] py-4 bg-teal-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-teal-600/20">Daftarkan Penghuni</button>
             </div>
           </form>
         </div>
@@ -208,8 +259,8 @@ export default function TenantsPage() {
                 <tr>
                   <td colSpan={4} className="px-8 py-24 text-center">
                     <div className="flex flex-col items-center gap-4 opacity-30">
-                       <Search size={48} />
-                       <p className="text-sm font-black uppercase tracking-widest">Belum Ada Data Penghuni</p>
+                      <Search size={48} />
+                      <p className="text-sm font-black uppercase tracking-widest">Belum Ada Data Penghuni</p>
                     </div>
                   </td>
                 </tr>
@@ -250,8 +301,8 @@ export default function TenantsPage() {
                         </div>
                       ) : (
                         <div className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest italic opacity-50 flex items-center gap-2">
-                           <X size={10} />
-                           Belum Ada Kamar
+                          <X size={10} />
+                          Belum Ada Kamar
                         </div>
                       )}
                     </td>

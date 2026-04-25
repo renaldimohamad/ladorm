@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
-  Plus, CreditCard, Check, Loader2, X, User, Receipt,
+  Plus, CreditCard, Check, X, User, Receipt,
   CalendarClock, Wallet, BadgeCheck, MessageSquare, ChevronDown
 } from "lucide-react";
 
@@ -162,12 +162,74 @@ Mohon kirimkan bukti bayar ke nomor ini ya. Terima kasih! 🙏`;
   };
 
   if (loading) return (
-    <div className="flex flex-col items-center justify-center py-20 gap-4">
-      <div className="relative">
-        <div className="w-16 h-16 border-4 border-teal-500/20 border-t-teal-500 rounded-full animate-spin" />
-        <Loader2 className="w-6 h-6 text-teal-500 absolute inset-0 m-auto animate-pulse" />
+    <div className="space-y-8 animate-in fade-in duration-500">
+      {/* Header Skeleton */}
+      <div className="flex justify-between items-center bg-card/30 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/5">
+        <div className="flex items-center gap-6">
+          <div className="w-16 h-16 bg-muted/20 rounded-3xl animate-pulse" />
+          <div className="space-y-3">
+            <div className="w-48 h-8 bg-muted/20 rounded-lg animate-pulse" />
+            <div className="w-64 h-3 bg-muted/20 rounded-lg animate-pulse" />
+          </div>
+        </div>
+        <div className="w-44 h-14 bg-muted/20 rounded-2xl animate-pulse" />
       </div>
-      <p className="text-muted-foreground font-medium tracking-wide animate-pulse">Menghubungkan ke Pusat Pembayaran...</p>
+
+      {/* Table Skeleton */}
+      <div className="bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b border-white/5 bg-white/[0.01]">
+                <th className="px-8 py-8"><div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-8"><div className="w-32 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-8"><div className="w-20 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-8"><div className="w-20 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-8 text-right"><div className="w-20 h-3 bg-muted/20 rounded-lg ml-auto animate-pulse" /></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {[...Array(5)].map((_, i) => (
+                <tr key={i}>
+                  <td className="px-8 py-8">
+                    <div className="flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-2xl bg-muted/20 animate-pulse" />
+                      <div className="space-y-2">
+                        <div className="w-40 h-5 bg-muted/20 rounded-lg animate-pulse" />
+                        <div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-8 py-8">
+                    <div className="space-y-2">
+                      <div className="w-32 h-4 bg-muted/20 rounded-lg animate-pulse" />
+                      <div className="w-28 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                    </div>
+                  </td>
+                  <td className="px-8 py-8">
+                    <div className="space-y-2">
+                      <div className="w-16 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                      <div className="w-24 h-6 bg-muted/20 rounded-lg animate-pulse" />
+                    </div>
+                  </td>
+                  <td className="px-8 py-8">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-20 h-6 bg-muted/20 rounded-full animate-pulse" />
+                      <div className="w-16 h-2 bg-muted/20 rounded-full animate-pulse" />
+                    </div>
+                  </td>
+                  <td className="px-8 py-8">
+                    <div className="flex justify-end gap-3">
+                      <div className="w-12 h-12 bg-muted/20 rounded-2xl animate-pulse" />
+                      <div className="w-12 h-12 bg-muted/20 rounded-2xl animate-pulse" />
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 

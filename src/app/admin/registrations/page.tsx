@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
-  Check, X, Loader2, Clock, User, Phone, School, MapPin,
+  Check, X, Clock, User, Phone, School, MapPin,
   History, Inbox, MessageSquare, ChevronDown, Bed, DoorOpen
 } from "lucide-react";
 
@@ -160,12 +160,65 @@ Terima kasih atas minat Anda 🙏`;
   );
 
   if (loading) return (
-    <div className="flex flex-col items-center justify-center py-20 gap-4">
-      <div className="relative">
-        <div className="w-16 h-16 border-4 border-teal-500/20 border-t-teal-500 rounded-full animate-spin" />
-        <Loader2 className="w-6 h-6 text-teal-500 absolute inset-0 m-auto animate-pulse" />
+    <div className="space-y-8 animate-in fade-in duration-500">
+      {/* Header Skeleton */}
+      <div className="flex justify-between items-end">
+        <div className="space-y-2">
+          <div className="w-48 h-8 bg-muted/20 rounded-lg animate-pulse" />
+          <div className="w-64 h-3 bg-muted/20 rounded-lg animate-pulse" />
+        </div>
+        <div className="w-64 h-14 bg-muted/20 rounded-2xl animate-pulse" />
       </div>
-      <p className="text-muted-foreground font-medium tracking-wide animate-pulse">Menghubungkan ke Pusat Data...</p>
+
+      {/* Table Skeleton */}
+      <div className="bg-card/30 backdrop-blur-md rounded-[2.5rem] border border-white/5 overflow-hidden shadow-2xl">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-white/5">
+                <th className="px-8 py-6"><div className="w-32 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6"><div className="w-32 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6"><div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6"><div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" /></th>
+                <th className="px-8 py-6 text-right"><div className="w-24 h-3 bg-muted/20 rounded-lg ml-auto animate-pulse" /></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {[...Array(5)].map((_, i) => (
+                <tr key={i}>
+                  <td className="px-8 py-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-full bg-muted/20 animate-pulse" />
+                      <div className="space-y-2">
+                        <div className="w-32 h-4 bg-muted/20 rounded-lg animate-pulse" />
+                        <div className="w-24 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="space-y-2">
+                      <div className="w-40 h-4 bg-muted/20 rounded-lg animate-pulse" />
+                      <div className="w-32 h-3 bg-muted/20 rounded-lg animate-pulse" />
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="w-24 h-8 bg-muted/20 rounded-xl animate-pulse" />
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="flex gap-2">
+                      <div className="w-20 h-8 bg-muted/20 rounded-xl animate-pulse" />
+                      <div className="w-20 h-8 bg-muted/20 rounded-xl animate-pulse" />
+                    </div>
+                  </td>
+                  <td className="px-8 py-6">
+                    <div className="w-32 h-12 bg-muted/20 rounded-2xl animate-pulse ml-auto" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 
