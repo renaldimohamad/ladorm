@@ -485,20 +485,17 @@ export const residents: Resident[] = [
     id: 14,
     slug: "hardiansyah-monoarfa",
     name: "Hardiansyah Monoarfa",
-    photo: "/images/rolan_photo.png",
+    photo: "/images/rolan_photo_2.webp",
     major: "Ekonomi Syariah",
     university: "Universitas PTIQ Jakarta",
     from: "Kabupaten Pohuwato / Marisa",
     status: "active",
     bio: "Berkomitmen memahami sistem ekonomi berbasis prinsip syariah yang adil, transparan, dan berkelanjutan.",
-
     about: {
       summary:
         "Mahasiswa Ekonomi Syariah yang memiliki minat pada keuangan syariah, manajemen bisnis halal, serta pengelolaan ekonomi yang sesuai dengan prinsip-prinsip Islam.",
-
       experience:
         "Aktif mempelajari praktik ekonomi dan keuangan syariah, termasuk perbankan syariah, akad muamalah, serta analisis usaha berbasis prinsip halal dan keadilan. Terlibat dalam diskusi akademik serta kegiatan yang mendukung pemahaman sistem ekonomi Islam secara aplikatif.",
-
       expertise: [
         "Dasar-Dasar Keuangan Syariah",
         "Akad & Fiqih Muamalah",
@@ -506,18 +503,15 @@ export const residents: Resident[] = [
         "Analisis Kelayakan Usaha",
         "Ekonomi Mikro & Makro Syariah",
       ],
-
       achievements: [
         "Partisipasi dalam Seminar & Kajian Ekonomi Islam",
         "Analisis Studi Kasus Perbankan Syariah dalam Kegiatan Akademik",
       ],
     },
-
     socials: {
       instagram: "https://www.instagram.com/hardiansyahmonoarfa_/",
     },
-
-    coverPhoto: "/images/cover_rolan.png",
+    coverPhoto: "/images/rolan_photo.webp",
     joinedYear: 2025,
   },
   {
@@ -795,6 +789,43 @@ export const residents: Resident[] = [
     coverPhoto: "/images/dolfi.webp",
     joinedYear: 2012,
   },
+  //  {
+  //   id: 20,
+  //   slug: "adelya-ibura",
+  //   name: "",
+  //   photo: "/images/",
+  //   major: "Ekonomi",
+  //   university: "Alumni - Universitas Trilogi",
+  //   from: "Kabupaten Pohuwato",
+  //   status: "alumni",
+  //   bio: "Business Development Manager dengan latar belakang Ekonomi yang berpengalaman dalam pengembangan bisnis, telemarketing, manajemen akun, serta operasional pelanggan untuk mendorong pertumbuhan perusahaan.",
+  //   about: {
+  //     summary:
+  //       "Lulusan Ekonomi dengan fokus pada pengembangan bisnis, manajemen pelanggan, dan operasional. Memiliki pengalaman dalam mengelola hubungan klien, strategi penjualan, serta peningkatan performa bisnis melalui pendekatan berbasis data.",
+  //     experience:
+  //       "Berpengalaman sebagai Business Development Manager, Telemarketing Specialist, Account Manager, Customer Operations Specialist, dan Administrative Officer. Terlibat dalam pengembangan strategi pemasaran, pengelolaan akun klien, peningkatan kepuasan pelanggan, serta optimalisasi proses operasional baik secara on-site maupun hybrid.",
+  //     expertise: [
+  //       "Business Development",
+  //       "Telemarketing & Sales Strategy",
+  //       "Account Management",
+  //       "Customer Operations",
+  //       "Administrative Management",
+  //       "Client Relationship Management",
+  //     ],
+  //     achievements: [
+  //       "Berhasil mengembangkan dan menjaga hubungan dengan klien",
+  //       "Meningkatkan performa penjualan melalui strategi telemarketing",
+  //       "Mengoptimalkan proses operasional pelanggan",
+  //       "Berpengalaman dalam berbagai peran lintas fungsi bisnis",
+  //       "Adaptif bekerja dalam sistem hybrid dan on-site",
+  //     ],
+  //   },
+  //   socials: {
+  //     instagram: "https://www.instagram.com/si_doell/",
+  //   },
+  //   coverPhoto: "/images/dolfi.webp",
+  //   joinedYear: 2012,
+  // },
   // {
   //   id: 18,
   //   slug: "imtaq-irsanto-moha",

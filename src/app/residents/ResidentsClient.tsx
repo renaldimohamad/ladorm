@@ -244,7 +244,7 @@ export default function ResidentsClient() {
     px-5 sm:px-6 py-2 sm:py-2.5 
     rounded-full 
     text-xs sm:text-sm font-medium 
-    transition-all duration-300
+    transition-all duration-300 cursor-pointer
     ${statusFilter === type
                       ? `
           text-white
@@ -338,7 +338,7 @@ export default function ResidentsClient() {
                 {visibleResidents.map((r) => (
                   <div
                     key={r.slug}
-                    className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-gray-200 to-gray-100 transition-all duration-500 hover:from-gray-300 hover:to-gray-200">
+                    className="group relative rounded-3xl p-[1px] bg-primary/20 to-gray-100 transition-all duration-500 hover:from-gray-300 hover:to-gray-200">
                     <div className="bg-background rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-2xl">
                       {/* Avatar */}
                       <div className="relative mb-4 sm:mb-6">
@@ -347,7 +347,7 @@ export default function ResidentsClient() {
                         <img
                           src={r.photo}
                           alt={r.name}
-                          className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover ring-4 ring-white"
+                          className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover ring-4 ring-primary/20"
                         />
                       </div>
 
