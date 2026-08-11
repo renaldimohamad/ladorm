@@ -231,12 +231,15 @@ const gtlo: LanguageType = {
   },
   mockBlogData: {
     latestEvent: {
-      id: "latest",
-      title: "Keseruan Malam Makrab 2025: Menyambut Anggota Keluarga Baru",
-      desc: "Malam keakraban (Makrab) tahunan kembali diadakan! Momen penuh tawa, pentas seni, dan perkenalan hangat antara penghuni lama dengan mahasiswa baru angkatan 2025.",
+      id: "jalan-jalan-puncak-2026",
+      title: "Jalan-Jalan Spontan Anak LADORM ke Puncak!",
+      desc: "Berawal dari obrolan santai di asrama, teman-teman LADORM akhirnya beneran berangkat ke Puncak. Dari macet seru di angkot sampai main Werewolf semalaman!",
       category: "Kegiatan Asrama",
-      date: "20 Agustus 2025",
-      img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2670&auto=format&fit=crop"
+      date: "15 Juli 2026",
+      img: "/images/puncak_ladorm.webp",
+      content: "Pernah nggak sih ngerasain obrolan iseng yang ujung-ujungnya malah kejadian beneran? Nah, persis kayak gitu cerita jalan-jalan anak-anak LADORM bulan Juli kemarin. Berawal dari sekadar nongkrong santai di asrama dan ngobrolin betapa suntuknya dengan rutinitas harian di Jakarta, tiba-tiba muncul ide, 'Eh, refreshing ke Puncak yuk!' Nggak ada yang namanya kepanitiaan atau agenda yang kaku, ide sederhana ini langsung disambut antusias sama teman-teman dari Gorontalo yang lain. Akhirnya, kami semua sepakat buat berangkat bareng.\n\nPerjalanan kami dimulai dari Stasiun Lenteng Agung. Rasanya seru banget bisa berangkat rame-rame bareng teman seperantauan. Di dalam kereta menuju Stasiun Bogor, suasananya udah kayak mindahin tempat nongkrong aja; penuh candaan dan cerita ngalor-ngidul. Sesampainya di Bogor, petualangan berlanjut dengan nyewa beberapa angkot buat bawa kami semua naik ke arah villa di kawasan Puncak.\n\nNamanya juga ke Puncak pas akhir pekan, udah pasti kami disuguhi kemacetan yang luar biasa. Berjam-jam kejebak macet di dalam angkot yang sempit awalnya lumayan bikin pegal, tapi karena perginya bareng sahabat di asrama, momen yang harusnya nyebelin ini malah jadi bahan ketawaan. Kami nyanyi-nyanyi nggak jelas, ngabisin cemilan bareng, dan saling ledek buat bunuh bosan. Kemacetan yang panjang ini justru jadi salah satu bagian dari cerita lucu yang bakal terus kami kenang.\n\nBegitu sampai di villa, udara sejuk Puncak langsung sukses menyingkirkan semua rasa capek. Suasana di villa benar-benar cair dan penuh kebersamaan. Nggak ada rundown khusus, semuanya ngalir santai gitu aja. Ada teman-teman LADORM yang langsung asyik di dapur nyiapin makan bareng, ada yang main gitar, dan sisanya milih rebahan sambil menikmati angin sejuk. Malamnya, kami semua ngumpul, makan bareng hasil masakan sendiri, dan lanjut ngobrol ngalor-ngidul sampai larut malam.\n\nTentu aja, malam itu nggak lengkap tanpa main Werewolf. Hampir seisi villa ikut main, dan ini asli seru sekaligus kocak banget. Aksi saling tuduh yang ngawur dan perdebatan yang nggak masuk akal sukses bikin seisi ruangan ribut penuh tawa. Di momen-momen hangat kayak gini, kerasa banget kalau LADORM itu bukan sekadar tempat tinggal sementara. Buat kami teman-teman dari Gorontalo, asrama ini udah jadi rumah kedua yang nyaman, dan orang-orang di dalamnya adalah saudara. Perjalanan spontan yang singkat ini benar-benar bikin rasa persaudaraan kami di perantauan jadi makin erat.",
+      videoUrl: "",
+      hasGallery: false
     },
     posts: [
       {

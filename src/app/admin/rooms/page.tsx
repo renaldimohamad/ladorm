@@ -104,8 +104,8 @@ export default function RoomsPage() {
         <button
           onClick={() => setIsAdding(!isAdding)}
           className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 ${isAdding
-              ? "bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white"
-              : "bg-teal-600 text-white hover:scale-105 shadow-xl shadow-teal-600/20"
+            ? "bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white"
+            : "bg-teal-600 text-white hover:scale-105 shadow-xl shadow-teal-600/20"
             }`}
         >
           {isAdding ? <><X size={16} /> Batal</> : <><Plus size={16} /> Tambah Kamar</>}

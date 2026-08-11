@@ -13,12 +13,11 @@ const LayoutBlank = ({
   bgColor?: string;
 }) => {
   return (
-    <div className={`${jakarta.className} bg-${bgColor}`}>
-      <Navbar />
+    <div className={`${jakarta.className} bg-navbar-bg`}>
       <PageTransition>
+        <Navbar />
         <main
-          className={`flex items-center justify-center h-full ${className} `}
-        >
+          className={`flex items-center justify-center h-full ${className} `}>
           {children}
         </main>
       </PageTransition>

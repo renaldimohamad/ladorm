@@ -12,9 +12,10 @@ export default function HomeBlogSection() {
 
   const translations = dictionary.homeBlogPreview || {
     title: "Dormitory News & Daily Life",
-    subtitle: "Keep up with the excitement, social activities, and students' daily routines.",
+    subtitle:
+      "Keep up with the excitement, social activities, and students' daily routines.",
     cta: "View All Blogs",
-    readMore: "Read more"
+    readMore: "Read more",
   };
 
   // Mock data fallback if dictionary is not populated
@@ -23,7 +24,7 @@ export default function HomeBlogSection() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="w-full px-6 py-20 bg-background text-foreground relative z-10">
+    <section className="w-full px-6 py-20 bg-slate-100 dark:bg-background text-foreground relative z-10">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
@@ -42,8 +43,7 @@ export default function HomeBlogSection() {
           <Fade direction="right" distance={50} delay={400} rotate={5}>
             <Link
               href="/blog"
-              className="group inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-bold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap"
-            >
+              className="group inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-bold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap">
               <span>{translations.cta}</span>
               <HiOutlineArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
@@ -58,8 +58,7 @@ export default function HomeBlogSection() {
               key={post.id}
               scale={0.8}
               rotate={index % 2 === 0 ? -2 : 2}
-              distance={60}
-            >
+              distance={60}>
               <Link href={`/blog/${post.id}`} className="group block h-full">
                 <div className="h-full flex flex-col bg-[var(--card)] border border-border/40 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                   <div className="relative h-56 w-full overflow-hidden bg-muted">
@@ -93,7 +92,8 @@ export default function HomeBlogSection() {
                     </p>
 
                     <div className="mt-auto flex items-center text-sm font-bold text-foreground group-hover:text-[var(--primary)] transition-colors duration-300 uppercase tracking-wide">
-                      {translations.readMore} <HiOutlineArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                      {translations.readMore}{" "}
+                      <HiOutlineArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
                     </div>
                   </div>
                 </div>

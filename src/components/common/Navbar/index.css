@@ -1,3 +1,7 @@
+/* ─── Link Underline Hover Effect ─────────────────────────────────────────── */
+/* Menggunakan CSS token agar kompatibel dengan light mode dan dark mode.       */
+/* Sebelumnya menggunakan `background-color: white` yang hardcoded.             */
+
 .link-underline {
   position: relative;
   display: inline-block;
@@ -12,8 +16,12 @@
   transform: translateX(-50%);
   height: 2px;
   width: 0;
-  background-color: white;
-  transition: width 0.3s ease-in-out;
+  /* ✅ Pakai semantic token — bukan hardcoded white */
+  background-color: var(--primary);
+  border-radius: 999px;
+  transition:
+    width 0.3s ease-in-out,
+    background-color 0.2s ease;
 }
 
 .link-underline:hover::after {

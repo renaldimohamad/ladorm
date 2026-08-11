@@ -245,15 +245,16 @@ export default function ResidentsClient() {
     rounded-full 
     text-xs sm:text-sm font-medium 
     transition-all duration-300 cursor-pointer
-    ${statusFilter === type
-                      ? `
+    ${
+      statusFilter === type
+        ? `
           text-white
           bg-gradient-to-r 
           from-[rgba(1,96,114,0.85)] 
           to-[rgba(44,112,91,0.85)]
           shadow-[0_6px_20px_rgba(1,96,114,0.25)]
         `
-                      : `
+        : `
           text-muted-foreground
           bg-background
           border border-border
@@ -261,7 +262,7 @@ export default function ResidentsClient() {
           hover:text-[rgba(1,96,114,0.9)]
           hover:shadow-sm
         `
-                    }
+    }
   `}>
                   {type === "all"
                     ? "Semua"

@@ -16,6 +16,14 @@
   --border: #e5e7eb;
   --muted: #f9fafb;
   --muted-foreground: #6b7280;
+
+  /* ── Navbar Tokens (Light Mode) ── */
+  /* Semi-transparan putih dengan tint gelap agar terlihat di atas background putih */
+  --navbar-bg: rgba(255, 255, 255, 0.72);
+  --navbar-border: rgba(0, 0, 0, 0.08);
+  --navbar-surface: rgba(0, 0, 0, 0.05);
+  --navbar-surface-hover: rgba(0, 0, 0, 0.09);
+  --navbar-indicator: var(--primary);
 }
 
 .dark {
@@ -40,6 +48,14 @@
   /* Muted backgrounds for distinct segments */
   --muted: #172a34;
   --muted-foreground: #a1b6c0;
+
+  /* ── Navbar Tokens (Dark Mode) ── */
+  /* Tint gelap background + sedikit transparan untuk frosted glass effect */
+  --navbar-bg: rgba(8, 17, 21, 0.80);
+  --navbar-border: rgba(255, 255, 255, 0.06);
+  --navbar-surface: rgba(255, 255, 255, 0.06);
+  --navbar-surface-hover: rgba(255, 255, 255, 0.11);
+  --navbar-indicator: var(--primary);
 }
 
 @theme inline {
@@ -55,6 +71,13 @@
   --color-gradient-to: var(--gradient-to);
   --font-sans: var(--font-plus-jakarta), sans-serif;
   --font-mono: var(--font-geist-mono);
+
+  /* Navbar tokens — exposed to Tailwind as bg-navbar-bg, border-navbar-border, etc. */
+  --color-navbar-bg: var(--navbar-bg);
+  --color-navbar-border: var(--navbar-border);
+  --color-navbar-surface: var(--navbar-surface);
+  --color-navbar-surface-hover: var(--navbar-surface-hover);
+  --color-navbar-indicator: var(--navbar-indicator);
 }
 
 html {
@@ -77,9 +100,12 @@ body {
   border-radius: 1.5rem;
 }
 
-/* Premium glassmorphism utility */
+/* Premium glassmorphism utility — menggunakan semantic token, bukan hardcoded color */
 .glass-effect {
-  @apply bg-white/70 dark:bg-[#13222a]/70 backdrop-blur-xl border border-white/20 dark:border-white/5;
+  background-color: color-mix(in srgb, var(--card) 70%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--navbar-border);
 }
 
 .swiper-pagination-bullet {

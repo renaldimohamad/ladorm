@@ -27,7 +27,7 @@ const CurrentTime = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <span className="text-xs text-[#fff]">{currentTime}</span>;
+  return <span className="text-xs text-primary">{currentTime}</span>;
 };
 
 export default CurrentTime;

@@ -28,7 +28,8 @@ export const SectionAbout = () => {
   }, [images.length, index]); // Adding index to effect to reset interval on manual change
 
   const nextSlide = () => setIndex((prev) => (prev + 1) % images.length);
-  const prevSlide = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
+  const prevSlide = () =>
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
 
   const actionText =
     dictionary?.heroButtonLabels?.callToAction || "Selengkapnya";
@@ -36,15 +37,13 @@ export const SectionAbout = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-16 sm:py-24 md:py-32 bg-background text-foreground"
-    >
+      className="relative overflow-hidden py-16 sm:py-24 md:py-32 bg-background text-foreground">
       {/* Decorative Background Elements - Subtle and adjusted for mobile */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/10 rounded-full blur-[80px] md:blur-[120px] pointer-events-none opacity-50 md:opacity-100" />
       <div className="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-secondary/10 rounded-full blur-[70px] md:blur-[100px] pointer-events-none opacity-50 md:opacity-100" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 xl:gap-24 max-w-7xl mx-auto">
-
           {/* Visual Side: Asymmetric Image Presentation */}
           <div className="w-full lg:w-[45%] xl:w-1/2 relative order-1 lg:order-none">
             <Fade direction="left" distance={40}>
@@ -81,16 +80,34 @@ export const SectionAbout = () => {
                     <button
                       onClick={prevSlide}
                       className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
-                      aria-label="Previous image"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+                      aria-label="Previous image">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                      </svg>
                     </button>
                     <button
                       onClick={nextSlide}
                       className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
-                      aria-label="Next image"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                      aria-label="Next image">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
                     </button>
                   </div>
 
@@ -100,8 +117,11 @@ export const SectionAbout = () => {
                       <button
                         key={i}
                         onClick={() => setIndex(i)}
-                        className={`transition-all duration-500 rounded-full cursor-pointer ${i === index ? "w-6 h-1.5 bg-primary" : "w-1.5 h-1.5 bg-white/40 hover:bg-white/60"
-                          }`}
+                        className={`transition-all duration-500 rounded-full cursor-pointer ${
+                          i === index
+                            ? "w-6 h-1.5 bg-primary"
+                            : "w-1.5 h-1.5 bg-white/40 hover:bg-white/60"
+                        }`}
                         aria-label={`Go to slide ${i + 1}`}
                       />
                     ))}
@@ -140,13 +160,13 @@ export const SectionAbout = () => {
               </Fade>
 
               <Fade direction="up" delay={300}>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.15] mb-4 sm:mb-6 tracking-tight">
+                <h2 className="text-left text-3xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-3xl font-extrabold leading-[1.15] mb-4 sm:mb-6 tracking-tight">
                   {dictionary.homeSectionAbout?.title}
                 </h2>
               </Fade>
 
               <Fade direction="up" delay={400}>
-                <p className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 font-medium max-w-2xl mx-auto lg:mx-0">
+                <p className="text-muted-foreground text-base sm:text-lg md:text-lg  leading-relaxed mb-6 sm:mb-8 font-medium max-w-2xl mx-auto lg:mx-0">
                   {dictionary.homeSectionAbout?.desc}
                 </p>
               </Fade>
@@ -162,7 +182,9 @@ export const SectionAbout = () => {
                   <div className="flex items-center gap-3">
                     <div className="flex -space-x-3 sm:-space-x-4">
                       {[2, 3, 4, 5].map((i) => (
-                        <div key={i} className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-background overflow-hidden bg-muted shadow-md">
+                        <div
+                          key={i}
+                          className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-background overflow-hidden bg-muted shadow-md">
                           <Image
                             src={`/images/asrama_profile_img_${i}.webp`}
                             alt="Student"

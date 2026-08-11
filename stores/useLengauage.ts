@@ -16,8 +16,8 @@ interface LangStore {
 export const useLanguage = create<LangStore>()(
   persist(
     (set) => ({
-      lang: "en",
-      dictionary: en,
+      lang: "id",
+      dictionary: id,
       setLang: (lang: Lang) => {
         let dict: LanguageType;
 
@@ -36,6 +36,6 @@ export const useLanguage = create<LangStore>()(
         set({ lang, dictionary: dict });
       },
     }),
-    { name: "lang-store" }
-  )
+    { name: "lang-store" },
+  ),
 );

@@ -20,7 +20,6 @@ import HomeInsightSection from "@/components/HomeInsightSection";
 import Image from "next/image";
 
 export default function Home() {
-
   const { dictionary } = useLanguage();
 
   const slides = [
@@ -44,8 +43,7 @@ export default function Home() {
       <main className="flex flex-col w-full">
         <section
           id="home"
-          className="relative w-full h-full flex flex-col justify-center"
-        >
+          className="relative w-full h-full flex flex-col justify-center">
           <Swiper
             modules={[Autoplay, Pagination, EffectFade]}
             autoplay={{
@@ -55,8 +53,7 @@ export default function Home() {
             speed={600}
             pagination={{ clickable: true }}
             loop
-            className="w-full h-[80vh]"
-          >
+            className="w-full h-[80vh]">
             {slides.map((slide, index) => {
               const content = heroContents[index];
 
@@ -73,14 +70,10 @@ export default function Home() {
 
                     <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-50">
                       <div className="text-left max-w-2xl space-y-6">
-                        <h2
-                          className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-[var(--gradient-from)] dark:to-[var(--gradient-to)] bg-clip-text text-transparent font-montserrat drop-shadow-sm"
-                        >
+                        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-[var(--gradient-from)] dark:to-[var(--gradient-to)] bg-clip-text text-transparent font-montserrat drop-shadow-sm">
                           {content?.title ?? ""}
                         </h2>
-                        <p
-                          className="text-foreground/90 font-medium text-base md:text-xl drop-shadow-sm max-w-xl leading-relaxed opacity-90"
-                        >
+                        <p className="text-foreground/90 font-medium text-base md:text-xl drop-shadow-sm max-w-xl leading-relaxed opacity-90">
                           {content?.desc ?? ""}
                         </p>
                         <div className="pt-4 flex flex-wrap gap-4 drop-shadow hover:drop-shadow-lg transition-transform duration-300 hover:-translate-y-1">
@@ -109,7 +102,9 @@ export default function Home() {
         <section className="w-full px-4 py-16 sm:py-20 bg-muted/30 dark:bg-[var(--card)]/100 text-foreground flex flex-col items-center">
           <Fade direction="up" className="w-full">
             <h3 className="text-3xl font-extrabold mb-10 text-center text-foreground tracking-tight">
-              {dictionary.homeWhyLadorm?.CTA?.title ? "Testimonials" : "Testimonials"}
+              {dictionary.homeWhyLadorm?.CTA?.title
+                ? "Testimonials"
+                : "Testimonials"}
             </h3>
             <div className="w-full max-w-6xl px-2 sm:px-4 mx-auto">
               <Swiper
@@ -128,41 +123,42 @@ export default function Home() {
                   640: { slidesPerView: 1 },
                   768: { slidesPerView: 2 },
                   1024: { slidesPerView: 3 },
-                }}
-              >
-                {(dictionary.testimonialsData || testimonialsData).map((item, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="h-full px-1 sm:px-2">
-                      <TestimonialsWrapper>
-                        <div className="leading-relaxed">
-                          <span className="text-sm sm:text-base leading-relaxed text-foreground text-justify">
-                            “{item.message}”
-                          </span>
-                        </div>
-
-                        <div className="mt-auto flex items-center gap-3 pt-6 gap-4">
-                          <Image
-                            src={item.avatar}
-                            alt={item.name}
-                            width={48}
-                            height={48}
-                            unoptimized
-                            className="rounded-full object-cover"
-                          />
-
-                          <div className="flex flex-col items-start space-y-0.5 leading-tight">
-                            <span className="font-bold text-sm sm:text-base">
-                              {item.name}
-                            </span>
-                            <span className="text-muted-foreground text-xs italic">
-                              {item.role}
+                }}>
+                {(dictionary.testimonialsData || testimonialsData).map(
+                  (item, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="h-full px-1 sm:px-2">
+                        <TestimonialsWrapper>
+                          <div className="leading-relaxed">
+                            <span className="text-sm sm:text-base leading-relaxed text-foreground text-justify">
+                              “{item.message}”
                             </span>
                           </div>
-                        </div>
-                      </TestimonialsWrapper>
-                    </div>
-                  </SwiperSlide>
-                ))}
+
+                          <div className="mt-auto flex items-center gap-3 pt-6 gap-4">
+                            <Image
+                              src={item.avatar}
+                              alt={item.name}
+                              width={48}
+                              height={48}
+                              unoptimized
+                              className="rounded-full object-cover"
+                            />
+
+                            <div className="flex flex-col items-start space-y-0.5 leading-tight">
+                              <span className="font-bold text-sm sm:text-base">
+                                {item.name}
+                              </span>
+                              <span className="text-muted-foreground text-xs italic">
+                                {item.role}
+                              </span>
+                            </div>
+                          </div>
+                        </TestimonialsWrapper>
+                      </div>
+                    </SwiperSlide>
+                  ),
+                )}
               </Swiper>
             </div>
           </Fade>
