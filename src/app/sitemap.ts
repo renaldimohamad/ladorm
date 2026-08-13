@@ -1,4 +1,5 @@
 import { residents } from "@/utils/residents";
+import { blogArticles } from "@/utils/blog";
 
 const baseUrl = "https://ladorm.vercel.app";
 
@@ -17,5 +18,10 @@ export default async function sitemap() {
       : new Date().toISOString(),
   }));
 
-  return [...staticUrls, ...residentUrls];
+  const blogUrls = blogArticles.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified: new Date().toISOString(),
+  }));
+
+  return [...staticUrls, ...residentUrls, ...blogUrls];
 }

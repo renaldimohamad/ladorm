@@ -68,12 +68,12 @@ export default function Home() {
                     <div className="hidden md:block absolute left-0 top-0 h-full w-full bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
                     <div className="absolute inset-0 block md:hidden bg-background/80 z-10 pointer-events-none" />
 
-                    <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-50">
+                    <div className="relative z-20 px-4 lg:px-20 -mt-8 md:-mt-35">
                       <div className="text-left max-w-2xl space-y-6">
-                        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-[var(--gradient-from)] dark:to-[var(--gradient-to)] bg-clip-text text-transparent font-montserrat drop-shadow-sm">
+                        <h2 className="text-3xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight leading-tight bg-gradient-to-r from-teal-600 to-emerald-600 dark:from-[var(--gradient-from)] dark:to-[var(--gradient-to)] bg-clip-text text-transparent font-montserrat drop-shadow-sm">
                           {content?.title ?? ""}
                         </h2>
-                        <p className="text-foreground/90 font-medium text-base md:text-xl drop-shadow-sm max-w-xl leading-relaxed opacity-90">
+                        <p className="text-foreground/90 font-medium text-base md:text-lg drop-shadow-sm max-w-xl leading-relaxed opacity-90">
                           {content?.desc ?? ""}
                         </p>
                         <div className="pt-4 flex flex-wrap gap-4 drop-shadow hover:drop-shadow-lg transition-transform duration-300 hover:-translate-y-1">
