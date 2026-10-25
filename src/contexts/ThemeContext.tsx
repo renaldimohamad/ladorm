@@ -12,12 +12,22 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    // Theme is implicitly set by script in layout.tsx, just sync state here
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    const savedTheme = localStorage.getItem("theme") as Theme;
+    const isDark = savedTheme
+      ? savedTheme === "dark"
+      : document.documentElement.classList.contains("dark") || true;
+
+    const initialTheme = isDark ? "dark" : "light";
+    setTheme(initialTheme);
+
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
 
   const toggleTheme = () => {

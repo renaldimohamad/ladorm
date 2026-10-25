@@ -12,12 +12,16 @@ import Image from "next/image";
 
 const schema = yup.object().shape({
   fullName: yup.string().required("Nama lengkap wajib diisi"),
-  phoneNumber: yup.string()
+  phoneNumber: yup
+    .string()
     .required("Nomor WhatsApp wajib diisi")
     .matches(/^[0-9+\- ]+$/, "Format nomor tidak valid"),
   university: yup.string().optional(),
   origin: yup.string().optional(),
-  gender: yup.string().oneOf(["Laki-laki", "Perempuan"]).required("Jenis kelamin wajib dipilih"),
+  gender: yup
+    .string()
+    .oneOf(["Laki-laki", "Perempuan"])
+    .required("Jenis kelamin wajib dipilih"),
 });
 
 export default function RegisterPage() {
@@ -33,7 +37,7 @@ export default function RegisterPage() {
     defaultValues: {
       origin: "",
       university: "",
-    }
+    },
   });
 
   const onSubmit = async (data: any) => {
@@ -50,7 +54,9 @@ export default function RegisterPage() {
       console.log("API Response:", result);
 
       if (result.success) {
-        toast.success("Pendaftaran berhasil! Tim kami akan menghubungi anda via WhatsApp.");
+        toast.success(
+          "Pendaftaran berhasil! Tim kami akan menghubungi anda via WhatsApp.",
+        );
         router.push("/register/success");
       } else {
         toast.error(result.message || "Terjadi kesalahan");
@@ -63,7 +69,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className={`${jakarta.className} min-h-screen bg-[#081115] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden`}>
+    <div
+      className={`${jakarta.className} min-h-screen bg-[#081115] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden`}>
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none" />
@@ -80,14 +87,20 @@ export default function RegisterPage() {
             />
           </div>
           <h2 className="text-3xl font-black text-foreground tracking-tight">
-            Fast Track <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent underline decoration-teal-500/30 underline-offset-8">Onboarding</span>
+            Fast Track{" "}
+            <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent underline decoration-teal-500/30 underline-offset-8">
+              Onboarding
+            </span>
           </h2>
           <div className="flex items-center justify-center gap-2 py-1 px-4 bg-emerald-500/10 border border-emerald-500/20 rounded-full w-fit mx-auto">
             <MessageSquare size={12} className="text-emerald-500" />
-            <p className="text-[9px] font-black uppercase tracking-widest text-emerald-500">Integrasi Verifikasi WhatsApp</p>
+            <p className="text-[9px] font-black uppercase tracking-widest text-emerald-500">
+              Integrasi Verifikasi WhatsApp
+            </p>
           </div>
           <p className="text-muted-foreground text-sm max-w-xs mx-auto">
-            Daftar sekarang. Verifikasi instan melalui chat bersama Admin <span className="text-teal-500 font-bold">Ladorm</span>.
+            Daftar sekarang. Verifikasi instan melalui chat bersama Admin{" "}
+            <span className="text-teal-500 font-bold">Ladorm</span>.
           </p>
         </div>
 
@@ -95,7 +108,9 @@ export default function RegisterPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Nama Lengkap */}
             <div className="space-y-1.5 md:col-span-2">
-              <label htmlFor="fullName" className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
+              <label
+                htmlFor="fullName"
+                className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
                 Nama Lengkap
               </label>
               <input
@@ -104,48 +119,79 @@ export default function RegisterPage() {
                 className="block w-full px-5 py-4 bg-background/50 border border-white/5 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all text-foreground placeholder:text-muted-foreground/20 font-medium"
                 placeholder="Masukkan nama lengkap anda"
               />
-              {errors.fullName && <p className="mt-1 text-[10px] text-red-400 font-bold uppercase tracking-tight">{errors.fullName.message}</p>}
+              {errors.fullName && (
+                <p className="mt-1 text-[10px] text-red-400 font-bold uppercase tracking-tight">
+                  {errors.fullName.message}
+                </p>
+              )}
             </div>
 
             {/* Nomor Telepon */}
             <div className="space-y-1.5 md:col-span-1">
-              <label htmlFor="phoneNumber" className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
+              <label
+                htmlFor="phoneNumber"
+                className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
                 WhatsApp Number
               </label>
               <input
-                {...register("phoneNumber")}
+                {...register("phoneNumber", {
+                  // Validasi tambahan langsung di register (opsional jika belum pakai Zod)
+                  onChange: (e) => {
+                    // Hanya izinkan angka dengan mereplace karakter selain angka
+                    e.target.value = e.target.value.replace(/\D/g, "");
+                  },
+                })}
                 type="text"
+                inputMode="numeric"
                 className="block w-full px-5 py-4 bg-background/50 border border-white/5 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all text-foreground placeholder:text-muted-foreground/20 font-medium"
                 placeholder="Contoh: 081234567890"
               />
-              {errors.phoneNumber && <p className="mt-1 text-[10px] text-red-400 font-bold uppercase tracking-tight">{errors.phoneNumber.message}</p>}
+              {errors.phoneNumber && (
+                <p className="mt-1 text-[10px] text-red-400 font-bold uppercase tracking-tight">
+                  {errors.phoneNumber.message}
+                </p>
+              )}
             </div>
 
             {/* Jenis Kelamin */}
             <div className="space-y-1.5 md:col-span-1">
-              <label htmlFor="gender" className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
+              <label
+                htmlFor="gender"
+                className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
                 Jenis Kelamin
               </label>
               <div className="relative group">
                 <select
                   {...register("gender")}
-                  className="block w-full appearance-none px-5 py-4 bg-background/50 border border-white/5 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all text-foreground font-medium cursor-pointer"
-                >
-                  <option value="" className="bg-muted">Pilih Jenis Kelamin</option>
-                  <option value="Laki-laki" className="bg-muted">Laki-laki</option>
-                  <option value="Perempuan" className="bg-muted">Perempuan</option>
+                  className="block w-full appearance-none px-5 py-4 bg-background/50 border border-white/5 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-teal-500/50 focus:border-teal-500/50 transition-all text-foreground font-medium cursor-pointer">
+                  <option value="" className="bg-muted">
+                    Pilih Jenis Kelamin
+                  </option>
+                  <option value="Laki-laki" className="bg-muted">
+                    Laki-laki
+                  </option>
+                  <option value="Perempuan" className="bg-muted">
+                    Perempuan
+                  </option>
                 </select>
                 <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-muted-foreground group-hover:text-teal-500 transition-colors">
                   <ChevronDown size={20} />
                 </div>
               </div>
-              {errors.gender && <p className="mt-1 text-[10px] text-red-400 font-bold uppercase tracking-tight">{errors.gender.message}</p>}
+              {errors.gender && (
+                <p className="mt-1 text-[10px] text-red-400 font-bold uppercase tracking-tight">
+                  {errors.gender.message}
+                </p>
+              )}
             </div>
 
             {/* Universitas (Optional) */}
             <div className="space-y-1.5 md:col-span-1">
-              <label htmlFor="university" className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
-                Universitas <span className="text-[8px] opacity-40 italic">(Opsional)</span>
+              <label
+                htmlFor="university"
+                className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
+                Universitas{" "}
+                <span className="text-[8px] opacity-40 italic">(Opsional)</span>
               </label>
               <input
                 {...register("university")}
@@ -157,8 +203,11 @@ export default function RegisterPage() {
 
             {/* Asal Wilayah (Optional) */}
             <div className="space-y-1.5 md:col-span-1">
-              <label htmlFor="origin" className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
-                Asal Wilayah <span className="text-[8px] opacity-40 italic">(Opsional)</span>
+              <label
+                htmlFor="origin"
+                className="block text-[10px] uppercase tracking-widest font-black text-muted-foreground ml-1">
+                Asal Wilayah{" "}
+                <span className="text-[8px] opacity-40 italic">(Opsional)</span>
               </label>
               <input
                 {...register("origin")}
@@ -173,8 +222,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center items-center py-5 px-4 border border-transparent text-sm font-black uppercase tracking-[0.2em] rounded-2xl text-white bg-gradient-to-r from-teal-600 to-emerald-600 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(13,148,136,0.5)] disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
-            >
+              className="group relative cursor-pointer w-full flex justify-center items-center py-4 px-4 border border-transparent text-xs font-black uppercase tracking-[0.2em] rounded-2xl text-white bg-gradient-to-r from-teal-600 to-emerald-600 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-all duration-300 shadow-[0_10px_40px_-10px_rgba(13,148,136,0.5)] disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden">
               <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
               {loading ? (
                 <Loader2 className="w-5 h-5 animate-spin mr-2" />
@@ -183,8 +231,10 @@ export default function RegisterPage() {
               )}
             </button>
             <div className="flex items-center justify-center gap-2 opacity-30 group hover:opacity-100 transition-opacity">
-               <ShieldCheck size={12} />
-               <p className="text-[8px] font-bold uppercase tracking-widest">End-to-End Verification Secure Data</p>
+              <ShieldCheck size={12} />
+              <p className="text-[8px] font-bold uppercase tracking-widest">
+                End-to-End Verification Secure Data
+              </p>
             </div>
           </div>
         </form>
