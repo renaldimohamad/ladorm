@@ -3,6 +3,10 @@ import { LanguageType } from "../../types/lengauages";
 const en: LanguageType = {
   common: {
     backButton: "Back",
+    loading: "Loading page...",
+    loadingSlow: "Content is taking longer than usual to load. Please wait a moment.",
+    loadingFailed: "The page failed to load.",
+    retry: "Try again",
   },
   homeBlogPreview: {
     title: "Dormitory News & Daily Life",
@@ -20,7 +24,7 @@ const en: LanguageType = {
   },
   navbar: {
     home: "Home",
-    about: "Tentang",
+    about: "About Us",
     insight: "Insight",
     blog: "Blog",
     contact: "Contact Us",
@@ -226,7 +230,41 @@ const en: LanguageType = {
     loadMoreButton: "Load More Stories",
   },
   aboutPage: {
-    title: "About Us",
+    title: "About LADORM",
+    landing: {
+      eyebrow: "Get to know LADORM",
+      title: "A home for Gorontalo students in Jakarta.",
+      description:
+        "Meet the LADORM community, explore its visual identity, and read the story of the Gorontalo Student Dormitory.",
+      imageAlt: "LADORM residents gathered beside a pool during a group outing.",
+      outdoorImageAlt: "LADORM residents posing together outdoors.",
+      gatheringImageAlt: "LADORM residents gathered at a community event.",
+      officersEyebrow: "LADORM Leadership",
+      officersTitle: "The people behind LADORM.",
+      officersDescription:
+        "Meet the officers carrying out the responsibilities of the LADORM organization.",
+      officerImageAlt: "Portrait of {name}, a LADORM officer.",
+      chairpersonRole: "Chairperson",
+      secretaryRole: "Secretary",
+      treasurerRole: "Treasurer",
+      destinationsTitle: "Explore LADORM",
+      destinationsEyebrow: "Discover more about LADORM",
+      residentsTitle: "Meet Our Residents",
+      residentsDescription:
+        "Browse resident profiles and get to know the LADORM community.",
+      residentsAction: "Meet the residents",
+      identityTitle: "Visual Identity",
+      identityDescription: "Explore LADORM's visual identity document.",
+      viewPdf: "View PDF",
+      downloadPdf: "Download PDF",
+      downloadLoading: "Checking file...",
+      downloadStarted: "PDF download started.",
+      downloadFailed: "The PDF could not be downloaded. Please try again.",
+      storyTitle: "Our Story",
+      storyDescription:
+        "Read about the dormitory, its background, and its leadership.",
+      storyAction: "Read our story",
+    },
     content: [
       "The Gorontalo Lenteng Agung Student Dormitory (Ladorm) was established through a collaborative effort between the Gorontalo provincial government and student organizations.",
       "Driven by the Chair of the Gorontalo Indonesian Student Association for Greater Jakarta (HPMIG Jaya) at the time, Ririn Afitri Tatu, who took the initiative to find a place for students to stay. This aspiration was fueled because students were still occupying the secretariat of the Pohuwato Indonesian Student Association (KPMIP) in 2012. When the lease ended, the need for housing became urgent.",

@@ -28,20 +28,31 @@ const Navbar = () => {
     {
       label: "us",
       value: "en",
+      name: "English",
       flag: "/images/ENG - ING Flag 1.webp",
     },
     {
       label: "id",
       value: "id",
+      name: "Indonesia",
       flag: "/images/ENG - ING Flag 3.webp",
+    },
+    {
+      label: "gtlo",
+      value: "gtlo",
+      name: "Gorontalo",
     },
   ];
 
   const navLinks = [
     { href: "/", label: dictionary.navbar.home },
+    { href: "/about", label: dictionary.navbar.about },
     { href: "/blog", label: dictionary.navbar.blog },
     { href: "/insight", label: dictionary.navbar.insight },
   ];
+
+  const isActiveLink = (href: string) =>
+    pathname === href || (href === "/about" && pathname.startsWith("/about/"));
 
   // ─── Navbar class: transparan di top, frosted glass saat scroll ───────────
   // Pattern: Apple.com, Vercel.com, Linear.app
@@ -114,7 +125,7 @@ const Navbar = () => {
               key={href}
               href={href}
               className={`link-underline text-sm transition-colors duration-200 ${
-                pathname === href
+                isActiveLink(href)
                   ? "font-semibold text-primary" // ✅ active: primary
                   : "font-normal text-foreground hover:text-primary" // ✅ semantic
               }`}>
@@ -227,7 +238,7 @@ const Navbar = () => {
                           />
                         )}
                         <span className="text-sm">
-                          {item.value === "en" ? "English" : "Indonesia"}
+                          {item.name}
                         </span>
                       </Listbox.Option>
                     ))}
@@ -305,7 +316,7 @@ const Navbar = () => {
                   href={href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block py-2 transition-colors ${
-                    pathname === href
+                    isActiveLink(href)
                       ? "font-bold text-primary"
                       : "text-foreground hover:text-primary"
                   }`}>
@@ -340,9 +351,7 @@ const Navbar = () => {
                               />
                             )}
                             <span className="uppercase text-xs tracking-wider">
-                              {selectedLang?.value === "en"
-                                ? "English"
-                                : "Indonesia"}
+                              {selectedLang?.name}
                             </span>
                           </div>
                           <svg
@@ -384,7 +393,7 @@ const Navbar = () => {
                                 />
                               )}
                               <span className="text-sm">
-                                {item.value === "en" ? "English" : "Indonesia"}
+                                {item.name}
                               </span>
                             </Listbox.Option>
                           ))}

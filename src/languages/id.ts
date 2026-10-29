@@ -3,6 +3,10 @@ import { LanguageType } from "../../types/lengauages";
 const id: LanguageType = {
   common: {
     backButton: "Kembali",
+    loading: "Memuat halaman...",
+    loadingSlow: "Konten sedang dimuat lebih lama dari biasanya. Mohon tunggu sebentar.",
+    loadingFailed: "Pemuatan halaman gagal.",
+    retry: "Coba lagi",
   },
   homeBlogPreview: {
     title: "Kabar & Kegiatan Asrama",
@@ -20,7 +24,7 @@ const id: LanguageType = {
   },
   navbar: {
     home: "Beranda",
-    about: "Tentang Asrama",
+    about: "Tentang Kami",
     insight: "Wawasan",
     blog: "Blog",
     contact: "Hubungi Kami",
@@ -224,7 +228,41 @@ const id: LanguageType = {
     loadMoreButton: "Muat Lebih Banyak Cerita",
   },
   aboutPage: {
-    title: "About Us",
+    title: "Tentang LADORM",
+    landing: {
+      eyebrow: "Kenali LADORM",
+      title: "Rumah bagi mahasiswa Gorontalo di Jakarta.",
+      description:
+        "Kenali komunitas penghuni, identitas visual, serta cerita Asrama Mahasiswa Provinsi Gorontalo.",
+      imageAlt: "Mahasiswa LADORM berkumpul di tepi kolam saat kegiatan bersama.",
+      outdoorImageAlt: "Penghuni LADORM berfoto bersama di ruang terbuka.",
+      gatheringImageAlt: "Penghuni LADORM berkumpul dalam acara bersama.",
+      officersEyebrow: "Pengurus LADORM",
+      officersTitle: "Orang-orang di balik LADORM.",
+      officersDescription:
+        "Berkenalan dengan pengurus yang menjalankan tanggung jawab organisasi LADORM.",
+      officerImageAlt: "Foto {name}, pengurus LADORM.",
+      chairpersonRole: "Ketua",
+      secretaryRole: "Sekretaris",
+      treasurerRole: "Bendahara",
+      destinationsTitle: "Jelajahi LADORM",
+      destinationsEyebrow: "Lebih dekat dengan LADORM",
+      residentsTitle: "Kenali Penghuni",
+      residentsDescription:
+        "Lihat profil para penghuni LADORM dan kenali komunitasnya.",
+      residentsAction: "Lihat penghuni",
+      identityTitle: "Identitas Visual",
+      identityDescription: "Lihat dokumen identitas visual LADORM.",
+      viewPdf: "Lihat PDF",
+      downloadPdf: "Unduh PDF",
+      downloadLoading: "Memeriksa file...",
+      downloadStarted: "Unduhan PDF telah dimulai.",
+      downloadFailed: "PDF tidak dapat diunduh. Silakan coba lagi.",
+      storyTitle: "Cerita LADORM",
+      storyDescription:
+        "Baca kisah, informasi, dan perjalanan kepemimpinan asrama.",
+      storyAction: "Baca cerita",
+    },
     content: [
       "Asrama Mahasiswa Gorontalo Lenteng Agung atau Ladorm berdiri atas peran kolaboratif antara dan pemerintah daerah (pemda) provinsi Gorontalo dan organisasi kemahasiswaan .",
       "Di gerakkan oleh Ketua Himpunan Pelajar dan Mahasiswa Indonesia Gorontalo Cabang Jakarta Raya (HPMIG Jaya) ketika itu Ririn Afitri Tatu, yang berinisiatif mencari tempat tinggal untuk mahasiswa bisa bernaung. Aspirasi mahasiswa melalui HPMIG Jaya tersebut, terdorong karena mahasiswa masih menempati sekretariat organisasi Kerukunan Pelajar dan Mahasiswa Indonesia Pohuwato (KPMIP) ditahun 2012. Ketika masa kontrak sekretariat itu berakhir, kebutuhan tempat tinggal menjadi hal yang urgen.",

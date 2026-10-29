@@ -4,7 +4,14 @@ import { blogArticles } from "@/utils/blog";
 const baseUrl = "https://ladorm.vercel.app";
 
 export default async function sitemap() {
-  const staticPages = ["/", "/about", "/blog", "/contact-us", "/residents"];
+  const staticPages = [
+    "/",
+    "/about",
+    "/about/story",
+    "/blog",
+    "/contact-us",
+    "/residents",
+  ];
 
   const staticUrls = staticPages.map((path) => ({
     url: `${baseUrl}${path}`,

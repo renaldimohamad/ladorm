@@ -93,6 +93,38 @@ export type AboutPageLangType = {
   content: string[];
   list: string[];
   philosophy: string[];
+  landing: AboutLandingLangType;
+};
+
+export type AboutLandingLangType = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  imageAlt: string;
+  outdoorImageAlt: string;
+  gatheringImageAlt: string;
+  officersEyebrow: string;
+  officersTitle: string;
+  officersDescription: string;
+  officerImageAlt: string;
+  chairpersonRole: string;
+  secretaryRole: string;
+  treasurerRole: string;
+  destinationsTitle: string;
+  destinationsEyebrow: string;
+  residentsTitle: string;
+  residentsDescription: string;
+  residentsAction: string;
+  identityTitle: string;
+  identityDescription: string;
+  viewPdf: string;
+  downloadPdf: string;
+  downloadLoading: string;
+  downloadStarted: string;
+  downloadFailed: string;
+  storyTitle: string;
+  storyDescription: string;
+  storyAction: string;
 };
 
 export type IHeroSectionHome = {
@@ -213,6 +245,10 @@ export type IHomeHowWeWork = {
 export type LanguageType = {
   common?: {
     backButton: string;
+    loading: string;
+    loadingSlow: string;
+    loadingFailed: string;
+    retry: string;
   };
   homeBlogPreview?: {
     title: string;
@@ -238,7 +274,7 @@ export type LanguageType = {
   ctaSection?: CtaSectionLangType;
   insightPage?: InsightLangType;
   blogPage?: BlogLangType;
-  aboutPage?: AboutPageLangType;
+  aboutPage: AboutPageLangType;
   mockInsightsData?: {
     featured: IInsightPost;
     list: IInsightPost[];

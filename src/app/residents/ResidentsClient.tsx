@@ -179,17 +179,32 @@ export default function ResidentsClient() {
 
   function SkeletonCard() {
     return (
-      <div className="group relative rounded-3xl p-[1px] bg-gradient-to-b from-gray-200 to-gray-100">
-        <div className="bg-background rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center animate-pulse">
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-muted mb-4 sm:mb-6" />
+      <div
+        className="group relative rounded-3xl p-[1px]
+      bg-gradient-to-b from-border to-muted">
+        <div
+          className="flex animate-pulse flex-col items-center
+        rounded-3xl bg-background p-6 text-center sm:p-8">
+          {/* Avatar — ukuran tetap */}
+          <div
+            className="mb-4 size-24 rounded-full bg-muted
+          ring-4 ring-primary/10 sm:mb-6 sm:size-28"
+          />
 
-          <div className="h-4 w-46 bg-muted rounded mb-2" />
-          <div className="h-3 w-36 bg-muted rounded mb-2" />
-          <div className="h-3 w-30 bg-muted rounded mb-3" />
+          {/* Name */}
+          <div className="mb-2 h-4 w-46 max-w-full rounded bg-muted" />
 
-          <div className="h-3 w-70 bg-muted rounded mb-6" />
+          {/* Major */}
+          <div className="mb-2 h-3 w-36 max-w-full rounded bg-muted/80" />
 
-          <div className="h-8 w-38 bg-muted rounded-full" />
+          {/* University */}
+          <div className="mb-3 h-3 w-30 max-w-full rounded bg-muted/70" />
+
+          {/* Bio */}
+          <div className="mb-6 h-3 w-70 max-w-full rounded bg-muted/80" />
+
+          {/* CTA — ukuran tetap */}
+          <div className="h-8 w-38 max-w-full rounded-full bg-primary/15" />
         </div>
       </div>
     );
@@ -197,7 +212,7 @@ export default function ResidentsClient() {
 
   return (
     <LayoutBlank bgColor="bg-background">
-      <section className="relative min-h-screen bg-card py-16 sm:py-20 md:py-24 overflow-hidden">
+      <section className="relative min-h-screen bg-card dark:bg-card/15 py-16 sm:py-20 md:py-24 overflow-hidden">
         {/* Background Blur Accent */}
         <div className="hidden sm:block absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-muted rounded-full blur-3xl opacity-20 -z-10" />
         <div className="hidden sm:block absolute bottom-0 right-0 w-[400px] h-[400px] bg-gray-300 rounded-full blur-3xl opacity-20 -z-10" />
@@ -320,7 +335,7 @@ export default function ResidentsClient() {
             </div>
           </div>
 
-          <hr className="text-gray-200 mb-16" />
+          <hr className="text-gray-200 dark:text-muted-foreground/25 mb-16" />
 
           {/* ================= GRID ================= */}
           {isLoading ? (
@@ -343,7 +358,7 @@ export default function ResidentsClient() {
                     <div className="bg-background rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center transition-all duration-300 group-hover:-translate-y-3 group-hover:shadow-2xl">
                       {/* Avatar */}
                       <div className="relative mb-4 sm:mb-6">
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-gray-200 to-gray-100 blur-xl opacity-40"></div>
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-gray-200 dark:from-card to-gray-100 dark:to-primary/15 blur-xl opacity-40"></div>
 
                         <img
                           src={r.photo}
