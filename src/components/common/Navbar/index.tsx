@@ -76,9 +76,8 @@ const Navbar = () => {
 
   const logoSrc =
     theme === "light"
-      ? "/images/Ladorm Logo - Color 1.webp"
-      : // : "/images/Visual Idententy - Remake Logo Ladorm 2.webp";
-        "/images/Ladorm Logo - Putih.png";
+      ? "/images/Logotype - Ladorm Hijau.webp"
+      : "/images/Logotype - Ladorm Putih.webp";
 
   return (
     <header className={headerClass}>
@@ -98,8 +97,8 @@ const Navbar = () => {
           <Image
             src={logoSrc}
             alt="LADORM - LOGO"
-            width={60}
-            height={20}
+            width={150}
+            height={60}
             className="object-containr"
           />
 
@@ -452,7 +451,7 @@ const Navbar = () => {
       </AnimatePresence>
 
       {/* ─── Scroll Progress Indicator ─────────────────────────────────────── */}
-      <div className="absolute bottom-0 left-0 w-full h-[2px] bg-transparent z-[9999]">
+      <div className="absolute bottom-0 left-0 w-full h-[0.5px] bg-transparent z-[9999]">
         <motion.div
           className="h-full rounded-r-full"
           style={{

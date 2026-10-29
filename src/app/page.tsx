@@ -80,7 +80,7 @@ export default function Home() {
                           <CallToAction
                             text={actionText}
                             href="#about"
-                            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-foreground hover:bg-muted/80"
+                            className="bg-gradient-to-r from-[var(--gradient-from)] to-[var(--gradient-to)] text-white"
                           />
                           <CallToAction
                             text="Daftar Asrama"

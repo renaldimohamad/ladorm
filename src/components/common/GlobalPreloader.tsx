@@ -22,7 +22,8 @@ export function GlobalPreloader() {
           }
 
           // Logistic-like slowing down
-          const increment = prev < 60 ? Math.random() * 15 + 5 : Math.random() * 2 + 0.1;
+          const increment =
+            prev < 60 ? Math.random() * 15 + 5 : Math.random() * 2 + 0.1;
           const next = prev + increment;
           return next > 98 ? 98 : next;
         });
@@ -63,11 +64,10 @@ export function GlobalPreloader() {
             filter: "blur(20px)",
             transition: {
               duration: 2.5,
-              ease: [0.22, 1, 0.36, 1] // Quintic ease-out for ultra smoothness
-            }
+              ease: [0.22, 1, 0.36, 1], // Quintic ease-out for ultra smoothness
+            },
           }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] overflow-hidden"
-        >
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] overflow-hidden">
           {/* Grainy Noise Overlay */}
           <div className="absolute inset-0 z-50 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] blend-overlay" />
 
@@ -96,8 +96,7 @@ export function GlobalPreloader() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
-            >
+              className="relative">
               <div className="relative overflow-hidden">
                 <Image
                   src="/images/Visual Idententy - Remake Logo Ladorm 2.webp"
@@ -116,7 +115,7 @@ export function GlobalPreloader() {
                     duration: 2.5,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    repeatDelay: 1
+                    repeatDelay: 1,
                   }}
                   className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-30deg]"
                 />
@@ -126,7 +125,7 @@ export function GlobalPreloader() {
               <motion.div
                 animate={{
                   opacity: [0.1, 0.3, 0.1],
-                  scale: [0.8, 1.2, 0.8]
+                  scale: [0.8, 1.2, 0.8],
                 }}
                 transition={{ duration: 5, repeat: Infinity }}
                 className="absolute inset-0 bg-primary/20 blur-[100px] -z-10"
@@ -154,10 +153,10 @@ export function GlobalPreloader() {
 
               {/* Percent Counter */}
               <div className="mt-8 flex items-center justify-between w-full">
-                <span className="text-[7px] font-bold text-white/20 tracking-[0.4em] uppercase">Loading System</span>
-                <motion.span
-                  className="text-[14px] font-black text-primary tabular-nums tracking-normal flex items-center"
-                >
+                <span className="text-[7px] font-bold text-white/20 tracking-[0.4em] uppercase">
+                  Loading System
+                </span>
+                <motion.span className="text-[14px] font-black text-primary tabular-nums tracking-normal flex items-center">
                   {Math.round(percent)}
                   <span className="text-[8px] ml-0.5 opacity-50">%</span>
                 </motion.span>
@@ -173,10 +172,9 @@ export function GlobalPreloader() {
                   animate={{ opacity: 0.4 }}
                   transition={{
                     delay: 1.5 + i * 0.05,
-                    duration: 1
+                    duration: 1,
                   }}
-                  className="text-[8px] font-bold tracking-[0.3em] text-white/60 uppercase"
-                >
+                  className="text-[8px] font-bold tracking-[0.3em] text-white/60 uppercase">
                   {c === " " ? "\u00A0" : c}
                 </motion.span>
               ))}
@@ -187,8 +185,7 @@ export function GlobalPreloader() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.15 }}
             transition={{ delay: 2.5 }}
-            className="absolute bottom-12 flex flex-col items-center gap-2"
-          >
+            className="absolute bottom-12 flex flex-col items-center gap-2">
             <div className="w-[1px] h-12 bg-gradient-to-b from-primary/50 to-transparent" />
           </motion.div>
         </motion.div>

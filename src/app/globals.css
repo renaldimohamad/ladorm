@@ -6,12 +6,12 @@
   --background: #ffffff;
   --foreground: #1a1a1a;
   --card: #f9f9f9;
-  
-  --primary: #016072;
-  --secondary: #2c705b;
 
-  --gradient-from: rgba(1,96,114,0.7);
-  --gradient-to: rgba(44,112,91,0.7);
+  --primary: #115e59;
+  --secondary: #0f766e;
+
+  --gradient-from: rgba(1, 96, 114, 0.7);
+  --gradient-to: rgba(44, 112, 91, 0.7);
 
   --border: #e5e7eb;
   --muted: #f9fafb;
@@ -30,13 +30,13 @@
   /* Rich deep teal background instead of near-black for a premium feel */
   --background: #081115;
   --foreground: #f3f7f9;
-  
+
   /* Elevated card color to distinctly pop from background */
   --card: #13222a;
 
   /* Primary brights that glow on dark setups */
-  --primary: #22d3ee; 
-  --secondary: #4ade80; 
+  --primary: #2dd4bf;
+  --secondary: #14b8a6;
 
   /* Increased opacity and vibrancy for gradients - no flat/dull 25% opacity! */
   --gradient-from: rgba(14, 165, 183, 0.85);
@@ -44,14 +44,14 @@
 
   /* Borders that separate elements elegantly */
   --border: #1d333e;
-  
+
   /* Muted backgrounds for distinct segments */
   --muted: #172a34;
   --muted-foreground: #a1b6c0;
 
   /* ── Navbar Tokens (Dark Mode) ── */
   /* Tint gelap background + sedikit transparan untuk frosted glass effect */
-  --navbar-bg: rgba(8, 17, 21, 0.80);
+  --navbar-bg: rgba(8, 17, 21, 0.8);
   --navbar-border: rgba(255, 255, 255, 0.06);
   --navbar-surface: rgba(255, 255, 255, 0.06);
   --navbar-surface-hover: rgba(255, 255, 255, 0.11);
@@ -93,8 +93,6 @@ body {
   filter: brightness(0.85) contrast(1.1);
   transition: filter 0.3s ease;
 }
-
-
 
 .rounded-custom {
   border-radius: 1.5rem;
