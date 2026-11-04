@@ -931,3 +931,59 @@ export const residents: Resident[] = [
   //   joinedYear: 2025,
   // },
 ];
+
+export function getResidentProfileSummary(resident: Resident) {
+  const description = resident.about?.summary?.trim() || resident.bio?.trim();
+
+  if (description) {
+    return description;
+  }
+
+  const role = resident.status === "active" ? "penghuni" : "alumni";
+  return `Profil ${resident.name}, ${role} Asrama Mahasiswa Gorontalo di Jakarta (LADORM).`;
+}
+
+export function getResidentProfileDescription(resident: Resident) {
+  const details = [
+    resident.major.trim() ? `Jurusan: ${resident.major.trim()}` : "",
+    resident.university.trim()
+      ? `Universitas: ${resident.university.trim()}`
+      : "",
+    resident.from.trim() ? `Asal: ${resident.from.trim()}` : "",
+  ].filter(Boolean);
+  const role = resident.status === "active" ? "penghuni" : "alumni";
+  const identity = `Profil ${resident.name}, ${role} Asrama Mahasiswa Gorontalo di Jakarta (LADORM).`;
+  const suppliedDescription =
+    resident.about?.summary?.trim() || resident.bio?.trim();
+  const descriptionParts = [identity];
+  const optionalDetails = [
+    ...details.map((value) => ({ value, canTruncate: false })),
+    ...(suppliedDescription
+      ? [{ value: suppliedDescription, canTruncate: true }]
+      : []),
+  ];
+
+  for (const { value, canTruncate } of optionalDetails) {
+    const currentDescription = descriptionParts.join(" ");
+    const availableLength = 160 - currentDescription.length - 2;
+
+    if (value.length <= availableLength) {
+      descriptionParts.push(`${value}.`);
+      continue;
+    }
+
+    if (canTruncate && availableLength >= 40) {
+      const excerpt = value.slice(0, availableLength);
+      const wordBoundary = excerpt.lastIndexOf(" ");
+      const shortened = excerpt
+        .slice(0, wordBoundary > 0 ? wordBoundary : excerpt.length)
+        .trimEnd();
+
+      if (shortened) {
+        descriptionParts.push(`${shortened}…`);
+      }
+    }
+  }
+
+  return descriptionParts.join(" ");
+}

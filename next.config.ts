@@ -9,7 +9,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "ladorm.vercel.app",
+        hostname: "ladorm.id",
+      },
+      {
+        protocol: "https",
+        hostname: "www.ladorm.id",
       },
     ],
   },

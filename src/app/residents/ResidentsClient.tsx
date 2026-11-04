@@ -44,7 +44,6 @@ export default function ResidentsClient() {
   );
 
   const [search, setSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_MOBILE_COUNT);
@@ -90,19 +89,6 @@ export default function ResidentsClient() {
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      // setVisibleCount(
-      //   isMobile ? INITIAL_MOBILE_COUNT : filteredResidents.length,
-      // );
-    }, 600);
-
-    return () => clearTimeout(timer);
-  }, [statusFilter, search, isMobile]);
 
   useEffect(() => {
     if (!isMobile) return;
@@ -176,39 +162,6 @@ export default function ResidentsClient() {
 
   //   return () => observer.disconnect();
   // }, [isMobile, filteredResidents.length]);
-
-  function SkeletonCard() {
-    return (
-      <div
-        className="group relative rounded-3xl p-[1px]
-      bg-gradient-to-b from-border to-muted">
-        <div
-          className="flex animate-pulse flex-col items-center
-        rounded-3xl bg-background p-6 text-center sm:p-8">
-          {/* Avatar — ukuran tetap */}
-          <div
-            className="mb-4 size-24 rounded-full bg-muted
-          ring-4 ring-primary/10 sm:mb-6 sm:size-28"
-          />
-
-          {/* Name */}
-          <div className="mb-2 h-4 w-46 max-w-full rounded bg-muted" />
-
-          {/* Major */}
-          <div className="mb-2 h-3 w-36 max-w-full rounded bg-muted/80" />
-
-          {/* University */}
-          <div className="mb-3 h-3 w-30 max-w-full rounded bg-muted/70" />
-
-          {/* Bio */}
-          <div className="mb-6 h-3 w-70 max-w-full rounded bg-muted/80" />
-
-          {/* CTA — ukuran tetap */}
-          <div className="h-8 w-38 max-w-full rounded-full bg-primary/15" />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <LayoutBlank bgColor="bg-background">
@@ -338,13 +291,7 @@ export default function ResidentsClient() {
           <hr className="text-gray-200 dark:text-muted-foreground/25 mb-16" />
 
           {/* ================= GRID ================= */}
-          {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <SkeletonCard key={i} />
-              ))}
-            </div>
-          ) : filteredResidents.length === 0 ? (
+          {filteredResidents.length === 0 ? (
             <div className="text-center py-16 sm:py-20 text-muted-foreground text-sm sm:text-base">
               Tidak ditemukan penghuni.
             </div>

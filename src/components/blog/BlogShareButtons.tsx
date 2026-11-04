@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { FaFacebook, FaLinkedin, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { HiOutlineLink, HiOutlineShare } from "react-icons/hi";
 import { toast } from "react-hot-toast";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 interface BlogShareButtonsProps {
   title: string;
@@ -21,7 +22,7 @@ export default function BlogShareButtons({
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const encodedDescription = encodeURIComponent(description);
-  const shareImage = useMemo(() => image || "https://ladorm.vercel.app/images/LADORM_FORM.webp", [image]);
+  const shareImage = useMemo(() => image || DEFAULT_OG_IMAGE, [image]);
 
   const shareTargets = [
     {

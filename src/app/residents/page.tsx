@@ -1,27 +1,33 @@
 import { Metadata } from "next";
 import ResidentsClient from "./ResidentsClient";
+import {
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_WIDTH,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Daftar Penghuni LADORM | LADorm",
+  title: "Penghuni LADORM",
   description:
-    "Daftar penghuni LADorm — profil singkat, latar belakang akademik, dan keahlian untuk memudahkan pencarian dan koneksi.",
+    "Kenali komunitas penghuninya, profil akademik, serta kegiatan keseharian mahasiswa Gorontalo yang tinggal di LADORM Jakarta.",
   openGraph: {
-    title: "Daftar Penghuni LADORM | LADorm",
+    title: "Penghuni LADORM – Komunitas Mahasiswa Gorontalo",
     description:
-      "Daftar penghuni LADorm — profil singkat, latar belakang akademik, dan keahlian untuk memudahkan pencarian dan koneksi.",
-    url: "https://ladorm.vercel.app/residents",
+      "Kenali komunitas penghuninya, profil akademik, serta kegiatan keseharian mahasiswa Gorontalo yang tinggal di LADORM Jakarta.",
+    url: `${SITE_URL}/residents`,
     type: "website",
     images: [
       {
-        url: "https://ladorm.vercel.app/images/LADORM_FORM.webp",
-        width: 1200,
-        height: 630,
-        alt: "Daftar Penghuni LADORM",
+        url: DEFAULT_OG_IMAGE,
+        width: DEFAULT_OG_IMAGE_WIDTH,
+        height: DEFAULT_OG_IMAGE_HEIGHT,
+        alt: "Penghuni LADORM – Komunitas Mahasiswa Gorontalo",
       },
     ],
   },
   alternates: {
-    canonical: "https://ladorm.vercel.app/residents",
+    canonical: `${SITE_URL}/residents`,
   },
 };
 

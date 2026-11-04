@@ -1,34 +1,40 @@
 import type { Metadata } from "next";
 import BlogPageClient from "@/components/blog/BlogPageClient";
+import {
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_WIDTH,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Blog & Kabar Kegiatan LADorm | Asrama Mahasiswa Gorontalo Jakarta",
+  title: "Blog LADORM",
   description:
-    "Temukan berita, kegiatan, dan kisah komunitas LADorm untuk mahasiswa Gorontalo di Jakarta. Baca artikel seputar asrama, kegiatan sosial, dan kehidupan mahasiswa rantau.",
+    "Baca cerita, kegiatan, dan momen keseharian komunitas mahasiswa Gorontalo di LADORM, mulai dari kegiatan asrama hingga pengalaman hidup di Jakarta.",
   alternates: {
-    canonical: "https://ladorm.vercel.app/blog",
+    canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
-    title: "Blog & Kabar Kegiatan LADorm",
+    title: "Blog LADORM – Cerita dan Kegiatan Komunitas",
     description:
-      "Temukan berita, kegiatan, dan kisah komunitas LADorm untuk mahasiswa Gorontalo di Jakarta.",
-    url: "https://ladorm.vercel.app/blog",
+      "Baca cerita, kegiatan, dan momen keseharian komunitas mahasiswa Gorontalo di LADORM, mulai dari kegiatan asrama hingga pengalaman hidup di Jakarta.",
+    url: `${SITE_URL}/blog`,
     type: "website",
     images: [
       {
-        url: "https://ladorm.vercel.app/images/LADORM_FORM.webp",
-        width: 1200,
-        height: 630,
-        alt: "LADorm blog dan kegiatan asrama",
+        url: DEFAULT_OG_IMAGE,
+        width: DEFAULT_OG_IMAGE_WIDTH,
+        height: DEFAULT_OG_IMAGE_HEIGHT,
+        alt: "Blog LADORM – Cerita dan Kegiatan Komunitas",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog & Kabar Kegiatan LADorm",
+    title: "Blog LADORM – Cerita dan Kegiatan Komunitas",
     description:
-      "Temukan berita, kegiatan, dan kisah komunitas LADorm untuk mahasiswa Gorontalo di Jakarta.",
-    images: ["https://ladorm.vercel.app/images/LADORM_FORM.webp"],
+      "Baca cerita, kegiatan, dan momen keseharian komunitas mahasiswa Gorontalo di LADORM, mulai dari kegiatan asrama hingga pengalaman hidup di Jakarta.",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

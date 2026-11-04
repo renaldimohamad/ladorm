@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
-import { residents } from "@/utils/residents";
+import {
+  getResidentProfileDescription,
+  residents,
+} from "@/utils/residents";
 import ResidentDetailClient from "./ResidentDetailClient";
-import { Metadata } from "next";
-
-type PropsMetaData = {
-  params: { slug: string };
-};
+import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 type Props = {
   params: Promise<{
@@ -24,63 +24,64 @@ export async function generateMetadata({
 
   if (!resident) {
     return {
-      title: "Resident Not Found | LADorm",
+      title: { absolute: "Profil Tidak Ditemukan | LADORM" },
+      robots: {
+        index: false,
+        follow: true,
+      },
     };
   }
 
-  const baseUrl = "https://ladorm.vercel.app";
-
-  const imageUrl = resident.coverPhoto
-    ? `${baseUrl}${resident.coverPhoto}`
-    : `${baseUrl}${resident.photo}`;
-
-  const statusLabel = resident.status === "active" ? "Active Member" : "Alumni";
-
-  const shortSummary =
-    resident.about?.summary?.slice(0, 120) || resident.bio || "";
-
-  const description = `${resident.name} adalah ${statusLabel} LADorm dari ${resident.university
-    }. ${shortSummary}${resident.joinedYear ? ` Bergabung sejak ${resident.joinedYear}.` : ""
-    }`;
+  const imageUrl = resident.photo.trim()
+    ? new URL(resident.photo, SITE_URL).toString()
+    : DEFAULT_OG_IMAGE;
+  const canonicalUrl = `${SITE_URL}/residents/${resident.slug}`;
+  const description = getResidentProfileDescription(resident);
+  const title = `${resident.name} – Profil Penghuni ${SITE_NAME}`;
 
   return {
-    title: `${resident.name} | ${resident.major} | LADorm`,
-    description: description,
+    title: { absolute: title },
+    description,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
     openGraph: {
-      title: `${resident.name} | ${resident.major} | LADorm`,
-      description: description,
-      url: `${baseUrl}/residents/${resident.slug}`,
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: SITE_NAME,
       type: "profile",
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: resident.name,
+          alt: `Foto profil ${resident.name}`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${resident.name} | LADorm`,
-      description: description,
+      title,
+      description,
       images: [imageUrl],
     },
     alternates: {
-      canonical: `${baseUrl}/residents/${resident.slug}`,
+      canonical: canonicalUrl,
     },
   };
 }
 
 export function generateStaticParams() {
-  console.log(
-    "BUILD SLUGS:",
-    residents.map((r) => r.slug),
-  );
   return residents.map((r) => ({
     slug: r.slug,
   }));
 }
+
+export const dynamicParams = false;
 
 export default async function Page({ params }: Props) {
   const { slug } = await params;
@@ -91,23 +92,54 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
-  const baseUrl = "https://ladorm.vercel.app";
-  const imageUrl = resident.coverPhoto
-    ? `${baseUrl}${resident.coverPhoto}`
-    : `${baseUrl}${resident.photo}`;
+  const imageUrl = resident.photo.trim()
+    ? new URL(resident.photo, SITE_URL).toString()
+    : DEFAULT_OG_IMAGE;
+  const organization = {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+  };
+  const socialProfiles = Object.values(resident.socials || {}).filter(
+    (url): url is string => Boolean(url?.trim()),
+  );
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: resident.name,
     image: imageUrl,
-    url: `${baseUrl}/residents/${resident.slug}`,
-    description: resident.about?.summary || resident.bio || "",
-    affiliation: resident.university,
-    jobTitle: resident.major,
-    alumniOf: resident.university,
-    sameAs: Object.values(resident.socials || {}).filter(Boolean),
-  } as any;
+    url: `${SITE_URL}/residents/${resident.slug}`,
+    description: getResidentProfileDescription(resident),
+    ...(resident.status === "alumni"
+      ? { alumniOf: organization }
+      : { affiliation: organization }),
+    ...(socialProfiles.length > 0 ? { sameAs: socialProfiles } : {}),
+  };
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Beranda",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Penghuni",
+        item: `${SITE_URL}/residents`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: resident.name,
+        item: `${SITE_URL}/residents/${resident.slug}`,
+      },
+    ],
+  };
 
   return (
     <>
@@ -115,6 +147,12 @@ export default async function Page({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData),
+        }}
       />
     </>
   );

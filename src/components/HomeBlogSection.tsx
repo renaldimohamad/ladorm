@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import Fade from "./common/Fade";
 import { HiOutlineCalendar, HiOutlineArrowRight } from "react-icons/hi";
@@ -29,12 +28,12 @@ export default function HomeBlogSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
             <Fade direction="up" distance={40} scale={0.9} blur={5}>
-              <h2 className="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-sm">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight drop-shadow-sm">
                 {translations.title}
               </h2>
             </Fade>
             <Fade direction="left" distance={30} delay={200}>
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+              <p className="text-muted-foreground text-md lg:text-lg md:text-xl leading-relaxed">
                 {translations.subtitle}
               </p>
             </Fade>
@@ -43,7 +42,7 @@ export default function HomeBlogSection() {
           <Fade direction="right" distance={50} delay={400} rotate={5}>
             <Link
               href="/blog"
-              className="group inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-bold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap">
+              className="group inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-bold hover:bg-[var(--primary)] hover:text-white transition-all duration-300 shadow-sm whitespace-nowrap text-sm">
               <span>{translations.cta}</span>
               <HiOutlineArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
@@ -74,7 +73,7 @@ export default function HomeBlogSection() {
 
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="flex items-center space-x-4 mb-4">
-                      <span className="inline-block px-3 py-1 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-xs font-bold uppercase tracking-wider">
+                      <span className="inline-block px-3 py-1 bg-[var(--primary)]/10 text-[var(--primary)] rounded-full text-[10px] font-bold uppercase tracking-wider">
                         {post.category}
                       </span>
                       <span className="text-xs text-muted-foreground font-medium flex items-center">
@@ -83,15 +82,15 @@ export default function HomeBlogSection() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold mb-4 group-hover:text-[var(--primary)] transition-colors duration-300 leading-tight">
+                    <h3 className="text-xl md:text-xl font-bold mb-4 group-hover:text-[var(--primary)] transition-colors duration-300 leading-tight">
                       {post.title}
                     </h3>
 
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed line-clamp-3 mb-6 flex-grow">
+                    <p className="text-muted-foreground text-sm md:text-md leading-relaxed line-clamp-3 mb-6 flex-grow">
                       {post.desc}
                     </p>
 
-                    <div className="mt-auto flex items-center text-sm font-bold text-foreground group-hover:text-[var(--primary)] transition-colors duration-300 uppercase tracking-wide">
+                    <div className="mt-auto flex items-center text-sm md:text-xs font-bold text-foreground group-hover:text-[var(--primary)] transition-colors duration-300 uppercase tracking-wide">
                       {translations.readMore}{" "}
                       <HiOutlineArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
                     </div>

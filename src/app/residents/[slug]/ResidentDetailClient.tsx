@@ -1,14 +1,20 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { LayoutBlank } from "@/layouts";
 import HeaderContent from "@/components/header-content";
-import { Resident } from "@/utils/residents";
+import {
+  getResidentProfileSummary,
+  Resident,
+} from "@/utils/residents";
 import { FaInstagram, FaLinkedin, FaFacebook, FaTiktok } from "react-icons/fa";
+import { FaShareAlt } from "react-icons/fa";
 import { FaMapMarkerAlt, FaUserGraduate } from "react-icons/fa";
 import { motion } from "framer-motion";
 import CTASection from "@/components/Home/CTASection";
 import Footer from "@/components/common/Footer";
+import toast from "react-hot-toast";
 
 interface Props {
   resident: Resident;
@@ -20,9 +26,7 @@ export default function ResidentDetailClient({ resident }: Props) {
   const about = resident.about;
 
   const finalAbout = {
-    summary:
-      about?.summary ||
-      `${resident.name} merupakan bagian dari komunitas LADorm yang berfokus pada ${resident.major}.`,
+    summary: getResidentProfileSummary(resident),
     experience: about?.experience || "",
     expertise: about?.expertise || [],
     achievements: about?.achievements || [],
@@ -33,6 +37,34 @@ export default function ResidentDetailClient({ resident }: Props) {
     linkedin: { icon: FaLinkedin, label: "LinkedIn" },
     facebook: { icon: FaFacebook, label: "Facebook" },
     tiktok: { icon: FaTiktok, label: "TikTok" },
+  };
+
+  const handleShareProfile = async () => {
+    const url = window.location.href;
+
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `${resident.name} – Profil Penghuni LADORM`,
+          text: finalAbout.summary,
+          url,
+        });
+        return;
+      }
+
+      if (!navigator.clipboard) {
+        toast.error("Browser ini tidak mendukung berbagi tautan.");
+        return;
+      }
+
+      await navigator.clipboard.writeText(url);
+      toast.success("Tautan profil berhasil disalin.");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+      toast.error("Profil tidak dapat dibagikan saat ini.");
+    }
   };
 
   return (
@@ -56,7 +88,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                 <div className="absolute inset-0 flex items-center justify-center pt-8 pb-16 px-4">
                   <img
                     src={resident.coverPhoto}
-                    alt="Cover"
+                    alt={`${resident.name} – foto sampul profil`}
                     className="max-w-full max-h-full object-contain shadow-2xl rounded-2xl border border-white/10"
                   />
                 </div>
@@ -85,6 +117,32 @@ export default function ResidentDetailClient({ resident }: Props) {
               <div className="lg:col-span-8 space-y-8">
                 {/* 1. Identity Card (Floating Overlap) */}
                 <div className="bg-card border border-border/80 rounded-[2.5rem] p-8 md:p-12 shadow-2xl shadow-primary/5">
+                  <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+                    <nav aria-label="Breadcrumb">
+                      <ol className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                        <li>
+                          <Link
+                            href="/residents"
+                            className="transition-colors hover:text-primary">
+                            Penghuni
+                          </Link>
+                        </li>
+                        <li aria-hidden="true">/</li>
+                        <li
+                          aria-current="page"
+                          className="font-semibold text-foreground">
+                          {resident.name}
+                        </li>
+                      </ol>
+                    </nav>
+                    <button
+                      type="button"
+                      onClick={handleShareProfile}
+                      className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:border-primary hover:text-primary">
+                      <FaShareAlt aria-hidden="true" />
+                      Bagikan profil
+                    </button>
+                  </div>
                   <div className="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
                     <div className="relative shrink-0">
                       <div className="absolute -inset-2 bg-gradient-to-tr from-primary/30 to-secondary/30 rounded-full blur-xl opacity-40" />
@@ -107,10 +165,10 @@ export default function ResidentDetailClient({ resident }: Props) {
                           Joined {resident.joinedYear || "-"}
                         </span>
                       </div>
-                      <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-foreground mb-4 leading-tight">
+                      <h1 className="text-2xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground mb-4 leading-tight">
                         {resident.name}
                       </h1>
-                      <p className="text-xl font-bold text-muted-foreground/80 leading-relaxed uppercase tracking-tight">
+                      <p className="text-sm md:text-xl font-bold text-muted-foreground/80 leading-relaxed uppercase tracking-tight">
                         {resident.major}
                       </p>
                     </div>
@@ -126,11 +184,11 @@ export default function ResidentDetailClient({ resident }: Props) {
                     </h2>
                   </div>
 
-                  <blockquote className="text-2xl md:text-3xl font-bold leading-relaxed text-foreground/90 border-l-8 border-primary/20 pl-8 italic">
+                  <blockquote className="text-md lg:text-2xl md:text-3xl font-bold leading-relaxed text-foreground/90 border-l-4 lg:border-l-8 md:border-l-8 border-primary/20 pl-8 italic">
                     {finalAbout.summary}
                   </blockquote>
 
-                  <div className="text-muted-foreground leading-relaxed text-lg space-y-6">
+                  <div className="text-muted-foreground leading-relaxed text-sm md:text-lg space-y-6">
                     <p className="whitespace-pre-line">
                       {finalAbout.experience}
                     </p>
@@ -138,7 +196,7 @@ export default function ResidentDetailClient({ resident }: Props) {
 
                   {finalAbout.achievements.length > 0 && (
                     <div className="pt-10 border-t border-border/50">
-                      <h3 className="text-xs font-black uppercase tracking-[0.2em] text-foreground/70 mb-8">
+                      <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-foreground/70 mb-8">
                         Notable Milestones
                       </h3>
                       <div className="grid sm:grid-cols-2 gap-5">
@@ -149,7 +207,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                             <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
                               <FaUserGraduate size={16} />
                             </div>
-                            <span className="text-sm font-bold text-muted-foreground leading-relaxed">
+                            <span className="text-xs md:text-sm font-bold text-muted-foreground leading-relaxed">
                               {item}
                             </span>
                           </div>
@@ -177,7 +235,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                         <p className="text-[10px] uppercase font-black text-muted-foreground/30 tracking-widest mb-1">
                           Origins
                         </p>
-                        <p className="text-base font-bold text-foreground/90">
+                        <p className="text-sm md:text-base font-bold text-foreground/90">
                           {resident.from}
                         </p>
                       </div>
@@ -191,7 +249,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                         <p className="text-[10px] uppercase font-black text-muted-foreground/30 tracking-widest mb-1">
                           Academic
                         </p>
-                        <p className="text-base font-bold text-foreground/90 leading-tight">
+                        <p className="text-sm md:text-base font-bold text-foreground/90 leading-tight">
                           {resident.university}
                         </p>
                       </div>
@@ -226,7 +284,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                         window.open(resident.socials.instagram, "_blank");
                       }
                     }}
-                    className="w-full mt-10 py-5 rounded-2xl bg-primary text-white font-black uppercase tracking-[0.2em] text-[10px] hover:shadow-2xl hover:shadow-primary/40 hover:-translate-y-1 active:scale-95 transition-all">
+                    className="w-full mt-10 py-3 md:py-5 rounded-2xl bg-primary text-white font-black uppercase tracking-[0.2em] text-[10px] hover:shadow-2xl hover:shadow-primary/40 hover:-translate-y-1 active:scale-95 transition-all cursor-pointer">
                     Request Intro
                   </button>
                 </div>
@@ -241,7 +299,7 @@ export default function ResidentDetailClient({ resident }: Props) {
                       {finalAbout.expertise.map((item, index) => (
                         <span
                           key={index}
-                          className="px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-tight bg-muted border border-border/60 text-muted-foreground shadow-sm hover:border-primary/40 transition-colors">
+                          className="px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-tight bg-muted border border-border/60 text-muted-foreground shadow-sm hover:border-primary/40 transition-colors">
                           {item}
                         </span>
                       ))}

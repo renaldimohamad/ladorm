@@ -1,3 +1,5 @@
+import { DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/site";
+
 export interface BlogArticle {
   id: string;
   slug: string;
@@ -87,7 +89,7 @@ export function getBlogArticleSlugs() {
 
 export function getBlogArticleCanonicalUrl(
   slugOrId: string,
-  baseUrl = "https://ladorm.vercel.app",
+  baseUrl = SITE_URL,
 ) {
   const article =
     getBlogArticleBySlug(slugOrId) || getBlogArticleById(slugOrId);
@@ -97,10 +99,10 @@ export function getBlogArticleCanonicalUrl(
 
 export function resolveAbsoluteAssetUrl(
   image: string | undefined,
-  baseUrl = "https://ladorm.vercel.app",
+  baseUrl = SITE_URL,
 ) {
   if (!image) {
-    return `${baseUrl}/images/LADORM_FORM.webp`;
+    return DEFAULT_OG_IMAGE;
   }
 
   if (/^https?:\/\//i.test(image)) {
@@ -110,6 +112,6 @@ export function resolveAbsoluteAssetUrl(
   return `${baseUrl}${image.startsWith("/") ? image : `/${image}`}`;
 }
 
-export function getDefaultBlogOgImage(baseUrl = "https://ladorm.vercel.app") {
-  return `${baseUrl}/images/LADORM_FORM.webp`;
+export function getDefaultBlogOgImage(baseUrl = SITE_URL) {
+  return `${baseUrl}/images/Ladorm_Photos.webp`;
 }

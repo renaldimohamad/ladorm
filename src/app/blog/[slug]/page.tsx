@@ -11,12 +11,12 @@ import { LayoutBlank } from "@/layouts";
 import Footer from "@/components/common/Footer";
 import Fade from "@/components/common/Fade";
 import BlogShareButtons from "@/components/blog/BlogShareButtons";
+import { ORGANIZATION_LOGO, SITE_URL } from "@/lib/site";
 import {
   getBlogArticleBySlug,
   getBlogArticleSlugs,
   getBlogArticleCanonicalUrl,
   resolveAbsoluteAssetUrl,
-  getDefaultBlogOgImage,
 } from "@/utils/blog";
 
 export async function generateMetadata({
@@ -34,7 +34,7 @@ export async function generateMetadata({
     };
   }
 
-  const baseUrl = "https://ladorm.vercel.app";
+  const baseUrl = SITE_URL;
   const canonicalUrl = getBlogArticleCanonicalUrl(slug, baseUrl);
   const imageUrl = resolveAbsoluteAssetUrl(post.image, baseUrl);
 
@@ -54,8 +54,6 @@ export async function generateMetadata({
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
           alt: post.title,
         },
       ],
@@ -87,7 +85,7 @@ export default async function BlogDetail({
   }
 
   const canonicalUrl = getBlogArticleCanonicalUrl(slug);
-  const articleImage = post.image ? post.image : "/images/LADORM_FORM.webp";
+  const articleImage = resolveAbsoluteAssetUrl(post.image, SITE_URL);
   const articleStructuredData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -105,7 +103,7 @@ export default async function BlogDetail({
       name: "LADorm",
       logo: {
         "@type": "ImageObject",
-        url: "https://ladorm.vercel.app/images/LADORM_FORM.webp",
+        url: ORGANIZATION_LOGO,
       },
     },
     mainEntityOfPage: canonicalUrl,
@@ -126,13 +124,13 @@ export default async function BlogDetail({
         "@type": "ListItem",
         position: 1,
         name: "Beranda",
-        item: "https://ladorm.vercel.app/",
+        item: `${SITE_URL}/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://ladorm.vercel.app/blog",
+        item: `${SITE_URL}/blog`,
       },
       {
         "@type": "ListItem",

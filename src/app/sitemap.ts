@@ -1,7 +1,6 @@
 import { residents } from "@/utils/residents";
 import { blogArticles } from "@/utils/blog";
-
-const baseUrl = "https://ladorm.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 export default async function sitemap() {
   const staticPages = [
@@ -14,20 +13,15 @@ export default async function sitemap() {
   ];
 
   const staticUrls = staticPages.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date().toISOString(),
+    url: path === "/" ? SITE_URL : `${SITE_URL}${path}`,
   }));
 
   const residentUrls = residents.map((r) => ({
-    url: `${baseUrl}/residents/${r.slug}`,
-    lastModified: r.joinedYear
-      ? `${r.joinedYear}-01-01`
-      : new Date().toISOString(),
+    url: `${SITE_URL}/residents/${r.slug}`,
   }));
 
   const blogUrls = blogArticles.map((article) => ({
-    url: `${baseUrl}/blog/${article.slug}`,
-    lastModified: new Date().toISOString(),
+    url: `${SITE_URL}/blog/${article.slug}`,
   }));
 
   return [...staticUrls, ...residentUrls, ...blogUrls];
