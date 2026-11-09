@@ -9,6 +9,7 @@ export default async function sitemap() {
     "/about/story",
     "/blog",
     "/contact-us",
+    "/register",
     "/residents",
   ];
 

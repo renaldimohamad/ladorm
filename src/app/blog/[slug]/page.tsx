@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   HiOutlineArrowLeft,
   HiOutlineCalendar,
@@ -13,7 +13,7 @@ import Fade from "@/components/common/Fade";
 import BlogShareButtons from "@/components/blog/BlogShareButtons";
 import { ORGANIZATION_LOGO, SITE_URL } from "@/lib/site";
 import {
-  getBlogArticleBySlug,
+  getBlogArticleBySlugOrId,
   getBlogArticleSlugs,
   getBlogArticleCanonicalUrl,
   resolveAbsoluteAssetUrl,
@@ -25,17 +25,14 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogArticleBySlug(slug);
+  const post = getBlogArticleBySlugOrId(slug);
 
   if (!post) {
-    return {
-      title: "Artikel Tidak Ditemukan | LADorm",
-      description: "Artikel blog yang Anda cari tidak tersedia.",
-    };
+    notFound();
   }
 
   const baseUrl = SITE_URL;
-  const canonicalUrl = getBlogArticleCanonicalUrl(slug, baseUrl);
+  const canonicalUrl = getBlogArticleCanonicalUrl(post.slug, baseUrl);
   const imageUrl = resolveAbsoluteAssetUrl(post.image, baseUrl);
 
   return {
@@ -71,20 +68,26 @@ export function generateStaticParams() {
   return getBlogArticleSlugs();
 }
 
+export const dynamicParams = false;
+
 export default async function BlogDetail({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getBlogArticleBySlug(slug);
+  const post = getBlogArticleBySlugOrId(slug);
   const backToLabel = "Kembali";
 
   if (!post) {
     notFound();
   }
 
-  const canonicalUrl = getBlogArticleCanonicalUrl(slug);
+  if (post.slug !== slug) {
+    permanentRedirect(getBlogArticleCanonicalUrl(post.slug));
+  }
+
+  const canonicalUrl = getBlogArticleCanonicalUrl(post.slug);
   const articleImage = resolveAbsoluteAssetUrl(post.image, SITE_URL);
   const articleStructuredData = {
     "@context": "https://schema.org",

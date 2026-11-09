@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { testimonialsData } from "@/utils/Testimonials";
 import { ThemeProvider } from "@/contexts/ThemeContext";
@@ -112,13 +111,13 @@ export default function RootLayout({
     `,
           }}
         />
-        <Script
-          id="ld-json-testimonials"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": `${SITE_URL}#organization`,
               name: SITE_NAME,
               url: SITE_URL,
               logo: ORGANIZATION_LOGO,
@@ -143,6 +142,22 @@ export default function RootLayout({
                   ? t.avatar
                   : `${SITE_URL}${t.avatar}`,
               })),
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": `${SITE_URL}#website`,
+              name: SITE_NAME,
+              url: SITE_URL,
+              inLanguage: "id",
+              publisher: {
+                "@id": `${SITE_URL}#organization`,
+              },
             }),
           }}
         />

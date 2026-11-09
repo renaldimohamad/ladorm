@@ -83,6 +83,10 @@ export function getBlogArticleById(id: string) {
   return blogArticles.find((article) => article.id === id);
 }
 
+export function getBlogArticleBySlugOrId(slugOrId: string) {
+  return getBlogArticleBySlug(slugOrId) || getBlogArticleById(slugOrId);
+}
+
 export function getBlogArticleSlugs() {
   return blogArticles.map((article) => ({ slug: article.slug }));
 }
@@ -91,8 +95,7 @@ export function getBlogArticleCanonicalUrl(
   slugOrId: string,
   baseUrl = SITE_URL,
 ) {
-  const article =
-    getBlogArticleBySlug(slugOrId) || getBlogArticleById(slugOrId);
+  const article = getBlogArticleBySlugOrId(slugOrId);
   const slug = article?.slug ?? slugOrId;
   return `${baseUrl}/blog/${slug}`;
 }

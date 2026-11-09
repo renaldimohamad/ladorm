@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { decrypt } from '@/lib/auth';
+import { getBlogArticleById } from '@/utils/blog';
 
 export async function middleware(request: NextRequest) {
   const session = request.cookies.get('session')?.value;
   const { pathname } = request.nextUrl;
+
+  const blogIdMatch = pathname.match(/^\/blog\/([^/]+)$/);
+  if (blogIdMatch) {
+    const article = getBlogArticleById(blogIdMatch[1]);
+    if (article) {
+      const url = request.nextUrl.clone();
+      url.pathname = `/blog/${article.slug}`;
+      return NextResponse.redirect(url, 308);
+    }
+  }
 
   // Protect admin routes
   if (pathname.startsWith('/admin')) {
@@ -39,5 +50,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/blog/:slug'],
 };
